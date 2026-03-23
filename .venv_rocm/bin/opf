@@ -1,0 +1,6 @@
+#!/home/pang/projects/DDET-MTD/.venv_rocm/bin/python
+import sys
+from pypower.main import opf
+if __name__ == '__main__':
+    sys.argv[0] = sys.argv[0].removesuffix('.exe')
+    sys.exit(opf())
