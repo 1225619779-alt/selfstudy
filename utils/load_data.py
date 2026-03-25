@@ -65,10 +65,11 @@ def load_measurement():
     
     return z_noise_summary, v_est_summary
 
-def load_dataset():
+# def load_dataset():
 
-    is_shuffle = True  # Allow shuffle in dataloader
-    
+#     is_shuffle = True  # Allow shuffle in dataloader
+def load_dataset(is_shuffle=True):
+        
     # Test dataset dataloader: SCALED
     test_dataset_scaled = rnn_dataset(mode = 'test', istransform=True)
     test_dataloader_scaled = DataLoader(dataset = test_dataset_scaled,

@@ -12,12 +12,13 @@ import numpy as np
 from tqdm import tqdm
 from models.dataset import scaler
 from optim.optimization import mtd_optim
-
+import random
 """
 Preparation
 """
 
-total_run = mtd_config['total_run']
+# total_run = mtd_config['total_run']
+total_run = 50
 print('varrho', np.sqrt(mtd_config['varrho_square']))
 print('total_run', total_run)
 print('mode', mtd_config['mode'])
@@ -27,7 +28,7 @@ print('upper_scaling', mtd_config['upper_scale'])
 case_class = load_case()
 z_noise_summary, v_est_summary = load_measurement()
 load_active, load_reactive, pv_active_, pv_reactive_ = load_load_pv()
-test_dataloader_scaled, test_dataloader_unscaled, valid_dataloader_scaled, valid_dataloader_unscaled = load_dataset()
+test_dataloader_scaled, test_dataloader_unscaled, valid_dataloader_scaled, valid_dataloader_unscaled = load_dataset(is_shuffle=False)
 feature_size = len(z_noise_summary)
 test_start_idx = int(feature_size * (nn_setting['train_prop'] + nn_setting['valid_prop']))  # The start index of test dataset
 
@@ -52,6 +53,11 @@ Metrics
 TP_DDD = {}                   # Record the true positive number of deep learning detector
 att_strength = {}             # Record the state attack strength
 varrho_summary = {}
+
+tau_verify = 0.021  # sanity check 用。因为 verify_score >= 0，所以 -1.0 等价于“永远触发”
+verify_score = {}   # 记录每个 DDD 正报警样本的验证分数
+trigger_after_verification = {}   # 记录 gate 后是否真正触发 MTD
+skip_by_verification = {}         # 记录是否被 gate 掉
 
 # Attack recovery
 recover_deviation = {}        # The difference between recovered state phase angle and the ground truth state phase angle
@@ -108,6 +114,11 @@ for ang_no in ang_no_list:
         TP_DDD[f'({ang_no},{ang_str})'] = []                    # Record the true positive number of deep learning detector
         att_strength[f'({ang_no},{ang_str})'] = []              # Record the state attack strength
         varrho_summary[f'({ang_no},{ang_str})'] = []
+        
+        verify_score[f'({ang_no},{ang_str})'] = []
+        trigger_after_verification[f'({ang_no},{ang_str})'] = []
+        skip_by_verification[f'({ang_no},{ang_str})'] = []
+
 
         # Attack recovery
         recover_deviation[f'({ang_no},{ang_str})'] = []         # The difference between recovered state phase angle and the ground truth state phase angle
@@ -158,9 +169,16 @@ for ang_no in ang_no_list:
             """
             Generate attack
             """
+
+            idx_val = int(idx.item())
+
+            seed_ = 20260324 + 100000 * ang_no + int(round(1000 * ang_str)) + idx_val
+            random.seed(seed_)
+            np.random.seed(seed_ % (2**32 - 1))
+
             z_att_noise, v_att_est_last = case_class.gen_fdi_att_dd(z_noise=input, v_est_last=v_est_last, ang_no=ang_no, mag_no=mag_no, ang_str=ang_str, mag_str=mag_str)
             v_att_est_last = torch.from_numpy(v_att_est_last)
-
+            
             """
             Data-driven detector
             """
@@ -179,10 +197,11 @@ for ang_no in ang_no_list:
             Attack recover
             """
             # v_recover: the recovered state
-            z_recover, v_recover, loss_recover_summary, loss_sparse_real_summary, loss_sparse_imag_summary, loss_v_mag_summary, loss_summary, recover_time = dd_detector.recover(attack_batch=input,   # NOTE: NOT SCALED
-                                                                                                                                                        v_pre = v_est_pre,      
-                                                                                                                                                        v_last= v_att_est_last, 
-                                                                                                                                                        )
+            z_recover, v_recover, loss_recover_summary, loss_sparse_real_summary, loss_sparse_imag_summary, loss_v_mag_summary, loss_summary, recover_time_single = dd_detector.recover(
+            attack_batch=input,   # NOTE: NOT SCALED
+            v_pre=v_est_pre,
+            v_last=v_att_est_last,
+            )
             
             # Summary
             vang_recover = np.angle(v_recover.numpy())
@@ -191,22 +210,47 @@ for ang_no in ang_no_list:
             recover_deviation[f'({ang_no},{ang_str})'].append(np.linalg.norm(vang_true - vang_recover,2))   # L2 norm
             pre_deviation[f'({ang_no},{ang_str})'].append(np.linalg.norm(vang_true - vang_pre,2))           # L2 norm
             recovery_ite_no[f'({ang_no},{ang_str})'].append(len(loss_recover_summary))
-            recovery_time.append(recover_time)
+            # recovery_time.append(recover_time)
+            recovery_time.append(recover_time_single)
             
             """
             MTD algorithm
             """
-            vang_att = np.angle(v_att_est_last.numpy())
-            c_true = (vang_att - vang_true)             # Ground truth angle attack vector with reference bus included
-            c_recover = (vang_att - vang_recover)       # Recovered angle attack vector with reference bus included
-            c_recover_no_ref = np.expand_dims(c_recover[case_class.non_ref_index],1)   # No reference bus]
+            # vang_att = np.angle(v_att_est_last.numpy())
+            # c_true = (vang_att - vang_true)             # Ground truth angle attack vector with reference bus included
+            # c_recover = (vang_att - vang_recover)       # Recovered angle attack vector with reference bus included
+            # c_recover_no_ref = np.expand_dims(c_recover[case_class.non_ref_index],1)   # No reference bus]
             
-            att_strength[f'({ang_no},{ang_str})'].append(np.linalg.norm(c_recover_no_ref, 2))
+            # att_strength[f'({ang_no},{ang_str})'].append(np.linalg.norm(c_recover_no_ref, 2))
+
+            # # Instance the mtd optimization class
+            # mtd_optim_ = mtd_optim(case_class, v_est_last.numpy(), c_recover_no_ref, varrho_square)
+            # varrho_summary[f'({ang_no},{ang_str})'].append(np.sqrt(mtd_optim_.varrho_square))
+            vang_att = np.angle(v_att_est_last.numpy())
+            c_true = (vang_att - vang_true)
+            c_recover = (vang_att - vang_recover)
+            c_recover_no_ref = np.expand_dims(c_recover[case_class.non_ref_index], 1)
+
+# verification score
+            score_ = float(np.linalg.norm(c_recover_no_ref, 2))
+
+# 旧指标保留
+            att_strength[f'({ang_no},{ang_str})'].append(score_)
+
+# 新增 gate 指标
+            verify_score[f'({ang_no},{ang_str})'].append(score_)
+
+            should_trigger_mtd = (score_ >= tau_verify)
+            trigger_after_verification[f'({ang_no},{ang_str})'].append(bool(should_trigger_mtd))
+            skip_by_verification[f'({ang_no},{ang_str})'].append(bool(not should_trigger_mtd))
+
+            # 如果 gate 判定“不值得升级成 MTD”，直接跳过后端优化
+            if not should_trigger_mtd:
+                continue
 
             # Instance the mtd optimization class
             mtd_optim_ = mtd_optim(case_class, v_est_last.numpy(), c_recover_no_ref, varrho_square)
             varrho_summary[f'({ang_no},{ang_str})'].append(np.sqrt(mtd_optim_.varrho_square))
-        
             # Run MTD stage-one/two
             b_mtd_one_final, b_mtd_two_final, obj_one_final, obj_two_final, obj_worst_primal, obj_worst_dual, c_worst, stage_one_time_, stage_two_time_, is_fail = mtd_optim_.multi_run()
             
@@ -254,13 +298,18 @@ for ang_no in ang_no_list:
             x_ratio_stage_two[f'({ang_no},{ang_str})'].append(x_mtd_change_ratio)
             cost_with_mtd_two[f'({ang_no},{ang_str})'].append(cost_with_mtd_)
             residual_no_att.append(residual_normal_)
-
-save_metric(address = f'metric/{sys_config["case_name"]}/metric_event_trigger_mode_{mtd_config["mode"]}_{round(np.sqrt(mtd_config["varrho_square"]),5)}_{mtd_config["upper_scale"]}.npy', 
+# save_metric(address = f'metric/{sys_config["case_name"]}/metric_event_trigger_mode_{mtd_config["mode"]}_{round(np.sqrt(mtd_config["varrho_square"]),5)}_{mtd_config["upper_scale"]}.npy', 
+save_metric(address = f'metric/{sys_config["case_name"]}/metric_event_trigger_tau_{tau_verify}_mode_{mtd_config["mode"]}_{round(np.sqrt(mtd_config["varrho_square"]),5)}_{mtd_config["upper_scale"]}.npy', 
             
             # Attack detection
             TP_DDD = TP_DDD,                   # Record the true positive number of deep learning detector
             att_strength = att_strength,             # Record the state attack strength
             varrho_summary = varrho_summary,
+
+            # Verification gate
+            verify_score = verify_score,
+            trigger_after_verification = trigger_after_verification,
+            skip_by_verification = skip_by_verification,
 
             # Attack recovery
             recover_deviation = recover_deviation,        # The difference between recovered state phase angle and the ground truth state phase angle
