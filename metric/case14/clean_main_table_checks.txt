@@ -1,0 +1,16 @@
+=== Compare Baseline vs Main OP ===
+total_clean_sample: True | baseline=7021 | Main OP=7021
+total_DDD_alarm: True | baseline=1179 | Main OP=1179
+false_alarm_rate: True | baseline=0.16792479703745905 | Main OP=0.16792479703745905
+TP_DDD: True | allclose
+clean_alarm_idx: True | allclose
+verify_score: True | allclose
+
+=== Compare Baseline vs Strict OP ===
+total_clean_sample: True | baseline=7021 | Strict OP=7021
+total_DDD_alarm: True | baseline=1179 | Strict OP=1179
+false_alarm_rate: True | baseline=0.16792479703745905 | Strict OP=0.16792479703745905
+TP_DDD: True | allclose
+clean_alarm_idx: True | allclose
+verify_score: True | allclose
+

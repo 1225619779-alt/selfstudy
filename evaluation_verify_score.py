@@ -24,7 +24,7 @@ print("total_run", total_run)
 case_class = load_case()
 z_noise_summary, v_est_summary = load_measurement()
 load_active, load_reactive, pv_active_, pv_reactive_ = load_load_pv()
-test_dataloader_scaled, test_dataloader_unscaled, valid_dataloader_scaled, valid_dataloader_unscaled = load_dataset()
+test_dataloader_scaled, test_dataloader_unscaled, valid_dataloader_scaled, valid_dataloader_unscaled = load_dataset(is_shuffle=False)
 
 lstm_ae = LSTM_AE()
 lstm_ae.load_state_dict(torch.load(nn_setting['model_path'], map_location=torch.device(nn_setting['device'])))
