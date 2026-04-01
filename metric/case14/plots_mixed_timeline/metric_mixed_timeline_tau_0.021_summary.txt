@@ -1,0 +1,28 @@
+==== Mixed timeline summary ====
+metric_file: metric/case14/metric_mixed_timeline_tau_0.021.npy
+tau_verify: 0.021
+total_steps: 330
+total_clean_steps: 240
+total_attack_steps: 90
+total_DDD_alarm: 141
+total_trigger_after_gate: 79
+total_skip_by_gate: 62
+total_recover_fail: 0
+total_backend_fail: 7
+final_cumulative_stage_time: 575.8805656433105
+final_cumulative_delta_cost: 2636.9634808504234
+
+---- Scenario breakdown ----
+clean: {'count': 240, 'DDD_alarm': 56, 'trigger_after_gate': 5, 'skip_by_gate': 51, 'recover_fail': 0}
+weak(1,0.2): {'count': 30, 'DDD_alarm': 25, 'trigger_after_gate': 15, 'skip_by_gate': 10, 'recover_fail': 0}
+medium(2,0.2): {'count': 30, 'DDD_alarm': 30, 'trigger_after_gate': 29, 'skip_by_gate': 1, 'recover_fail': 0}
+strong(3,0.3): {'count': 30, 'DDD_alarm': 30, 'trigger_after_gate': 30, 'skip_by_gate': 0, 'recover_fail': 0}
+
+---- Segment meta ----
+{'segment_id': 0, 'kind': 'clean', 'label': 'clean', 'length': 80, 'start_step': 0, 'end_step': 79, 'ang_no': 0, 'ang_str': 0.0, 'scenario_code': 0}
+{'segment_id': 1, 'kind': 'attack', 'label': 'weak(1,0.2)', 'length': 30, 'start_step': 80, 'end_step': 109, 'ang_no': 1, 'ang_str': 0.2, 'scenario_code': 1}
+{'segment_id': 2, 'kind': 'clean', 'label': 'clean', 'length': 40, 'start_step': 110, 'end_step': 149, 'ang_no': 0, 'ang_str': 0.0, 'scenario_code': 0}
+{'segment_id': 3, 'kind': 'attack', 'label': 'medium(2,0.2)', 'length': 30, 'start_step': 150, 'end_step': 179, 'ang_no': 2, 'ang_str': 0.2, 'scenario_code': 2}
+{'segment_id': 4, 'kind': 'clean', 'label': 'clean', 'length': 40, 'start_step': 180, 'end_step': 219, 'ang_no': 0, 'ang_str': 0.0, 'scenario_code': 0}
+{'segment_id': 5, 'kind': 'attack', 'label': 'strong(3,0.3)', 'length': 30, 'start_step': 220, 'end_step': 249, 'ang_no': 3, 'ang_str': 0.3, 'scenario_code': 3}
+{'segment_id': 6, 'kind': 'clean', 'label': 'clean', 'length': 80, 'start_step': 250, 'end_step': 329, 'ang_no': 0, 'ang_str': 0.0, 'scenario_code': 0}
