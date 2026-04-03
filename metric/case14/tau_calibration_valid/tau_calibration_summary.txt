@@ -1,0 +1,13 @@
+Validation-only tau calibration summary
+count=562
+mean=0.013813967341
+median=0.003512028823
+p90=0.039222297750
+p95=0.070003262544
+p99=0.117294534717
+p_main=0.9000
+p_strict=0.9500
+tau_main=0.039222297750
+tau_strict=0.070003262544
+tau_main_rounded_3dp=0.039
+tau_strict_rounded_3dp=0.070
