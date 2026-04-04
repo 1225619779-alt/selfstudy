@@ -1,0 +1,61 @@
+==== Paired mixed-timeline comparison ====
+baseline_file: metric/case14/metric_mixed_timeline_tau_-1.0.npy
+gated_file: metric/case14/metric_mixed_timeline_tau_0.036751.npy
+
+==== Sanity checks ====
+same_schedule_spec: True
+same_total_steps: True
+same_timeline_step: True
+same_idx_summary: True
+same_scenario_label: True
+same_is_attack_step: True
+same_seed_base: True
+same_start_offset: True
+
+==== Whole timeline ====
+steps: baseline=330.000000 | gated=330.000000 | rel_change=0.00%
+DDD_alarm: baseline=141.000000 | gated=141.000000 | rel_change=0.00%
+trigger_after_gate: baseline=141.000000 | gated=51.000000 | rel_change=-63.83%
+skip_by_gate: baseline=0.000000 | gated=90.000000 | rel_change=nan
+backend_fail: baseline=9.000000 | gated=4.000000 | rel_change=-55.56%
+deployment_rate_per_step: baseline=0.427273 | gated=0.154545 | rel_change=-63.83%
+deployment_rate_among_alarms: baseline=1.000000 | gated=0.361702 | rel_change=-63.83%
+backend_fail_rate_per_alarm: baseline=0.063830 | gated=0.028369 | rel_change=-55.56%
+mean_stage_one_time_per_alarm: baseline=0.979012 | gated=0.456163 | rel_change=-53.41%
+mean_stage_two_time_per_alarm: baseline=4.247073 | gated=3.092118 | rel_change=-27.19%
+mean_delta_cost_one_per_alarm: baseline=28.588370 | gated=9.962741 | rel_change=-65.15%
+mean_delta_cost_two_per_alarm: baseline=4.814214 | gated=1.387462 | rel_change=-71.18%
+final_cumulative_stage_time: baseline=736.877941 | gated=500.307711 | rel_change=-32.10%
+final_cumulative_delta_cost: baseline=4709.764362 | gated=1600.378664 | rel_change=-66.02%
+
+==== Clean segments only ====
+steps: baseline=240.000000 | gated=240.000000 | rel_change=0.00%
+DDD_alarm: baseline=56.000000 | gated=56.000000 | rel_change=0.00%
+trigger_after_gate: baseline=56.000000 | gated=1.000000 | rel_change=-98.21%
+skip_by_gate: baseline=0.000000 | gated=55.000000 | rel_change=nan
+backend_fail: baseline=4.000000 | gated=0.000000 | rel_change=-100.00%
+deployment_rate_per_step: baseline=0.233333 | gated=0.004167 | rel_change=-98.21%
+deployment_rate_among_alarms: baseline=1.000000 | gated=0.017857 | rel_change=-98.21%
+backend_fail_rate_per_alarm: baseline=0.071429 | gated=0.000000 | rel_change=-100.00%
+mean_stage_one_time_per_alarm: baseline=0.428317 | gated=0.014520 | rel_change=-96.61%
+mean_stage_two_time_per_alarm: baseline=2.751223 | gated=0.216085 | rel_change=-92.15%
+mean_delta_cost_one_per_alarm: baseline=25.380848 | gated=1.315415 | rel_change=-94.82%
+mean_delta_cost_two_per_alarm: baseline=4.273880 | gated=0.002079 | rel_change=-99.95%
+final_cumulative_stage_time: baseline=178.054256 | gated=12.913870 | rel_change=-92.75%
+final_cumulative_delta_cost: baseline=1660.664724 | gated=73.779668 | rel_change=-95.56%
+
+==== Attack segments only ====
+steps: baseline=90.000000 | gated=90.000000 | rel_change=0.00%
+DDD_alarm: baseline=85.000000 | gated=85.000000 | rel_change=0.00%
+trigger_after_gate: baseline=85.000000 | gated=50.000000 | rel_change=-41.18%
+skip_by_gate: baseline=0.000000 | gated=35.000000 | rel_change=nan
+backend_fail: baseline=5.000000 | gated=4.000000 | rel_change=-20.00%
+deployment_rate_per_step: baseline=0.944444 | gated=0.555556 | rel_change=-41.18%
+deployment_rate_among_alarms: baseline=1.000000 | gated=0.588235 | rel_change=-41.18%
+backend_fail_rate_per_alarm: baseline=0.058824 | gated=0.047059 | rel_change=-20.00%
+mean_stage_one_time_per_alarm: baseline=1.341822 | gated=0.747128 | rel_change=-44.32%
+mean_stage_two_time_per_alarm: baseline=5.232574 | gated=4.986917 | rel_change=-4.69%
+mean_delta_cost_one_per_alarm: baseline=30.701561 | gated=15.659802 | rel_change=-48.99%
+mean_delta_cost_two_per_alarm: baseline=5.170199 | gated=2.300186 | rel_change=-55.51%
+final_cumulative_stage_time: baseline=558.823685 | gated=487.393841 | rel_change=-12.78%
+final_cumulative_delta_cost: baseline=3049.099638 | gated=1526.598996 | rel_change=-49.93%
