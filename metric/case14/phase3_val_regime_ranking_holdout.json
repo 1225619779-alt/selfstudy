@@ -1,0 +1,920 @@
+[
+  {
+    "decision_step_group": 1,
+    "busy_time_quantile": 0.35,
+    "use_cost_budget": false,
+    "cost_budget_quantile": null,
+    "slot_budgets": {
+      "1": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.3885,
+          "unnecessary_mtd_count": 3,
+          "queue_delay_p95": 9.0,
+          "average_service_cost_per_step": 5.414346,
+          "pred_expected_consequence_served_ratio": 0.4557
+        },
+        "best_threshold_name": "adaptive_threshold_verify_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.2905,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 8.0,
+          "average_service_cost_per_step": 3.674537,
+          "pred_expected_consequence_served_ratio": 0.3361
+        },
+        "delta_vs_best_threshold_recall": 0.098,
+        "delta_vs_best_threshold_unnecessary": 2,
+        "delta_vs_best_threshold_delay_p95": 1.0,
+        "selection_score": 0.2835
+      },
+      "2": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.6791,
+          "unnecessary_mtd_count": 2,
+          "queue_delay_p95": 6.0,
+          "average_service_cost_per_step": 12.127933,
+          "pred_expected_consequence_served_ratio": 0.7238
+        },
+        "best_threshold_name": "threshold_ddd_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.491,
+          "unnecessary_mtd_count": 0,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 6.65635,
+          "pred_expected_consequence_served_ratio": 0.5228
+        },
+        "delta_vs_best_threshold_recall": 0.1881,
+        "delta_vs_best_threshold_unnecessary": 2,
+        "delta_vs_best_threshold_delay_p95": -4.0,
+        "selection_score": 0.6091
+      }
+    },
+    "avg_selection_score": 0.4463
+  },
+  {
+    "decision_step_group": 1,
+    "busy_time_quantile": 0.35,
+    "use_cost_budget": true,
+    "cost_budget_quantile": 0.5,
+    "slot_budgets": {
+      "1": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.3412,
+          "unnecessary_mtd_count": 2,
+          "queue_delay_p95": 8.0,
+          "average_service_cost_per_step": 3.541404,
+          "pred_expected_consequence_served_ratio": 0.3837
+        },
+        "best_threshold_name": "threshold_verify_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.2905,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 3.295659,
+          "pred_expected_consequence_served_ratio": 0.3251
+        },
+        "delta_vs_best_threshold_recall": 0.0507,
+        "delta_vs_best_threshold_unnecessary": 1,
+        "delta_vs_best_threshold_delay_p95": -2.0,
+        "selection_score": 0.2512
+      },
+      "2": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.4662,
+          "unnecessary_mtd_count": 3,
+          "queue_delay_p95": 8.0,
+          "average_service_cost_per_step": 4.11653,
+          "pred_expected_consequence_served_ratio": 0.5031
+        },
+        "best_threshold_name": "threshold_verify_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.4167,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 3.591917,
+          "pred_expected_consequence_served_ratio": 0.455
+        },
+        "delta_vs_best_threshold_recall": 0.0495,
+        "delta_vs_best_threshold_unnecessary": 2,
+        "delta_vs_best_threshold_delay_p95": -2.0,
+        "selection_score": 0.3712
+      }
+    },
+    "avg_selection_score": 0.3112
+  },
+  {
+    "decision_step_group": 1,
+    "busy_time_quantile": 0.35,
+    "use_cost_budget": true,
+    "cost_budget_quantile": 0.6,
+    "slot_budgets": {
+      "1": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.3885,
+          "unnecessary_mtd_count": 3,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 5.037421,
+          "pred_expected_consequence_served_ratio": 0.4551
+        },
+        "best_threshold_name": "threshold_verify_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.3086,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 4.179888,
+          "pred_expected_consequence_served_ratio": 0.3603
+        },
+        "delta_vs_best_threshold_recall": 0.0799,
+        "delta_vs_best_threshold_unnecessary": 2,
+        "delta_vs_best_threshold_delay_p95": 0.0,
+        "selection_score": 0.2735
+      },
+      "2": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.5642,
+          "unnecessary_mtd_count": 5,
+          "queue_delay_p95": 8.0,
+          "average_service_cost_per_step": 6.970405,
+          "pred_expected_consequence_served_ratio": 0.6208
+        },
+        "best_threshold_name": "threshold_ddd_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.4966,
+          "unnecessary_mtd_count": 0,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 5.707083,
+          "pred_expected_consequence_served_ratio": 0.5187
+        },
+        "delta_vs_best_threshold_recall": 0.0676,
+        "delta_vs_best_threshold_unnecessary": 5,
+        "delta_vs_best_threshold_delay_p95": -2.0,
+        "selection_score": 0.4592
+      }
+    },
+    "avg_selection_score": 0.36635
+  },
+  {
+    "decision_step_group": 1,
+    "busy_time_quantile": 0.5,
+    "use_cost_budget": false,
+    "cost_budget_quantile": null,
+    "slot_budgets": {
+      "1": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.5158,
+          "unnecessary_mtd_count": 3,
+          "queue_delay_p95": 9.0,
+          "average_service_cost_per_step": 8.902865,
+          "pred_expected_consequence_served_ratio": 0.5782
+        },
+        "best_threshold_name": "adaptive_threshold_verify_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.3592,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 6.05,
+          "average_service_cost_per_step": 4.269313,
+          "pred_expected_consequence_served_ratio": 0.4068
+        },
+        "delta_vs_best_threshold_recall": 0.1566,
+        "delta_vs_best_threshold_unnecessary": 2,
+        "delta_vs_best_threshold_delay_p95": 2.95,
+        "selection_score": 0.4108
+      },
+      "2": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.8018,
+          "unnecessary_mtd_count": 4,
+          "queue_delay_p95": 3.05,
+          "average_service_cost_per_step": 13.114748,
+          "pred_expected_consequence_served_ratio": 0.8252
+        },
+        "best_threshold_name": "threshold_ddd_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.5822,
+          "unnecessary_mtd_count": 0,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 7.210332,
+          "pred_expected_consequence_served_ratio": 0.6025
+        },
+        "delta_vs_best_threshold_recall": 0.2196,
+        "delta_vs_best_threshold_unnecessary": 4,
+        "delta_vs_best_threshold_delay_p95": -6.95,
+        "selection_score": 0.7513
+      }
+    },
+    "avg_selection_score": 0.58105
+  },
+  {
+    "decision_step_group": 1,
+    "busy_time_quantile": 0.5,
+    "use_cost_budget": true,
+    "cost_budget_quantile": 0.5,
+    "slot_budgets": {
+      "1": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.3806,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 8.0,
+          "average_service_cost_per_step": 3.724684,
+          "pred_expected_consequence_served_ratio": 0.4182
+        },
+        "best_threshold_name": "adaptive_threshold_verify_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.2714,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 4.0,
+          "average_service_cost_per_step": 2.308614,
+          "pred_expected_consequence_served_ratio": 0.2966
+        },
+        "delta_vs_best_threshold_recall": 0.1092,
+        "delta_vs_best_threshold_unnecessary": 0,
+        "delta_vs_best_threshold_delay_p95": 4.0,
+        "selection_score": 0.2956
+      },
+      "2": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.491,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 8.0,
+          "average_service_cost_per_step": 4.215282,
+          "pred_expected_consequence_served_ratio": 0.5045
+        },
+        "best_threshold_name": "threshold_verify_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.4775,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 3.610661,
+          "pred_expected_consequence_served_ratio": 0.5038
+        },
+        "delta_vs_best_threshold_recall": 0.0135,
+        "delta_vs_best_threshold_unnecessary": 0,
+        "delta_vs_best_threshold_delay_p95": -2.0,
+        "selection_score": 0.406
+      }
+    },
+    "avg_selection_score": 0.3508
+  },
+  {
+    "decision_step_group": 1,
+    "busy_time_quantile": 0.5,
+    "use_cost_budget": true,
+    "cost_budget_quantile": 0.6,
+    "slot_budgets": {
+      "1": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.4437,
+          "unnecessary_mtd_count": 2,
+          "queue_delay_p95": 9.0,
+          "average_service_cost_per_step": 6.047466,
+          "pred_expected_consequence_served_ratio": 0.4987
+        },
+        "best_threshold_name": "threshold_verify_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.3423,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 4.52826,
+          "pred_expected_consequence_served_ratio": 0.3877
+        },
+        "delta_vs_best_threshold_recall": 0.1014,
+        "delta_vs_best_threshold_unnecessary": 1,
+        "delta_vs_best_threshold_delay_p95": -1.0,
+        "selection_score": 0.3437
+      },
+      "2": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.652,
+          "unnecessary_mtd_count": 2,
+          "queue_delay_p95": 8.0,
+          "average_service_cost_per_step": 7.248416,
+          "pred_expected_consequence_served_ratio": 0.6767
+        },
+        "best_threshold_name": "threshold_ddd_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.5777,
+          "unnecessary_mtd_count": 0,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 5.851558,
+          "pred_expected_consequence_served_ratio": 0.591
+        },
+        "delta_vs_best_threshold_recall": 0.0743,
+        "delta_vs_best_threshold_unnecessary": 2,
+        "delta_vs_best_threshold_delay_p95": -2.0,
+        "selection_score": 0.562
+      }
+    },
+    "avg_selection_score": 0.45285
+  },
+  {
+    "decision_step_group": 1,
+    "busy_time_quantile": 0.65,
+    "use_cost_budget": false,
+    "cost_budget_quantile": null,
+    "slot_budgets": {
+      "1": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.6486,
+          "unnecessary_mtd_count": 2,
+          "queue_delay_p95": 9.0,
+          "average_service_cost_per_step": 10.883374,
+          "pred_expected_consequence_served_ratio": 0.7124
+        },
+        "best_threshold_name": "adaptive_threshold_verify_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.4403,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 4.0,
+          "average_service_cost_per_step": 4.892176,
+          "pred_expected_consequence_served_ratio": 0.4773
+        },
+        "delta_vs_best_threshold_recall": 0.2083,
+        "delta_vs_best_threshold_unnecessary": 1,
+        "delta_vs_best_threshold_delay_p95": 5.0,
+        "selection_score": 0.5486
+      },
+      "2": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.8986,
+          "unnecessary_mtd_count": 5,
+          "queue_delay_p95": 1.0,
+          "average_service_cost_per_step": 13.843554,
+          "pred_expected_consequence_served_ratio": 0.9182
+        },
+        "best_threshold_name": "threshold_ddd_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.7241,
+          "unnecessary_mtd_count": 0,
+          "queue_delay_p95": 4.0,
+          "average_service_cost_per_step": 8.308377,
+          "pred_expected_consequence_served_ratio": 0.7289
+        },
+        "delta_vs_best_threshold_recall": 0.1745,
+        "delta_vs_best_threshold_unnecessary": 5,
+        "delta_vs_best_threshold_delay_p95": -3.0,
+        "selection_score": 0.8636
+      }
+    },
+    "avg_selection_score": 0.7061
+  },
+  {
+    "decision_step_group": 1,
+    "busy_time_quantile": 0.65,
+    "use_cost_budget": true,
+    "cost_budget_quantile": 0.5,
+    "slot_budgets": {
+      "1": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.4752,
+          "unnecessary_mtd_count": 3,
+          "queue_delay_p95": 8.75,
+          "average_service_cost_per_step": 4.047456,
+          "pred_expected_consequence_served_ratio": 0.5218
+        },
+        "best_threshold_name": "threshold_verify_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.4167,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 3.500613,
+          "pred_expected_consequence_served_ratio": 0.4527
+        },
+        "delta_vs_best_threshold_recall": 0.0585,
+        "delta_vs_best_threshold_unnecessary": 2,
+        "delta_vs_best_threshold_delay_p95": -1.25,
+        "selection_score": 0.3727
+      },
+      "2": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.5282,
+          "unnecessary_mtd_count": 3,
+          "queue_delay_p95": 8.0,
+          "average_service_cost_per_step": 4.345298,
+          "pred_expected_consequence_served_ratio": 0.5615
+        },
+        "best_threshold_name": "threshold_ddd_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.4876,
+          "unnecessary_mtd_count": 0,
+          "queue_delay_p95": 9.0,
+          "average_service_cost_per_step": 3.735694,
+          "pred_expected_consequence_served_ratio": 0.498
+        },
+        "delta_vs_best_threshold_recall": 0.0406,
+        "delta_vs_best_threshold_unnecessary": 3,
+        "delta_vs_best_threshold_delay_p95": -1.0,
+        "selection_score": 0.4332
+      }
+    },
+    "avg_selection_score": 0.40295
+  },
+  {
+    "decision_step_group": 1,
+    "busy_time_quantile": 0.65,
+    "use_cost_budget": true,
+    "cost_budget_quantile": 0.6,
+    "slot_budgets": {
+      "1": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.5248,
+          "unnecessary_mtd_count": 3,
+          "queue_delay_p95": 8.0,
+          "average_service_cost_per_step": 6.661671,
+          "pred_expected_consequence_served_ratio": 0.5784
+        },
+        "best_threshold_name": "threshold_ddd_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.4966,
+          "unnecessary_mtd_count": 0,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 5.695679,
+          "pred_expected_consequence_served_ratio": 0.5179
+        },
+        "delta_vs_best_threshold_recall": 0.0282,
+        "delta_vs_best_threshold_unnecessary": 3,
+        "delta_vs_best_threshold_delay_p95": -2.0,
+        "selection_score": 0.4298
+      },
+      "2": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.6914,
+          "unnecessary_mtd_count": 2,
+          "queue_delay_p95": 8.0,
+          "average_service_cost_per_step": 6.856956,
+          "pred_expected_consequence_served_ratio": 0.7236
+        },
+        "best_threshold_name": "threshold_ddd_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.6081,
+          "unnecessary_mtd_count": 0,
+          "queue_delay_p95": 7.65,
+          "average_service_cost_per_step": 6.045005,
+          "pred_expected_consequence_served_ratio": 0.6201
+        },
+        "delta_vs_best_threshold_recall": 0.0833,
+        "delta_vs_best_threshold_unnecessary": 2,
+        "delta_vs_best_threshold_delay_p95": 0.35,
+        "selection_score": 0.6014
+      }
+    },
+    "avg_selection_score": 0.5156
+  },
+  {
+    "decision_step_group": 2,
+    "busy_time_quantile": 0.35,
+    "use_cost_budget": false,
+    "cost_budget_quantile": null,
+    "slot_budgets": {
+      "1": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.0946,
+          "unnecessary_mtd_count": 2,
+          "queue_delay_p95": 7.65,
+          "average_service_cost_per_step": 4.350194,
+          "pred_expected_consequence_served_ratio": 0.1299
+        },
+        "best_threshold_name": "adaptive_threshold_verify_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.0912,
+          "unnecessary_mtd_count": 0,
+          "queue_delay_p95": 3.6,
+          "average_service_cost_per_step": 1.438504,
+          "pred_expected_consequence_served_ratio": 0.0858
+        },
+        "delta_vs_best_threshold_recall": 0.0034,
+        "delta_vs_best_threshold_unnecessary": 2,
+        "delta_vs_best_threshold_delay_p95": 4.05,
+        "selection_score": 0.0081
+      },
+      "2": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.4381,
+          "unnecessary_mtd_count": 2,
+          "queue_delay_p95": 9.0,
+          "average_service_cost_per_step": 14.533482,
+          "pred_expected_consequence_served_ratio": 0.5073
+        },
+        "best_threshold_name": "threshold_ddd_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.4099,
+          "unnecessary_mtd_count": 0,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 12.079278,
+          "pred_expected_consequence_served_ratio": 0.4455
+        },
+        "delta_vs_best_threshold_recall": 0.0282,
+        "delta_vs_best_threshold_unnecessary": 2,
+        "delta_vs_best_threshold_delay_p95": -1.0,
+        "selection_score": 0.3381
+      }
+    },
+    "avg_selection_score": 0.1731
+  },
+  {
+    "decision_step_group": 2,
+    "busy_time_quantile": 0.35,
+    "use_cost_budget": true,
+    "cost_budget_quantile": 0.5,
+    "slot_budgets": {
+      "1": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.0946,
+          "unnecessary_mtd_count": 2,
+          "queue_delay_p95": 7.65,
+          "average_service_cost_per_step": 4.350194,
+          "pred_expected_consequence_served_ratio": 0.1299
+        },
+        "best_threshold_name": "adaptive_threshold_verify_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.0811,
+          "unnecessary_mtd_count": 0,
+          "queue_delay_p95": 3.65,
+          "average_service_cost_per_step": 1.020999,
+          "pred_expected_consequence_served_ratio": 0.0763
+        },
+        "delta_vs_best_threshold_recall": 0.0135,
+        "delta_vs_best_threshold_unnecessary": 2,
+        "delta_vs_best_threshold_delay_p95": 4.0,
+        "selection_score": 0.0081
+      },
+      "2": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.375,
+          "unnecessary_mtd_count": 3,
+          "queue_delay_p95": 9.0,
+          "average_service_cost_per_step": 10.321162,
+          "pred_expected_consequence_served_ratio": 0.432
+        },
+        "best_threshold_name": "threshold_verify_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.3435,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 8.501202,
+          "pred_expected_consequence_served_ratio": 0.3883
+        },
+        "delta_vs_best_threshold_recall": 0.0315,
+        "delta_vs_best_threshold_unnecessary": 2,
+        "delta_vs_best_threshold_delay_p95": -1.0,
+        "selection_score": 0.27
+      }
+    },
+    "avg_selection_score": 0.13905
+  },
+  {
+    "decision_step_group": 2,
+    "busy_time_quantile": 0.35,
+    "use_cost_budget": true,
+    "cost_budget_quantile": 0.6,
+    "slot_budgets": {
+      "1": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.0946,
+          "unnecessary_mtd_count": 2,
+          "queue_delay_p95": 7.65,
+          "average_service_cost_per_step": 4.350194,
+          "pred_expected_consequence_served_ratio": 0.1299
+        },
+        "best_threshold_name": "adaptive_threshold_verify_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.1182,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 4.95,
+          "average_service_cost_per_step": 2.866176,
+          "pred_expected_consequence_served_ratio": 0.1464
+        },
+        "delta_vs_best_threshold_recall": -0.0236,
+        "delta_vs_best_threshold_unnecessary": 1,
+        "delta_vs_best_threshold_delay_p95": 2.7,
+        "selection_score": 0.0081
+      },
+      "2": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.4065,
+          "unnecessary_mtd_count": 3,
+          "queue_delay_p95": 9.0,
+          "average_service_cost_per_step": 11.900776,
+          "pred_expected_consequence_served_ratio": 0.4715
+        },
+        "best_threshold_name": "threshold_verify_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.3525,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 9.018778,
+          "pred_expected_consequence_served_ratio": 0.3989
+        },
+        "delta_vs_best_threshold_recall": 0.054,
+        "delta_vs_best_threshold_unnecessary": 2,
+        "delta_vs_best_threshold_delay_p95": -1.0,
+        "selection_score": 0.3015
+      }
+    },
+    "avg_selection_score": 0.1548
+  },
+  {
+    "decision_step_group": 2,
+    "busy_time_quantile": 0.5,
+    "use_cost_budget": false,
+    "cost_budget_quantile": null,
+    "slot_budgets": {
+      "1": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.1306,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 9.0,
+          "average_service_cost_per_step": 5.628233,
+          "pred_expected_consequence_served_ratio": 0.1621
+        },
+        "best_threshold_name": "adaptive_threshold_verify_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.1971,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 6.0,
+          "average_service_cost_per_step": 5.303723,
+          "pred_expected_consequence_served_ratio": 0.2457
+        },
+        "delta_vs_best_threshold_recall": -0.0665,
+        "delta_vs_best_threshold_unnecessary": 0,
+        "delta_vs_best_threshold_delay_p95": 3.0,
+        "selection_score": 0.0356
+      },
+      "2": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.5642,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 7.05,
+          "average_service_cost_per_step": 19.541815,
+          "pred_expected_consequence_served_ratio": 0.6232
+        },
+        "best_threshold_name": "threshold_ddd_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.4707,
+          "unnecessary_mtd_count": 0,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 12.96782,
+          "pred_expected_consequence_served_ratio": 0.499
+        },
+        "delta_vs_best_threshold_recall": 0.0935,
+        "delta_vs_best_threshold_unnecessary": 1,
+        "delta_vs_best_threshold_delay_p95": -2.95,
+        "selection_score": 0.4887
+      }
+    },
+    "avg_selection_score": 0.26215
+  },
+  {
+    "decision_step_group": 2,
+    "busy_time_quantile": 0.5,
+    "use_cost_budget": true,
+    "cost_budget_quantile": 0.5,
+    "slot_budgets": {
+      "1": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.1306,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 9.0,
+          "average_service_cost_per_step": 5.628233,
+          "pred_expected_consequence_served_ratio": 0.1621
+        },
+        "best_threshold_name": "adaptive_threshold_verify_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.1014,
+          "unnecessary_mtd_count": 0,
+          "queue_delay_p95": 2.55,
+          "average_service_cost_per_step": 1.220963,
+          "pred_expected_consequence_served_ratio": 0.0934
+        },
+        "delta_vs_best_threshold_recall": 0.0292,
+        "delta_vs_best_threshold_unnecessary": 1,
+        "delta_vs_best_threshold_delay_p95": 6.45,
+        "selection_score": 0.0356
+      },
+      "2": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.4527,
+          "unnecessary_mtd_count": 5,
+          "queue_delay_p95": 8.0,
+          "average_service_cost_per_step": 11.745848,
+          "pred_expected_consequence_served_ratio": 0.4937
+        },
+        "best_threshold_name": "threshold_verify_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.4178,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 9.89495,
+          "pred_expected_consequence_served_ratio": 0.4612
+        },
+        "delta_vs_best_threshold_recall": 0.0349,
+        "delta_vs_best_threshold_unnecessary": 4,
+        "delta_vs_best_threshold_delay_p95": -2.0,
+        "selection_score": 0.3477
+      }
+    },
+    "avg_selection_score": 0.19165
+  },
+  {
+    "decision_step_group": 2,
+    "busy_time_quantile": 0.5,
+    "use_cost_budget": true,
+    "cost_budget_quantile": 0.6,
+    "slot_budgets": {
+      "1": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.1306,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 9.0,
+          "average_service_cost_per_step": 5.628233,
+          "pred_expected_consequence_served_ratio": 0.1621
+        },
+        "best_threshold_name": "adaptive_threshold_verify_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.1588,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 5.0,
+          "average_service_cost_per_step": 2.997916,
+          "pred_expected_consequence_served_ratio": 0.178
+        },
+        "delta_vs_best_threshold_recall": -0.0282,
+        "delta_vs_best_threshold_unnecessary": 0,
+        "delta_vs_best_threshold_delay_p95": 4.0,
+        "selection_score": 0.0356
+      },
+      "2": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.4685,
+          "unnecessary_mtd_count": 5,
+          "queue_delay_p95": 8.0,
+          "average_service_cost_per_step": 13.483819,
+          "pred_expected_consequence_served_ratio": 0.518
+        },
+        "best_threshold_name": "threshold_ddd_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.4572,
+          "unnecessary_mtd_count": 0,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 11.936918,
+          "pred_expected_consequence_served_ratio": 0.4828
+        },
+        "delta_vs_best_threshold_recall": 0.0113,
+        "delta_vs_best_threshold_unnecessary": 5,
+        "delta_vs_best_threshold_delay_p95": -2.0,
+        "selection_score": 0.3635
+      }
+    },
+    "avg_selection_score": 0.19955
+  },
+  {
+    "decision_step_group": 2,
+    "busy_time_quantile": 0.65,
+    "use_cost_budget": false,
+    "cost_budget_quantile": null,
+    "slot_budgets": {
+      "1": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.1464,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 9.4,
+          "average_service_cost_per_step": 4.55216,
+          "pred_expected_consequence_served_ratio": 0.1783
+        },
+        "best_threshold_name": "adaptive_threshold_verify_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.1959,
+          "unnecessary_mtd_count": 0,
+          "queue_delay_p95": 3.0,
+          "average_service_cost_per_step": 2.638615,
+          "pred_expected_consequence_served_ratio": 0.2
+        },
+        "delta_vs_best_threshold_recall": -0.0495,
+        "delta_vs_best_threshold_unnecessary": 1,
+        "delta_vs_best_threshold_delay_p95": 6.4,
+        "selection_score": 0.0474
+      },
+      "2": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.7005,
+          "unnecessary_mtd_count": 3,
+          "queue_delay_p95": 5.0,
+          "average_service_cost_per_step": 23.131316,
+          "pred_expected_consequence_served_ratio": 0.7544
+        },
+        "best_threshold_name": "threshold_ddd_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.5721,
+          "unnecessary_mtd_count": 0,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 14.149603,
+          "pred_expected_consequence_served_ratio": 0.5924
+        },
+        "delta_vs_best_threshold_recall": 0.1284,
+        "delta_vs_best_threshold_unnecessary": 3,
+        "delta_vs_best_threshold_delay_p95": -5.0,
+        "selection_score": 0.6355
+      }
+    },
+    "avg_selection_score": 0.34145
+  },
+  {
+    "decision_step_group": 2,
+    "busy_time_quantile": 0.65,
+    "use_cost_budget": true,
+    "cost_budget_quantile": 0.5,
+    "slot_budgets": {
+      "1": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.1464,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 9.4,
+          "average_service_cost_per_step": 4.55216,
+          "pred_expected_consequence_served_ratio": 0.1783
+        },
+        "best_threshold_name": "adaptive_threshold_verify_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.2151,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 4.35,
+          "average_service_cost_per_step": 4.451314,
+          "pred_expected_consequence_served_ratio": 0.2425
+        },
+        "delta_vs_best_threshold_recall": -0.0687,
+        "delta_vs_best_threshold_unnecessary": 0,
+        "delta_vs_best_threshold_delay_p95": 5.05,
+        "selection_score": 0.0474
+      },
+      "2": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.5608,
+          "unnecessary_mtd_count": 3,
+          "queue_delay_p95": 9.0,
+          "average_service_cost_per_step": 12.190733,
+          "pred_expected_consequence_served_ratio": 0.6022
+        },
+        "best_threshold_name": "threshold_verify_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.509,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 10.09512,
+          "pred_expected_consequence_served_ratio": 0.5407
+        },
+        "delta_vs_best_threshold_recall": 0.0518,
+        "delta_vs_best_threshold_unnecessary": 2,
+        "delta_vs_best_threshold_delay_p95": -1.0,
+        "selection_score": 0.4558
+      }
+    },
+    "avg_selection_score": 0.2516
+  },
+  {
+    "decision_step_group": 2,
+    "busy_time_quantile": 0.65,
+    "use_cost_budget": true,
+    "cost_budget_quantile": 0.6,
+    "slot_budgets": {
+      "1": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.1464,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 9.4,
+          "average_service_cost_per_step": 4.55216,
+          "pred_expected_consequence_served_ratio": 0.1783
+        },
+        "best_threshold_name": "adaptive_threshold_verify_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.1959,
+          "unnecessary_mtd_count": 0,
+          "queue_delay_p95": 3.0,
+          "average_service_cost_per_step": 2.346092,
+          "pred_expected_consequence_served_ratio": 0.1975
+        },
+        "delta_vs_best_threshold_recall": -0.0495,
+        "delta_vs_best_threshold_unnecessary": 1,
+        "delta_vs_best_threshold_delay_p95": 6.4,
+        "selection_score": 0.0474
+      },
+      "2": {
+        "proposed": {
+          "weighted_attack_recall_no_backend_fail": 0.58,
+          "unnecessary_mtd_count": 2,
+          "queue_delay_p95": 8.0,
+          "average_service_cost_per_step": 14.083151,
+          "pred_expected_consequence_served_ratio": 0.6289
+        },
+        "best_threshold_name": "threshold_ddd_fifo",
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": 0.5383,
+          "unnecessary_mtd_count": 0,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 12.438862,
+          "pred_expected_consequence_served_ratio": 0.5589
+        },
+        "delta_vs_best_threshold_recall": 0.0417,
+        "delta_vs_best_threshold_unnecessary": 2,
+        "delta_vs_best_threshold_delay_p95": -2.0,
+        "selection_score": 0.49
+      }
+    },
+    "avg_selection_score": 0.2687
+  }
+]

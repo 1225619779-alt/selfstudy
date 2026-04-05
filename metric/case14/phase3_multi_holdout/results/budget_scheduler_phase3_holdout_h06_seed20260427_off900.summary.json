@@ -1,0 +1,490 @@
+{
+  "config": {
+    "clean_bank": "metric/case14/metric_clean_alarm_scores_full.npy",
+    "attack_bank": "metric/case14/metric_attack_alarm_scores_400.npy",
+    "train_bank": "metric/case14/mixed_bank_fit.npy",
+    "tune_bank": "metric/case14/mixed_bank_eval.npy",
+    "eval_bank": "metric/case14/phase3_multi_holdout/banks/mixed_bank_test_h06_seed20260427_off900.npy",
+    "output": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h06_seed20260427_off900.npy",
+    "n_bins": 20,
+    "slot_budget_list": [
+      1,
+      2
+    ],
+    "max_wait_steps": 10,
+    "decision_step_group": 1,
+    "busy_time_quantile": 0.65,
+    "use_cost_budget": false,
+    "cost_budget_window_steps": 20,
+    "cost_budget_quantile": 0.6,
+    "threshold_quantiles": [
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "adaptive_gain_scale_list": [
+      0.0,
+      0.1,
+      0.2,
+      0.4
+    ],
+    "consequence_blend_verify": 0.7,
+    "consequence_mode": "conditional",
+    "objective_clean_penalty": 0.6,
+    "objective_delay_penalty": 0.15,
+    "objective_queue_penalty": 0.1,
+    "objective_cost_penalty": 0.05,
+    "vq_v_grid": [
+      1.0,
+      2.0,
+      4.0
+    ],
+    "vq_age_grid": [
+      0.0,
+      0.1,
+      0.2
+    ],
+    "vq_urgency_grid": [
+      0.0,
+      0.1,
+      0.2
+    ],
+    "vq_fail_grid": [
+      0.0,
+      0.05
+    ],
+    "vq_busy_grid": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "vq_cost_grid": [
+      0.0,
+      0.5,
+      1.0
+    ],
+    "vq_clean_grid": [
+      0.0,
+      0.2,
+      0.5
+    ],
+    "vq_admission_threshold_grid": [
+      -0.1,
+      0.0,
+      0.1
+    ],
+    "rng_seed": 20260402
+  },
+  "environment": {
+    "busy_time_unit": 9.574143552780152,
+    "train_job_stats": {
+      "mean_pred_busy_steps": 1.555045871559633,
+      "mean_pred_service_cost": 35.355742671647086,
+      "mean_pred_expected_consequence": 0.3778040993717129,
+      "busy_step_stats": {
+        "count": 218.0,
+        "mean": 1.6743119266055047,
+        "std": 1.2632347925995004,
+        "q25": 1.0,
+        "q50": 1.0,
+        "q75": 2.0,
+        "q90": 3.0,
+        "q95": 4.0,
+        "max": 10.0
+      },
+      "pred_expected_consequence_stats": {
+        "count": 218.0,
+        "mean": 0.3778040993717129,
+        "std": 0.28596541137808024,
+        "q25": 0.0654474431818182,
+        "q50": 0.32936917613636363,
+        "q75": 0.6412020596590908,
+        "q90": 0.8077414772727272,
+        "q95": 0.8335227272727272,
+        "max": 0.8693181818181818
+      }
+    },
+    "tune_job_stats": {
+      "mean_pred_busy_steps": 1.3237410071942446,
+      "mean_pred_service_cost": 34.81270208879891,
+      "mean_pred_expected_consequence": 0.30486517932221935,
+      "busy_step_stats": {
+        "count": 278.0,
+        "mean": 1.39568345323741,
+        "std": 0.8985896626450449,
+        "q25": 1.0,
+        "q50": 1.0,
+        "q75": 1.0,
+        "q90": 2.0,
+        "q95": 3.0,
+        "max": 8.0
+      },
+      "pred_expected_consequence_stats": {
+        "count": 278.0,
+        "mean": 0.30486517932221935,
+        "std": 0.2885506216689517,
+        "q25": 0.01215909090909091,
+        "q50": 0.251875,
+        "q75": 0.5282946428571428,
+        "q90": 0.7814275568181818,
+        "q95": 0.8335227272727272,
+        "max": 0.874431818181818
+      }
+    },
+    "eval_job_stats": {
+      "mean_pred_busy_steps": 1.4,
+      "mean_pred_service_cost": 34.41165476710612,
+      "mean_pred_expected_consequence": 0.40037740981240977,
+      "busy_step_stats": {
+        "count": 225.0,
+        "mean": 1.72,
+        "std": 1.1142710621747296,
+        "q25": 1.0,
+        "q50": 1.0,
+        "q75": 2.0,
+        "q90": 3.0,
+        "q95": 4.0,
+        "max": 8.0
+      },
+      "pred_expected_consequence_stats": {
+        "count": 225.0,
+        "mean": 0.40037740981240977,
+        "std": 0.27662211265842557,
+        "q25": 0.2431818181818182,
+        "q50": 0.32545,
+        "q75": 0.7135653409090909,
+        "q90": 0.8161576704545453,
+        "q95": 0.8335227272727272,
+        "max": 0.874431818181818
+      }
+    },
+    "train_arrival_diagnostics": {
+      "total_steps": 540.0,
+      "total_jobs": 218.0,
+      "steps_with_jobs": 218.0,
+      "share_steps_with_jobs": 0.40370370370370373,
+      "max_jobs_same_step": 1.0,
+      "mean_jobs_given_nonzero_step": 1.0
+    },
+    "tune_arrival_diagnostics": {
+      "total_steps": 540.0,
+      "total_jobs": 278.0,
+      "steps_with_jobs": 278.0,
+      "share_steps_with_jobs": 0.5148148148148148,
+      "max_jobs_same_step": 1.0,
+      "mean_jobs_given_nonzero_step": 1.0
+    },
+    "eval_arrival_diagnostics": {
+      "total_steps": 540.0,
+      "total_jobs": 225.0,
+      "steps_with_jobs": 225.0,
+      "share_steps_with_jobs": 0.4166666666666667,
+      "max_jobs_same_step": 1.0,
+      "mean_jobs_given_nonzero_step": 1.0
+    },
+    "severity_model_mode": "conditional",
+    "consequence_blend_verify": 0.7
+  },
+  "slot_budget_results": {
+    "1": {
+      "busy_time_unit": 9.574143552780152,
+      "window_cost_budget": null,
+      "cost_budget_window_steps": 0,
+      "tuning": {
+        "threshold_verify_fifo": {
+          "threshold": 0.038202500331466285
+        },
+        "threshold_ddd_fifo": {
+          "threshold": 0.0747537612915039
+        },
+        "threshold_expected_consequence_fifo": {
+          "threshold": 0.32936917613636363
+        },
+        "adaptive_threshold_verify_fifo": {
+          "base_threshold": 0.038202500331466285,
+          "adaptive_gain": 0.024131090688365883
+        },
+        "proposed_ca_vq_hard": {
+          "v_weight": 4.0,
+          "clean_penalty": 0.5,
+          "age_bonus": 0.0,
+          "urgency_bonus": 0.0,
+          "fail_penalty": 0.05,
+          "busy_penalty": 0.5,
+          "cost_penalty": 0.0,
+          "admission_score_threshold": 0.0
+        }
+      },
+      "tune_compact": {
+        "threshold_verify_fifo": {
+          "weighted_attack_recall_no_backend_fail": 0.4527,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 5.314031,
+          "pred_expected_consequence_served_ratio": 0.4893
+        },
+        "threshold_ddd_fifo": {
+          "weighted_attack_recall_no_backend_fail": 0.491,
+          "unnecessary_mtd_count": 0,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 6.843326,
+          "pred_expected_consequence_served_ratio": 0.5202
+        },
+        "threshold_expected_consequence_fifo": {
+          "weighted_attack_recall_no_backend_fail": 0.4324,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 4.874644,
+          "pred_expected_consequence_served_ratio": 0.468
+        },
+        "adaptive_threshold_verify_fifo": {
+          "weighted_attack_recall_no_backend_fail": 0.4403,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 4.0,
+          "average_service_cost_per_step": 4.892176,
+          "pred_expected_consequence_served_ratio": 0.4773
+        },
+        "proposed_ca_vq_hard": {
+          "weighted_attack_recall_no_backend_fail": 0.6486,
+          "unnecessary_mtd_count": 2,
+          "queue_delay_p95": 9.0,
+          "average_service_cost_per_step": 10.883374,
+          "pred_expected_consequence_served_ratio": 0.7124
+        }
+      },
+      "eval_compact": {
+        "always_fifo": {
+          "weighted_attack_recall_no_backend_fail": 0.5656,
+          "unnecessary_mtd_count": 47,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 11.566768,
+          "pred_expected_consequence_served_ratio": 0.6254
+        },
+        "random": {
+          "weighted_attack_recall_no_backend_fail": 0.5543,
+          "unnecessary_mtd_count": 42,
+          "queue_delay_p95": 9.0,
+          "average_service_cost_per_step": 10.979126,
+          "pred_expected_consequence_served_ratio": 0.5991
+        },
+        "topk_verify": {
+          "weighted_attack_recall_no_backend_fail": 0.6018,
+          "unnecessary_mtd_count": 38,
+          "queue_delay_p95": 8.0,
+          "average_service_cost_per_step": 10.44452,
+          "pred_expected_consequence_served_ratio": 0.6895
+        },
+        "topk_expected_consequence": {
+          "weighted_attack_recall_no_backend_fail": 0.6222,
+          "unnecessary_mtd_count": 38,
+          "queue_delay_p95": 8.0,
+          "average_service_cost_per_step": 10.675454,
+          "pred_expected_consequence_served_ratio": 0.7163
+        },
+        "static_value_cost": {
+          "weighted_attack_recall_no_backend_fail": 0.6018,
+          "unnecessary_mtd_count": 38,
+          "queue_delay_p95": 7.0,
+          "average_service_cost_per_step": 10.417893,
+          "pred_expected_consequence_served_ratio": 0.6855
+        },
+        "static_expected_consequence_cost": {
+          "weighted_attack_recall_no_backend_fail": 0.6165,
+          "unnecessary_mtd_count": 38,
+          "queue_delay_p95": 8.0,
+          "average_service_cost_per_step": 10.976316,
+          "pred_expected_consequence_served_ratio": 0.7031
+        },
+        "threshold_verify_fifo": {
+          "weighted_attack_recall_no_backend_fail": 0.4661,
+          "unnecessary_mtd_count": 5,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 5.547448,
+          "pred_expected_consequence_served_ratio": 0.5148
+        },
+        "threshold_ddd_fifo": {
+          "weighted_attack_recall_no_backend_fail": 0.4932,
+          "unnecessary_mtd_count": 0,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 5.360538,
+          "pred_expected_consequence_served_ratio": 0.5388
+        },
+        "threshold_expected_consequence_fifo": {
+          "weighted_attack_recall_no_backend_fail": 0.4412,
+          "unnecessary_mtd_count": 3,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 5.456766,
+          "pred_expected_consequence_served_ratio": 0.4844
+        },
+        "adaptive_threshold_verify_fifo": {
+          "weighted_attack_recall_no_backend_fail": 0.4434,
+          "unnecessary_mtd_count": 4,
+          "queue_delay_p95": 5.0,
+          "average_service_cost_per_step": 4.52774,
+          "pred_expected_consequence_served_ratio": 0.4826
+        },
+        "proposed_ca_vq_hard": {
+          "weighted_attack_recall_no_backend_fail": 0.6018,
+          "unnecessary_mtd_count": 7,
+          "queue_delay_p95": 8.0,
+          "average_service_cost_per_step": 8.819833,
+          "pred_expected_consequence_served_ratio": 0.6716
+        }
+      }
+    },
+    "2": {
+      "busy_time_unit": 9.574143552780152,
+      "window_cost_budget": null,
+      "cost_budget_window_steps": 0,
+      "tuning": {
+        "threshold_verify_fifo": {
+          "threshold": 0.038202500331466285
+        },
+        "threshold_ddd_fifo": {
+          "threshold": 0.0747537612915039
+        },
+        "threshold_expected_consequence_fifo": {
+          "threshold": 0.32936917613636363
+        },
+        "adaptive_threshold_verify_fifo": {
+          "base_threshold": 0.038202500331466285,
+          "adaptive_gain": 0.012065545344182941
+        },
+        "proposed_ca_vq_hard": {
+          "v_weight": 4.0,
+          "clean_penalty": 0.5,
+          "age_bonus": 0.0,
+          "urgency_bonus": 0.0,
+          "fail_penalty": 0.0,
+          "busy_penalty": 0.5,
+          "cost_penalty": 0.0,
+          "admission_score_threshold": 0.1
+        }
+      },
+      "tune_compact": {
+        "threshold_verify_fifo": {
+          "weighted_attack_recall_no_backend_fail": 0.7264,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 8.2,
+          "average_service_cost_per_step": 7.100562,
+          "pred_expected_consequence_served_ratio": 0.7325
+        },
+        "threshold_ddd_fifo": {
+          "weighted_attack_recall_no_backend_fail": 0.7241,
+          "unnecessary_mtd_count": 0,
+          "queue_delay_p95": 4.0,
+          "average_service_cost_per_step": 8.308377,
+          "pred_expected_consequence_served_ratio": 0.7289
+        },
+        "threshold_expected_consequence_fifo": {
+          "weighted_attack_recall_no_backend_fail": 0.7061,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 8.8,
+          "average_service_cost_per_step": 6.661176,
+          "pred_expected_consequence_served_ratio": 0.7112
+        },
+        "adaptive_threshold_verify_fifo": {
+          "weighted_attack_recall_no_backend_fail": 0.6869,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 5.0,
+          "average_service_cost_per_step": 6.62951,
+          "pred_expected_consequence_served_ratio": 0.7066
+        },
+        "proposed_ca_vq_hard": {
+          "weighted_attack_recall_no_backend_fail": 0.8986,
+          "unnecessary_mtd_count": 5,
+          "queue_delay_p95": 1.0,
+          "average_service_cost_per_step": 13.843554,
+          "pred_expected_consequence_served_ratio": 0.9182
+        }
+      },
+      "eval_compact": {
+        "always_fifo": {
+          "weighted_attack_recall_no_backend_fail": 0.9186,
+          "unnecessary_mtd_count": 53,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 14.18223,
+          "pred_expected_consequence_served_ratio": 0.9469
+        },
+        "random": {
+          "weighted_attack_recall_no_backend_fail": 0.888,
+          "unnecessary_mtd_count": 53,
+          "queue_delay_p95": 7.0,
+          "average_service_cost_per_step": 14.01208,
+          "pred_expected_consequence_served_ratio": 0.9226
+        },
+        "topk_verify": {
+          "weighted_attack_recall_no_backend_fail": 0.8982,
+          "unnecessary_mtd_count": 53,
+          "queue_delay_p95": 3.0,
+          "average_service_cost_per_step": 14.056264,
+          "pred_expected_consequence_served_ratio": 0.9363
+        },
+        "topk_expected_consequence": {
+          "weighted_attack_recall_no_backend_fail": 0.888,
+          "unnecessary_mtd_count": 53,
+          "queue_delay_p95": 2.25,
+          "average_service_cost_per_step": 14.220969,
+          "pred_expected_consequence_served_ratio": 0.9308
+        },
+        "static_value_cost": {
+          "weighted_attack_recall_no_backend_fail": 0.8982,
+          "unnecessary_mtd_count": 53,
+          "queue_delay_p95": 3.0,
+          "average_service_cost_per_step": 14.056264,
+          "pred_expected_consequence_served_ratio": 0.9363
+        },
+        "static_expected_consequence_cost": {
+          "weighted_attack_recall_no_backend_fail": 0.8982,
+          "unnecessary_mtd_count": 53,
+          "queue_delay_p95": 3.0,
+          "average_service_cost_per_step": 14.218097,
+          "pred_expected_consequence_served_ratio": 0.9383
+        },
+        "threshold_verify_fifo": {
+          "weighted_attack_recall_no_backend_fail": 0.7511,
+          "unnecessary_mtd_count": 5,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 6.979703,
+          "pred_expected_consequence_served_ratio": 0.757
+        },
+        "threshold_ddd_fifo": {
+          "weighted_attack_recall_no_backend_fail": 0.7681,
+          "unnecessary_mtd_count": 0,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 6.807102,
+          "pred_expected_consequence_served_ratio": 0.7924
+        },
+        "threshold_expected_consequence_fifo": {
+          "weighted_attack_recall_no_backend_fail": 0.7262,
+          "unnecessary_mtd_count": 3,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 6.889021,
+          "pred_expected_consequence_served_ratio": 0.7266
+        },
+        "adaptive_threshold_verify_fifo": {
+          "weighted_attack_recall_no_backend_fail": 0.7138,
+          "unnecessary_mtd_count": 5,
+          "queue_delay_p95": 7.0,
+          "average_service_cost_per_step": 6.823144,
+          "pred_expected_consequence_served_ratio": 0.7334
+        },
+        "proposed_ca_vq_hard": {
+          "weighted_attack_recall_no_backend_fail": 0.8937,
+          "unnecessary_mtd_count": 15,
+          "queue_delay_p95": 3.15,
+          "average_service_cost_per_step": 11.639064,
+          "pred_expected_consequence_served_ratio": 0.9337
+        }
+      }
+    }
+  },
+  "notes": {
+    "phase": "phase3_clean_train_val_test_protocol",
+    "train_bank": "metric/case14/mixed_bank_fit.npy",
+    "tune_bank": "metric/case14/mixed_bank_eval.npy",
+    "eval_bank": "metric/case14/phase3_multi_holdout/banks/mixed_bank_test_h06_seed20260427_off900.npy"
+  }
+}
