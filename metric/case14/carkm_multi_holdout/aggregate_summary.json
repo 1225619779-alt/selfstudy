@@ -1,0 +1,1956 @@
+{
+  "method": "CA-RK-M",
+  "manifest": {
+    "workdir": "/home/pang/projects/DDET-MTD",
+    "clean_bank": "metric/case14/metric_clean_alarm_scores_full.npy",
+    "attack_bank": "metric/case14/metric_attack_alarm_scores_400.npy",
+    "train_bank": "metric/case14/mixed_bank_fit.npy",
+    "val_bank": "metric/case14/mixed_bank_eval.npy",
+    "schedule": "clean:120;att-1-0.2:60;clean:60;att-2-0.2:60;clean:60;att-3-0.3:60;clean:120",
+    "frozen_regime": {
+      "decision_step_group": 1,
+      "busy_time_quantile": 0.65,
+      "use_cost_budget": false,
+      "cost_budget_window_steps": 20,
+      "cost_budget_quantile": 0.6,
+      "slot_budget_list": [
+        1,
+        2
+      ],
+      "max_wait_steps": 10
+    },
+    "holdouts": [
+      {
+        "tag": "h00_seed20260421_off540",
+        "seed_base": 20260421,
+        "start_offset": 540,
+        "test_bank": "metric/case14/phase3_multi_holdout/banks/mixed_bank_test_h00_seed20260421_off540.npy",
+        "result_npy": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h00_seed20260421_off540.npy",
+        "result_summary": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h00_seed20260421_off540.summary.json"
+      },
+      {
+        "tag": "h01_seed20260422_off600",
+        "seed_base": 20260422,
+        "start_offset": 600,
+        "test_bank": "metric/case14/phase3_multi_holdout/banks/mixed_bank_test_h01_seed20260422_off600.npy",
+        "result_npy": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h01_seed20260422_off600.npy",
+        "result_summary": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h01_seed20260422_off600.summary.json"
+      },
+      {
+        "tag": "h02_seed20260423_off660",
+        "seed_base": 20260423,
+        "start_offset": 660,
+        "test_bank": "metric/case14/phase3_multi_holdout/banks/mixed_bank_test_h02_seed20260423_off660.npy",
+        "result_npy": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h02_seed20260423_off660.npy",
+        "result_summary": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h02_seed20260423_off660.summary.json"
+      },
+      {
+        "tag": "h03_seed20260424_off720",
+        "seed_base": 20260424,
+        "start_offset": 720,
+        "test_bank": "metric/case14/phase3_multi_holdout/banks/mixed_bank_test_h03_seed20260424_off720.npy",
+        "result_npy": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h03_seed20260424_off720.npy",
+        "result_summary": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h03_seed20260424_off720.summary.json"
+      },
+      {
+        "tag": "h04_seed20260425_off780",
+        "seed_base": 20260425,
+        "start_offset": 780,
+        "test_bank": "metric/case14/phase3_multi_holdout/banks/mixed_bank_test_h04_seed20260425_off780.npy",
+        "result_npy": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h04_seed20260425_off780.npy",
+        "result_summary": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h04_seed20260425_off780.summary.json"
+      },
+      {
+        "tag": "h05_seed20260426_off840",
+        "seed_base": 20260426,
+        "start_offset": 840,
+        "test_bank": "metric/case14/phase3_multi_holdout/banks/mixed_bank_test_h05_seed20260426_off840.npy",
+        "result_npy": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h05_seed20260426_off840.npy",
+        "result_summary": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h05_seed20260426_off840.summary.json"
+      },
+      {
+        "tag": "h06_seed20260427_off900",
+        "seed_base": 20260427,
+        "start_offset": 900,
+        "test_bank": "metric/case14/phase3_multi_holdout/banks/mixed_bank_test_h06_seed20260427_off900.npy",
+        "result_npy": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h06_seed20260427_off900.npy",
+        "result_summary": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h06_seed20260427_off900.summary.json"
+      },
+      {
+        "tag": "h07_seed20260428_off960",
+        "seed_base": 20260428,
+        "start_offset": 960,
+        "test_bank": "metric/case14/phase3_multi_holdout/banks/mixed_bank_test_h07_seed20260428_off960.npy",
+        "result_npy": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h07_seed20260428_off960.npy",
+        "result_summary": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h07_seed20260428_off960.summary.json"
+      }
+    ]
+  },
+  "config": {
+    "decision_step_group": 1,
+    "busy_time_quantile": 0.65,
+    "use_cost_budget": false,
+    "cost_budget_window_steps": 20,
+    "cost_budget_quantile": null,
+    "slot_budget_list": [
+      1,
+      2
+    ],
+    "max_wait_steps": 10,
+    "consequence_blend_verify": 0.7,
+    "consequence_mode": "conditional"
+  },
+  "tuned_by_slot": {
+    "1": {
+      "window_cost_budget": null,
+      "config": {
+        "slot_budget": 1,
+        "max_wait_steps": 10,
+        "use_cost_budget": false,
+        "window_cost_budget": null,
+        "cost_budget_window_steps": 20,
+        "adm_reward_weight": 2.0,
+        "adm_clean_penalty": 4.0,
+        "adm_fail_penalty": 0.0,
+        "adm_busy_penalty": 1.0,
+        "adm_cost_penalty": 0.0,
+        "adm_threshold": -0.1,
+        "dsp_reward_weight": 1.0,
+        "dsp_age_bonus": 0.05,
+        "dsp_urgency_bonus": 0.1,
+        "dsp_fail_penalty": 0.05,
+        "dsp_busy_penalty": 0.0,
+        "dsp_cost_penalty": 0.0,
+        "dsp_min_total_score": 0.0,
+        "busy_cap_scale": 1.5,
+        "mean_pred_busy_steps": 1.555045871559633,
+        "mean_pred_service_cost": 35.355742671647086,
+        "mean_pred_expected_consequence": 0.3778040993717129,
+        "rng_seed": 20260402
+      },
+      "threshold_reference": {
+        "family_tuning": {
+          "threshold_verify_fifo": {
+            "threshold": 0.02877767645471082
+          },
+          "threshold_ddd_fifo": {
+            "threshold": 0.030046743340790272
+          },
+          "threshold_expected_consequence_fifo": {
+            "threshold": 0.251875
+          },
+          "adaptive_threshold_verify_fifo": {
+            "threshold": 0.02877767645471082,
+            "adaptive_gain": 0.0
+          }
+        },
+        "family_compact": {
+          "threshold_verify_fifo": {
+            "weighted_attack_recall_no_backend_fail": 0.5720720720720713,
+            "unnecessary_mtd_count": 1,
+            "queue_delay_p95": 10.0,
+            "average_service_cost_per_step": 8.554258567128711,
+            "pred_expected_consequence_served_ratio": 0.6137603671727782,
+            "clean_service_ratio": 0.009615384615384616,
+            "attack_delay_p95": 10.0,
+            "mean_queue_len": 1.3796296296296295,
+            "max_queue_len": 11,
+            "server_utilization": 0.31851851851851853
+          },
+          "threshold_ddd_fifo": {
+            "weighted_attack_recall_no_backend_fail": 0.5720720720720713,
+            "unnecessary_mtd_count": 0,
+            "queue_delay_p95": 10.0,
+            "average_service_cost_per_step": 9.393487595959503,
+            "pred_expected_consequence_served_ratio": 0.5976107269440436,
+            "clean_service_ratio": 0.0,
+            "attack_delay_p95": 10.0,
+            "mean_queue_len": 1.2277777777777779,
+            "max_queue_len": 11,
+            "server_utilization": 0.31296296296296294
+          },
+          "threshold_expected_consequence_fifo": {
+            "weighted_attack_recall_no_backend_fail": 0.5923423423423415,
+            "unnecessary_mtd_count": 1,
+            "queue_delay_p95": 10.0,
+            "average_service_cost_per_step": 8.921752406132423,
+            "pred_expected_consequence_served_ratio": 0.6271641511107087,
+            "clean_service_ratio": 0.009615384615384616,
+            "attack_delay_p95": 10.0,
+            "mean_queue_len": 1.387037037037037,
+            "max_queue_len": 11,
+            "server_utilization": 0.32407407407407407
+          },
+          "adaptive_threshold_verify_fifo": {
+            "weighted_attack_recall_no_backend_fail": 0.5720720720720713,
+            "unnecessary_mtd_count": 1,
+            "queue_delay_p95": 10.0,
+            "average_service_cost_per_step": 8.554258567128711,
+            "pred_expected_consequence_served_ratio": 0.6137603671727782,
+            "clean_service_ratio": 0.009615384615384616,
+            "attack_delay_p95": 10.0,
+            "mean_queue_len": 1.3796296296296295,
+            "max_queue_len": 11,
+            "server_utilization": 0.31851851851851853
+          }
+        },
+        "best_threshold_name": "threshold_expected_consequence_fifo",
+        "best_threshold_summary": {
+          "weighted_attack_recall_no_backend_fail": 0.5923423423423415,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 10.0,
+          "average_service_cost_per_step": 8.921752406132423,
+          "pred_expected_consequence_served_ratio": 0.6271641511107087,
+          "clean_service_ratio": 0.009615384615384616,
+          "attack_delay_p95": 10.0,
+          "mean_queue_len": 1.387037037037037,
+          "max_queue_len": 11,
+          "server_utilization": 0.32407407407407407
+        },
+        "min_threshold_unnecessary": 0
+      },
+      "tuning_payload": {
+        "threshold_reference": {
+          "family_tuning": {
+            "threshold_verify_fifo": {
+              "threshold": 0.02877767645471082
+            },
+            "threshold_ddd_fifo": {
+              "threshold": 0.030046743340790272
+            },
+            "threshold_expected_consequence_fifo": {
+              "threshold": 0.251875
+            },
+            "adaptive_threshold_verify_fifo": {
+              "threshold": 0.02877767645471082,
+              "adaptive_gain": 0.0
+            }
+          },
+          "family_compact": {
+            "threshold_verify_fifo": {
+              "weighted_attack_recall_no_backend_fail": 0.5720720720720713,
+              "unnecessary_mtd_count": 1,
+              "queue_delay_p95": 10.0,
+              "average_service_cost_per_step": 8.554258567128711,
+              "pred_expected_consequence_served_ratio": 0.6137603671727782,
+              "clean_service_ratio": 0.009615384615384616,
+              "attack_delay_p95": 10.0,
+              "mean_queue_len": 1.3796296296296295,
+              "max_queue_len": 11,
+              "server_utilization": 0.31851851851851853
+            },
+            "threshold_ddd_fifo": {
+              "weighted_attack_recall_no_backend_fail": 0.5720720720720713,
+              "unnecessary_mtd_count": 0,
+              "queue_delay_p95": 10.0,
+              "average_service_cost_per_step": 9.393487595959503,
+              "pred_expected_consequence_served_ratio": 0.5976107269440436,
+              "clean_service_ratio": 0.0,
+              "attack_delay_p95": 10.0,
+              "mean_queue_len": 1.2277777777777779,
+              "max_queue_len": 11,
+              "server_utilization": 0.31296296296296294
+            },
+            "threshold_expected_consequence_fifo": {
+              "weighted_attack_recall_no_backend_fail": 0.5923423423423415,
+              "unnecessary_mtd_count": 1,
+              "queue_delay_p95": 10.0,
+              "average_service_cost_per_step": 8.921752406132423,
+              "pred_expected_consequence_served_ratio": 0.6271641511107087,
+              "clean_service_ratio": 0.009615384615384616,
+              "attack_delay_p95": 10.0,
+              "mean_queue_len": 1.387037037037037,
+              "max_queue_len": 11,
+              "server_utilization": 0.32407407407407407
+            },
+            "adaptive_threshold_verify_fifo": {
+              "weighted_attack_recall_no_backend_fail": 0.5720720720720713,
+              "unnecessary_mtd_count": 1,
+              "queue_delay_p95": 10.0,
+              "average_service_cost_per_step": 8.554258567128711,
+              "pred_expected_consequence_served_ratio": 0.6137603671727782,
+              "clean_service_ratio": 0.009615384615384616,
+              "attack_delay_p95": 10.0,
+              "mean_queue_len": 1.3796296296296295,
+              "max_queue_len": 11,
+              "server_utilization": 0.31851851851851853
+            }
+          },
+          "best_threshold_name": "threshold_expected_consequence_fifo",
+          "best_threshold_summary": {
+            "weighted_attack_recall_no_backend_fail": 0.5923423423423415,
+            "unnecessary_mtd_count": 1,
+            "queue_delay_p95": 10.0,
+            "average_service_cost_per_step": 8.921752406132423,
+            "pred_expected_consequence_served_ratio": 0.6271641511107087,
+            "clean_service_ratio": 0.009615384615384616,
+            "attack_delay_p95": 10.0,
+            "mean_queue_len": 1.387037037037037,
+            "max_queue_len": 11,
+            "server_utilization": 0.32407407407407407
+          },
+          "min_threshold_unnecessary": 0
+        },
+        "admission_stage_best": {
+          "clean_cap": 1,
+          "violation": 0.0,
+          "summary": {
+            "weighted_attack_recall_no_backend_fail": 0.5067567567567562,
+            "weighted_attack_recall": 0.5135135135135129,
+            "unnecessary_mtd_count": 1,
+            "average_service_cost_per_step": 6.9255505838755145,
+            "average_service_time_per_step": 1.70837631755405,
+            "queue_delay_p95": 5.0,
+            "attack_delay_p95": 5.0,
+            "clean_delay_p95": 0.0,
+            "pred_expected_consequence_served_ratio": 0.5378884562918035,
+            "clean_service_ratio": 0.009615384615384616,
+            "mean_queue_len": 0.26666666666666666,
+            "max_queue_len": 2,
+            "server_utilization": 0.27037037037037037,
+            "budget_blocked_starts": 0,
+            "dropped_by_admission": 179,
+            "dropped_by_ttl": 7
+          }
+        },
+        "dispatch_stage_best": {
+          "clean_cap": 1,
+          "violation": 0.0,
+          "summary": {
+            "weighted_attack_recall_no_backend_fail": 0.5168918918918913,
+            "weighted_attack_recall": 0.5236486486486481,
+            "unnecessary_mtd_count": 1,
+            "average_service_cost_per_step": 6.921073956195386,
+            "average_service_time_per_step": 1.6900654395421346,
+            "queue_delay_p95": 5.0,
+            "attack_delay_p95": 5.0,
+            "clean_delay_p95": 0.0,
+            "pred_expected_consequence_served_ratio": 0.5494621769357935,
+            "clean_service_ratio": 0.009615384615384616,
+            "mean_queue_len": 0.25555555555555554,
+            "max_queue_len": 2,
+            "server_utilization": 0.27037037037037037,
+            "budget_blocked_starts": 0,
+            "dropped_by_admission": 178,
+            "dropped_by_ttl": 7
+          }
+        }
+      }
+    },
+    "2": {
+      "window_cost_budget": null,
+      "config": {
+        "slot_budget": 2,
+        "max_wait_steps": 10,
+        "use_cost_budget": false,
+        "window_cost_budget": null,
+        "cost_budget_window_steps": 20,
+        "adm_reward_weight": 2.0,
+        "adm_clean_penalty": 4.0,
+        "adm_fail_penalty": 0.0,
+        "adm_busy_penalty": 0.5,
+        "adm_cost_penalty": 0.0,
+        "adm_threshold": 0.3,
+        "dsp_reward_weight": 1.0,
+        "dsp_age_bonus": 0.1,
+        "dsp_urgency_bonus": 0.2,
+        "dsp_fail_penalty": 0.05,
+        "dsp_busy_penalty": 0.0,
+        "dsp_cost_penalty": 0.0,
+        "dsp_min_total_score": 0.0,
+        "busy_cap_scale": 2.0,
+        "mean_pred_busy_steps": 1.555045871559633,
+        "mean_pred_service_cost": 35.355742671647086,
+        "mean_pred_expected_consequence": 0.3778040993717129,
+        "rng_seed": 20260402
+      },
+      "threshold_reference": {
+        "family_tuning": {
+          "threshold_verify_fifo": {
+            "threshold": 0.02877767645471082
+          },
+          "threshold_ddd_fifo": {
+            "threshold": 0.030046743340790272
+          },
+          "threshold_expected_consequence_fifo": {
+            "threshold": 0.251875
+          },
+          "adaptive_threshold_verify_fifo": {
+            "threshold": 0.02877767645471082,
+            "adaptive_gain": 0.0
+          }
+        },
+        "family_compact": {
+          "threshold_verify_fifo": {
+            "weighted_attack_recall_no_backend_fail": 0.8457207207207206,
+            "unnecessary_mtd_count": 1,
+            "queue_delay_p95": 8.0,
+            "average_service_cost_per_step": 10.340790539829612,
+            "pred_expected_consequence_served_ratio": 0.8569198612955131,
+            "clean_service_ratio": 0.009615384615384616,
+            "attack_delay_p95": 8.0,
+            "mean_queue_len": 0.5425925925925926,
+            "max_queue_len": 8,
+            "server_utilization": 0.22407407407407406
+          },
+          "threshold_ddd_fifo": {
+            "weighted_attack_recall_no_backend_fail": 0.8457207207207206,
+            "unnecessary_mtd_count": 0,
+            "queue_delay_p95": 7.0,
+            "average_service_cost_per_step": 11.203388443755934,
+            "pred_expected_consequence_served_ratio": 0.8383195339623568,
+            "clean_service_ratio": 0.0,
+            "attack_delay_p95": 7.0,
+            "mean_queue_len": 0.4462962962962963,
+            "max_queue_len": 8,
+            "server_utilization": 0.21851851851851853
+          },
+          "threshold_expected_consequence_fifo": {
+            "weighted_attack_recall_no_backend_fail": 0.865990990990991,
+            "unnecessary_mtd_count": 1,
+            "queue_delay_p95": 8.0,
+            "average_service_cost_per_step": 10.708284378833325,
+            "pred_expected_consequence_served_ratio": 0.8703236452334439,
+            "clean_service_ratio": 0.009615384615384616,
+            "attack_delay_p95": 8.0,
+            "mean_queue_len": 0.5425925925925926,
+            "max_queue_len": 8,
+            "server_utilization": 0.22685185185185186
+          },
+          "adaptive_threshold_verify_fifo": {
+            "weighted_attack_recall_no_backend_fail": 0.8457207207207206,
+            "unnecessary_mtd_count": 1,
+            "queue_delay_p95": 8.0,
+            "average_service_cost_per_step": 10.340790539829612,
+            "pred_expected_consequence_served_ratio": 0.8569198612955131,
+            "clean_service_ratio": 0.009615384615384616,
+            "attack_delay_p95": 8.0,
+            "mean_queue_len": 0.5425925925925926,
+            "max_queue_len": 8,
+            "server_utilization": 0.22407407407407406
+          }
+        },
+        "best_threshold_name": "threshold_expected_consequence_fifo",
+        "best_threshold_summary": {
+          "weighted_attack_recall_no_backend_fail": 0.865990990990991,
+          "unnecessary_mtd_count": 1,
+          "queue_delay_p95": 8.0,
+          "average_service_cost_per_step": 10.708284378833325,
+          "pred_expected_consequence_served_ratio": 0.8703236452334439,
+          "clean_service_ratio": 0.009615384615384616,
+          "attack_delay_p95": 8.0,
+          "mean_queue_len": 0.5425925925925926,
+          "max_queue_len": 8,
+          "server_utilization": 0.22685185185185186
+        },
+        "min_threshold_unnecessary": 0
+      },
+      "tuning_payload": {
+        "threshold_reference": {
+          "family_tuning": {
+            "threshold_verify_fifo": {
+              "threshold": 0.02877767645471082
+            },
+            "threshold_ddd_fifo": {
+              "threshold": 0.030046743340790272
+            },
+            "threshold_expected_consequence_fifo": {
+              "threshold": 0.251875
+            },
+            "adaptive_threshold_verify_fifo": {
+              "threshold": 0.02877767645471082,
+              "adaptive_gain": 0.0
+            }
+          },
+          "family_compact": {
+            "threshold_verify_fifo": {
+              "weighted_attack_recall_no_backend_fail": 0.8457207207207206,
+              "unnecessary_mtd_count": 1,
+              "queue_delay_p95": 8.0,
+              "average_service_cost_per_step": 10.340790539829612,
+              "pred_expected_consequence_served_ratio": 0.8569198612955131,
+              "clean_service_ratio": 0.009615384615384616,
+              "attack_delay_p95": 8.0,
+              "mean_queue_len": 0.5425925925925926,
+              "max_queue_len": 8,
+              "server_utilization": 0.22407407407407406
+            },
+            "threshold_ddd_fifo": {
+              "weighted_attack_recall_no_backend_fail": 0.8457207207207206,
+              "unnecessary_mtd_count": 0,
+              "queue_delay_p95": 7.0,
+              "average_service_cost_per_step": 11.203388443755934,
+              "pred_expected_consequence_served_ratio": 0.8383195339623568,
+              "clean_service_ratio": 0.0,
+              "attack_delay_p95": 7.0,
+              "mean_queue_len": 0.4462962962962963,
+              "max_queue_len": 8,
+              "server_utilization": 0.21851851851851853
+            },
+            "threshold_expected_consequence_fifo": {
+              "weighted_attack_recall_no_backend_fail": 0.865990990990991,
+              "unnecessary_mtd_count": 1,
+              "queue_delay_p95": 8.0,
+              "average_service_cost_per_step": 10.708284378833325,
+              "pred_expected_consequence_served_ratio": 0.8703236452334439,
+              "clean_service_ratio": 0.009615384615384616,
+              "attack_delay_p95": 8.0,
+              "mean_queue_len": 0.5425925925925926,
+              "max_queue_len": 8,
+              "server_utilization": 0.22685185185185186
+            },
+            "adaptive_threshold_verify_fifo": {
+              "weighted_attack_recall_no_backend_fail": 0.8457207207207206,
+              "unnecessary_mtd_count": 1,
+              "queue_delay_p95": 8.0,
+              "average_service_cost_per_step": 10.340790539829612,
+              "pred_expected_consequence_served_ratio": 0.8569198612955131,
+              "clean_service_ratio": 0.009615384615384616,
+              "attack_delay_p95": 8.0,
+              "mean_queue_len": 0.5425925925925926,
+              "max_queue_len": 8,
+              "server_utilization": 0.22407407407407406
+            }
+          },
+          "best_threshold_name": "threshold_expected_consequence_fifo",
+          "best_threshold_summary": {
+            "weighted_attack_recall_no_backend_fail": 0.865990990990991,
+            "unnecessary_mtd_count": 1,
+            "queue_delay_p95": 8.0,
+            "average_service_cost_per_step": 10.708284378833325,
+            "pred_expected_consequence_served_ratio": 0.8703236452334439,
+            "clean_service_ratio": 0.009615384615384616,
+            "attack_delay_p95": 8.0,
+            "mean_queue_len": 0.5425925925925926,
+            "max_queue_len": 8,
+            "server_utilization": 0.22685185185185186
+          },
+          "min_threshold_unnecessary": 0
+        },
+        "admission_stage_best": {
+          "clean_cap": 1,
+          "violation": 0.0,
+          "summary": {
+            "weighted_attack_recall_no_backend_fail": 0.7736486486486479,
+            "weighted_attack_recall": 0.7849099099099094,
+            "unnecessary_mtd_count": 1,
+            "average_service_cost_per_step": 10.206882632438495,
+            "average_service_time_per_step": 2.7742889991513007,
+            "queue_delay_p95": 2.549999999999997,
+            "attack_delay_p95": 2.5999999999999943,
+            "clean_delay_p95": 0.0,
+            "pred_expected_consequence_served_ratio": 0.803560850365377,
+            "clean_service_ratio": 0.009615384615384616,
+            "mean_queue_len": 0.26666666666666666,
+            "max_queue_len": 4,
+            "server_utilization": 0.20925925925925926,
+            "budget_blocked_starts": 0,
+            "dropped_by_admission": 140,
+            "dropped_by_ttl": 8
+          }
+        },
+        "dispatch_stage_best": {
+          "clean_cap": 1,
+          "violation": 0.0,
+          "summary": {
+            "weighted_attack_recall_no_backend_fail": 0.8040540540540535,
+            "weighted_attack_recall": 0.815315315315315,
+            "unnecessary_mtd_count": 1,
+            "average_service_cost_per_step": 10.093938176004253,
+            "average_service_time_per_step": 2.864019559930872,
+            "queue_delay_p95": 4.3999999999999915,
+            "attack_delay_p95": 4.449999999999989,
+            "clean_delay_p95": 0.0,
+            "pred_expected_consequence_served_ratio": 0.8300847839897191,
+            "clean_service_ratio": 0.009615384615384616,
+            "mean_queue_len": 0.24259259259259258,
+            "max_queue_len": 4,
+            "server_utilization": 0.21481481481481482,
+            "budget_blocked_starts": 0,
+            "dropped_by_admission": 141,
+            "dropped_by_ttl": 4
+          }
+        }
+      }
+    }
+  },
+  "n_holdouts": 8,
+  "per_holdout_results": [
+    {
+      "tag": "h00_seed20260421_off540",
+      "seed_base": 20260421,
+      "start_offset": 540,
+      "test_bank": "metric/case14/phase3_multi_holdout/banks/mixed_bank_test_h00_seed20260421_off540.npy",
+      "slot_budget_results": {
+        "1": {
+          "carkm_eval_compact": {
+            "weighted_attack_recall_no_backend_fail": 0.6294642857142849,
+            "weighted_attack_recall": 0.6383928571428563,
+            "unnecessary_mtd_count": 1,
+            "average_service_cost_per_step": 7.162827472152892,
+            "average_service_time_per_step": 1.202006380646317,
+            "queue_delay_p95": 2.0,
+            "attack_delay_p95": 2.0,
+            "clean_delay_p95": 0.0,
+            "pred_expected_consequence_served_ratio": 0.6595823125632496,
+            "clean_service_ratio": 0.008695652173913044,
+            "mean_queue_len": 0.18518518518518517,
+            "max_queue_len": 2,
+            "server_utilization": 0.22962962962962963,
+            "budget_blocked_starts": 0,
+            "dropped_by_admission": 188,
+            "dropped_by_ttl": 6
+          },
+          "carkm_tuning": {
+            "adm_reward_weight": 2.0,
+            "adm_clean_penalty": 4.0,
+            "adm_fail_penalty": 0.0,
+            "adm_busy_penalty": 1.0,
+            "adm_cost_penalty": 0.0,
+            "adm_threshold": -0.1,
+            "dsp_reward_weight": 1.0,
+            "dsp_age_bonus": 0.05,
+            "dsp_urgency_bonus": 0.1,
+            "dsp_fail_penalty": 0.05,
+            "dsp_busy_penalty": 0.0,
+            "dsp_cost_penalty": 0.0,
+            "busy_cap_scale": 1.5,
+            "dsp_min_total_score": 0.0
+          },
+          "best_threshold_name": "threshold_ddd_fifo",
+          "best_threshold": {
+            "weighted_attack_recall_no_backend_fail": 0.6395,
+            "unnecessary_mtd_count": 0,
+            "queue_delay_p95": 10.0,
+            "average_service_cost_per_step": 5.679674,
+            "pred_expected_consequence_served_ratio": 0.6006
+          },
+          "phase3_proposed": {
+            "weighted_attack_recall_no_backend_fail": 0.6964,
+            "unnecessary_mtd_count": 4,
+            "queue_delay_p95": 8.0,
+            "average_service_cost_per_step": 7.629616,
+            "pred_expected_consequence_served_ratio": 0.7289
+          },
+          "topk_expected_consequence": {
+            "weighted_attack_recall_no_backend_fail": 0.8292,
+            "unnecessary_mtd_count": 115,
+            "queue_delay_p95": 3.0,
+            "average_service_cost_per_step": 21.407678,
+            "pred_expected_consequence_served_ratio": 0.876
+          }
+        },
+        "2": {
+          "carkm_eval_compact": {
+            "weighted_attack_recall_no_backend_fail": 0.8348214285714282,
+            "weighted_attack_recall": 0.8526785714285711,
+            "unnecessary_mtd_count": 1,
+            "average_service_cost_per_step": 8.417094624541804,
+            "average_service_time_per_step": 1.784888286502273,
+            "queue_delay_p95": 0.0,
+            "attack_delay_p95": 0.0,
+            "clean_delay_p95": 0.0,
+            "pred_expected_consequence_served_ratio": 0.8550590959274758,
+            "clean_service_ratio": 0.008695652173913044,
+            "mean_queue_len": 0.011111111111111112,
+            "max_queue_len": 1,
+            "server_utilization": 0.1537037037037037,
+            "budget_blocked_starts": 0,
+            "dropped_by_admission": 172,
+            "dropped_by_ttl": 0
+          },
+          "carkm_tuning": {
+            "adm_reward_weight": 2.0,
+            "adm_clean_penalty": 4.0,
+            "adm_fail_penalty": 0.0,
+            "adm_busy_penalty": 0.5,
+            "adm_cost_penalty": 0.0,
+            "adm_threshold": 0.3,
+            "dsp_reward_weight": 1.0,
+            "dsp_age_bonus": 0.1,
+            "dsp_urgency_bonus": 0.2,
+            "dsp_fail_penalty": 0.05,
+            "dsp_busy_penalty": 0.0,
+            "dsp_cost_penalty": 0.0,
+            "busy_cap_scale": 2.0,
+            "dsp_min_total_score": 0.0
+          },
+          "best_threshold_name": "threshold_verify_fifo",
+          "best_threshold": {
+            "weighted_attack_recall_no_backend_fail": 0.75,
+            "unnecessary_mtd_count": 1,
+            "queue_delay_p95": 0.2,
+            "average_service_cost_per_step": 6.417908,
+            "pred_expected_consequence_served_ratio": 0.7665
+          },
+          "phase3_proposed": {
+            "weighted_attack_recall_no_backend_fail": 0.9375,
+            "unnecessary_mtd_count": 6,
+            "queue_delay_p95": 0.0,
+            "average_service_cost_per_step": 11.131536,
+            "pred_expected_consequence_served_ratio": 0.9683
+          },
+          "topk_expected_consequence": {
+            "weighted_attack_recall_no_backend_fail": 0.9777,
+            "unnecessary_mtd_count": 115,
+            "queue_delay_p95": 0.0,
+            "average_service_cost_per_step": 22.53129,
+            "pred_expected_consequence_served_ratio": 1.0
+          }
+        }
+      }
+    },
+    {
+      "tag": "h01_seed20260422_off600",
+      "seed_base": 20260422,
+      "start_offset": 600,
+      "test_bank": "metric/case14/phase3_multi_holdout/banks/mixed_bank_test_h01_seed20260422_off600.npy",
+      "slot_budget_results": {
+        "1": {
+          "carkm_eval_compact": {
+            "weighted_attack_recall_no_backend_fail": 0.6860730593607297,
+            "weighted_attack_recall": 0.706621004566209,
+            "unnecessary_mtd_count": 7,
+            "average_service_cost_per_step": 7.5738263789187705,
+            "average_service_time_per_step": 1.38565507111726,
+            "queue_delay_p95": 4.0,
+            "attack_delay_p95": 4.349999999999994,
+            "clean_delay_p95": 0.0,
+            "pred_expected_consequence_served_ratio": 0.7198384618420349,
+            "clean_service_ratio": 0.047619047619047616,
+            "mean_queue_len": 0.22962962962962963,
+            "max_queue_len": 2,
+            "server_utilization": 0.26481481481481484,
+            "budget_blocked_starts": 0,
+            "dropped_by_admission": 191,
+            "dropped_by_ttl": 6
+          },
+          "carkm_tuning": {
+            "adm_reward_weight": 2.0,
+            "adm_clean_penalty": 4.0,
+            "adm_fail_penalty": 0.0,
+            "adm_busy_penalty": 1.0,
+            "adm_cost_penalty": 0.0,
+            "adm_threshold": -0.1,
+            "dsp_reward_weight": 1.0,
+            "dsp_age_bonus": 0.05,
+            "dsp_urgency_bonus": 0.1,
+            "dsp_fail_penalty": 0.05,
+            "dsp_busy_penalty": 0.0,
+            "dsp_cost_penalty": 0.0,
+            "busy_cap_scale": 1.5,
+            "dsp_min_total_score": 0.0
+          },
+          "best_threshold_name": "threshold_expected_consequence_fifo",
+          "best_threshold": {
+            "weighted_attack_recall_no_backend_fail": 0.5993,
+            "unnecessary_mtd_count": 3,
+            "queue_delay_p95": 10.0,
+            "average_service_cost_per_step": 6.032983,
+            "pred_expected_consequence_served_ratio": 0.6128
+          },
+          "phase3_proposed": {
+            "weighted_attack_recall_no_backend_fail": 0.8071,
+            "unnecessary_mtd_count": 8,
+            "queue_delay_p95": 6.3,
+            "average_service_cost_per_step": 9.835306,
+            "pred_expected_consequence_served_ratio": 0.8362
+          },
+          "topk_expected_consequence": {
+            "weighted_attack_recall_no_backend_fail": 0.8276,
+            "unnecessary_mtd_count": 147,
+            "queue_delay_p95": 3.0,
+            "average_service_cost_per_step": 20.189483,
+            "pred_expected_consequence_served_ratio": 0.8959
+          }
+        },
+        "2": {
+          "carkm_eval_compact": {
+            "weighted_attack_recall_no_backend_fail": 0.8493150684931504,
+            "weighted_attack_recall": 0.874429223744292,
+            "unnecessary_mtd_count": 9,
+            "average_service_cost_per_step": 8.798521090949675,
+            "average_service_time_per_step": 1.8395829403841937,
+            "queue_delay_p95": 0.0,
+            "attack_delay_p95": 0.0,
+            "clean_delay_p95": 0.0,
+            "pred_expected_consequence_served_ratio": 0.868109048396424,
+            "clean_service_ratio": 0.061224489795918366,
+            "mean_queue_len": 0.012962962962962963,
+            "max_queue_len": 1,
+            "server_utilization": 0.1648148148148148,
+            "budget_blocked_starts": 0,
+            "dropped_by_admission": 180,
+            "dropped_by_ttl": 0
+          },
+          "carkm_tuning": {
+            "adm_reward_weight": 2.0,
+            "adm_clean_penalty": 4.0,
+            "adm_fail_penalty": 0.0,
+            "adm_busy_penalty": 0.5,
+            "adm_cost_penalty": 0.0,
+            "adm_threshold": 0.3,
+            "dsp_reward_weight": 1.0,
+            "dsp_age_bonus": 0.1,
+            "dsp_urgency_bonus": 0.2,
+            "dsp_fail_penalty": 0.05,
+            "dsp_busy_penalty": 0.0,
+            "dsp_cost_penalty": 0.0,
+            "busy_cap_scale": 2.0,
+            "dsp_min_total_score": 0.0
+          },
+          "best_threshold_name": "threshold_expected_consequence_fifo",
+          "best_threshold": {
+            "weighted_attack_recall_no_backend_fail": 0.7534,
+            "unnecessary_mtd_count": 3,
+            "queue_delay_p95": 0.0,
+            "average_service_cost_per_step": 6.945373,
+            "pred_expected_consequence_served_ratio": 0.7411
+          },
+          "phase3_proposed": {
+            "weighted_attack_recall_no_backend_fail": 0.9566,
+            "unnecessary_mtd_count": 16,
+            "queue_delay_p95": 0.0,
+            "average_service_cost_per_step": 11.338165,
+            "pred_expected_consequence_served_ratio": 0.9689
+          },
+          "topk_expected_consequence": {
+            "weighted_attack_recall_no_backend_fail": 0.9703,
+            "unnecessary_mtd_count": 147,
+            "queue_delay_p95": 0.0,
+            "average_service_cost_per_step": 20.957098,
+            "pred_expected_consequence_served_ratio": 1.0
+          }
+        }
+      }
+    },
+    {
+      "tag": "h02_seed20260423_off660",
+      "seed_base": 20260423,
+      "start_offset": 660,
+      "test_bank": "metric/case14/phase3_multi_holdout/banks/mixed_bank_test_h02_seed20260423_off660.npy",
+      "slot_budget_results": {
+        "1": {
+          "carkm_eval_compact": {
+            "weighted_attack_recall_no_backend_fail": 0.7013574660633475,
+            "weighted_attack_recall": 0.7036199095022614,
+            "unnecessary_mtd_count": 9,
+            "average_service_cost_per_step": 8.57434313076855,
+            "average_service_time_per_step": 1.3586322312001828,
+            "queue_delay_p95": 5.0,
+            "attack_delay_p95": 5.0,
+            "clean_delay_p95": 0.0,
+            "pred_expected_consequence_served_ratio": 0.6699532869439054,
+            "clean_service_ratio": 0.05921052631578947,
+            "mean_queue_len": 0.32407407407407407,
+            "max_queue_len": 2,
+            "server_utilization": 0.26481481481481484,
+            "budget_blocked_starts": 0,
+            "dropped_by_admission": 195,
+            "dropped_by_ttl": 9
+          },
+          "carkm_tuning": {
+            "adm_reward_weight": 2.0,
+            "adm_clean_penalty": 4.0,
+            "adm_fail_penalty": 0.0,
+            "adm_busy_penalty": 1.0,
+            "adm_cost_penalty": 0.0,
+            "adm_threshold": -0.1,
+            "dsp_reward_weight": 1.0,
+            "dsp_age_bonus": 0.05,
+            "dsp_urgency_bonus": 0.1,
+            "dsp_fail_penalty": 0.05,
+            "dsp_busy_penalty": 0.0,
+            "dsp_cost_penalty": 0.0,
+            "busy_cap_scale": 1.5,
+            "dsp_min_total_score": 0.0
+          },
+          "best_threshold_name": "threshold_verify_fifo",
+          "best_threshold": {
+            "weighted_attack_recall_no_backend_fail": 0.7127,
+            "unnecessary_mtd_count": 8,
+            "queue_delay_p95": 10.0,
+            "average_service_cost_per_step": 7.697777,
+            "pred_expected_consequence_served_ratio": 0.7068
+          },
+          "phase3_proposed": {
+            "weighted_attack_recall_no_backend_fail": 0.8133,
+            "unnecessary_mtd_count": 11,
+            "queue_delay_p95": 4.1,
+            "average_service_cost_per_step": 11.615823,
+            "pred_expected_consequence_served_ratio": 0.8108
+          },
+          "topk_expected_consequence": {
+            "weighted_attack_recall_no_backend_fail": 0.8326,
+            "unnecessary_mtd_count": 152,
+            "queue_delay_p95": 2.8,
+            "average_service_cost_per_step": 20.570318,
+            "pred_expected_consequence_served_ratio": 0.8843
+          }
+        },
+        "2": {
+          "carkm_eval_compact": {
+            "weighted_attack_recall_no_backend_fail": 0.9208144796380091,
+            "weighted_attack_recall": 0.9276018099547513,
+            "unnecessary_mtd_count": 12,
+            "average_service_cost_per_step": 10.68391330872167,
+            "average_service_time_per_step": 2.000474290494566,
+            "queue_delay_p95": 1.0,
+            "attack_delay_p95": 1.0,
+            "clean_delay_p95": 0.0,
+            "pred_expected_consequence_served_ratio": 0.8885182365404963,
+            "clean_service_ratio": 0.07894736842105263,
+            "mean_queue_len": 0.027777777777777776,
+            "max_queue_len": 2,
+            "server_utilization": 0.1814814814814815,
+            "budget_blocked_starts": 0,
+            "dropped_by_admission": 170,
+            "dropped_by_ttl": 0
+          },
+          "carkm_tuning": {
+            "adm_reward_weight": 2.0,
+            "adm_clean_penalty": 4.0,
+            "adm_fail_penalty": 0.0,
+            "adm_busy_penalty": 0.5,
+            "adm_cost_penalty": 0.0,
+            "adm_threshold": 0.3,
+            "dsp_reward_weight": 1.0,
+            "dsp_age_bonus": 0.1,
+            "dsp_urgency_bonus": 0.2,
+            "dsp_fail_penalty": 0.05,
+            "dsp_busy_penalty": 0.0,
+            "dsp_cost_penalty": 0.0,
+            "busy_cap_scale": 2.0,
+            "dsp_min_total_score": 0.0
+          },
+          "best_threshold_name": "threshold_verify_fifo",
+          "best_threshold": {
+            "weighted_attack_recall_no_backend_fail": 0.8348,
+            "unnecessary_mtd_count": 8,
+            "queue_delay_p95": 1.0,
+            "average_service_cost_per_step": 8.317616,
+            "pred_expected_consequence_served_ratio": 0.8022
+          },
+          "phase3_proposed": {
+            "weighted_attack_recall_no_backend_fail": 0.9887,
+            "unnecessary_mtd_count": 25,
+            "queue_delay_p95": 1.0,
+            "average_service_cost_per_step": 13.806087,
+            "pred_expected_consequence_served_ratio": 0.9746
+          },
+          "topk_expected_consequence": {
+            "weighted_attack_recall_no_backend_fail": 0.9932,
+            "unnecessary_mtd_count": 152,
+            "queue_delay_p95": 0.0,
+            "average_service_cost_per_step": 21.630441,
+            "pred_expected_consequence_served_ratio": 1.0
+          }
+        }
+      }
+    },
+    {
+      "tag": "h03_seed20260424_off720",
+      "seed_base": 20260424,
+      "start_offset": 720,
+      "test_bank": "metric/case14/phase3_multi_holdout/banks/mixed_bank_test_h03_seed20260424_off720.npy",
+      "slot_budget_results": {
+        "1": {
+          "carkm_eval_compact": {
+            "weighted_attack_recall_no_backend_fail": 0.6370967741935476,
+            "weighted_attack_recall": 0.6440092165898609,
+            "unnecessary_mtd_count": 4,
+            "average_service_cost_per_step": 6.916451752794272,
+            "average_service_time_per_step": 1.4011977699067857,
+            "queue_delay_p95": 5.0,
+            "attack_delay_p95": 4.75,
+            "clean_delay_p95": 4.249999999999998,
+            "pred_expected_consequence_served_ratio": 0.652666155619054,
+            "clean_service_ratio": 0.06349206349206349,
+            "mean_queue_len": 0.28703703703703703,
+            "max_queue_len": 3,
+            "server_utilization": 0.27037037037037037,
+            "budget_blocked_starts": 0,
+            "dropped_by_admission": 115,
+            "dropped_by_ttl": 7
+          },
+          "carkm_tuning": {
+            "adm_reward_weight": 2.0,
+            "adm_clean_penalty": 4.0,
+            "adm_fail_penalty": 0.0,
+            "adm_busy_penalty": 1.0,
+            "adm_cost_penalty": 0.0,
+            "adm_threshold": -0.1,
+            "dsp_reward_weight": 1.0,
+            "dsp_age_bonus": 0.05,
+            "dsp_urgency_bonus": 0.1,
+            "dsp_fail_penalty": 0.05,
+            "dsp_busy_penalty": 0.0,
+            "dsp_cost_penalty": 0.0,
+            "busy_cap_scale": 1.5,
+            "dsp_min_total_score": 0.0
+          },
+          "best_threshold_name": "threshold_verify_fifo",
+          "best_threshold": {
+            "weighted_attack_recall_no_backend_fail": 0.6244,
+            "unnecessary_mtd_count": 4,
+            "queue_delay_p95": 10.0,
+            "average_service_cost_per_step": 6.680714,
+            "pred_expected_consequence_served_ratio": 0.6746
+          },
+          "phase3_proposed": {
+            "weighted_attack_recall_no_backend_fail": 0.7396,
+            "unnecessary_mtd_count": 5,
+            "queue_delay_p95": 5.75,
+            "average_service_cost_per_step": 8.636767,
+            "pred_expected_consequence_served_ratio": 0.8028
+          },
+          "topk_expected_consequence": {
+            "weighted_attack_recall_no_backend_fail": 0.7442,
+            "unnecessary_mtd_count": 59,
+            "queue_delay_p95": 6.95,
+            "average_service_cost_per_step": 11.352999,
+            "pred_expected_consequence_served_ratio": 0.829
+          }
+        },
+        "2": {
+          "carkm_eval_compact": {
+            "weighted_attack_recall_no_backend_fail": 0.9274193548387097,
+            "weighted_attack_recall": 0.9389400921658988,
+            "unnecessary_mtd_count": 5,
+            "average_service_cost_per_step": 9.050599287188598,
+            "average_service_time_per_step": 2.0998154565140053,
+            "queue_delay_p95": 0.0,
+            "attack_delay_p95": 0.0,
+            "clean_delay_p95": 0.0,
+            "pred_expected_consequence_served_ratio": 0.9360487122809658,
+            "clean_service_ratio": 0.07936507936507936,
+            "mean_queue_len": 0.027777777777777776,
+            "max_queue_len": 1,
+            "server_utilization": 0.1935185185185185,
+            "budget_blocked_starts": 0,
+            "dropped_by_admission": 79,
+            "dropped_by_ttl": 0
+          },
+          "carkm_tuning": {
+            "adm_reward_weight": 2.0,
+            "adm_clean_penalty": 4.0,
+            "adm_fail_penalty": 0.0,
+            "adm_busy_penalty": 0.5,
+            "adm_cost_penalty": 0.0,
+            "adm_threshold": 0.3,
+            "dsp_reward_weight": 1.0,
+            "dsp_age_bonus": 0.1,
+            "dsp_urgency_bonus": 0.2,
+            "dsp_fail_penalty": 0.05,
+            "dsp_busy_penalty": 0.0,
+            "dsp_cost_penalty": 0.0,
+            "busy_cap_scale": 2.0,
+            "dsp_min_total_score": 0.0
+          },
+          "best_threshold_name": "threshold_verify_fifo",
+          "best_threshold": {
+            "weighted_attack_recall_no_backend_fail": 0.8214,
+            "unnecessary_mtd_count": 4,
+            "queue_delay_p95": 1.0,
+            "average_service_cost_per_step": 7.41165,
+            "pred_expected_consequence_served_ratio": 0.8363
+          },
+          "phase3_proposed": {
+            "weighted_attack_recall_no_backend_fail": 0.9816,
+            "unnecessary_mtd_count": 10,
+            "queue_delay_p95": 0.0,
+            "average_service_cost_per_step": 10.077594,
+            "pred_expected_consequence_served_ratio": 0.9902
+          },
+          "topk_expected_consequence": {
+            "weighted_attack_recall_no_backend_fail": 0.9885,
+            "unnecessary_mtd_count": 63,
+            "queue_delay_p95": 0.0,
+            "average_service_cost_per_step": 13.044956,
+            "pred_expected_consequence_served_ratio": 1.0
+          }
+        }
+      }
+    },
+    {
+      "tag": "h04_seed20260425_off780",
+      "seed_base": 20260425,
+      "start_offset": 780,
+      "test_bank": "metric/case14/phase3_multi_holdout/banks/mixed_bank_test_h04_seed20260425_off780.npy",
+      "slot_budget_results": {
+        "1": {
+          "carkm_eval_compact": {
+            "weighted_attack_recall_no_backend_fail": 0.5699300699300694,
+            "weighted_attack_recall": 0.5909090909090903,
+            "unnecessary_mtd_count": 7,
+            "average_service_cost_per_step": 7.349324106768932,
+            "average_service_time_per_step": 1.208270749780867,
+            "queue_delay_p95": 5.0,
+            "attack_delay_p95": 5.0,
+            "clean_delay_p95": 0.0,
+            "pred_expected_consequence_served_ratio": 0.6161501968183729,
+            "clean_service_ratio": 0.13725490196078433,
+            "mean_queue_len": 0.2611111111111111,
+            "max_queue_len": 2,
+            "server_utilization": 0.2537037037037037,
+            "budget_blocked_starts": 0,
+            "dropped_by_admission": 95,
+            "dropped_by_ttl": 7
+          },
+          "carkm_tuning": {
+            "adm_reward_weight": 2.0,
+            "adm_clean_penalty": 4.0,
+            "adm_fail_penalty": 0.0,
+            "adm_busy_penalty": 1.0,
+            "adm_cost_penalty": 0.0,
+            "adm_threshold": -0.1,
+            "dsp_reward_weight": 1.0,
+            "dsp_age_bonus": 0.05,
+            "dsp_urgency_bonus": 0.1,
+            "dsp_fail_penalty": 0.05,
+            "dsp_busy_penalty": 0.0,
+            "dsp_cost_penalty": 0.0,
+            "busy_cap_scale": 1.5,
+            "dsp_min_total_score": 0.0
+          },
+          "best_threshold_name": "threshold_verify_fifo",
+          "best_threshold": {
+            "weighted_attack_recall_no_backend_fail": 0.6608,
+            "unnecessary_mtd_count": 6,
+            "queue_delay_p95": 10.0,
+            "average_service_cost_per_step": 7.25971,
+            "pred_expected_consequence_served_ratio": 0.694
+          },
+          "phase3_proposed": {
+            "weighted_attack_recall_no_backend_fail": 0.7203,
+            "unnecessary_mtd_count": 9,
+            "queue_delay_p95": 5.0,
+            "average_service_cost_per_step": 9.584978,
+            "pred_expected_consequence_served_ratio": 0.7843
+          },
+          "topk_expected_consequence": {
+            "weighted_attack_recall_no_backend_fail": 0.7249,
+            "unnecessary_mtd_count": 51,
+            "queue_delay_p95": 6.0,
+            "average_service_cost_per_step": 12.035007,
+            "pred_expected_consequence_served_ratio": 0.8226
+          }
+        },
+        "2": {
+          "carkm_eval_compact": {
+            "weighted_attack_recall_no_backend_fail": 0.9160839160839163,
+            "weighted_attack_recall": 0.9522144522144524,
+            "unnecessary_mtd_count": 9,
+            "average_service_cost_per_step": 10.218204837098119,
+            "average_service_time_per_step": 2.0871204680866664,
+            "queue_delay_p95": 1.0,
+            "attack_delay_p95": 1.0,
+            "clean_delay_p95": 0.0,
+            "pred_expected_consequence_served_ratio": 0.9391939093828542,
+            "clean_service_ratio": 0.17647058823529413,
+            "mean_queue_len": 0.05185185185185185,
+            "max_queue_len": 2,
+            "server_utilization": 0.1962962962962963,
+            "budget_blocked_starts": 0,
+            "dropped_by_admission": 56,
+            "dropped_by_ttl": 1
+          },
+          "carkm_tuning": {
+            "adm_reward_weight": 2.0,
+            "adm_clean_penalty": 4.0,
+            "adm_fail_penalty": 0.0,
+            "adm_busy_penalty": 0.5,
+            "adm_cost_penalty": 0.0,
+            "adm_threshold": 0.3,
+            "dsp_reward_weight": 1.0,
+            "dsp_age_bonus": 0.1,
+            "dsp_urgency_bonus": 0.2,
+            "dsp_fail_penalty": 0.05,
+            "dsp_busy_penalty": 0.0,
+            "dsp_cost_penalty": 0.0,
+            "busy_cap_scale": 2.0,
+            "dsp_min_total_score": 0.0
+          },
+          "best_threshold_name": "threshold_verify_fifo",
+          "best_threshold": {
+            "weighted_attack_recall_no_backend_fail": 0.8497,
+            "unnecessary_mtd_count": 6,
+            "queue_delay_p95": 1.0,
+            "average_service_cost_per_step": 7.986025,
+            "pred_expected_consequence_served_ratio": 0.8524
+          },
+          "phase3_proposed": {
+            "weighted_attack_recall_no_backend_fail": 0.9487,
+            "unnecessary_mtd_count": 17,
+            "queue_delay_p95": 1.0,
+            "average_service_cost_per_step": 11.625694,
+            "pred_expected_consequence_served_ratio": 0.9872
+          },
+          "topk_expected_consequence": {
+            "weighted_attack_recall_no_backend_fail": 0.9534,
+            "unnecessary_mtd_count": 51,
+            "queue_delay_p95": 0.5,
+            "average_service_cost_per_step": 13.525586,
+            "pred_expected_consequence_served_ratio": 0.9929
+          }
+        }
+      }
+    },
+    {
+      "tag": "h05_seed20260426_off840",
+      "seed_base": 20260426,
+      "start_offset": 840,
+      "test_bank": "metric/case14/phase3_multi_holdout/banks/mixed_bank_test_h05_seed20260426_off840.npy",
+      "slot_budget_results": {
+        "1": {
+          "carkm_eval_compact": {
+            "weighted_attack_recall_no_backend_fail": 0.42476851851851816,
+            "weighted_attack_recall": 0.4363425925925923,
+            "unnecessary_mtd_count": 3,
+            "average_service_cost_per_step": 6.689377458926649,
+            "average_service_time_per_step": 1.4954128843766672,
+            "queue_delay_p95": 3.3499999999999943,
+            "attack_delay_p95": 3.5,
+            "clean_delay_p95": 0.0,
+            "pred_expected_consequence_served_ratio": 0.4949640755143541,
+            "clean_service_ratio": 0.07692307692307693,
+            "mean_queue_len": 0.25555555555555554,
+            "max_queue_len": 2,
+            "server_utilization": 0.27037037037037037,
+            "budget_blocked_starts": 0,
+            "dropped_by_admission": 99,
+            "dropped_by_ttl": 8
+          },
+          "carkm_tuning": {
+            "adm_reward_weight": 2.0,
+            "adm_clean_penalty": 4.0,
+            "adm_fail_penalty": 0.0,
+            "adm_busy_penalty": 1.0,
+            "adm_cost_penalty": 0.0,
+            "adm_threshold": -0.1,
+            "dsp_reward_weight": 1.0,
+            "dsp_age_bonus": 0.05,
+            "dsp_urgency_bonus": 0.1,
+            "dsp_fail_penalty": 0.05,
+            "dsp_busy_penalty": 0.0,
+            "dsp_cost_penalty": 0.0,
+            "busy_cap_scale": 1.5,
+            "dsp_min_total_score": 0.0
+          },
+          "best_threshold_name": "threshold_ddd_fifo",
+          "best_threshold": {
+            "weighted_attack_recall_no_backend_fail": 0.4016,
+            "unnecessary_mtd_count": 0,
+            "queue_delay_p95": 10.0,
+            "average_service_cost_per_step": 5.332804,
+            "pred_expected_consequence_served_ratio": 0.4561
+          },
+          "phase3_proposed": {
+            "weighted_attack_recall_no_backend_fail": 0.5382,
+            "unnecessary_mtd_count": 5,
+            "queue_delay_p95": 5.2,
+            "average_service_cost_per_step": 8.043541,
+            "pred_expected_consequence_served_ratio": 0.623
+          },
+          "topk_expected_consequence": {
+            "weighted_attack_recall_no_backend_fail": 0.5301,
+            "unnecessary_mtd_count": 34,
+            "queue_delay_p95": 7.8,
+            "average_service_cost_per_step": 10.018043,
+            "pred_expected_consequence_served_ratio": 0.6416
+          }
+        },
+        "2": {
+          "carkm_eval_compact": {
+            "weighted_attack_recall_no_backend_fail": 0.6805555555555548,
+            "weighted_attack_recall": 0.6921296296296288,
+            "unnecessary_mtd_count": 4,
+            "average_service_cost_per_step": 8.558018696869892,
+            "average_service_time_per_step": 2.7606134472069916,
+            "queue_delay_p95": 7.0,
+            "attack_delay_p95": 7.0,
+            "clean_delay_p95": 0.0,
+            "pred_expected_consequence_served_ratio": 0.7548054263540495,
+            "clean_service_ratio": 0.10256410256410256,
+            "mean_queue_len": 0.37222222222222223,
+            "max_queue_len": 5,
+            "server_utilization": 0.21574074074074073,
+            "budget_blocked_starts": 0,
+            "dropped_by_admission": 70,
+            "dropped_by_ttl": 6
+          },
+          "carkm_tuning": {
+            "adm_reward_weight": 2.0,
+            "adm_clean_penalty": 4.0,
+            "adm_fail_penalty": 0.0,
+            "adm_busy_penalty": 0.5,
+            "adm_cost_penalty": 0.0,
+            "adm_threshold": 0.3,
+            "dsp_reward_weight": 1.0,
+            "dsp_age_bonus": 0.1,
+            "dsp_urgency_bonus": 0.2,
+            "dsp_fail_penalty": 0.05,
+            "dsp_busy_penalty": 0.0,
+            "dsp_cost_penalty": 0.0,
+            "busy_cap_scale": 2.0,
+            "dsp_min_total_score": 0.0
+          },
+          "best_threshold_name": "threshold_ddd_fifo",
+          "best_threshold": {
+            "weighted_attack_recall_no_backend_fail": 0.5891,
+            "unnecessary_mtd_count": 0,
+            "queue_delay_p95": 10.0,
+            "average_service_cost_per_step": 6.661726,
+            "pred_expected_consequence_served_ratio": 0.6244
+          },
+          "phase3_proposed": {
+            "weighted_attack_recall_no_backend_fail": 0.7523,
+            "unnecessary_mtd_count": 10,
+            "queue_delay_p95": 6.65,
+            "average_service_cost_per_step": 10.43679,
+            "pred_expected_consequence_served_ratio": 0.8261
+          },
+          "topk_expected_consequence": {
+            "weighted_attack_recall_no_backend_fail": 0.7488,
+            "unnecessary_mtd_count": 39,
+            "queue_delay_p95": 5.15,
+            "average_service_cost_per_step": 12.280964,
+            "pred_expected_consequence_served_ratio": 0.8255
+          }
+        }
+      }
+    },
+    {
+      "tag": "h06_seed20260427_off900",
+      "seed_base": 20260427,
+      "start_offset": 900,
+      "test_bank": "metric/case14/phase3_multi_holdout/banks/mixed_bank_test_h06_seed20260427_off900.npy",
+      "slot_budget_results": {
+        "1": {
+          "carkm_eval_compact": {
+            "weighted_attack_recall_no_backend_fail": 0.5588235294117639,
+            "weighted_attack_recall": 0.5746606334841621,
+            "unnecessary_mtd_count": 7,
+            "average_service_cost_per_step": 8.41224653312763,
+            "average_service_time_per_step": 2.236432723204295,
+            "queue_delay_p95": 5.1499999999999915,
+            "attack_delay_p95": 5.5,
+            "clean_delay_p95": 0.0,
+            "pred_expected_consequence_served_ratio": 0.6200281970606051,
+            "clean_service_ratio": 0.1320754716981132,
+            "mean_queue_len": 0.2351851851851852,
+            "max_queue_len": 3,
+            "server_utilization": 0.35555555555555557,
+            "budget_blocked_starts": 0,
+            "dropped_by_admission": 104,
+            "dropped_by_ttl": 3
+          },
+          "carkm_tuning": {
+            "adm_reward_weight": 2.0,
+            "adm_clean_penalty": 4.0,
+            "adm_fail_penalty": 0.0,
+            "adm_busy_penalty": 1.0,
+            "adm_cost_penalty": 0.0,
+            "adm_threshold": -0.1,
+            "dsp_reward_weight": 1.0,
+            "dsp_age_bonus": 0.05,
+            "dsp_urgency_bonus": 0.1,
+            "dsp_fail_penalty": 0.05,
+            "dsp_busy_penalty": 0.0,
+            "dsp_cost_penalty": 0.0,
+            "busy_cap_scale": 1.5,
+            "dsp_min_total_score": 0.0
+          },
+          "best_threshold_name": "threshold_ddd_fifo",
+          "best_threshold": {
+            "weighted_attack_recall_no_backend_fail": 0.4932,
+            "unnecessary_mtd_count": 0,
+            "queue_delay_p95": 10.0,
+            "average_service_cost_per_step": 5.360538,
+            "pred_expected_consequence_served_ratio": 0.5388
+          },
+          "phase3_proposed": {
+            "weighted_attack_recall_no_backend_fail": 0.6018,
+            "unnecessary_mtd_count": 7,
+            "queue_delay_p95": 8.0,
+            "average_service_cost_per_step": 8.819833,
+            "pred_expected_consequence_served_ratio": 0.6716
+          },
+          "topk_expected_consequence": {
+            "weighted_attack_recall_no_backend_fail": 0.6222,
+            "unnecessary_mtd_count": 38,
+            "queue_delay_p95": 8.0,
+            "average_service_cost_per_step": 10.675454,
+            "pred_expected_consequence_served_ratio": 0.7163
+          }
+        },
+        "2": {
+          "carkm_eval_compact": {
+            "weighted_attack_recall_no_backend_fail": 0.8303167420814476,
+            "weighted_attack_recall": 0.8506787330316739,
+            "unnecessary_mtd_count": 8,
+            "average_service_cost_per_step": 9.576622856863906,
+            "average_service_time_per_step": 3.2478235213844866,
+            "queue_delay_p95": 7.549999999999983,
+            "attack_delay_p95": 7.949999999999989,
+            "clean_delay_p95": 0.0,
+            "pred_expected_consequence_served_ratio": 0.8659554227595754,
+            "clean_service_ratio": 0.1509433962264151,
+            "mean_queue_len": 0.3851851851851852,
+            "max_queue_len": 6,
+            "server_utilization": 0.2462962962962963,
+            "budget_blocked_starts": 0,
+            "dropped_by_admission": 72,
+            "dropped_by_ttl": 3
+          },
+          "carkm_tuning": {
+            "adm_reward_weight": 2.0,
+            "adm_clean_penalty": 4.0,
+            "adm_fail_penalty": 0.0,
+            "adm_busy_penalty": 0.5,
+            "adm_cost_penalty": 0.0,
+            "adm_threshold": 0.3,
+            "dsp_reward_weight": 1.0,
+            "dsp_age_bonus": 0.1,
+            "dsp_urgency_bonus": 0.2,
+            "dsp_fail_penalty": 0.05,
+            "dsp_busy_penalty": 0.0,
+            "dsp_cost_penalty": 0.0,
+            "busy_cap_scale": 2.0,
+            "dsp_min_total_score": 0.0
+          },
+          "best_threshold_name": "threshold_ddd_fifo",
+          "best_threshold": {
+            "weighted_attack_recall_no_backend_fail": 0.7681,
+            "unnecessary_mtd_count": 0,
+            "queue_delay_p95": 10.0,
+            "average_service_cost_per_step": 6.807102,
+            "pred_expected_consequence_served_ratio": 0.7924
+          },
+          "phase3_proposed": {
+            "weighted_attack_recall_no_backend_fail": 0.8937,
+            "unnecessary_mtd_count": 15,
+            "queue_delay_p95": 3.15,
+            "average_service_cost_per_step": 11.639064,
+            "pred_expected_consequence_served_ratio": 0.9337
+          },
+          "topk_expected_consequence": {
+            "weighted_attack_recall_no_backend_fail": 0.888,
+            "unnecessary_mtd_count": 53,
+            "queue_delay_p95": 2.25,
+            "average_service_cost_per_step": 14.220969,
+            "pred_expected_consequence_served_ratio": 0.9308
+          }
+        }
+      }
+    },
+    {
+      "tag": "h07_seed20260428_off960",
+      "seed_base": 20260428,
+      "start_offset": 960,
+      "test_bank": "metric/case14/phase3_multi_holdout/banks/mixed_bank_test_h07_seed20260428_off960.npy",
+      "slot_budget_results": {
+        "1": {
+          "carkm_eval_compact": {
+            "weighted_attack_recall_no_backend_fail": 0.5055679287305118,
+            "weighted_attack_recall": 0.5211581291759461,
+            "unnecessary_mtd_count": 3,
+            "average_service_cost_per_step": 6.214559242958027,
+            "average_service_time_per_step": 1.7601581423370927,
+            "queue_delay_p95": 4.0,
+            "attack_delay_p95": 4.0,
+            "clean_delay_p95": 0.0,
+            "pred_expected_consequence_served_ratio": 0.5397612838624201,
+            "clean_service_ratio": 0.05660377358490566,
+            "mean_queue_len": 0.3277777777777778,
+            "max_queue_len": 2,
+            "server_utilization": 0.2796296296296296,
+            "budget_blocked_starts": 0,
+            "dropped_by_admission": 130,
+            "dropped_by_ttl": 9
+          },
+          "carkm_tuning": {
+            "adm_reward_weight": 2.0,
+            "adm_clean_penalty": 4.0,
+            "adm_fail_penalty": 0.0,
+            "adm_busy_penalty": 1.0,
+            "adm_cost_penalty": 0.0,
+            "adm_threshold": -0.1,
+            "dsp_reward_weight": 1.0,
+            "dsp_age_bonus": 0.05,
+            "dsp_urgency_bonus": 0.1,
+            "dsp_fail_penalty": 0.05,
+            "dsp_busy_penalty": 0.0,
+            "dsp_cost_penalty": 0.0,
+            "busy_cap_scale": 1.5,
+            "dsp_min_total_score": 0.0
+          },
+          "best_threshold_name": "threshold_ddd_fifo",
+          "best_threshold": {
+            "weighted_attack_recall_no_backend_fail": 0.5245,
+            "unnecessary_mtd_count": 0,
+            "queue_delay_p95": 10.0,
+            "average_service_cost_per_step": 7.112413,
+            "pred_expected_consequence_served_ratio": 0.5518
+          },
+          "phase3_proposed": {
+            "weighted_attack_recall_no_backend_fail": 0.6013,
+            "unnecessary_mtd_count": 4,
+            "queue_delay_p95": 7.0,
+            "average_service_cost_per_step": 8.897703,
+            "pred_expected_consequence_served_ratio": 0.671
+          },
+          "topk_expected_consequence": {
+            "weighted_attack_recall_no_backend_fail": 0.6013,
+            "unnecessary_mtd_count": 47,
+            "queue_delay_p95": 8.0,
+            "average_service_cost_per_step": 11.063033,
+            "pred_expected_consequence_served_ratio": 0.6973
+          }
+        },
+        "2": {
+          "carkm_eval_compact": {
+            "weighted_attack_recall_no_backend_fail": 0.8452115812917592,
+            "weighted_attack_recall": 0.8652561247216035,
+            "unnecessary_mtd_count": 4,
+            "average_service_cost_per_step": 9.683212138317442,
+            "average_service_time_per_step": 3.3121529067004167,
+            "queue_delay_p95": 6.0,
+            "attack_delay_p95": 6.450000000000017,
+            "clean_delay_p95": 0.0,
+            "pred_expected_consequence_served_ratio": 0.8709502747260295,
+            "clean_service_ratio": 0.07547169811320754,
+            "mean_queue_len": 0.2814814814814815,
+            "max_queue_len": 4,
+            "server_utilization": 0.24166666666666667,
+            "budget_blocked_starts": 0,
+            "dropped_by_admission": 88,
+            "dropped_by_ttl": 2
+          },
+          "carkm_tuning": {
+            "adm_reward_weight": 2.0,
+            "adm_clean_penalty": 4.0,
+            "adm_fail_penalty": 0.0,
+            "adm_busy_penalty": 0.5,
+            "adm_cost_penalty": 0.0,
+            "adm_threshold": 0.3,
+            "dsp_reward_weight": 1.0,
+            "dsp_age_bonus": 0.1,
+            "dsp_urgency_bonus": 0.2,
+            "dsp_fail_penalty": 0.05,
+            "dsp_busy_penalty": 0.0,
+            "dsp_cost_penalty": 0.0,
+            "busy_cap_scale": 2.0,
+            "dsp_min_total_score": 0.0
+          },
+          "best_threshold_name": "threshold_ddd_fifo",
+          "best_threshold": {
+            "weighted_attack_recall_no_backend_fail": 0.7996,
+            "unnecessary_mtd_count": 0,
+            "queue_delay_p95": 5.0,
+            "average_service_cost_per_step": 8.699849,
+            "pred_expected_consequence_served_ratio": 0.8096
+          },
+          "phase3_proposed": {
+            "weighted_attack_recall_no_backend_fail": 0.9287,
+            "unnecessary_mtd_count": 9,
+            "queue_delay_p95": 3.0,
+            "average_service_cost_per_step": 13.303718,
+            "pred_expected_consequence_served_ratio": 0.9614
+          },
+          "topk_expected_consequence": {
+            "weighted_attack_recall_no_backend_fail": 0.9354,
+            "unnecessary_mtd_count": 53,
+            "queue_delay_p95": 2.0,
+            "average_service_cost_per_step": 15.929168,
+            "pred_expected_consequence_served_ratio": 0.9689
+          }
+        }
+      }
+    }
+  ],
+  "slot_budget_aggregates": {
+    "1": {
+      "policy_stats": {
+        "carkm": {
+          "weighted_attack_recall_no_backend_fail": {
+            "mean": 0.5891352039903466,
+            "std": 0.08746789592117668,
+            "min": 0.42476851851851816,
+            "max": 0.7013574660633475
+          },
+          "unnecessary_mtd_count": {
+            "mean": 5.125,
+            "std": 2.5708704751503917,
+            "min": 1.0,
+            "max": 9.0
+          },
+          "queue_delay_p95": {
+            "mean": 4.187499999999998,
+            "std": 1.028576078858535,
+            "min": 2.0,
+            "max": 5.1499999999999915
+          },
+          "average_service_cost_per_step": {
+            "mean": 7.361619509551965,
+            "std": 0.760349252981617,
+            "min": 6.214559242958027,
+            "max": 8.57434313076855
+          },
+          "pred_expected_consequence_served_ratio": {
+            "mean": 0.6216179962779995,
+            "std": 0.06815698698007826,
+            "min": 0.4949640755143541,
+            "max": 0.7198384618420349
+          }
+        },
+        "phase3_proposed": {
+          "weighted_attack_recall_no_backend_fail": {
+            "mean": 0.6897500000000001,
+            "std": 0.09422325880588085,
+            "min": 0.5382,
+            "max": 0.8133
+          },
+          "unnecessary_mtd_count": {
+            "mean": 6.625,
+            "std": 2.394655507583502,
+            "min": 4.0,
+            "max": 11.0
+          },
+          "queue_delay_p95": {
+            "mean": 6.168749999999999,
+            "std": 1.3311032782996217,
+            "min": 4.1,
+            "max": 8.0
+          },
+          "average_service_cost_per_step": {
+            "mean": 9.132945874999999,
+            "std": 1.1569732958530674,
+            "min": 7.629616,
+            "max": 11.615823
+          },
+          "pred_expected_consequence_served_ratio": {
+            "mean": 0.741075,
+            "std": 0.07366811980090167,
+            "min": 0.623,
+            "max": 0.8362
+          }
+        },
+        "topk_expected_consequence": {
+          "weighted_attack_recall_no_backend_fail": {
+            "mean": 0.7140124999999999,
+            "std": 0.10967027215134466,
+            "min": 0.5301,
+            "max": 0.8326
+          },
+          "unnecessary_mtd_count": {
+            "mean": 80.375,
+            "std": 46.29777937439332,
+            "min": 34.0,
+            "max": 152.0
+          },
+          "queue_delay_p95": {
+            "mean": 5.69375,
+            "std": 2.225763562802662,
+            "min": 2.8,
+            "max": 8.0
+          },
+          "average_service_cost_per_step": {
+            "mean": 14.664001875,
+            "std": 4.733226416240471,
+            "min": 10.018043,
+            "max": 21.407678
+          },
+          "pred_expected_consequence_served_ratio": {
+            "mean": 0.7953749999999999,
+            "std": 0.09076306724103148,
+            "min": 0.6416,
+            "max": 0.8959
+          }
+        }
+      },
+      "paired_stats": {
+        "carkm_vs_best_threshold": {
+          "delta_recall": {
+            "mean": 0.007135203990346631,
+            "std": 0.051200398962638734,
+            "min": -0.0908699300699306,
+            "max": 0.08677305936072965
+          },
+          "delta_unnecessary": {
+            "mean": 2.5,
+            "std": 2.1213203435596424,
+            "min": 0.0,
+            "max": 7.0
+          },
+          "delta_delay_p95": {
+            "mean": -5.812500000000002,
+            "std": 1.028576078858535,
+            "min": -8.0,
+            "max": -4.8500000000000085
+          },
+          "delta_cost_per_step": {
+            "mean": 0.9670428845519653,
+            "std": 1.1115246321671157,
+            "min": -0.8978537570419727,
+            "max": 3.0517085331276306
+          },
+          "carkm_wins_on_recall": 4,
+          "carkm_no_worse_unnecessary": 1
+        },
+        "carkm_vs_phase3_proposed": {
+          "delta_recall": {
+            "mean": -0.10061479600965338,
+            "std": 0.03096102057002823,
+            "min": -0.1503699300699306,
+            "max": -0.04297647058823606
+          },
+          "delta_unnecessary": {
+            "mean": -1.5,
+            "std": 0.8660254037844386,
+            "min": -3.0,
+            "max": 0.0
+          },
+          "delta_delay_p95": {
+            "mean": -1.981250000000002,
+            "std": 1.993887142618659,
+            "min": -6.0,
+            "max": 0.9000000000000004
+          },
+          "delta_cost_per_step": {
+            "mean": -1.7713263654480345,
+            "std": 0.9109599046318975,
+            "min": -3.04147986923145,
+            "max": -0.40758646687236855
+          },
+          "carkm_wins_on_recall": 0,
+          "carkm_lower_unnecessary": 7
+        },
+        "carkm_vs_topk_expected": {
+          "delta_recall": {
+            "mean": -0.12487729600965336,
+            "std": 0.03898209271811193,
+            "min": -0.19973571428571513,
+            "max": -0.06337647058823603
+          },
+          "delta_unnecessary": {
+            "mean": -75.25,
+            "std": 45.502060392909684,
+            "min": -143.0,
+            "max": -31.0
+          },
+          "delta_delay_p95": {
+            "mean": -1.5062500000000019,
+            "std": 2.16267159723801,
+            "min": -4.4500000000000055,
+            "max": 2.2
+          },
+          "delta_cost_per_step": {
+            "mean": -7.302382365448035,
+            "std": 4.482243602024067,
+            "min": -14.24485052784711,
+            "max": -2.2632074668723696
+          },
+          "carkm_lower_unnecessary": 8,
+          "carkm_lower_cost": 8
+        }
+      },
+      "best_threshold_frequency": {
+        "threshold_ddd_fifo": 4,
+        "threshold_expected_consequence_fifo": 1,
+        "threshold_verify_fifo": 3
+      }
+    },
+    "2": {
+      "policy_stats": {
+        "carkm": {
+          "weighted_attack_recall_no_backend_fail": {
+            "mean": 0.8505672658192469,
+            "std": 0.07477097881350286,
+            "min": 0.6805555555555548,
+            "max": 0.9274193548387097
+          },
+          "unnecessary_mtd_count": {
+            "mean": 6.5,
+            "std": 3.3541019662496847,
+            "min": 1.0,
+            "max": 12.0
+          },
+          "queue_delay_p95": {
+            "mean": 2.818749999999998,
+            "std": 3.1709558397271915,
+            "min": 0.0,
+            "max": 7.549999999999983
+          },
+          "average_service_cost_per_step": {
+            "mean": 9.37327335506889,
+            "std": 0.7568417939286488,
+            "min": 8.417094624541804,
+            "max": 10.68391330872167
+          },
+          "pred_expected_consequence_served_ratio": {
+            "mean": 0.8723300157959838,
+            "std": 0.053576557982949025,
+            "min": 0.7548054263540495,
+            "max": 0.9391939093828542
+          }
+        },
+        "phase3_proposed": {
+          "weighted_attack_recall_no_backend_fail": {
+            "mean": 0.923475,
+            "std": 0.07051401899622514,
+            "min": 0.7523,
+            "max": 0.9887
+          },
+          "unnecessary_mtd_count": {
+            "mean": 13.5,
+            "std": 5.634713834792322,
+            "min": 6.0,
+            "max": 25.0
+          },
+          "queue_delay_p95": {
+            "mean": 1.85,
+            "std": 2.1726999332627597,
+            "min": 0.0,
+            "max": 6.65
+          },
+          "average_service_cost_per_step": {
+            "mean": 11.669830999999999,
+            "std": 1.2088963832662623,
+            "min": 10.077594,
+            "max": 13.806087
+          },
+          "pred_expected_consequence_served_ratio": {
+            "mean": 0.9513,
+            "std": 0.05003808549495076,
+            "min": 0.8261,
+            "max": 0.9902
+          }
+        },
+        "topk_expected_consequence": {
+          "weighted_attack_recall_no_backend_fail": {
+            "mean": 0.9319124999999999,
+            "std": 0.076207585539433,
+            "min": 0.7488,
+            "max": 0.9932
+          },
+          "unnecessary_mtd_count": {
+            "mean": 84.125,
+            "std": 43.34581150468866,
+            "min": 39.0,
+            "max": 152.0
+          },
+          "queue_delay_p95": {
+            "mean": 1.2375,
+            "std": 1.7169649821705741,
+            "min": 0.0,
+            "max": 5.15
+          },
+          "average_service_cost_per_step": {
+            "mean": 16.765059,
+            "std": 3.9702978515180374,
+            "min": 12.280964,
+            "max": 22.53129
+          },
+          "pred_expected_consequence_served_ratio": {
+            "mean": 0.9647625,
+            "std": 0.057361854430884644,
+            "min": 0.8255,
+            "max": 1.0
+          }
+        }
+      },
+      "paired_stats": {
+        "carkm_vs_best_threshold": {
+          "delta_recall": {
+            "mean": 0.07980476581924692,
+            "std": 0.018724471076689897,
+            "min": 0.04561158129175924,
+            "max": 0.10601935483870972
+          },
+          "delta_unnecessary": {
+            "mean": 3.75,
+            "std": 2.384848003542364,
+            "min": 0.0,
+            "max": 8.0
+          },
+          "delta_delay_p95": {
+            "mean": -0.7062500000000022,
+            "std": 1.2773110183115182,
+            "min": -3.0,
+            "max": 1.0
+          },
+          "delta_cost_per_step": {
+            "mean": 1.9673672300688887,
+            "std": 0.4959780537156429,
+            "min": 0.9833631383174417,
+            "max": 2.769520856863906
+          },
+          "carkm_wins_on_recall": 8,
+          "carkm_no_worse_unnecessary": 1
+        },
+        "carkm_vs_phase3_proposed": {
+          "delta_recall": {
+            "mean": -0.0729077341807531,
+            "std": 0.023106973510225785,
+            "min": -0.10728493150684959,
+            "max": -0.03261608391608373
+          },
+          "delta_unnecessary": {
+            "mean": -7.0,
+            "std": 2.5,
+            "min": -13.0,
+            "max": -5.0
+          },
+          "delta_delay_p95": {
+            "mean": 0.9687499999999978,
+            "std": 1.6192084292950013,
+            "min": 0.0,
+            "max": 4.399999999999983
+          },
+          "delta_cost_per_step": {
+            "mean": -2.296557644931111,
+            "std": 0.8139246931401558,
+            "min": -3.620505861682558,
+            "max": -1.0269947128114012
+          },
+          "carkm_wins_on_recall": 0,
+          "carkm_lower_unnecessary": 8
+        },
+        "carkm_vs_topk_expected": {
+          "delta_recall": {
+            "mean": -0.08134523418075311,
+            "std": 0.03278123517113892,
+            "min": -0.14287857142857185,
+            "max": -0.037316083916083764
+          },
+          "delta_unnecessary": {
+            "mean": -77.625,
+            "std": 42.15132708468382,
+            "min": -140.0,
+            "max": -35.0
+          },
+          "delta_delay_p95": {
+            "mean": 1.5812499999999978,
+            "std": 1.896038221529298,
+            "min": 0.0,
+            "max": 5.299999999999983
+          },
+          "delta_cost_per_step": {
+            "mean": -7.391785644931112,
+            "std": 4.048084501345843,
+            "min": -14.114195375458195,
+            "max": -3.3073811629018817
+          },
+          "carkm_lower_unnecessary": 8,
+          "carkm_lower_cost": 8
+        }
+      },
+      "best_threshold_frequency": {
+        "threshold_ddd_fifo": 3,
+        "threshold_expected_consequence_fifo": 1,
+        "threshold_verify_fifo": 4
+      }
+    }
+  }
+}
