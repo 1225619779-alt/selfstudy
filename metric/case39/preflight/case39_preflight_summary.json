@@ -1,0 +1,65 @@
+{
+  "method": "phase3_case39_preflight",
+  "probes": [
+    {
+      "label": "current_q1_scheduler_repo",
+      "path": "/home/pang/projects/DDET-MTD",
+      "exists": true,
+      "case39_hits": [
+        "/home/pang/projects/DDET-MTD/phase3_case39_preflight.py:Zone.Identifier",
+        "/home/pang/projects/DDET-MTD/phase3_case39_preflight.py",
+        "/home/pang/projects/DDET-MTD/.venv_q1/lib/python3.12/site-packages/pypower/case39.py",
+        "/home/pang/projects/DDET-MTD/.venv_q1/lib/python3.12/site-packages/pypower/__pycache__/case39.cpython-312.pyc",
+        "/home/pang/projects/DDET-MTD/.venv_rocm/lib/python3.12/site-packages/pypower/case39.py",
+        "/home/pang/projects/DDET-MTD/.venv_rocm/lib/python3.12/site-packages/pypower/__pycache__/case39.cpython-312.pyc",
+        "/home/pang/projects/DDET-MTD/.venv/lib/python3.12/site-packages/pypower/case39.py",
+        "/home/pang/projects/DDET-MTD/.venv/lib/python3.12/site-packages/pypower/__pycache__/case39.cpython-312.pyc"
+      ],
+      "gridforge_indicators": [
+        "/home/pang/projects/DDET-MTD/.venv_q1/lib/python3.12/site-packages/pip/_internal/operations/prepare.py",
+        "/home/pang/projects/DDET-MTD/.venv_q1/lib/python3.12/site-packages/torch/quantization/fx/prepare.py",
+        "/home/pang/projects/DDET-MTD/.venv_q1/lib/python3.12/site-packages/torch/backends/_nnapi/prepare.py",
+        "/home/pang/projects/DDET-MTD/.venv_q1/lib/python3.12/site-packages/torch/ao/quantization/fx/prepare.py",
+        "/home/pang/projects/DDET-MTD/.venv_q1/lib/python3.12/site-packages/torch/ao/quantization/pt2e/prepare.py",
+        "/home/pang/projects/DDET-MTD/.venv_rocm/lib/python3.12/site-packages/pip/_internal/operations/prepare.py",
+        "/home/pang/projects/DDET-MTD/.venv_rocm/lib/python3.12/site-packages/torch/quantization/fx/prepare.py",
+        "/home/pang/projects/DDET-MTD/.venv_rocm/lib/python3.12/site-packages/torch/backends/_nnapi/prepare.py",
+        "/home/pang/projects/DDET-MTD/.venv_rocm/lib/python3.12/site-packages/torch/ao/quantization/fx/prepare.py",
+        "/home/pang/projects/DDET-MTD/.venv_rocm/lib/python3.12/site-packages/torch/ao/quantization/pt2e/prepare.py"
+      ],
+      "recommended_role": "unknown"
+    },
+    {
+      "label": "gridforge_repo",
+      "path": "/home/pang/projects/gridforge",
+      "exists": false,
+      "case39_hits": [],
+      "gridforge_indicators": [],
+      "recommended_role": null
+    },
+    {
+      "label": "lapso_exp_repo",
+      "path": "/home/pang/projects/lapso_exp",
+      "exists": false,
+      "case39_hits": [],
+      "gridforge_indicators": [],
+      "recommended_role": null
+    },
+    {
+      "label": "robust_mtd_repo",
+      "path": "/home/pang/projects/Robust_MTD",
+      "exists": false,
+      "case39_hits": [],
+      "gridforge_indicators": [],
+      "recommended_role": null
+    }
+  ],
+  "recommendation": {
+    "status": "READY_WITH_LOCAL_CASE39_ASSETS",
+    "recommended_source_label": "current_q1_scheduler_repo",
+    "recommended_source_path": "/home/pang/projects/DDET-MTD",
+    "why": "Found case39-named assets locally, though not in the preferred GridForge/LAPSO path."
+  },
+  "next_step_if_ready": "Use the recommended source only as infrastructure/testbed generation, not as a competing baseline. Then build case39 banks and run the fixed oracle_protected_ec vs phase3/best-threshold/topk stack.",
+  "note": "This is a readiness check, not a scientific result. It tells us whether case39 expansion can start and which local repo path should be used for asset generation."
+}

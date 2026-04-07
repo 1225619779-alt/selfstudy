@@ -1,0 +1,361 @@
+{
+  "method": "phase3_significance_stats_v3",
+  "source_confirm": [
+    "metric/case14/phase3_confirm_blind_v1/oracle_protected_ec_confirm/aggregate_summary.json",
+    "metric/case14/phase3_confirm_blind_v2/oracle_protected_ec_confirm/aggregate_summary.json"
+  ],
+  "n_boot": 10000,
+  "seed": 20260407,
+  "total_unique_holdouts": 8,
+  "warnings": [],
+  "results": [
+    {
+      "slot_budget": 1,
+      "lhs": "phase3_oracle_upgrade",
+      "rhs": "phase3_proposed",
+      "n_holdouts": 8,
+      "metrics": {
+        "recall": {
+          "mean_delta": 0.006649999999999989,
+          "ci95_low": 0.000887187500000013,
+          "ci95_high": 0.013274999999999981,
+          "wins": 7,
+          "losses": 1,
+          "ties": 0,
+          "sign_test_p_two_sided": 0.0703125,
+          "sign_test_p_one_sided": 0.03515625
+        },
+        "unnecessary": {
+          "mean_delta": -2.375,
+          "ci95_low": -3.0,
+          "ci95_high": -1.875,
+          "wins": 8,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 0.0078125,
+          "sign_test_p_one_sided": 0.00390625
+        },
+        "delay": {
+          "mean_delta": 0.46875,
+          "ci95_low": -0.10624999999999996,
+          "ci95_high": 1.0374999999999999,
+          "wins": 1,
+          "losses": 5,
+          "ties": 2,
+          "sign_test_p_two_sided": 0.21875,
+          "sign_test_p_one_sided": 0.984375
+        },
+        "cost": {
+          "mean_delta": -0.05144499999999974,
+          "ci95_low": -0.2261644312500002,
+          "ci95_high": 0.10220301250000073,
+          "wins": 4,
+          "losses": 4,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 0.63671875
+        },
+        "served_ratio": {
+          "mean_delta": 0.002549999999999983,
+          "ci95_low": -0.0038000000000000117,
+          "ci95_high": 0.008949999999999986,
+          "wins": 5,
+          "losses": 3,
+          "ties": 0,
+          "sign_test_p_two_sided": 0.7265625,
+          "sign_test_p_one_sided": 0.36328125
+        }
+      }
+    },
+    {
+      "slot_budget": 1,
+      "lhs": "phase3_oracle_upgrade",
+      "rhs": "best_threshold",
+      "n_holdouts": 8,
+      "metrics": {
+        "recall": {
+          "mean_delta": 0.06588749999999999,
+          "ci95_low": 0.047498750000000006,
+          "ci95_high": 0.08211249999999996,
+          "wins": 8,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 0.0078125,
+          "sign_test_p_one_sided": 0.00390625
+        },
+        "unnecessary": {
+          "mean_delta": 2.875,
+          "ci95_low": 1.75,
+          "ci95_high": 4.125,
+          "wins": 0,
+          "losses": 8,
+          "ties": 0,
+          "sign_test_p_two_sided": 0.0078125,
+          "sign_test_p_one_sided": 1.0
+        },
+        "delay": {
+          "mean_delta": -1.39375,
+          "ci95_low": -2.14375,
+          "ci95_high": -0.6625000000000001,
+          "wins": 7,
+          "losses": 0,
+          "ties": 1,
+          "sign_test_p_two_sided": 0.015625,
+          "sign_test_p_one_sided": 0.0078125
+        },
+        "cost": {
+          "mean_delta": 2.718720125,
+          "ci95_low": 1.9608980000000003,
+          "ci95_high": 3.642449509374998,
+          "wins": 0,
+          "losses": 8,
+          "ties": 0,
+          "sign_test_p_two_sided": 0.0078125,
+          "sign_test_p_one_sided": 1.0
+        },
+        "served_ratio": {
+          "mean_delta": 0.09570000000000001,
+          "ci95_low": 0.069025,
+          "ci95_high": 0.12141249999999999,
+          "wins": 8,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 0.0078125,
+          "sign_test_p_one_sided": 0.00390625
+        }
+      }
+    },
+    {
+      "slot_budget": 1,
+      "lhs": "phase3_oracle_upgrade",
+      "rhs": "topk_expected_consequence",
+      "n_holdouts": 8,
+      "metrics": {
+        "recall": {
+          "mean_delta": -0.008874999999999994,
+          "ci95_low": -0.020250000000000004,
+          "ci95_high": 0.0007378125000000249,
+          "wins": 4,
+          "losses": 4,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 0.63671875
+        },
+        "unnecessary": {
+          "mean_delta": -42.5,
+          "ci95_low": -53.25,
+          "ci95_high": -33.75,
+          "wins": 8,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 0.0078125,
+          "sign_test_p_one_sided": 0.00390625
+        },
+        "delay": {
+          "mean_delta": 2.225,
+          "ci95_low": 0.8500000000000001,
+          "ci95_high": 3.5314062499999976,
+          "wins": 1,
+          "losses": 6,
+          "ties": 1,
+          "sign_test_p_two_sided": 0.125,
+          "sign_test_p_one_sided": 0.9921875
+        },
+        "cost": {
+          "mean_delta": -3.074867375,
+          "ci95_low": -4.005656840625,
+          "ci95_high": -2.1821438781250007,
+          "wins": 8,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 0.0078125,
+          "sign_test_p_one_sided": 0.00390625
+        },
+        "served_ratio": {
+          "mean_delta": -0.03005000000000002,
+          "ci95_low": -0.0468875,
+          "ci95_high": -0.015524687500000058,
+          "wins": 0,
+          "losses": 8,
+          "ties": 0,
+          "sign_test_p_two_sided": 0.0078125,
+          "sign_test_p_one_sided": 1.0
+        }
+      }
+    },
+    {
+      "slot_budget": 2,
+      "lhs": "phase3_oracle_upgrade",
+      "rhs": "phase3_proposed",
+      "n_holdouts": 8,
+      "metrics": {
+        "recall": {
+          "mean_delta": 0.0014999999999999875,
+          "ci95_low": 0.0,
+          "ci95_high": 0.003387499999999974,
+          "wins": 3,
+          "losses": 0,
+          "ties": 5,
+          "sign_test_p_two_sided": 0.25,
+          "sign_test_p_one_sided": 0.125
+        },
+        "unnecessary": {
+          "mean_delta": -1.875,
+          "ci95_low": -4.125,
+          "ci95_high": -0.25,
+          "wins": 4,
+          "losses": 0,
+          "ties": 4,
+          "sign_test_p_two_sided": 0.125,
+          "sign_test_p_one_sided": 0.0625
+        },
+        "delay": {
+          "mean_delta": 0.21875,
+          "ci95_low": 0.0,
+          "ci95_high": 0.5,
+          "wins": 0,
+          "losses": 2,
+          "ties": 6,
+          "sign_test_p_two_sided": 0.5,
+          "sign_test_p_one_sided": 1.0
+        },
+        "cost": {
+          "mean_delta": 0.044451124999999925,
+          "ci95_low": -0.11907574999999992,
+          "ci95_high": 0.21882912499999985,
+          "wins": 2,
+          "losses": 2,
+          "ties": 4,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 0.6875
+        },
+        "served_ratio": {
+          "mean_delta": -0.0025500000000000106,
+          "ci95_low": -0.005712500000000023,
+          "ci95_high": -3.749999999999587e-05,
+          "wins": 1,
+          "losses": 6,
+          "ties": 1,
+          "sign_test_p_two_sided": 0.125,
+          "sign_test_p_one_sided": 0.9921875
+        }
+      }
+    },
+    {
+      "slot_budget": 2,
+      "lhs": "phase3_oracle_upgrade",
+      "rhs": "best_threshold",
+      "n_holdouts": 8,
+      "metrics": {
+        "recall": {
+          "mean_delta": 0.08239999999999996,
+          "ci95_low": 0.06097499999999993,
+          "ci95_high": 0.10086249999999998,
+          "wins": 8,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 0.0078125,
+          "sign_test_p_one_sided": 0.00390625
+        },
+        "unnecessary": {
+          "mean_delta": 4.625,
+          "ci95_low": 3.625,
+          "ci95_high": 5.625,
+          "wins": 0,
+          "losses": 8,
+          "ties": 0,
+          "sign_test_p_two_sided": 0.0078125,
+          "sign_test_p_one_sided": 1.0
+        },
+        "delay": {
+          "mean_delta": -0.14375,
+          "ci95_low": -0.39375,
+          "ci95_high": 0.0,
+          "wins": 2,
+          "losses": 0,
+          "ties": 6,
+          "sign_test_p_two_sided": 0.5,
+          "sign_test_p_one_sided": 0.25
+        },
+        "cost": {
+          "mean_delta": 3.67723175,
+          "ci95_low": 3.0157914781249997,
+          "ci95_high": 4.324227624999999,
+          "wins": 0,
+          "losses": 8,
+          "ties": 0,
+          "sign_test_p_two_sided": 0.0078125,
+          "sign_test_p_one_sided": 1.0
+        },
+        "served_ratio": {
+          "mean_delta": 0.10869999999999999,
+          "ci95_low": 0.09014906249999997,
+          "ci95_high": 0.12435124999999997,
+          "wins": 8,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 0.0078125,
+          "sign_test_p_one_sided": 0.00390625
+        }
+      }
+    },
+    {
+      "slot_budget": 2,
+      "lhs": "phase3_oracle_upgrade",
+      "rhs": "topk_expected_consequence",
+      "n_holdouts": 8,
+      "metrics": {
+        "recall": {
+          "mean_delta": -0.009862500000000038,
+          "ci95_low": -0.017087812500000032,
+          "ci95_high": -0.003875000000000045,
+          "wins": 0,
+          "losses": 8,
+          "ties": 0,
+          "sign_test_p_two_sided": 0.0078125,
+          "sign_test_p_one_sided": 1.0
+        },
+        "unnecessary": {
+          "mean_delta": -39.75,
+          "ci95_low": -48.5,
+          "ci95_high": -31.875,
+          "wins": 8,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 0.0078125,
+          "sign_test_p_one_sided": 0.00390625
+        },
+        "delay": {
+          "mean_delta": 0.5,
+          "ci95_low": 0.125,
+          "ci95_high": 0.875,
+          "wins": 0,
+          "losses": 4,
+          "ties": 4,
+          "sign_test_p_two_sided": 0.125,
+          "sign_test_p_one_sided": 1.0
+        },
+        "cost": {
+          "mean_delta": -2.72606125,
+          "ci95_low": -3.33714396875,
+          "ci95_high": -2.1618949156250005,
+          "wins": 8,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 0.0078125,
+          "sign_test_p_one_sided": 0.00390625
+        },
+        "served_ratio": {
+          "mean_delta": -0.011825000000000002,
+          "ci95_low": -0.01782499999999998,
+          "ci95_high": -0.0067000000000000115,
+          "wins": 0,
+          "losses": 8,
+          "ties": 0,
+          "sign_test_p_two_sided": 0.0078125,
+          "sign_test_p_one_sided": 1.0
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "confirm_source": [
+    "/home/pang/projects/DDET-MTD/metric/case14/phase3_confirm_blind_v1/oracle_protected_ec_confirm/aggregate_summary.json",
+    "/home/pang/projects/DDET-MTD/metric/case14/phase3_confirm_blind_v2/oracle_protected_ec_confirm/aggregate_summary.json"
+  ],
+  "ablation_source": [
+    "/home/pang/projects/DDET-MTD/metric/case14/phase3_confirm_blind_v1/oracle_ablation/aggregate_summary.json",
+    "/home/pang/projects/DDET-MTD/metric/case14/phase3_confirm_blind_v2/oracle_ablation/aggregate_summary.json"
+  ],
+  "winner_variant": {
+    "name": "oracle_protected_ec",
+    "mode": "protected_ec",
+    "description": "deliverable/protected consequence = fused consequence × (1-fail risk)",
+    "clean_scale": 0.0,
+    "protected_blend": 0.0
+  },
+  "winner_dev_selection": {
+    "winner_variant": "oracle_protected_ec",
+    "winner_joint_val_delta_objective": 0.029356279356279408,
+    "winner_joint_val_delta_recall": -0.0038927927927933648
+  },
+  "n_confirm_holdouts": 8,
+  "main_table_rows": [
+    {
+      "slot_budget": 1,
+      "oracle_recall_mean": 0.72035,
+      "phase3_recall_mean": 0.7137,
+      "delta_recall_mean": 0.006649999999999989,
+      "oracle_unnecessary_mean": 3.75,
+      "phase3_unnecessary_mean": 6.125,
+      "delta_unnecessary_mean": -2.375,
+      "oracle_cost_mean": 9.321669,
+      "phase3_cost_mean": 9.373114,
+      "delta_cost_mean": -0.05144499999999974,
+      "oracle_delay_mean": 8.60625,
+      "phase3_delay_mean": 8.1375,
+      "delta_delay_mean": 0.46875,
+      "wins_on_recall_vs_phase3": 7,
+      "ties_on_recall_vs_phase3": 0,
+      "lower_unnecessary_vs_phase3": 8,
+      "wins_vs_best_threshold": 8
+    },
+    {
+      "slot_budget": 2,
+      "oracle_recall_mean": 0.9724625,
+      "phase3_recall_mean": 0.9709625,
+      "delta_recall_mean": 0.0014999999999999875,
+      "oracle_unnecessary_mean": 7.25,
+      "phase3_unnecessary_mean": 9.125,
+      "delta_unnecessary_mean": -1.875,
+      "oracle_cost_mean": 12.165109375,
+      "phase3_cost_mean": 12.120658249999998,
+      "delta_cost_mean": 0.044451124999999925,
+      "oracle_delay_mean": 1.0,
+      "phase3_delay_mean": 0.78125,
+      "delta_delay_mean": 0.21875,
+      "wins_on_recall_vs_phase3": 3,
+      "ties_on_recall_vs_phase3": 5,
+      "lower_unnecessary_vs_phase3": 4,
+      "wins_vs_best_threshold": 8
+    }
+  ],
+  "ablation_table_rows": [
+    {
+      "slot_budget": 1,
+      "policy": "phase3_reference",
+      "recall_mean": 0.7137,
+      "unnecessary_mean": 6.125,
+      "delay_mean": 8.1375,
+      "cost_mean": 9.373114,
+      "served_ratio_mean": 0.7580875
+    },
+    {
+      "slot_budget": 1,
+      "policy": "oracle_fused_ec",
+      "recall_mean": 0.7248,
+      "unnecessary_mean": 5.75,
+      "delay_mean": 8.15625,
+      "cost_mean": 9.743576125,
+      "served_ratio_mean": 0.7681749999999999
+    },
+    {
+      "slot_budget": 1,
+      "policy": "oracle_protected_ec",
+      "recall_mean": 0.72035,
+      "unnecessary_mean": 3.75,
+      "delay_mean": 8.60625,
+      "cost_mean": 9.321669,
+      "served_ratio_mean": 0.7606375
+    },
+    {
+      "slot_budget": 2,
+      "policy": "phase3_reference",
+      "recall_mean": 0.9709625,
+      "unnecessary_mean": 9.125,
+      "delay_mean": 0.78125,
+      "cost_mean": 12.12065825,
+      "served_ratio_mean": 0.9895
+    },
+    {
+      "slot_budget": 2,
+      "policy": "oracle_fused_ec",
+      "recall_mean": 0.97755,
+      "unnecessary_mean": 8.25,
+      "delay_mean": 1.0,
+      "cost_mean": 12.4632405,
+      "served_ratio_mean": 0.98955
+    },
+    {
+      "slot_budget": 2,
+      "policy": "oracle_protected_ec",
+      "recall_mean": 0.9724625,
+      "unnecessary_mean": 7.25,
+      "delay_mean": 1.0,
+      "cost_mean": 12.165109375,
+      "served_ratio_mean": 0.98695
+    }
+  ]
+}

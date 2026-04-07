@@ -1,0 +1,2702 @@
+{
+  "method": "phase3_oracle_fixed_ablation",
+  "manifest": {
+    "workdir": "/home/pang/projects/DDET-MTD",
+    "clean_bank": "metric/case14/metric_clean_alarm_scores_full.npy",
+    "attack_bank": "metric/case14/metric_attack_alarm_scores_400.npy",
+    "train_bank": "metric/case14/mixed_bank_fit.npy",
+    "val_bank": "metric/case14/mixed_bank_eval.npy",
+    "schedule": "confirm_multi_family_v1",
+    "confirm_families": [
+      {
+        "family_tag": "cfA_frontloaded",
+        "schedule": "clean:90;att-1-0.15:90;clean:45;att-2-0.25:90;clean:45;att-3-0.25:60;clean:120",
+        "seeds": [
+          20260511,
+          20260512
+        ],
+        "offsets": [
+          1020,
+          1080
+        ]
+      },
+      {
+        "family_tag": "cfB_backloaded",
+        "schedule": "clean:150;att-2-0.20:60;clean:30;att-3-0.35:90;clean:30;att-1-0.15:60;clean:120",
+        "seeds": [
+          20260521,
+          20260522
+        ],
+        "offsets": [
+          1140,
+          1200
+        ]
+      }
+    ],
+    "frozen_regime": {
+      "decision_step_group": 1,
+      "busy_time_quantile": 0.65,
+      "use_cost_budget": false,
+      "cost_budget_window_steps": 20,
+      "cost_budget_quantile": 0.6,
+      "slot_budget_list": [
+        1,
+        2
+      ],
+      "max_wait_steps": 10
+    },
+    "holdouts": [
+      {
+        "tag": "cfA_frontloaded_0_seed20260511_off1020",
+        "family_tag": "cfA_frontloaded",
+        "schedule": "clean:90;att-1-0.15:90;clean:45;att-2-0.25:90;clean:45;att-3-0.25:60;clean:120",
+        "seed_base": 20260511,
+        "start_offset": 1020,
+        "test_bank": "metric/case14/phase3_confirm_blind_v1/banks/mixed_bank_test_cfA_frontloaded_0_seed20260511_off1020.npy",
+        "result_npy": "metric/case14/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfA_frontloaded_0_seed20260511_off1020.npy",
+        "result_summary": "metric/case14/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfA_frontloaded_0_seed20260511_off1020.summary.json"
+      },
+      {
+        "tag": "cfA_frontloaded_1_seed20260512_off1080",
+        "family_tag": "cfA_frontloaded",
+        "schedule": "clean:90;att-1-0.15:90;clean:45;att-2-0.25:90;clean:45;att-3-0.25:60;clean:120",
+        "seed_base": 20260512,
+        "start_offset": 1080,
+        "test_bank": "metric/case14/phase3_confirm_blind_v1/banks/mixed_bank_test_cfA_frontloaded_1_seed20260512_off1080.npy",
+        "result_npy": "metric/case14/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfA_frontloaded_1_seed20260512_off1080.npy",
+        "result_summary": "metric/case14/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfA_frontloaded_1_seed20260512_off1080.summary.json"
+      },
+      {
+        "tag": "cfB_backloaded_0_seed20260521_off1140",
+        "family_tag": "cfB_backloaded",
+        "schedule": "clean:150;att-2-0.20:60;clean:30;att-3-0.35:90;clean:30;att-1-0.15:60;clean:120",
+        "seed_base": 20260521,
+        "start_offset": 1140,
+        "test_bank": "metric/case14/phase3_confirm_blind_v1/banks/mixed_bank_test_cfB_backloaded_0_seed20260521_off1140.npy",
+        "result_npy": "metric/case14/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfB_backloaded_0_seed20260521_off1140.npy",
+        "result_summary": "metric/case14/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfB_backloaded_0_seed20260521_off1140.summary.json"
+      },
+      {
+        "tag": "cfB_backloaded_1_seed20260522_off1200",
+        "family_tag": "cfB_backloaded",
+        "schedule": "clean:150;att-2-0.20:60;clean:30;att-3-0.35:90;clean:30;att-1-0.15:60;clean:120",
+        "seed_base": 20260522,
+        "start_offset": 1200,
+        "test_bank": "metric/case14/phase3_confirm_blind_v1/banks/mixed_bank_test_cfB_backloaded_1_seed20260522_off1200.npy",
+        "result_npy": "metric/case14/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfB_backloaded_1_seed20260522_off1200.npy",
+        "result_summary": "metric/case14/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfB_backloaded_1_seed20260522_off1200.summary.json"
+      }
+    ]
+  },
+  "dev_screen_summary_path": "/home/pang/projects/DDET-MTD/metric/case14/phase3_oracle_family/screen_train_val_summary.json",
+  "variant_order": [
+    "phase3_reference",
+    "oracle_fused_ec",
+    "oracle_protected_ec"
+  ],
+  "variant_payloads": {
+    "phase3_reference": {
+      "name": "phase3_reference",
+      "mode": "baseline_phase3",
+      "description": "original phase3 consequence / dispatch shell"
+    },
+    "oracle_fused_ec": {
+      "name": "oracle_fused_ec",
+      "mode": "fused_ec",
+      "description": "dual-signal fused attack posterior + conditional consequence",
+      "clean_scale": 0.0,
+      "protected_blend": 0.0
+    },
+    "oracle_protected_ec": {
+      "name": "oracle_protected_ec",
+      "mode": "protected_ec",
+      "description": "deliverable/protected consequence = fused consequence × (1-fail risk)",
+      "clean_scale": 0.0,
+      "protected_blend": 0.0
+    }
+  },
+  "train_oracle_stats": {
+    "phase3_reference": {
+      "pred_attack_prob": {
+        "count": 218.0,
+        "mean": 0.6977589955915644,
+        "std": 0.38466064094957575,
+        "q50": 0.9261363636363636,
+        "q90": 0.9659090909090909,
+        "q95": 0.9715909090909091,
+        "max": 0.9715909090909091
+      },
+      "pred_expected_consequence": {
+        "count": 218.0,
+        "mean": 0.3778040993717129,
+        "std": 0.28596541137808024,
+        "q50": 0.32936917613636363,
+        "q90": 0.8077414772727272,
+        "q95": 0.8335227272727272,
+        "max": 0.8693181818181818
+      },
+      "signal_keys": [
+        "verify_score",
+        "ddd_loss_recons"
+      ],
+      "oracle_mode": "baseline_phase3"
+    },
+    "oracle_fused_ec": {
+      "pred_attack_prob": {
+        "count": 218.0,
+        "mean": 0.7174324834547331,
+        "std": 0.38725823400248743,
+        "q50": 0.9629979767395846,
+        "q90": 0.979969455497306,
+        "q95": 0.9823728784980736,
+        "max": 0.9823981686569383
+      },
+      "pred_expected_consequence": {
+        "count": 218.0,
+        "mean": 0.3870712674360628,
+        "std": 0.2900296697343263,
+        "q50": 0.34125669363220945,
+        "q90": 0.819479698995983,
+        "q95": 0.8639191281777896,
+        "max": 0.8819725099475753
+      },
+      "signal_keys": [
+        "verify_score",
+        "ddd_loss_recons"
+      ],
+      "oracle_mode": "fused_ec"
+    },
+    "oracle_protected_ec": {
+      "pred_attack_prob": {
+        "count": 218.0,
+        "mean": 0.7174324834547331,
+        "std": 0.38725823400248743,
+        "q50": 0.9629979767395846,
+        "q90": 0.979969455497306,
+        "q95": 0.9823728784980736,
+        "max": 0.9823981686569383
+      },
+      "pred_expected_consequence": {
+        "count": 218.0,
+        "mean": 0.37586425444342064,
+        "std": 0.29077131396660744,
+        "q50": 0.3053368484317236,
+        "q90": 0.819479698995983,
+        "q95": 0.8639191281777896,
+        "max": 0.8819725099475753
+      },
+      "pred_fail_prob": {
+        "count": 218.0,
+        "mean": 0.04128440366972477,
+        "std": 0.06130647397910201,
+        "q50": 0.0,
+        "q90": 0.12454545454545549,
+        "q95": 0.18181818181818182,
+        "max": 0.18181818181818182
+      },
+      "signal_keys": [
+        "verify_score",
+        "ddd_loss_recons"
+      ],
+      "oracle_mode": "protected_ec"
+    }
+  },
+  "train_job_stats": {
+    "phase3_reference": {
+      "mean_pred_busy_steps": 1.555045871559633,
+      "mean_pred_service_cost": 35.355742671647086,
+      "mean_pred_expected_consequence": 0.3778040993717129,
+      "busy_step_stats": {
+        "count": 218.0,
+        "mean": 1.6743119266055047,
+        "std": 1.2632347925995004,
+        "q25": 1.0,
+        "q50": 1.0,
+        "q75": 2.0,
+        "q90": 3.0,
+        "q95": 4.0,
+        "max": 10.0
+      },
+      "pred_expected_consequence_stats": {
+        "count": 218.0,
+        "mean": 0.3778040993717129,
+        "std": 0.28596541137808024,
+        "q25": 0.0654474431818182,
+        "q50": 0.32936917613636363,
+        "q75": 0.6412020596590908,
+        "q90": 0.8077414772727272,
+        "q95": 0.8335227272727272,
+        "max": 0.8693181818181818
+      }
+    },
+    "oracle_fused_ec": {
+      "mean_pred_busy_steps": 1.555045871559633,
+      "mean_pred_service_cost": 35.355742671647086,
+      "mean_pred_expected_consequence": 0.3870712674360628,
+      "busy_step_stats": {
+        "count": 218.0,
+        "mean": 1.6743119266055047,
+        "std": 1.2632347925995004,
+        "q25": 1.0,
+        "q50": 1.0,
+        "q75": 2.0,
+        "q90": 3.0,
+        "q95": 4.0,
+        "max": 10.0
+      },
+      "pred_expected_consequence_stats": {
+        "count": 218.0,
+        "mean": 0.3870712674360628,
+        "std": 0.2900296697343263,
+        "q25": 0.09106260300240815,
+        "q50": 0.34125669363220945,
+        "q75": 0.6534282022206809,
+        "q90": 0.819479698995983,
+        "q95": 0.8639191281777896,
+        "max": 0.8819725099475753
+      }
+    },
+    "oracle_protected_ec": {
+      "mean_pred_busy_steps": 1.555045871559633,
+      "mean_pred_service_cost": 35.355742671647086,
+      "mean_pred_expected_consequence": 0.37586425444342064,
+      "busy_step_stats": {
+        "count": 218.0,
+        "mean": 1.6743119266055047,
+        "std": 1.2632347925995004,
+        "q25": 1.0,
+        "q50": 1.0,
+        "q75": 2.0,
+        "q90": 3.0,
+        "q95": 4.0,
+        "max": 10.0
+      },
+      "pred_expected_consequence_stats": {
+        "count": 218.0,
+        "mean": 0.37586425444342064,
+        "std": 0.29077131396660744,
+        "q25": 0.08014665407778288,
+        "q50": 0.3053368484317236,
+        "q75": 0.6503404268389845,
+        "q90": 0.819479698995983,
+        "q95": 0.8639191281777896,
+        "max": 0.8819725099475753
+      }
+    }
+  },
+  "n_holdouts": 4,
+  "per_holdout_results": [
+    {
+      "tag": "cfA_frontloaded_0_seed20260511_off1020",
+      "family_tag": "cfA_frontloaded",
+      "schedule": "clean:90;att-1-0.15:90;clean:45;att-2-0.25:90;clean:45;att-3-0.25:60;clean:120",
+      "seed_base": 20260511,
+      "start_offset": 1020,
+      "test_bank": "metric/case14/phase3_confirm_blind_v1/banks/mixed_bank_test_cfA_frontloaded_0_seed20260511_off1020.npy",
+      "slot_budget_results": {
+        "1": {
+          "phase3_reference": {
+            "weighted_attack_recall_no_backend_fail": 0.624,
+            "unnecessary_mtd_count": 6,
+            "queue_delay_p95": 8.0,
+            "average_service_cost_per_step": 8.920251,
+            "pred_expected_consequence_served_ratio": 0.7049
+          },
+          "phase3_reference_tuned_config": {
+            "v_weight": 4.0,
+            "clean_penalty": 0.5,
+            "age_bonus": 0.0,
+            "urgency_bonus": 0.0,
+            "fail_penalty": 0.05,
+            "busy_penalty": 0.5,
+            "cost_penalty": 0.0,
+            "admission_score_threshold": 0.0
+          },
+          "phase3_reference_oracle_stats": {
+            "pred_attack_prob": {
+              "count": 275.0,
+              "mean": 0.7398730814639906,
+              "std": 0.33737374567240597,
+              "q50": 0.9428571428571428,
+              "q90": 0.9659090909090909,
+              "q95": 0.9715909090909091,
+              "max": 0.9715909090909091
+            },
+            "pred_expected_consequence": {
+              "count": 275.0,
+              "mean": 0.41295357910271535,
+              "std": 0.27658963235985773,
+              "q50": 0.42620738636363636,
+              "q90": 0.7894176136363635,
+              "q95": 0.8270596590909091,
+              "max": 0.874431818181818
+            },
+            "signal_keys": [
+              "verify_score",
+              "ddd_loss_recons"
+            ],
+            "oracle_mode": "baseline_phase3"
+          },
+          "oracle_fused_ec": {
+            "weighted_attack_recall_no_backend_fail": 0.6279,
+            "unnecessary_mtd_count": 5,
+            "queue_delay_p95": 8.0,
+            "average_service_cost_per_step": 9.445739,
+            "pred_expected_consequence_served_ratio": 0.7061
+          },
+          "oracle_fused_ec_tuned_config": {
+            "v_weight": 4.0,
+            "clean_penalty": 0.2,
+            "age_bonus": 0.1,
+            "urgency_bonus": 0.0,
+            "fail_penalty": 0.0,
+            "busy_penalty": 0.5,
+            "cost_penalty": 0.0,
+            "admission_score_threshold": 0.1
+          },
+          "oracle_fused_ec_oracle_stats": {
+            "pred_attack_prob": {
+              "count": 275.0,
+              "mean": 0.7510161096015496,
+              "std": 0.338667456046161,
+              "q50": 0.9629366678314243,
+              "q90": 0.979969455497306,
+              "q95": 0.9823981686569383,
+              "max": 0.9823981686569383
+            },
+            "pred_expected_consequence": {
+              "count": 275.0,
+              "mean": 0.41857256820992894,
+              "std": 0.27934417197966177,
+              "q50": 0.40299854875310204,
+              "q90": 0.7981743376172005,
+              "q95": 0.8425161823533398,
+              "max": 0.8841583517912444
+            },
+            "signal_keys": [
+              "verify_score",
+              "ddd_loss_recons"
+            ],
+            "oracle_mode": "fused_ec"
+          },
+          "oracle_protected_ec": {
+            "weighted_attack_recall_no_backend_fail": 0.6244,
+            "unnecessary_mtd_count": 3,
+            "queue_delay_p95": 9.0,
+            "average_service_cost_per_step": 8.765663,
+            "pred_expected_consequence_served_ratio": 0.6978
+          },
+          "oracle_protected_ec_tuned_config": {
+            "v_weight": 4.0,
+            "clean_penalty": 0.5,
+            "age_bonus": 0.1,
+            "urgency_bonus": 0.0,
+            "fail_penalty": 0.0,
+            "busy_penalty": 0.5,
+            "cost_penalty": 0.0,
+            "admission_score_threshold": 0.1
+          },
+          "oracle_protected_ec_oracle_stats": {
+            "pred_attack_prob": {
+              "count": 275.0,
+              "mean": 0.7510161096015496,
+              "std": 0.338667456046161,
+              "q50": 0.9629366678314243,
+              "q90": 0.979969455497306,
+              "q95": 0.9823981686569383,
+              "max": 0.9823981686569383
+            },
+            "pred_expected_consequence": {
+              "count": 275.0,
+              "mean": 0.40378566348551787,
+              "std": 0.2829915004626097,
+              "q50": 0.3993126071447904,
+              "q90": 0.7981743376172005,
+              "q95": 0.8425161823533398,
+              "max": 0.8841583517912444
+            },
+            "pred_fail_prob": {
+              "count": 275.0,
+              "mean": 0.05570247933884298,
+              "std": 0.07063210460701114,
+              "q50": 0.0,
+              "q90": 0.18181818181818182,
+              "q95": 0.18181818181818182,
+              "max": 0.18181818181818182
+            },
+            "signal_keys": [
+              "verify_score",
+              "ddd_loss_recons"
+            ],
+            "oracle_mode": "protected_ec"
+          },
+          "best_threshold_name": "threshold_verify_fifo",
+          "best_threshold": {
+            "weighted_attack_recall_no_backend_fail": 0.5521,
+            "unnecessary_mtd_count": 2,
+            "queue_delay_p95": 10.0,
+            "average_service_cost_per_step": 6.536815,
+            "pred_expected_consequence_served_ratio": 0.5646
+          },
+          "phase3_proposed": {
+            "weighted_attack_recall_no_backend_fail": 0.624,
+            "unnecessary_mtd_count": 6,
+            "queue_delay_p95": 8.0,
+            "average_service_cost_per_step": 8.920251,
+            "pred_expected_consequence_served_ratio": 0.7049
+          },
+          "topk_expected_consequence": {
+            "weighted_attack_recall_no_backend_fail": 0.6606,
+            "unnecessary_mtd_count": 39,
+            "queue_delay_p95": 6.0,
+            "average_service_cost_per_step": 12.711232,
+            "pred_expected_consequence_served_ratio": 0.755
+          }
+        },
+        "2": {
+          "phase3_reference": {
+            "weighted_attack_recall_no_backend_fail": 0.9452,
+            "unnecessary_mtd_count": 8,
+            "queue_delay_p95": 2.0,
+            "average_service_cost_per_step": 13.232427,
+            "pred_expected_consequence_served_ratio": 0.9859
+          },
+          "phase3_reference_tuned_config": {
+            "v_weight": 4.0,
+            "clean_penalty": 0.5,
+            "age_bonus": 0.0,
+            "urgency_bonus": 0.0,
+            "fail_penalty": 0.0,
+            "busy_penalty": 0.5,
+            "cost_penalty": 0.0,
+            "admission_score_threshold": 0.1
+          },
+          "phase3_reference_oracle_stats": {
+            "pred_attack_prob": {
+              "count": 275.0,
+              "mean": 0.7398730814639906,
+              "std": 0.33737374567240597,
+              "q50": 0.9428571428571428,
+              "q90": 0.9659090909090909,
+              "q95": 0.9715909090909091,
+              "max": 0.9715909090909091
+            },
+            "pred_expected_consequence": {
+              "count": 275.0,
+              "mean": 0.41295357910271535,
+              "std": 0.27658963235985773,
+              "q50": 0.42620738636363636,
+              "q90": 0.7894176136363635,
+              "q95": 0.8270596590909091,
+              "max": 0.874431818181818
+            },
+            "signal_keys": [
+              "verify_score",
+              "ddd_loss_recons"
+            ],
+            "oracle_mode": "baseline_phase3"
+          },
+          "oracle_fused_ec": {
+            "weighted_attack_recall_no_backend_fail": 0.9628,
+            "unnecessary_mtd_count": 8,
+            "queue_delay_p95": 2.0,
+            "average_service_cost_per_step": 14.00968,
+            "pred_expected_consequence_served_ratio": 0.9916
+          },
+          "oracle_fused_ec_tuned_config": {
+            "v_weight": 4.0,
+            "clean_penalty": 0.2,
+            "age_bonus": 0.0,
+            "urgency_bonus": 0.0,
+            "fail_penalty": 0.0,
+            "busy_penalty": 0.5,
+            "cost_penalty": 0.0,
+            "admission_score_threshold": 0.1
+          },
+          "oracle_fused_ec_oracle_stats": {
+            "pred_attack_prob": {
+              "count": 275.0,
+              "mean": 0.7510161096015496,
+              "std": 0.338667456046161,
+              "q50": 0.9629366678314243,
+              "q90": 0.979969455497306,
+              "q95": 0.9823981686569383,
+              "max": 0.9823981686569383
+            },
+            "pred_expected_consequence": {
+              "count": 275.0,
+              "mean": 0.41857256820992894,
+              "std": 0.27934417197966177,
+              "q50": 0.40299854875310204,
+              "q90": 0.7981743376172005,
+              "q95": 0.8425161823533398,
+              "max": 0.8841583517912444
+            },
+            "signal_keys": [
+              "verify_score",
+              "ddd_loss_recons"
+            ],
+            "oracle_mode": "fused_ec"
+          },
+          "oracle_protected_ec": {
+            "weighted_attack_recall_no_backend_fail": 0.9526,
+            "unnecessary_mtd_count": 7,
+            "queue_delay_p95": 2.0,
+            "average_service_cost_per_step": 13.678835,
+            "pred_expected_consequence_served_ratio": 0.987
+          },
+          "oracle_protected_ec_tuned_config": {
+            "v_weight": 4.0,
+            "clean_penalty": 0.5,
+            "age_bonus": 0.0,
+            "urgency_bonus": 0.0,
+            "fail_penalty": 0.0,
+            "busy_penalty": 0.5,
+            "cost_penalty": 0.0,
+            "admission_score_threshold": 0.1
+          },
+          "oracle_protected_ec_oracle_stats": {
+            "pred_attack_prob": {
+              "count": 275.0,
+              "mean": 0.7510161096015496,
+              "std": 0.338667456046161,
+              "q50": 0.9629366678314243,
+              "q90": 0.979969455497306,
+              "q95": 0.9823981686569383,
+              "max": 0.9823981686569383
+            },
+            "pred_expected_consequence": {
+              "count": 275.0,
+              "mean": 0.40378566348551787,
+              "std": 0.2829915004626097,
+              "q50": 0.3993126071447904,
+              "q90": 0.7981743376172005,
+              "q95": 0.8425161823533398,
+              "max": 0.8841583517912444
+            },
+            "pred_fail_prob": {
+              "count": 275.0,
+              "mean": 0.05570247933884298,
+              "std": 0.07063210460701114,
+              "q50": 0.0,
+              "q90": 0.18181818181818182,
+              "q95": 0.18181818181818182,
+              "max": 0.18181818181818182
+            },
+            "signal_keys": [
+              "verify_score",
+              "ddd_loss_recons"
+            ],
+            "oracle_mode": "protected_ec"
+          },
+          "best_threshold_name": "threshold_verify_fifo",
+          "best_threshold": {
+            "weighted_attack_recall_no_backend_fail": 0.8504,
+            "unnecessary_mtd_count": 2,
+            "queue_delay_p95": 3.0,
+            "average_service_cost_per_step": 9.739795,
+            "pred_expected_consequence_served_ratio": 0.8581
+          },
+          "phase3_proposed": {
+            "weighted_attack_recall_no_backend_fail": 0.9452,
+            "unnecessary_mtd_count": 8,
+            "queue_delay_p95": 2.0,
+            "average_service_cost_per_step": 13.232427,
+            "pred_expected_consequence_served_ratio": 0.9859
+          },
+          "topk_expected_consequence": {
+            "weighted_attack_recall_no_backend_fail": 0.9687,
+            "unnecessary_mtd_count": 41,
+            "queue_delay_p95": 1.0,
+            "average_service_cost_per_step": 16.573659,
+            "pred_expected_consequence_served_ratio": 0.9949
+          }
+        }
+      }
+    },
+    {
+      "tag": "cfA_frontloaded_1_seed20260512_off1080",
+      "family_tag": "cfA_frontloaded",
+      "schedule": "clean:90;att-1-0.15:90;clean:45;att-2-0.25:90;clean:45;att-3-0.25:60;clean:120",
+      "seed_base": 20260512,
+      "start_offset": 1080,
+      "test_bank": "metric/case14/phase3_confirm_blind_v1/banks/mixed_bank_test_cfA_frontloaded_1_seed20260512_off1080.npy",
+      "slot_budget_results": {
+        "1": {
+          "phase3_reference": {
+            "weighted_attack_recall_no_backend_fail": 0.6332,
+            "unnecessary_mtd_count": 10,
+            "queue_delay_p95": 9.0,
+            "average_service_cost_per_step": 10.833516,
+            "pred_expected_consequence_served_ratio": 0.689
+          },
+          "phase3_reference_tuned_config": {
+            "v_weight": 4.0,
+            "clean_penalty": 0.5,
+            "age_bonus": 0.0,
+            "urgency_bonus": 0.0,
+            "fail_penalty": 0.05,
+            "busy_penalty": 0.5,
+            "cost_penalty": 0.0,
+            "admission_score_threshold": 0.0
+          },
+          "phase3_reference_oracle_stats": {
+            "pred_attack_prob": {
+              "count": 302.0,
+              "mean": 0.6861176571772598,
+              "std": 0.3690507288116422,
+              "q50": 0.9428571428571428,
+              "q90": 0.9659090909090909,
+              "q95": 0.9715909090909091,
+              "max": 0.9715909090909091
+            },
+            "pred_expected_consequence": {
+              "count": 302.0,
+              "mean": 0.37880337428506916,
+              "std": 0.2846770431230623,
+              "q50": 0.31345779220779224,
+              "q90": 0.7457875811688313,
+              "q95": 0.8089488636363635,
+              "max": 0.874431818181818
+            },
+            "signal_keys": [
+              "verify_score",
+              "ddd_loss_recons"
+            ],
+            "oracle_mode": "baseline_phase3"
+          },
+          "oracle_fused_ec": {
+            "weighted_attack_recall_no_backend_fail": 0.66,
+            "unnecessary_mtd_count": 9,
+            "queue_delay_p95": 9.0,
+            "average_service_cost_per_step": 11.160478,
+            "pred_expected_consequence_served_ratio": 0.7106
+          },
+          "oracle_fused_ec_tuned_config": {
+            "v_weight": 4.0,
+            "clean_penalty": 0.2,
+            "age_bonus": 0.1,
+            "urgency_bonus": 0.0,
+            "fail_penalty": 0.0,
+            "busy_penalty": 0.5,
+            "cost_penalty": 0.0,
+            "admission_score_threshold": 0.1
+          },
+          "oracle_fused_ec_oracle_stats": {
+            "pred_attack_prob": {
+              "count": 302.0,
+              "mean": 0.6960825201234413,
+              "std": 0.3717968604237753,
+              "q50": 0.9292359655181899,
+              "q90": 0.979969455497306,
+              "q95": 0.9823684155288622,
+              "max": 0.9823981686569383
+            },
+            "pred_expected_consequence": {
+              "count": 302.0,
+              "mean": 0.3840245215713629,
+              "std": 0.2876827990476561,
+              "q50": 0.321658520623463,
+              "q90": 0.7566526715640112,
+              "q95": 0.8207244189789936,
+              "max": 0.8841583517912444
+            },
+            "signal_keys": [
+              "verify_score",
+              "ddd_loss_recons"
+            ],
+            "oracle_mode": "fused_ec"
+          },
+          "oracle_protected_ec": {
+            "weighted_attack_recall_no_backend_fail": 0.6536,
+            "unnecessary_mtd_count": 6,
+            "queue_delay_p95": 9.0,
+            "average_service_cost_per_step": 10.308853,
+            "pred_expected_consequence_served_ratio": 0.701
+          },
+          "oracle_protected_ec_tuned_config": {
+            "v_weight": 4.0,
+            "clean_penalty": 0.5,
+            "age_bonus": 0.1,
+            "urgency_bonus": 0.0,
+            "fail_penalty": 0.0,
+            "busy_penalty": 0.5,
+            "cost_penalty": 0.0,
+            "admission_score_threshold": 0.1
+          },
+          "oracle_protected_ec_oracle_stats": {
+            "pred_attack_prob": {
+              "count": 302.0,
+              "mean": 0.6960825201234413,
+              "std": 0.3717968604237753,
+              "q50": 0.9292359655181899,
+              "q90": 0.979969455497306,
+              "q95": 0.9823684155288622,
+              "max": 0.9823981686569383
+            },
+            "pred_expected_consequence": {
+              "count": 302.0,
+              "mean": 0.3713155334469774,
+              "std": 0.28991657765086015,
+              "q50": 0.29665836836659953,
+              "q90": 0.7566526715640112,
+              "q95": 0.8207244189789936,
+              "max": 0.8841583517912444
+            },
+            "pred_fail_prob": {
+              "count": 302.0,
+              "mean": 0.05445514750150512,
+              "std": 0.06991666110013584,
+              "q50": 0.0,
+              "q90": 0.18181818181818182,
+              "q95": 0.18181818181818182,
+              "max": 0.18181818181818182
+            },
+            "signal_keys": [
+              "verify_score",
+              "ddd_loss_recons"
+            ],
+            "oracle_mode": "protected_ec"
+          },
+          "best_threshold_name": "threshold_ddd_fifo",
+          "best_threshold": {
+            "weighted_attack_recall_no_backend_fail": 0.5795,
+            "unnecessary_mtd_count": 0,
+            "queue_delay_p95": 10.0,
+            "average_service_cost_per_step": 7.24161,
+            "pred_expected_consequence_served_ratio": 0.5949
+          },
+          "phase3_proposed": {
+            "weighted_attack_recall_no_backend_fail": 0.6332,
+            "unnecessary_mtd_count": 10,
+            "queue_delay_p95": 9.0,
+            "average_service_cost_per_step": 10.833516,
+            "pred_expected_consequence_served_ratio": 0.689
+          },
+          "topk_expected_consequence": {
+            "weighted_attack_recall_no_backend_fail": 0.6854,
+            "unnecessary_mtd_count": 79,
+            "queue_delay_p95": 4.0,
+            "average_service_cost_per_step": 15.806878,
+            "pred_expected_consequence_served_ratio": 0.7764
+          }
+        },
+        "2": {
+          "phase3_reference": {
+            "weighted_attack_recall_no_backend_fail": 0.9423,
+            "unnecessary_mtd_count": 24,
+            "queue_delay_p95": 2.0,
+            "average_service_cost_per_step": 15.332013,
+            "pred_expected_consequence_served_ratio": 0.9786
+          },
+          "phase3_reference_tuned_config": {
+            "v_weight": 4.0,
+            "clean_penalty": 0.5,
+            "age_bonus": 0.0,
+            "urgency_bonus": 0.0,
+            "fail_penalty": 0.0,
+            "busy_penalty": 0.5,
+            "cost_penalty": 0.0,
+            "admission_score_threshold": 0.1
+          },
+          "phase3_reference_oracle_stats": {
+            "pred_attack_prob": {
+              "count": 302.0,
+              "mean": 0.6861176571772598,
+              "std": 0.3690507288116422,
+              "q50": 0.9428571428571428,
+              "q90": 0.9659090909090909,
+              "q95": 0.9715909090909091,
+              "max": 0.9715909090909091
+            },
+            "pred_expected_consequence": {
+              "count": 302.0,
+              "mean": 0.37880337428506916,
+              "std": 0.2846770431230623,
+              "q50": 0.31345779220779224,
+              "q90": 0.7457875811688313,
+              "q95": 0.8089488636363635,
+              "max": 0.874431818181818
+            },
+            "signal_keys": [
+              "verify_score",
+              "ddd_loss_recons"
+            ],
+            "oracle_mode": "baseline_phase3"
+          },
+          "oracle_fused_ec": {
+            "weighted_attack_recall_no_backend_fail": 0.9587,
+            "unnecessary_mtd_count": 18,
+            "queue_delay_p95": 3.0,
+            "average_service_cost_per_step": 16.074898,
+            "pred_expected_consequence_served_ratio": 0.9754
+          },
+          "oracle_fused_ec_tuned_config": {
+            "v_weight": 4.0,
+            "clean_penalty": 0.2,
+            "age_bonus": 0.0,
+            "urgency_bonus": 0.0,
+            "fail_penalty": 0.0,
+            "busy_penalty": 0.5,
+            "cost_penalty": 0.0,
+            "admission_score_threshold": 0.1
+          },
+          "oracle_fused_ec_oracle_stats": {
+            "pred_attack_prob": {
+              "count": 302.0,
+              "mean": 0.6960825201234413,
+              "std": 0.3717968604237753,
+              "q50": 0.9292359655181899,
+              "q90": 0.979969455497306,
+              "q95": 0.9823684155288622,
+              "max": 0.9823981686569383
+            },
+            "pred_expected_consequence": {
+              "count": 302.0,
+              "mean": 0.3840245215713629,
+              "std": 0.2876827990476561,
+              "q50": 0.321658520623463,
+              "q90": 0.7566526715640112,
+              "q95": 0.8207244189789936,
+              "max": 0.8841583517912444
+            },
+            "signal_keys": [
+              "verify_score",
+              "ddd_loss_recons"
+            ],
+            "oracle_mode": "fused_ec"
+          },
+          "oracle_protected_ec": {
+            "weighted_attack_recall_no_backend_fail": 0.9438,
+            "unnecessary_mtd_count": 15,
+            "queue_delay_p95": 2.0,
+            "average_service_cost_per_step": 15.055004,
+            "pred_expected_consequence_served_ratio": 0.9666
+          },
+          "oracle_protected_ec_tuned_config": {
+            "v_weight": 4.0,
+            "clean_penalty": 0.5,
+            "age_bonus": 0.0,
+            "urgency_bonus": 0.0,
+            "fail_penalty": 0.0,
+            "busy_penalty": 0.5,
+            "cost_penalty": 0.0,
+            "admission_score_threshold": 0.1
+          },
+          "oracle_protected_ec_oracle_stats": {
+            "pred_attack_prob": {
+              "count": 302.0,
+              "mean": 0.6960825201234413,
+              "std": 0.3717968604237753,
+              "q50": 0.9292359655181899,
+              "q90": 0.979969455497306,
+              "q95": 0.9823684155288622,
+              "max": 0.9823981686569383
+            },
+            "pred_expected_consequence": {
+              "count": 302.0,
+              "mean": 0.3713155334469774,
+              "std": 0.28991657765086015,
+              "q50": 0.29665836836659953,
+              "q90": 0.7566526715640112,
+              "q95": 0.8207244189789936,
+              "max": 0.8841583517912444
+            },
+            "pred_fail_prob": {
+              "count": 302.0,
+              "mean": 0.05445514750150512,
+              "std": 0.06991666110013584,
+              "q50": 0.0,
+              "q90": 0.18181818181818182,
+              "q95": 0.18181818181818182,
+              "max": 0.18181818181818182
+            },
+            "signal_keys": [
+              "verify_score",
+              "ddd_loss_recons"
+            ],
+            "oracle_mode": "protected_ec"
+          },
+          "best_threshold_name": "threshold_verify_fifo",
+          "best_threshold": {
+            "weighted_attack_recall_no_backend_fail": 0.8494,
+            "unnecessary_mtd_count": 8,
+            "queue_delay_p95": 2.0,
+            "average_service_cost_per_step": 10.310748,
+            "pred_expected_consequence_served_ratio": 0.8471
+          },
+          "phase3_proposed": {
+            "weighted_attack_recall_no_backend_fail": 0.9423,
+            "unnecessary_mtd_count": 24,
+            "queue_delay_p95": 2.0,
+            "average_service_cost_per_step": 15.332013,
+            "pred_expected_consequence_served_ratio": 0.9786
+          },
+          "topk_expected_consequence": {
+            "weighted_attack_recall_no_backend_fail": 0.9737,
+            "unnecessary_mtd_count": 79,
+            "queue_delay_p95": 1.0,
+            "average_service_cost_per_step": 19.364907,
+            "pred_expected_consequence_served_ratio": 0.9953
+          }
+        }
+      }
+    },
+    {
+      "tag": "cfB_backloaded_0_seed20260521_off1140",
+      "family_tag": "cfB_backloaded",
+      "schedule": "clean:150;att-2-0.20:60;clean:30;att-3-0.35:90;clean:30;att-1-0.15:60;clean:120",
+      "seed_base": 20260521,
+      "start_offset": 1140,
+      "test_bank": "metric/case14/phase3_confirm_blind_v1/banks/mixed_bank_test_cfB_backloaded_0_seed20260521_off1140.npy",
+      "slot_budget_results": {
+        "1": {
+          "phase3_reference": {
+            "weighted_attack_recall_no_backend_fail": 0.7542,
+            "unnecessary_mtd_count": 4,
+            "queue_delay_p95": 7.85,
+            "average_service_cost_per_step": 10.797626,
+            "pred_expected_consequence_served_ratio": 0.7983
+          },
+          "phase3_reference_tuned_config": {
+            "v_weight": 4.0,
+            "clean_penalty": 0.5,
+            "age_bonus": 0.0,
+            "urgency_bonus": 0.0,
+            "fail_penalty": 0.05,
+            "busy_penalty": 0.5,
+            "cost_penalty": 0.0,
+            "admission_score_threshold": 0.0
+          },
+          "phase3_reference_oracle_stats": {
+            "pred_attack_prob": {
+              "count": 246.0,
+              "mean": 0.7390179231337766,
+              "std": 0.33147000181379105,
+              "q50": 0.9261363636363636,
+              "q90": 0.9659090909090909,
+              "q95": 0.9659090909090909,
+              "max": 0.9715909090909091
+            },
+            "pred_expected_consequence": {
+              "count": 246.0,
+              "mean": 0.44461487748785766,
+              "std": 0.3085865859694,
+              "q50": 0.3528586647727272,
+              "q90": 0.8335227272727272,
+              "q95": 0.8335227272727272,
+              "max": 0.8693181818181818
+            },
+            "signal_keys": [
+              "verify_score",
+              "ddd_loss_recons"
+            ],
+            "oracle_mode": "baseline_phase3"
+          },
+          "oracle_fused_ec": {
+            "weighted_attack_recall_no_backend_fail": 0.7622,
+            "unnecessary_mtd_count": 3,
+            "queue_delay_p95": 8.0,
+            "average_service_cost_per_step": 10.969466,
+            "pred_expected_consequence_served_ratio": 0.8049
+          },
+          "oracle_fused_ec_tuned_config": {
+            "v_weight": 4.0,
+            "clean_penalty": 0.2,
+            "age_bonus": 0.1,
+            "urgency_bonus": 0.0,
+            "fail_penalty": 0.0,
+            "busy_penalty": 0.5,
+            "cost_penalty": 0.0,
+            "admission_score_threshold": 0.1
+          },
+          "oracle_fused_ec_oracle_stats": {
+            "pred_attack_prob": {
+              "count": 246.0,
+              "mean": 0.7546535672856723,
+              "std": 0.33936067588229984,
+              "q50": 0.965037037013265,
+              "q90": 0.9798882293269476,
+              "q95": 0.979969455497306,
+              "max": 0.9823981686569383
+            },
+            "pred_expected_consequence": {
+              "count": 246.0,
+              "mean": 0.4567373970833975,
+              "std": 0.3214259664514982,
+              "q50": 0.362458343641136,
+              "q90": 0.8685854977519728,
+              "q95": 0.8685854977519728,
+              "max": 0.8819725099475753
+            },
+            "signal_keys": [
+              "verify_score",
+              "ddd_loss_recons"
+            ],
+            "oracle_mode": "fused_ec"
+          },
+          "oracle_protected_ec": {
+            "weighted_attack_recall_no_backend_fail": 0.7586,
+            "unnecessary_mtd_count": 3,
+            "queue_delay_p95": 8.0,
+            "average_service_cost_per_step": 10.880777,
+            "pred_expected_consequence_served_ratio": 0.8045
+          },
+          "oracle_protected_ec_tuned_config": {
+            "v_weight": 4.0,
+            "clean_penalty": 0.5,
+            "age_bonus": 0.1,
+            "urgency_bonus": 0.0,
+            "fail_penalty": 0.0,
+            "busy_penalty": 0.5,
+            "cost_penalty": 0.0,
+            "admission_score_threshold": 0.1
+          },
+          "oracle_protected_ec_oracle_stats": {
+            "pred_attack_prob": {
+              "count": 246.0,
+              "mean": 0.7546535672856723,
+              "std": 0.33936067588229984,
+              "q50": 0.965037037013265,
+              "q90": 0.9798882293269476,
+              "q95": 0.979969455497306,
+              "max": 0.9823981686569383
+            },
+            "pred_expected_consequence": {
+              "count": 246.0,
+              "mean": 0.44512308956637237,
+              "std": 0.32693022020834045,
+              "q50": 0.3514718837584699,
+              "q90": 0.8685854977519728,
+              "q95": 0.8685854977519728,
+              "max": 0.8819725099475753
+            },
+            "pred_fail_prob": {
+              "count": 246.0,
+              "mean": 0.047597930524759795,
+              "std": 0.07198513905191171,
+              "q50": 0.0,
+              "q90": 0.18181818181818182,
+              "q95": 0.18181818181818182,
+              "max": 0.18181818181818182
+            },
+            "signal_keys": [
+              "verify_score",
+              "ddd_loss_recons"
+            ],
+            "oracle_mode": "protected_ec"
+          },
+          "best_threshold_name": "threshold_ddd_fifo",
+          "best_threshold": {
+            "weighted_attack_recall_no_backend_fail": 0.6672,
+            "unnecessary_mtd_count": 0,
+            "queue_delay_p95": 10.0,
+            "average_service_cost_per_step": 5.652027,
+            "pred_expected_consequence_served_ratio": 0.6695
+          },
+          "phase3_proposed": {
+            "weighted_attack_recall_no_backend_fail": 0.7542,
+            "unnecessary_mtd_count": 4,
+            "queue_delay_p95": 7.85,
+            "average_service_cost_per_step": 10.797626,
+            "pred_expected_consequence_served_ratio": 0.7983
+          },
+          "topk_expected_consequence": {
+            "weighted_attack_recall_no_backend_fail": 0.757,
+            "unnecessary_mtd_count": 49,
+            "queue_delay_p95": 4.7,
+            "average_service_cost_per_step": 14.519452,
+            "pred_expected_consequence_served_ratio": 0.8216
+          }
+        },
+        "2": {
+          "phase3_reference": {
+            "weighted_attack_recall_no_backend_fail": 0.98,
+            "unnecessary_mtd_count": 9,
+            "queue_delay_p95": 0.0,
+            "average_service_cost_per_step": 13.158653,
+            "pred_expected_consequence_served_ratio": 0.993
+          },
+          "phase3_reference_tuned_config": {
+            "v_weight": 4.0,
+            "clean_penalty": 0.5,
+            "age_bonus": 0.0,
+            "urgency_bonus": 0.0,
+            "fail_penalty": 0.0,
+            "busy_penalty": 0.5,
+            "cost_penalty": 0.0,
+            "admission_score_threshold": 0.1
+          },
+          "phase3_reference_oracle_stats": {
+            "pred_attack_prob": {
+              "count": 246.0,
+              "mean": 0.7390179231337766,
+              "std": 0.33147000181379105,
+              "q50": 0.9261363636363636,
+              "q90": 0.9659090909090909,
+              "q95": 0.9659090909090909,
+              "max": 0.9715909090909091
+            },
+            "pred_expected_consequence": {
+              "count": 246.0,
+              "mean": 0.44461487748785766,
+              "std": 0.3085865859694,
+              "q50": 0.3528586647727272,
+              "q90": 0.8335227272727272,
+              "q95": 0.8335227272727272,
+              "max": 0.8693181818181818
+            },
+            "signal_keys": [
+              "verify_score",
+              "ddd_loss_recons"
+            ],
+            "oracle_mode": "baseline_phase3"
+          },
+          "oracle_fused_ec": {
+            "weighted_attack_recall_no_backend_fail": 0.9824,
+            "unnecessary_mtd_count": 5,
+            "queue_delay_p95": 0.0,
+            "average_service_cost_per_step": 12.998735,
+            "pred_expected_consequence_served_ratio": 0.9864
+          },
+          "oracle_fused_ec_tuned_config": {
+            "v_weight": 4.0,
+            "clean_penalty": 0.2,
+            "age_bonus": 0.0,
+            "urgency_bonus": 0.0,
+            "fail_penalty": 0.0,
+            "busy_penalty": 0.5,
+            "cost_penalty": 0.0,
+            "admission_score_threshold": 0.1
+          },
+          "oracle_fused_ec_oracle_stats": {
+            "pred_attack_prob": {
+              "count": 246.0,
+              "mean": 0.7546535672856723,
+              "std": 0.33936067588229984,
+              "q50": 0.965037037013265,
+              "q90": 0.9798882293269476,
+              "q95": 0.979969455497306,
+              "max": 0.9823981686569383
+            },
+            "pred_expected_consequence": {
+              "count": 246.0,
+              "mean": 0.4567373970833975,
+              "std": 0.3214259664514982,
+              "q50": 0.362458343641136,
+              "q90": 0.8685854977519728,
+              "q95": 0.8685854977519728,
+              "max": 0.8819725099475753
+            },
+            "signal_keys": [
+              "verify_score",
+              "ddd_loss_recons"
+            ],
+            "oracle_mode": "fused_ec"
+          },
+          "oracle_protected_ec": {
+            "weighted_attack_recall_no_backend_fail": 0.98,
+            "unnecessary_mtd_count": 5,
+            "queue_delay_p95": 0.0,
+            "average_service_cost_per_step": 12.933454,
+            "pred_expected_consequence_served_ratio": 0.9861
+          },
+          "oracle_protected_ec_tuned_config": {
+            "v_weight": 4.0,
+            "clean_penalty": 0.5,
+            "age_bonus": 0.0,
+            "urgency_bonus": 0.0,
+            "fail_penalty": 0.0,
+            "busy_penalty": 0.5,
+            "cost_penalty": 0.0,
+            "admission_score_threshold": 0.1
+          },
+          "oracle_protected_ec_oracle_stats": {
+            "pred_attack_prob": {
+              "count": 246.0,
+              "mean": 0.7546535672856723,
+              "std": 0.33936067588229984,
+              "q50": 0.965037037013265,
+              "q90": 0.9798882293269476,
+              "q95": 0.979969455497306,
+              "max": 0.9823981686569383
+            },
+            "pred_expected_consequence": {
+              "count": 246.0,
+              "mean": 0.44512308956637237,
+              "std": 0.32693022020834045,
+              "q50": 0.3514718837584699,
+              "q90": 0.8685854977519728,
+              "q95": 0.8685854977519728,
+              "max": 0.8819725099475753
+            },
+            "pred_fail_prob": {
+              "count": 246.0,
+              "mean": 0.047597930524759795,
+              "std": 0.07198513905191171,
+              "q50": 0.0,
+              "q90": 0.18181818181818182,
+              "q95": 0.18181818181818182,
+              "max": 0.18181818181818182
+            },
+            "signal_keys": [
+              "verify_score",
+              "ddd_loss_recons"
+            ],
+            "oracle_mode": "protected_ec"
+          },
+          "best_threshold_name": "threshold_verify_fifo",
+          "best_threshold": {
+            "weighted_attack_recall_no_backend_fail": 0.8831,
+            "unnecessary_mtd_count": 3,
+            "queue_delay_p95": 0.15,
+            "average_service_cost_per_step": 8.150477,
+            "pred_expected_consequence_served_ratio": 0.8532
+          },
+          "phase3_proposed": {
+            "weighted_attack_recall_no_backend_fail": 0.98,
+            "unnecessary_mtd_count": 9,
+            "queue_delay_p95": 0.0,
+            "average_service_cost_per_step": 13.158653,
+            "pred_expected_consequence_served_ratio": 0.993
+          },
+          "topk_expected_consequence": {
+            "weighted_attack_recall_no_backend_fail": 0.9836,
+            "unnecessary_mtd_count": 49,
+            "queue_delay_p95": 0.0,
+            "average_service_cost_per_step": 16.228582,
+            "pred_expected_consequence_served_ratio": 1.0
+          }
+        }
+      }
+    },
+    {
+      "tag": "cfB_backloaded_1_seed20260522_off1200",
+      "family_tag": "cfB_backloaded",
+      "schedule": "clean:150;att-2-0.20:60;clean:30;att-3-0.35:90;clean:30;att-1-0.15:60;clean:120",
+      "seed_base": 20260522,
+      "start_offset": 1200,
+      "test_bank": "metric/case14/phase3_confirm_blind_v1/banks/mixed_bank_test_cfB_backloaded_1_seed20260522_off1200.npy",
+      "slot_budget_results": {
+        "1": {
+          "phase3_reference": {
+            "weighted_attack_recall_no_backend_fail": 0.7102,
+            "unnecessary_mtd_count": 7,
+            "queue_delay_p95": 6.0,
+            "average_service_cost_per_step": 10.347451,
+            "pred_expected_consequence_served_ratio": 0.753
+          },
+          "phase3_reference_tuned_config": {
+            "v_weight": 4.0,
+            "clean_penalty": 0.5,
+            "age_bonus": 0.0,
+            "urgency_bonus": 0.0,
+            "fail_penalty": 0.05,
+            "busy_penalty": 0.5,
+            "cost_penalty": 0.0,
+            "admission_score_threshold": 0.0
+          },
+          "phase3_reference_oracle_stats": {
+            "pred_attack_prob": {
+              "count": 247.0,
+              "mean": 0.7195637257479363,
+              "std": 0.3478287088841848,
+              "q50": 0.9261363636363636,
+              "q90": 0.9659090909090909,
+              "q95": 0.9659090909090909,
+              "max": 0.9715909090909091
+            },
+            "pred_expected_consequence": {
+              "count": 247.0,
+              "mean": 0.448303463195639,
+              "std": 0.3146736891312681,
+              "q50": 0.46915584415584416,
+              "q90": 0.8335227272727272,
+              "q95": 0.8335227272727272,
+              "max": 0.8693181818181818
+            },
+            "signal_keys": [
+              "verify_score",
+              "ddd_loss_recons"
+            ],
+            "oracle_mode": "baseline_phase3"
+          },
+          "oracle_fused_ec": {
+            "weighted_attack_recall_no_backend_fail": 0.7182,
+            "unnecessary_mtd_count": 7,
+            "queue_delay_p95": 6.0,
+            "average_service_cost_per_step": 10.878784,
+            "pred_expected_consequence_served_ratio": 0.7574
+          },
+          "oracle_fused_ec_tuned_config": {
+            "v_weight": 4.0,
+            "clean_penalty": 0.2,
+            "age_bonus": 0.1,
+            "urgency_bonus": 0.0,
+            "fail_penalty": 0.0,
+            "busy_penalty": 0.5,
+            "cost_penalty": 0.0,
+            "admission_score_threshold": 0.1
+          },
+          "oracle_fused_ec_oracle_stats": {
+            "pred_attack_prob": {
+              "count": 247.0,
+              "mean": 0.7415032647298821,
+              "std": 0.3539803649135027,
+              "q50": 0.9650949975021921,
+              "q90": 0.979969455497306,
+              "q95": 0.979969455497306,
+              "max": 0.9823981686569383
+            },
+            "pred_expected_consequence": {
+              "count": 247.0,
+              "mean": 0.46229580087858496,
+              "std": 0.32464136994709886,
+              "q50": 0.4759687592741805,
+              "q90": 0.8685854977519728,
+              "q95": 0.8685854977519728,
+              "max": 0.8819725099475753
+            },
+            "signal_keys": [
+              "verify_score",
+              "ddd_loss_recons"
+            ],
+            "oracle_mode": "fused_ec"
+          },
+          "oracle_protected_ec": {
+            "weighted_attack_recall_no_backend_fail": 0.717,
+            "unnecessary_mtd_count": 5,
+            "queue_delay_p95": 7.0,
+            "average_service_cost_per_step": 10.624603,
+            "pred_expected_consequence_served_ratio": 0.7573
+          },
+          "oracle_protected_ec_tuned_config": {
+            "v_weight": 4.0,
+            "clean_penalty": 0.5,
+            "age_bonus": 0.1,
+            "urgency_bonus": 0.0,
+            "fail_penalty": 0.0,
+            "busy_penalty": 0.5,
+            "cost_penalty": 0.0,
+            "admission_score_threshold": 0.1
+          },
+          "oracle_protected_ec_oracle_stats": {
+            "pred_attack_prob": {
+              "count": 247.0,
+              "mean": 0.7415032647298821,
+              "std": 0.3539803649135027,
+              "q50": 0.9650949975021921,
+              "q90": 0.979969455497306,
+              "q95": 0.979969455497306,
+              "max": 0.9823981686569383
+            },
+            "pred_expected_consequence": {
+              "count": 247.0,
+              "mean": 0.449272132873993,
+              "std": 0.3287980489704046,
+              "q50": 0.4326988720674368,
+              "q90": 0.8685854977519728,
+              "q95": 0.8685854977519728,
+              "max": 0.8819725099475753
+            },
+            "pred_fail_prob": {
+              "count": 247.0,
+              "mean": 0.051417004048582994,
+              "std": 0.06558545416266355,
+              "q50": 0.0,
+              "q90": 0.18181818181818182,
+              "q95": 0.18181818181818182,
+              "max": 0.18181818181818182
+            },
+            "signal_keys": [
+              "verify_score",
+              "ddd_loss_recons"
+            ],
+            "oracle_mode": "protected_ec"
+          },
+          "best_threshold_name": "threshold_ddd_fifo",
+          "best_threshold": {
+            "weighted_attack_recall_no_backend_fail": 0.6178,
+            "unnecessary_mtd_count": 0,
+            "queue_delay_p95": 10.0,
+            "average_service_cost_per_step": 6.655903,
+            "pred_expected_consequence_served_ratio": 0.6144
+          },
+          "phase3_proposed": {
+            "weighted_attack_recall_no_backend_fail": 0.7102,
+            "unnecessary_mtd_count": 7,
+            "queue_delay_p95": 6.0,
+            "average_service_cost_per_step": 10.347451,
+            "pred_expected_consequence_served_ratio": 0.753
+          },
+          "topk_expected_consequence": {
+            "weighted_attack_recall_no_backend_fail": 0.711,
+            "unnecessary_mtd_count": 54,
+            "queue_delay_p95": 5.0,
+            "average_service_cost_per_step": 12.781409,
+            "pred_expected_consequence_served_ratio": 0.7648
+          }
+        },
+        "2": {
+          "phase3_reference": {
+            "weighted_attack_recall_no_backend_fail": 0.992,
+            "unnecessary_mtd_count": 8,
+            "queue_delay_p95": 0.25,
+            "average_service_cost_per_step": 13.220691,
+            "pred_expected_consequence_served_ratio": 0.9887
+          },
+          "phase3_reference_tuned_config": {
+            "v_weight": 4.0,
+            "clean_penalty": 0.5,
+            "age_bonus": 0.0,
+            "urgency_bonus": 0.0,
+            "fail_penalty": 0.0,
+            "busy_penalty": 0.5,
+            "cost_penalty": 0.0,
+            "admission_score_threshold": 0.1
+          },
+          "phase3_reference_oracle_stats": {
+            "pred_attack_prob": {
+              "count": 247.0,
+              "mean": 0.7195637257479363,
+              "std": 0.3478287088841848,
+              "q50": 0.9261363636363636,
+              "q90": 0.9659090909090909,
+              "q95": 0.9659090909090909,
+              "max": 0.9715909090909091
+            },
+            "pred_expected_consequence": {
+              "count": 247.0,
+              "mean": 0.448303463195639,
+              "std": 0.3146736891312681,
+              "q50": 0.46915584415584416,
+              "q90": 0.8335227272727272,
+              "q95": 0.8335227272727272,
+              "max": 0.8693181818181818
+            },
+            "signal_keys": [
+              "verify_score",
+              "ddd_loss_recons"
+            ],
+            "oracle_mode": "baseline_phase3"
+          },
+          "oracle_fused_ec": {
+            "weighted_attack_recall_no_backend_fail": 0.9956,
+            "unnecessary_mtd_count": 9,
+            "queue_delay_p95": 1.0,
+            "average_service_cost_per_step": 13.291525,
+            "pred_expected_consequence_served_ratio": 0.9898
+          },
+          "oracle_fused_ec_tuned_config": {
+            "v_weight": 4.0,
+            "clean_penalty": 0.2,
+            "age_bonus": 0.0,
+            "urgency_bonus": 0.0,
+            "fail_penalty": 0.0,
+            "busy_penalty": 0.5,
+            "cost_penalty": 0.0,
+            "admission_score_threshold": 0.1
+          },
+          "oracle_fused_ec_oracle_stats": {
+            "pred_attack_prob": {
+              "count": 247.0,
+              "mean": 0.7415032647298821,
+              "std": 0.3539803649135027,
+              "q50": 0.9650949975021921,
+              "q90": 0.979969455497306,
+              "q95": 0.979969455497306,
+              "max": 0.9823981686569383
+            },
+            "pred_expected_consequence": {
+              "count": 247.0,
+              "mean": 0.46229580087858496,
+              "std": 0.32464136994709886,
+              "q50": 0.4759687592741805,
+              "q90": 0.8685854977519728,
+              "q95": 0.8685854977519728,
+              "max": 0.8819725099475753
+            },
+            "signal_keys": [
+              "verify_score",
+              "ddd_loss_recons"
+            ],
+            "oracle_mode": "fused_ec"
+          },
+          "oracle_protected_ec": {
+            "weighted_attack_recall_no_backend_fail": 0.992,
+            "unnecessary_mtd_count": 8,
+            "queue_delay_p95": 1.0,
+            "average_service_cost_per_step": 13.220691,
+            "pred_expected_consequence_served_ratio": 0.9887
+          },
+          "oracle_protected_ec_tuned_config": {
+            "v_weight": 4.0,
+            "clean_penalty": 0.5,
+            "age_bonus": 0.0,
+            "urgency_bonus": 0.0,
+            "fail_penalty": 0.0,
+            "busy_penalty": 0.5,
+            "cost_penalty": 0.0,
+            "admission_score_threshold": 0.1
+          },
+          "oracle_protected_ec_oracle_stats": {
+            "pred_attack_prob": {
+              "count": 247.0,
+              "mean": 0.7415032647298821,
+              "std": 0.3539803649135027,
+              "q50": 0.9650949975021921,
+              "q90": 0.979969455497306,
+              "q95": 0.979969455497306,
+              "max": 0.9823981686569383
+            },
+            "pred_expected_consequence": {
+              "count": 247.0,
+              "mean": 0.449272132873993,
+              "std": 0.3287980489704046,
+              "q50": 0.4326988720674368,
+              "q90": 0.8685854977519728,
+              "q95": 0.8685854977519728,
+              "max": 0.8819725099475753
+            },
+            "pred_fail_prob": {
+              "count": 247.0,
+              "mean": 0.051417004048582994,
+              "std": 0.06558545416266355,
+              "q50": 0.0,
+              "q90": 0.18181818181818182,
+              "q95": 0.18181818181818182,
+              "max": 0.18181818181818182
+            },
+            "signal_keys": [
+              "verify_score",
+              "ddd_loss_recons"
+            ],
+            "oracle_mode": "protected_ec"
+          },
+          "best_threshold_name": "threshold_verify_fifo",
+          "best_threshold": {
+            "weighted_attack_recall_no_backend_fail": 0.914,
+            "unnecessary_mtd_count": 3,
+            "queue_delay_p95": 1.0,
+            "average_service_cost_per_step": 8.653164,
+            "pred_expected_consequence_served_ratio": 0.8796
+          },
+          "phase3_proposed": {
+            "weighted_attack_recall_no_backend_fail": 0.992,
+            "unnecessary_mtd_count": 8,
+            "queue_delay_p95": 0.25,
+            "average_service_cost_per_step": 13.220691,
+            "pred_expected_consequence_served_ratio": 0.9887
+          },
+          "topk_expected_consequence": {
+            "weighted_attack_recall_no_backend_fail": 0.9956,
+            "unnecessary_mtd_count": 56,
+            "queue_delay_p95": 0.0,
+            "average_service_cost_per_step": 15.937879,
+            "pred_expected_consequence_served_ratio": 1.0
+          }
+        }
+      }
+    }
+  ],
+  "slot_budget_aggregates": {
+    "1": {
+      "policy_stats": {
+        "phase3_reference": {
+          "weighted_attack_recall_no_backend_fail": {
+            "mean": 0.6804,
+            "std": 0.054183207730809,
+            "min": 0.624,
+            "max": 0.7542
+          },
+          "unnecessary_mtd_count": {
+            "mean": 6.75,
+            "std": 2.165063509461097,
+            "min": 4.0,
+            "max": 10.0
+          },
+          "queue_delay_p95": {
+            "mean": 7.7125,
+            "std": 1.083036818395386,
+            "min": 6.0,
+            "max": 9.0
+          },
+          "average_service_cost_per_step": {
+            "mean": 10.224711,
+            "std": 0.777102973300514,
+            "min": 8.920251,
+            "max": 10.833516
+          },
+          "pred_expected_consequence_served_ratio": {
+            "mean": 0.7363,
+            "std": 0.04285481303191045,
+            "min": 0.689,
+            "max": 0.7983
+          }
+        },
+        "oracle_fused_ec": {
+          "weighted_attack_recall_no_backend_fail": {
+            "mean": 0.692075,
+            "std": 0.05183451432202291,
+            "min": 0.6279,
+            "max": 0.7622
+          },
+          "unnecessary_mtd_count": {
+            "mean": 6.0,
+            "std": 2.23606797749979,
+            "min": 3.0,
+            "max": 9.0
+          },
+          "queue_delay_p95": {
+            "mean": 7.75,
+            "std": 1.0897247358851685,
+            "min": 6.0,
+            "max": 9.0
+          },
+          "average_service_cost_per_step": {
+            "mean": 10.61361675,
+            "std": 0.6818977241666727,
+            "min": 9.445739,
+            "max": 11.160478
+          },
+          "pred_expected_consequence_served_ratio": {
+            "mean": 0.74475,
+            "std": 0.04011885466959393,
+            "min": 0.7061,
+            "max": 0.8049
+          }
+        },
+        "oracle_protected_ec": {
+          "weighted_attack_recall_no_backend_fail": {
+            "mean": 0.6884,
+            "std": 0.052566719509590895,
+            "min": 0.6244,
+            "max": 0.7586
+          },
+          "unnecessary_mtd_count": {
+            "mean": 4.25,
+            "std": 1.299038105676658,
+            "min": 3.0,
+            "max": 6.0
+          },
+          "queue_delay_p95": {
+            "mean": 8.25,
+            "std": 0.82915619758885,
+            "min": 7.0,
+            "max": 9.0
+          },
+          "average_service_cost_per_step": {
+            "mean": 10.144974,
+            "std": 0.8217063334628741,
+            "min": 8.765663,
+            "max": 10.880777
+          },
+          "pred_expected_consequence_served_ratio": {
+            "mean": 0.74015,
+            "std": 0.04404909193161649,
+            "min": 0.6978,
+            "max": 0.8045
+          }
+        },
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": {
+            "mean": 0.6041500000000001,
+            "std": 0.04323901594624928,
+            "min": 0.5521,
+            "max": 0.6672
+          },
+          "unnecessary_mtd_count": {
+            "mean": 0.5,
+            "std": 0.8660254037844386,
+            "min": 0.0,
+            "max": 2.0
+          },
+          "queue_delay_p95": {
+            "mean": 10.0,
+            "std": 0.0,
+            "min": 10.0,
+            "max": 10.0
+          },
+          "average_service_cost_per_step": {
+            "mean": 6.521588749999999,
+            "std": 0.5685156976629469,
+            "min": 5.652027,
+            "max": 7.24161
+          },
+          "pred_expected_consequence_served_ratio": {
+            "mean": 0.61085,
+            "std": 0.038229210036306006,
+            "min": 0.5646,
+            "max": 0.6695
+          }
+        },
+        "phase3_proposed": {
+          "weighted_attack_recall_no_backend_fail": {
+            "mean": 0.6804,
+            "std": 0.054183207730809,
+            "min": 0.624,
+            "max": 0.7542
+          },
+          "unnecessary_mtd_count": {
+            "mean": 6.75,
+            "std": 2.165063509461097,
+            "min": 4.0,
+            "max": 10.0
+          },
+          "queue_delay_p95": {
+            "mean": 7.7125,
+            "std": 1.083036818395386,
+            "min": 6.0,
+            "max": 9.0
+          },
+          "average_service_cost_per_step": {
+            "mean": 10.224711,
+            "std": 0.777102973300514,
+            "min": 8.920251,
+            "max": 10.833516
+          },
+          "pred_expected_consequence_served_ratio": {
+            "mean": 0.7363,
+            "std": 0.04285481303191045,
+            "min": 0.689,
+            "max": 0.7983
+          }
+        }
+      },
+      "paired_stats": {
+        "fused_vs_phase3": {
+          "delta_recall": {
+            "mean": 0.011674999999999991,
+            "std": 0.008891393310387324,
+            "min": 0.0039000000000000146,
+            "max": 0.026800000000000046
+          },
+          "delta_unnecessary": {
+            "mean": -0.75,
+            "std": 0.4330127018922193,
+            "min": -1.0,
+            "max": 0.0
+          },
+          "delta_delay_p95": {
+            "mean": 0.03750000000000009,
+            "std": 0.06495190528383306,
+            "min": 0.0,
+            "max": 0.15000000000000036
+          },
+          "delta_cost_per_step": {
+            "mean": 0.38890575000000016,
+            "std": 0.1499123081544251,
+            "min": 0.17184000000000133,
+            "max": 0.531333
+          },
+          "delta_pred_expected_consequence_served_ratio": {
+            "mean": 0.008449999999999985,
+            "std": 0.007831187649392692,
+            "min": 0.0011999999999999789,
+            "max": 0.021600000000000064
+          },
+          "wins_on_recall": 4,
+          "ties_on_recall": 0,
+          "lower_unnecessary": 3,
+          "lower_delay": 0,
+          "lower_cost": 0,
+          "higher_served_ratio": 4
+        },
+        "protected_vs_phase3": {
+          "delta_recall": {
+            "mean": 0.00799999999999998,
+            "std": 0.007515317691222369,
+            "min": 0.00039999999999995595,
+            "max": 0.020399999999999974
+          },
+          "delta_unnecessary": {
+            "mean": -2.5,
+            "std": 1.118033988749895,
+            "min": -4.0,
+            "max": -1.0
+          },
+          "delta_delay_p95": {
+            "mean": 0.5375000000000001,
+            "std": 0.4655306112384017,
+            "min": 0.0,
+            "max": 1.0
+          },
+          "delta_cost_per_step": {
+            "mean": -0.07973699999999972,
+            "std": 0.2989414978478236,
+            "min": -0.5246630000000003,
+            "max": 0.27715200000000095
+          },
+          "delta_pred_expected_consequence_served_ratio": {
+            "mean": 0.0038499999999999923,
+            "std": 0.0069291052813476575,
+            "min": -0.007099999999999995,
+            "max": 0.01200000000000001
+          },
+          "wins_on_recall": 4,
+          "ties_on_recall": 0,
+          "lower_unnecessary": 4,
+          "lower_delay": 0,
+          "lower_cost": 2,
+          "higher_served_ratio": 3
+        },
+        "protected_vs_fused": {
+          "delta_recall": {
+            "mean": -0.0036750000000000116,
+            "std": 0.0018430613120566884,
+            "min": -0.006400000000000072,
+            "max": -0.0011999999999999789
+          },
+          "delta_unnecessary": {
+            "mean": -1.75,
+            "std": 1.0897247358851685,
+            "min": -3.0,
+            "max": 0.0
+          },
+          "delta_delay_p95": {
+            "mean": 0.5,
+            "std": 0.5,
+            "min": 0.0,
+            "max": 1.0
+          },
+          "delta_cost_per_step": {
+            "mean": -0.4686427499999999,
+            "std": 0.30892479561082103,
+            "min": -0.8516250000000003,
+            "max": -0.08868900000000046
+          },
+          "delta_pred_expected_consequence_served_ratio": {
+            "mean": -0.004599999999999993,
+            "std": 0.004375499971431859,
+            "min": -0.009600000000000053,
+            "max": -9.999999999998899e-05
+          },
+          "wins_on_recall": 0,
+          "ties_on_recall": 0,
+          "lower_unnecessary": 3,
+          "lower_delay": 0,
+          "lower_cost": 4,
+          "higher_served_ratio": 0
+        },
+        "protected_vs_best_threshold": {
+          "delta_recall": {
+            "mean": 0.08424999999999996,
+            "std": 0.011406686635478357,
+            "min": 0.07229999999999992,
+            "max": 0.09919999999999995
+          },
+          "delta_unnecessary": {
+            "mean": 3.75,
+            "std": 1.920286436967152,
+            "min": 1.0,
+            "max": 6.0
+          },
+          "delta_delay_p95": {
+            "mean": -1.75,
+            "std": 0.82915619758885,
+            "min": -3.0,
+            "max": -1.0
+          },
+          "delta_cost_per_step": {
+            "mean": 3.6233852499999997,
+            "std": 1.1124822022152476,
+            "min": 2.228848,
+            "max": 5.22875
+          },
+          "delta_pred_expected_consequence_served_ratio": {
+            "mean": 0.1293,
+            "std": 0.013882542994711039,
+            "min": 0.10609999999999997,
+            "max": 0.14290000000000003
+          },
+          "wins_on_recall": 4,
+          "ties_on_recall": 0,
+          "lower_unnecessary": 0,
+          "lower_delay": 4,
+          "lower_cost": 0,
+          "higher_served_ratio": 4
+        },
+        "protected_vs_phase3_proposed": {
+          "delta_recall": {
+            "mean": 0.00799999999999998,
+            "std": 0.007515317691222369,
+            "min": 0.00039999999999995595,
+            "max": 0.020399999999999974
+          },
+          "delta_unnecessary": {
+            "mean": -2.5,
+            "std": 1.118033988749895,
+            "min": -4.0,
+            "max": -1.0
+          },
+          "delta_delay_p95": {
+            "mean": 0.5375000000000001,
+            "std": 0.4655306112384017,
+            "min": 0.0,
+            "max": 1.0
+          },
+          "delta_cost_per_step": {
+            "mean": -0.07973699999999972,
+            "std": 0.2989414978478236,
+            "min": -0.5246630000000003,
+            "max": 0.27715200000000095
+          },
+          "delta_pred_expected_consequence_served_ratio": {
+            "mean": 0.0038499999999999923,
+            "std": 0.0069291052813476575,
+            "min": -0.007099999999999995,
+            "max": 0.01200000000000001
+          },
+          "wins_on_recall": 4,
+          "ties_on_recall": 0,
+          "lower_unnecessary": 4,
+          "lower_delay": 0,
+          "lower_cost": 2,
+          "higher_served_ratio": 3
+        }
+      }
+    },
+    "2": {
+      "policy_stats": {
+        "phase3_reference": {
+          "weighted_attack_recall_no_backend_fail": {
+            "mean": 0.964875,
+            "std": 0.0215712047646857,
+            "min": 0.9423,
+            "max": 0.992
+          },
+          "unnecessary_mtd_count": {
+            "mean": 12.25,
+            "std": 6.796138609534093,
+            "min": 8.0,
+            "max": 24.0
+          },
+          "queue_delay_p95": {
+            "mean": 1.0625,
+            "std": 0.9416574483324602,
+            "min": 0.0,
+            "max": 2.0
+          },
+          "average_service_cost_per_step": {
+            "mean": 13.735946,
+            "std": 0.9219159634592516,
+            "min": 13.158653,
+            "max": 15.332013
+          },
+          "pred_expected_consequence_served_ratio": {
+            "mean": 0.98655,
+            "std": 0.0052404675363940485,
+            "min": 0.9786,
+            "max": 0.993
+          }
+        },
+        "oracle_fused_ec": {
+          "weighted_attack_recall_no_backend_fail": {
+            "mean": 0.974875,
+            "std": 0.014946466973837018,
+            "min": 0.9587,
+            "max": 0.9956
+          },
+          "unnecessary_mtd_count": {
+            "mean": 10.0,
+            "std": 4.847679857416329,
+            "min": 5.0,
+            "max": 18.0
+          },
+          "queue_delay_p95": {
+            "mean": 1.5,
+            "std": 1.118033988749895,
+            "min": 0.0,
+            "max": 3.0
+          },
+          "average_service_cost_per_step": {
+            "mean": 14.093709500000001,
+            "std": 1.201523819686173,
+            "min": 12.998735,
+            "max": 16.074898
+          },
+          "pred_expected_consequence_served_ratio": {
+            "mean": 0.9858,
+            "std": 0.006288083968904989,
+            "min": 0.9754,
+            "max": 0.9916
+          }
+        },
+        "oracle_protected_ec": {
+          "weighted_attack_recall_no_backend_fail": {
+            "mean": 0.9671,
+            "std": 0.019618613610548532,
+            "min": 0.9438,
+            "max": 0.992
+          },
+          "unnecessary_mtd_count": {
+            "mean": 8.75,
+            "std": 3.766629793329841,
+            "min": 5.0,
+            "max": 15.0
+          },
+          "queue_delay_p95": {
+            "mean": 1.25,
+            "std": 0.82915619758885,
+            "min": 0.0,
+            "max": 2.0
+          },
+          "average_service_cost_per_step": {
+            "mean": 13.721996,
+            "std": 0.8142294499669613,
+            "min": 12.933454,
+            "max": 15.055004
+          },
+          "pred_expected_consequence_served_ratio": {
+            "mean": 0.9821000000000001,
+            "std": 0.008997499652681288,
+            "min": 0.9666,
+            "max": 0.9887
+          }
+        },
+        "best_threshold": {
+          "weighted_attack_recall_no_backend_fail": {
+            "mean": 0.8742250000000001,
+            "std": 0.026667993456576364,
+            "min": 0.8494,
+            "max": 0.914
+          },
+          "unnecessary_mtd_count": {
+            "mean": 4.0,
+            "std": 2.345207879911715,
+            "min": 2.0,
+            "max": 8.0
+          },
+          "queue_delay_p95": {
+            "mean": 1.5375,
+            "std": 1.0685124004895779,
+            "min": 0.15,
+            "max": 3.0
+          },
+          "average_service_cost_per_step": {
+            "mean": 9.213546000000001,
+            "std": 0.8551219099476401,
+            "min": 8.150477,
+            "max": 10.310748
+          },
+          "pred_expected_consequence_served_ratio": {
+            "mean": 0.8594999999999999,
+            "std": 0.012241527682442287,
+            "min": 0.8471,
+            "max": 0.8796
+          }
+        },
+        "phase3_proposed": {
+          "weighted_attack_recall_no_backend_fail": {
+            "mean": 0.964875,
+            "std": 0.0215712047646857,
+            "min": 0.9423,
+            "max": 0.992
+          },
+          "unnecessary_mtd_count": {
+            "mean": 12.25,
+            "std": 6.796138609534093,
+            "min": 8.0,
+            "max": 24.0
+          },
+          "queue_delay_p95": {
+            "mean": 1.0625,
+            "std": 0.9416574483324602,
+            "min": 0.0,
+            "max": 2.0
+          },
+          "average_service_cost_per_step": {
+            "mean": 13.735946,
+            "std": 0.9219159634592516,
+            "min": 13.158653,
+            "max": 15.332013
+          },
+          "pred_expected_consequence_served_ratio": {
+            "mean": 0.98655,
+            "std": 0.0052404675363940485,
+            "min": 0.9786,
+            "max": 0.993
+          }
+        }
+      },
+      "paired_stats": {
+        "fused_vs_phase3": {
+          "delta_recall": {
+            "mean": 0.010000000000000009,
+            "std": 0.0070256672281000685,
+            "min": 0.0024000000000000687,
+            "max": 0.01759999999999995
+          },
+          "delta_unnecessary": {
+            "mean": -2.25,
+            "std": 2.8613807855648994,
+            "min": -6.0,
+            "max": 1.0
+          },
+          "delta_delay_p95": {
+            "mean": 0.4375,
+            "std": 0.44633927678392815,
+            "min": 0.0,
+            "max": 1.0
+          },
+          "delta_cost_per_step": {
+            "mean": 0.35776350000000035,
+            "std": 0.4106740446464204,
+            "min": -0.15991799999999934,
+            "max": 0.777253
+          },
+          "delta_pred_expected_consequence_served_ratio": {
+            "mean": -0.0007499999999999729,
+            "std": 0.0046165463281548375,
+            "min": -0.006599999999999939,
+            "max": 0.005700000000000038
+          },
+          "wins_on_recall": 4,
+          "ties_on_recall": 0,
+          "lower_unnecessary": 2,
+          "lower_delay": 0,
+          "lower_cost": 1,
+          "higher_served_ratio": 2
+        },
+        "protected_vs_phase3": {
+          "delta_recall": {
+            "mean": 0.002224999999999977,
+            "std": 0.003049897539262577,
+            "min": 0.0,
+            "max": 0.007399999999999962
+          },
+          "delta_unnecessary": {
+            "mean": -3.5,
+            "std": 3.5,
+            "min": -9.0,
+            "max": 0.0
+          },
+          "delta_delay_p95": {
+            "mean": 0.1875,
+            "std": 0.3247595264191645,
+            "min": 0.0,
+            "max": 0.75
+          },
+          "delta_cost_per_step": {
+            "mean": -0.013949999999999907,
+            "std": 0.285460272256053,
+            "min": -0.2770089999999996,
+            "max": 0.4464079999999999
+          },
+          "delta_pred_expected_consequence_served_ratio": {
+            "mean": -0.0044500000000000095,
+            "std": 0.005329399590948312,
+            "min": -0.01200000000000001,
+            "max": 0.0010999999999999899
+          },
+          "wins_on_recall": 2,
+          "ties_on_recall": 2,
+          "lower_unnecessary": 3,
+          "lower_delay": 0,
+          "lower_cost": 2,
+          "higher_served_ratio": 1
+        },
+        "protected_vs_fused": {
+          "delta_recall": {
+            "mean": -0.007775000000000032,
+            "std": 0.005073645139345063,
+            "min": -0.014900000000000024,
+            "max": -0.0024000000000000687
+          },
+          "delta_unnecessary": {
+            "mean": -1.25,
+            "std": 1.0897247358851685,
+            "min": -3.0,
+            "max": 0.0
+          },
+          "delta_delay_p95": {
+            "mean": -0.25,
+            "std": 0.4330127018922193,
+            "min": -1.0,
+            "max": 0.0
+          },
+          "delta_cost_per_step": {
+            "mean": -0.37171350000000025,
+            "std": 0.38930628862407324,
+            "min": -1.0198940000000007,
+            "max": -0.06528100000000059
+          },
+          "delta_pred_expected_consequence_served_ratio": {
+            "mean": -0.0037000000000000366,
+            "std": 0.0033593154064481615,
+            "min": -0.00880000000000003,
+            "max": -0.000300000000000078
+          },
+          "wins_on_recall": 0,
+          "ties_on_recall": 0,
+          "lower_unnecessary": 3,
+          "lower_delay": 1,
+          "lower_cost": 4,
+          "higher_served_ratio": 0
+        },
+        "protected_vs_best_threshold": {
+          "delta_recall": {
+            "mean": 0.09287499999999996,
+            "std": 0.009038079165397924,
+            "min": 0.07799999999999996,
+            "max": 0.10219999999999996
+          },
+          "delta_unnecessary": {
+            "mean": 4.75,
+            "std": 1.7853571071357126,
+            "min": 2.0,
+            "max": 7.0
+          },
+          "delta_delay_p95": {
+            "mean": -0.2875,
+            "std": 0.41589511899035314,
+            "min": -1.0,
+            "max": 0.0
+          },
+          "delta_cost_per_step": {
+            "mean": 4.50845,
+            "std": 0.338632316603865,
+            "min": 3.9390399999999985,
+            "max": 4.782976999999999
+          },
+          "delta_pred_expected_consequence_served_ratio": {
+            "mean": 0.12260000000000001,
+            "std": 0.009187491496594717,
+            "min": 0.10909999999999997,
+            "max": 0.13290000000000002
+          },
+          "wins_on_recall": 4,
+          "ties_on_recall": 0,
+          "lower_unnecessary": 0,
+          "lower_delay": 2,
+          "lower_cost": 0,
+          "higher_served_ratio": 4
+        },
+        "protected_vs_phase3_proposed": {
+          "delta_recall": {
+            "mean": 0.002224999999999977,
+            "std": 0.003049897539262577,
+            "min": 0.0,
+            "max": 0.007399999999999962
+          },
+          "delta_unnecessary": {
+            "mean": -3.5,
+            "std": 3.5,
+            "min": -9.0,
+            "max": 0.0
+          },
+          "delta_delay_p95": {
+            "mean": 0.1875,
+            "std": 0.3247595264191645,
+            "min": 0.0,
+            "max": 0.75
+          },
+          "delta_cost_per_step": {
+            "mean": -0.013949999999999907,
+            "std": 0.285460272256053,
+            "min": -0.2770089999999996,
+            "max": 0.4464079999999999
+          },
+          "delta_pred_expected_consequence_served_ratio": {
+            "mean": -0.0044500000000000095,
+            "std": 0.005329399590948312,
+            "min": -0.01200000000000001,
+            "max": 0.0010999999999999899
+          },
+          "wins_on_recall": 2,
+          "ties_on_recall": 2,
+          "lower_unnecessary": 3,
+          "lower_delay": 0,
+          "lower_cost": 2,
+          "higher_served_ratio": 1
+        }
+      }
+    }
+  },
+  "paired_focus": {
+    "1": {
+      "fused_vs_phase3": {
+        "delta_recall": {
+          "mean": 0.011674999999999991,
+          "std": 0.008891393310387324,
+          "min": 0.0039000000000000146,
+          "max": 0.026800000000000046
+        },
+        "delta_unnecessary": {
+          "mean": -0.75,
+          "std": 0.4330127018922193,
+          "min": -1.0,
+          "max": 0.0
+        },
+        "delta_delay_p95": {
+          "mean": 0.03750000000000009,
+          "std": 0.06495190528383306,
+          "min": 0.0,
+          "max": 0.15000000000000036
+        },
+        "delta_cost_per_step": {
+          "mean": 0.38890575000000016,
+          "std": 0.1499123081544251,
+          "min": 0.17184000000000133,
+          "max": 0.531333
+        },
+        "delta_pred_expected_consequence_served_ratio": {
+          "mean": 0.008449999999999985,
+          "std": 0.007831187649392692,
+          "min": 0.0011999999999999789,
+          "max": 0.021600000000000064
+        },
+        "wins_on_recall": 4,
+        "ties_on_recall": 0,
+        "lower_unnecessary": 3,
+        "lower_delay": 0,
+        "lower_cost": 0,
+        "higher_served_ratio": 4
+      },
+      "protected_vs_phase3": {
+        "delta_recall": {
+          "mean": 0.00799999999999998,
+          "std": 0.007515317691222369,
+          "min": 0.00039999999999995595,
+          "max": 0.020399999999999974
+        },
+        "delta_unnecessary": {
+          "mean": -2.5,
+          "std": 1.118033988749895,
+          "min": -4.0,
+          "max": -1.0
+        },
+        "delta_delay_p95": {
+          "mean": 0.5375000000000001,
+          "std": 0.4655306112384017,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "delta_cost_per_step": {
+          "mean": -0.07973699999999972,
+          "std": 0.2989414978478236,
+          "min": -0.5246630000000003,
+          "max": 0.27715200000000095
+        },
+        "delta_pred_expected_consequence_served_ratio": {
+          "mean": 0.0038499999999999923,
+          "std": 0.0069291052813476575,
+          "min": -0.007099999999999995,
+          "max": 0.01200000000000001
+        },
+        "wins_on_recall": 4,
+        "ties_on_recall": 0,
+        "lower_unnecessary": 4,
+        "lower_delay": 0,
+        "lower_cost": 2,
+        "higher_served_ratio": 3
+      },
+      "protected_vs_fused": {
+        "delta_recall": {
+          "mean": -0.0036750000000000116,
+          "std": 0.0018430613120566884,
+          "min": -0.006400000000000072,
+          "max": -0.0011999999999999789
+        },
+        "delta_unnecessary": {
+          "mean": -1.75,
+          "std": 1.0897247358851685,
+          "min": -3.0,
+          "max": 0.0
+        },
+        "delta_delay_p95": {
+          "mean": 0.5,
+          "std": 0.5,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "delta_cost_per_step": {
+          "mean": -0.4686427499999999,
+          "std": 0.30892479561082103,
+          "min": -0.8516250000000003,
+          "max": -0.08868900000000046
+        },
+        "delta_pred_expected_consequence_served_ratio": {
+          "mean": -0.004599999999999993,
+          "std": 0.004375499971431859,
+          "min": -0.009600000000000053,
+          "max": -9.999999999998899e-05
+        },
+        "wins_on_recall": 0,
+        "ties_on_recall": 0,
+        "lower_unnecessary": 3,
+        "lower_delay": 0,
+        "lower_cost": 4,
+        "higher_served_ratio": 0
+      },
+      "protected_vs_best_threshold": {
+        "delta_recall": {
+          "mean": 0.08424999999999996,
+          "std": 0.011406686635478357,
+          "min": 0.07229999999999992,
+          "max": 0.09919999999999995
+        },
+        "delta_unnecessary": {
+          "mean": 3.75,
+          "std": 1.920286436967152,
+          "min": 1.0,
+          "max": 6.0
+        },
+        "delta_delay_p95": {
+          "mean": -1.75,
+          "std": 0.82915619758885,
+          "min": -3.0,
+          "max": -1.0
+        },
+        "delta_cost_per_step": {
+          "mean": 3.6233852499999997,
+          "std": 1.1124822022152476,
+          "min": 2.228848,
+          "max": 5.22875
+        },
+        "delta_pred_expected_consequence_served_ratio": {
+          "mean": 0.1293,
+          "std": 0.013882542994711039,
+          "min": 0.10609999999999997,
+          "max": 0.14290000000000003
+        },
+        "wins_on_recall": 4,
+        "ties_on_recall": 0,
+        "lower_unnecessary": 0,
+        "lower_delay": 4,
+        "lower_cost": 0,
+        "higher_served_ratio": 4
+      },
+      "protected_vs_phase3_proposed": {
+        "delta_recall": {
+          "mean": 0.00799999999999998,
+          "std": 0.007515317691222369,
+          "min": 0.00039999999999995595,
+          "max": 0.020399999999999974
+        },
+        "delta_unnecessary": {
+          "mean": -2.5,
+          "std": 1.118033988749895,
+          "min": -4.0,
+          "max": -1.0
+        },
+        "delta_delay_p95": {
+          "mean": 0.5375000000000001,
+          "std": 0.4655306112384017,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "delta_cost_per_step": {
+          "mean": -0.07973699999999972,
+          "std": 0.2989414978478236,
+          "min": -0.5246630000000003,
+          "max": 0.27715200000000095
+        },
+        "delta_pred_expected_consequence_served_ratio": {
+          "mean": 0.0038499999999999923,
+          "std": 0.0069291052813476575,
+          "min": -0.007099999999999995,
+          "max": 0.01200000000000001
+        },
+        "wins_on_recall": 4,
+        "ties_on_recall": 0,
+        "lower_unnecessary": 4,
+        "lower_delay": 0,
+        "lower_cost": 2,
+        "higher_served_ratio": 3
+      }
+    },
+    "2": {
+      "fused_vs_phase3": {
+        "delta_recall": {
+          "mean": 0.010000000000000009,
+          "std": 0.0070256672281000685,
+          "min": 0.0024000000000000687,
+          "max": 0.01759999999999995
+        },
+        "delta_unnecessary": {
+          "mean": -2.25,
+          "std": 2.8613807855648994,
+          "min": -6.0,
+          "max": 1.0
+        },
+        "delta_delay_p95": {
+          "mean": 0.4375,
+          "std": 0.44633927678392815,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "delta_cost_per_step": {
+          "mean": 0.35776350000000035,
+          "std": 0.4106740446464204,
+          "min": -0.15991799999999934,
+          "max": 0.777253
+        },
+        "delta_pred_expected_consequence_served_ratio": {
+          "mean": -0.0007499999999999729,
+          "std": 0.0046165463281548375,
+          "min": -0.006599999999999939,
+          "max": 0.005700000000000038
+        },
+        "wins_on_recall": 4,
+        "ties_on_recall": 0,
+        "lower_unnecessary": 2,
+        "lower_delay": 0,
+        "lower_cost": 1,
+        "higher_served_ratio": 2
+      },
+      "protected_vs_phase3": {
+        "delta_recall": {
+          "mean": 0.002224999999999977,
+          "std": 0.003049897539262577,
+          "min": 0.0,
+          "max": 0.007399999999999962
+        },
+        "delta_unnecessary": {
+          "mean": -3.5,
+          "std": 3.5,
+          "min": -9.0,
+          "max": 0.0
+        },
+        "delta_delay_p95": {
+          "mean": 0.1875,
+          "std": 0.3247595264191645,
+          "min": 0.0,
+          "max": 0.75
+        },
+        "delta_cost_per_step": {
+          "mean": -0.013949999999999907,
+          "std": 0.285460272256053,
+          "min": -0.2770089999999996,
+          "max": 0.4464079999999999
+        },
+        "delta_pred_expected_consequence_served_ratio": {
+          "mean": -0.0044500000000000095,
+          "std": 0.005329399590948312,
+          "min": -0.01200000000000001,
+          "max": 0.0010999999999999899
+        },
+        "wins_on_recall": 2,
+        "ties_on_recall": 2,
+        "lower_unnecessary": 3,
+        "lower_delay": 0,
+        "lower_cost": 2,
+        "higher_served_ratio": 1
+      },
+      "protected_vs_fused": {
+        "delta_recall": {
+          "mean": -0.007775000000000032,
+          "std": 0.005073645139345063,
+          "min": -0.014900000000000024,
+          "max": -0.0024000000000000687
+        },
+        "delta_unnecessary": {
+          "mean": -1.25,
+          "std": 1.0897247358851685,
+          "min": -3.0,
+          "max": 0.0
+        },
+        "delta_delay_p95": {
+          "mean": -0.25,
+          "std": 0.4330127018922193,
+          "min": -1.0,
+          "max": 0.0
+        },
+        "delta_cost_per_step": {
+          "mean": -0.37171350000000025,
+          "std": 0.38930628862407324,
+          "min": -1.0198940000000007,
+          "max": -0.06528100000000059
+        },
+        "delta_pred_expected_consequence_served_ratio": {
+          "mean": -0.0037000000000000366,
+          "std": 0.0033593154064481615,
+          "min": -0.00880000000000003,
+          "max": -0.000300000000000078
+        },
+        "wins_on_recall": 0,
+        "ties_on_recall": 0,
+        "lower_unnecessary": 3,
+        "lower_delay": 1,
+        "lower_cost": 4,
+        "higher_served_ratio": 0
+      },
+      "protected_vs_best_threshold": {
+        "delta_recall": {
+          "mean": 0.09287499999999996,
+          "std": 0.009038079165397924,
+          "min": 0.07799999999999996,
+          "max": 0.10219999999999996
+        },
+        "delta_unnecessary": {
+          "mean": 4.75,
+          "std": 1.7853571071357126,
+          "min": 2.0,
+          "max": 7.0
+        },
+        "delta_delay_p95": {
+          "mean": -0.2875,
+          "std": 0.41589511899035314,
+          "min": -1.0,
+          "max": 0.0
+        },
+        "delta_cost_per_step": {
+          "mean": 4.50845,
+          "std": 0.338632316603865,
+          "min": 3.9390399999999985,
+          "max": 4.782976999999999
+        },
+        "delta_pred_expected_consequence_served_ratio": {
+          "mean": 0.12260000000000001,
+          "std": 0.009187491496594717,
+          "min": 0.10909999999999997,
+          "max": 0.13290000000000002
+        },
+        "wins_on_recall": 4,
+        "ties_on_recall": 0,
+        "lower_unnecessary": 0,
+        "lower_delay": 2,
+        "lower_cost": 0,
+        "higher_served_ratio": 4
+      },
+      "protected_vs_phase3_proposed": {
+        "delta_recall": {
+          "mean": 0.002224999999999977,
+          "std": 0.003049897539262577,
+          "min": 0.0,
+          "max": 0.007399999999999962
+        },
+        "delta_unnecessary": {
+          "mean": -3.5,
+          "std": 3.5,
+          "min": -9.0,
+          "max": 0.0
+        },
+        "delta_delay_p95": {
+          "mean": 0.1875,
+          "std": 0.3247595264191645,
+          "min": 0.0,
+          "max": 0.75
+        },
+        "delta_cost_per_step": {
+          "mean": -0.013949999999999907,
+          "std": 0.285460272256053,
+          "min": -0.2770089999999996,
+          "max": 0.4464079999999999
+        },
+        "delta_pred_expected_consequence_served_ratio": {
+          "mean": -0.0044500000000000095,
+          "std": 0.005329399590948312,
+          "min": -0.01200000000000001,
+          "max": 0.0010999999999999899
+        },
+        "wins_on_recall": 2,
+        "ties_on_recall": 2,
+        "lower_unnecessary": 3,
+        "lower_delay": 0,
+        "lower_cost": 2,
+        "higher_served_ratio": 1
+      }
+    }
+  }
+}

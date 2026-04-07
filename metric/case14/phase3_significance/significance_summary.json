@@ -1,0 +1,356 @@
+{
+  "method": "phase3_significance_stats",
+  "source_confirm": "metric/case14/phase3_confirm_combined_v1_v2/aggregate_summary_merged.json",
+  "n_boot": 10000,
+  "seed": 20260407,
+  "results": [
+    {
+      "slot_budget": 1,
+      "lhs": "phase3_oracle_upgrade",
+      "rhs": "phase3_proposed",
+      "n_holdouts": 0,
+      "metrics": {
+        "recall": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        },
+        "unnecessary": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        },
+        "delay": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        },
+        "cost": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        },
+        "served_ratio": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        }
+      }
+    },
+    {
+      "slot_budget": 1,
+      "lhs": "phase3_oracle_upgrade",
+      "rhs": "best_threshold",
+      "n_holdouts": 0,
+      "metrics": {
+        "recall": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        },
+        "unnecessary": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        },
+        "delay": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        },
+        "cost": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        },
+        "served_ratio": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        }
+      }
+    },
+    {
+      "slot_budget": 1,
+      "lhs": "phase3_oracle_upgrade",
+      "rhs": "topk_expected_consequence",
+      "n_holdouts": 0,
+      "metrics": {
+        "recall": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        },
+        "unnecessary": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        },
+        "delay": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        },
+        "cost": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        },
+        "served_ratio": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        }
+      }
+    },
+    {
+      "slot_budget": 2,
+      "lhs": "phase3_oracle_upgrade",
+      "rhs": "phase3_proposed",
+      "n_holdouts": 0,
+      "metrics": {
+        "recall": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        },
+        "unnecessary": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        },
+        "delay": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        },
+        "cost": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        },
+        "served_ratio": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        }
+      }
+    },
+    {
+      "slot_budget": 2,
+      "lhs": "phase3_oracle_upgrade",
+      "rhs": "best_threshold",
+      "n_holdouts": 0,
+      "metrics": {
+        "recall": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        },
+        "unnecessary": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        },
+        "delay": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        },
+        "cost": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        },
+        "served_ratio": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        }
+      }
+    },
+    {
+      "slot_budget": 2,
+      "lhs": "phase3_oracle_upgrade",
+      "rhs": "topk_expected_consequence",
+      "n_holdouts": 0,
+      "metrics": {
+        "recall": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        },
+        "unnecessary": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        },
+        "delay": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        },
+        "cost": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        },
+        "served_ratio": {
+          "mean_delta": NaN,
+          "ci95_low": NaN,
+          "ci95_high": NaN,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "sign_test_p_two_sided": 1.0,
+          "sign_test_p_one_sided": 1.0
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "method": "phase3_recompute_guard",
+  "source_confirm": [
+    "metric/case14/phase3_confirm_blind_v1/oracle_protected_ec_confirm/aggregate_summary.json",
+    "metric/case14/phase3_confirm_blind_v2/oracle_protected_ec_confirm/aggregate_summary.json"
+  ],
+  "n_recomputed_holdouts": 8,
+  "holdout_tags": [
+    "cfA_frontloaded_0_seed20260511_off1020",
+    "cfA_frontloaded_1_seed20260512_off1080",
+    "cfB_backloaded_0_seed20260521_off1140",
+    "cfB_backloaded_1_seed20260522_off1200",
+    "cfC_interleaved_0_seed20260611_off1260",
+    "cfC_interleaved_1_seed20260612_off1320",
+    "cfD_tailheavy_0_seed20260621_off1380",
+    "cfD_tailheavy_1_seed20260622_off1440"
+  ],
+  "checks": {
+    "confirm_merged": {
+      "status": "PASS",
+      "max_abs_error": 1.7763568394002505e-15,
+      "issues": []
+    },
+    "external_bundle": {
+      "status": "PASS",
+      "max_abs_error": 1.7763568394002505e-15,
+      "issues": []
+    },
+    "paper_bundle": {
+      "status": "PASS",
+      "max_abs_error": 1.7763568394002505e-15,
+      "issues": []
+    },
+    "ablation_vs_paper": {
+      "status": "PASS",
+      "max_abs_error": 0.0,
+      "issues": []
+    }
+  },
+  "status": "PASS"
+}
