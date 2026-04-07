@@ -1,0 +1,973 @@
+{
+  "method": "phase3_overload_only_correction_family",
+  "manifest": {
+    "workdir": "/home/pang/projects/DDET-MTD",
+    "clean_bank": "metric/case14/metric_clean_alarm_scores_full.npy",
+    "attack_bank": "metric/case14/metric_attack_alarm_scores_400.npy",
+    "train_bank": "metric/case14/mixed_bank_fit.npy",
+    "val_bank": "metric/case14/mixed_bank_eval.npy",
+    "schedule": "clean:120;att-1-0.2:60;clean:60;att-2-0.2:60;clean:60;att-3-0.3:60;clean:120",
+    "frozen_regime": {
+      "decision_step_group": 1,
+      "busy_time_quantile": 0.65,
+      "use_cost_budget": false,
+      "cost_budget_window_steps": 20,
+      "cost_budget_quantile": 0.6,
+      "slot_budget_list": [
+        1,
+        2
+      ],
+      "max_wait_steps": 10
+    },
+    "holdouts": [
+      {
+        "tag": "h00_seed20260421_off540",
+        "seed_base": 20260421,
+        "start_offset": 540,
+        "test_bank": "metric/case14/phase3_multi_holdout/banks/mixed_bank_test_h00_seed20260421_off540.npy",
+        "result_npy": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h00_seed20260421_off540.npy",
+        "result_summary": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h00_seed20260421_off540.summary.json"
+      },
+      {
+        "tag": "h01_seed20260422_off600",
+        "seed_base": 20260422,
+        "start_offset": 600,
+        "test_bank": "metric/case14/phase3_multi_holdout/banks/mixed_bank_test_h01_seed20260422_off600.npy",
+        "result_npy": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h01_seed20260422_off600.npy",
+        "result_summary": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h01_seed20260422_off600.summary.json"
+      },
+      {
+        "tag": "h02_seed20260423_off660",
+        "seed_base": 20260423,
+        "start_offset": 660,
+        "test_bank": "metric/case14/phase3_multi_holdout/banks/mixed_bank_test_h02_seed20260423_off660.npy",
+        "result_npy": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h02_seed20260423_off660.npy",
+        "result_summary": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h02_seed20260423_off660.summary.json"
+      },
+      {
+        "tag": "h03_seed20260424_off720",
+        "seed_base": 20260424,
+        "start_offset": 720,
+        "test_bank": "metric/case14/phase3_multi_holdout/banks/mixed_bank_test_h03_seed20260424_off720.npy",
+        "result_npy": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h03_seed20260424_off720.npy",
+        "result_summary": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h03_seed20260424_off720.summary.json"
+      },
+      {
+        "tag": "h04_seed20260425_off780",
+        "seed_base": 20260425,
+        "start_offset": 780,
+        "test_bank": "metric/case14/phase3_multi_holdout/banks/mixed_bank_test_h04_seed20260425_off780.npy",
+        "result_npy": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h04_seed20260425_off780.npy",
+        "result_summary": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h04_seed20260425_off780.summary.json"
+      },
+      {
+        "tag": "h05_seed20260426_off840",
+        "seed_base": 20260426,
+        "start_offset": 840,
+        "test_bank": "metric/case14/phase3_multi_holdout/banks/mixed_bank_test_h05_seed20260426_off840.npy",
+        "result_npy": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h05_seed20260426_off840.npy",
+        "result_summary": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h05_seed20260426_off840.summary.json"
+      },
+      {
+        "tag": "h06_seed20260427_off900",
+        "seed_base": 20260427,
+        "start_offset": 900,
+        "test_bank": "metric/case14/phase3_multi_holdout/banks/mixed_bank_test_h06_seed20260427_off900.npy",
+        "result_npy": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h06_seed20260427_off900.npy",
+        "result_summary": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h06_seed20260427_off900.summary.json"
+      },
+      {
+        "tag": "h07_seed20260428_off960",
+        "seed_base": 20260428,
+        "start_offset": 960,
+        "test_bank": "metric/case14/phase3_multi_holdout/banks/mixed_bank_test_h07_seed20260428_off960.npy",
+        "result_npy": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h07_seed20260428_off960.npy",
+        "result_summary": "metric/case14/phase3_multi_holdout/results/budget_scheduler_phase3_holdout_h07_seed20260428_off960.summary.json"
+      }
+    ]
+  },
+  "config": {
+    "decision_step_group": 1,
+    "busy_time_quantile": 0.65,
+    "use_cost_budget": false,
+    "slot_budget_list": [
+      1,
+      2
+    ],
+    "max_wait_steps": 10,
+    "consequence_blend_verify": 0.7,
+    "consequence_mode": "conditional",
+    "variants": [
+      {
+        "name": "olc_t",
+        "tau_gain": 0.06,
+        "clean_gain": 0.0,
+        "use_urgency_mask": false,
+        "description": "threshold-only overload correction"
+      },
+      {
+        "name": "olc_tc",
+        "tau_gain": 0.03,
+        "clean_gain": 0.1,
+        "use_urgency_mask": false,
+        "description": "threshold + clean-penalty overload correction"
+      },
+      {
+        "name": "olc_u",
+        "tau_gain": 0.08,
+        "clean_gain": 0.0,
+        "use_urgency_mask": true,
+        "description": "urgency-masked threshold overload correction"
+      }
+    ]
+  },
+  "environment": {
+    "busy_time_unit": 9.574143552780152,
+    "train_job_stats": {
+      "mean_pred_busy_steps": 1.555045871559633,
+      "mean_pred_service_cost": 35.355742671647086,
+      "mean_pred_expected_consequence": 0.3778040993717129,
+      "busy_step_stats": {
+        "count": 218.0,
+        "mean": 1.6743119266055047,
+        "std": 1.2632347925995004,
+        "q25": 1.0,
+        "q50": 1.0,
+        "q75": 2.0,
+        "q90": 3.0,
+        "q95": 4.0,
+        "max": 10.0
+      },
+      "pred_expected_consequence_stats": {
+        "count": 218.0,
+        "mean": 0.3778040993717129,
+        "std": 0.28596541137808024,
+        "q25": 0.0654474431818182,
+        "q50": 0.32936917613636363,
+        "q75": 0.6412020596590908,
+        "q90": 0.8077414772727272,
+        "q95": 0.8335227272727272,
+        "max": 0.8693181818181818
+      }
+    },
+    "val_job_stats": {
+      "mean_pred_busy_steps": 1.3237410071942446,
+      "mean_pred_service_cost": 34.81270208879891,
+      "mean_pred_expected_consequence": 0.30486517932221935,
+      "busy_step_stats": {
+        "count": 278.0,
+        "mean": 1.39568345323741,
+        "std": 0.8985896626450449,
+        "q25": 1.0,
+        "q50": 1.0,
+        "q75": 1.0,
+        "q90": 2.0,
+        "q95": 3.0,
+        "max": 8.0
+      },
+      "pred_expected_consequence_stats": {
+        "count": 278.0,
+        "mean": 0.30486517932221935,
+        "std": 0.2885506216689517,
+        "q25": 0.01215909090909091,
+        "q50": 0.251875,
+        "q75": 0.5282946428571428,
+        "q90": 0.7814275568181818,
+        "q95": 0.8335227272727272,
+        "max": 0.874431818181818
+      }
+    },
+    "train_arrival_diagnostics": {
+      "total_steps": 540.0,
+      "total_jobs": 218.0,
+      "steps_with_jobs": 218.0,
+      "share_steps_with_jobs": 0.40370370370370373,
+      "max_jobs_same_step": 1.0,
+      "mean_jobs_given_nonzero_step": 1.0
+    },
+    "val_arrival_diagnostics": {
+      "total_steps": 540.0,
+      "total_jobs": 278.0,
+      "steps_with_jobs": 278.0,
+      "share_steps_with_jobs": 0.5148148148148148,
+      "max_jobs_same_step": 1.0,
+      "mean_jobs_given_nonzero_step": 1.0
+    }
+  },
+  "phase3_reference_by_slot": {
+    "1": {
+      "config": {
+        "v_weight": 4.0,
+        "clean_penalty": 0.5,
+        "age_bonus": 0.0,
+        "urgency_bonus": 0.0,
+        "fail_penalty": 0.05,
+        "busy_penalty": 0.5,
+        "cost_penalty": 0.0,
+        "admission_score_threshold": 0.0
+      },
+      "val_summary": {
+        "weighted_attack_recall_no_backend_fail": 0.6486,
+        "unnecessary_mtd_count": 2,
+        "queue_delay_p95": 9.0,
+        "average_service_cost_per_step": 10.883374,
+        "pred_expected_consequence_served_ratio": 0.7124
+      },
+      "val_objective": 0.18322129822129712
+    },
+    "2": {
+      "config": {
+        "v_weight": 4.0,
+        "clean_penalty": 0.5,
+        "age_bonus": 0.0,
+        "urgency_bonus": 0.0,
+        "fail_penalty": 0.0,
+        "busy_penalty": 0.5,
+        "cost_penalty": 0.0,
+        "admission_score_threshold": 0.1
+      },
+      "val_summary": {
+        "weighted_attack_recall_no_backend_fail": 0.8986,
+        "unnecessary_mtd_count": 5,
+        "queue_delay_p95": 1.0,
+        "average_service_cost_per_step": 13.843554,
+        "pred_expected_consequence_served_ratio": 0.9182
+      },
+      "val_objective": 0.7448950873950871
+    }
+  },
+  "variants": {
+    "olc_t": {
+      "variant": {
+        "name": "olc_t",
+        "tau_gain": 0.06,
+        "clean_gain": 0.0,
+        "use_urgency_mask": false,
+        "description": "threshold-only overload correction"
+      },
+      "by_slot": {
+        "1": {
+          "phase3_reference": {
+            "config": {
+              "v_weight": 4.0,
+              "clean_penalty": 0.5,
+              "age_bonus": 0.0,
+              "urgency_bonus": 0.0,
+              "fail_penalty": 0.05,
+              "busy_penalty": 0.5,
+              "cost_penalty": 0.0,
+              "admission_score_threshold": 0.0
+            },
+            "val_summary": {
+              "weighted_attack_recall_no_backend_fail": 0.6486,
+              "unnecessary_mtd_count": 2,
+              "queue_delay_p95": 9.0,
+              "average_service_cost_per_step": 10.883374,
+              "pred_expected_consequence_served_ratio": 0.7124
+            },
+            "val_objective": 0.18322129822129712
+          },
+          "variant_config": {
+            "name": "olc_t",
+            "tau_gain": 0.06,
+            "clean_gain": 0.0,
+            "use_urgency_mask": false,
+            "description": "threshold-only overload correction",
+            "base_phase3_clean_penalty": 0.5,
+            "base_phase3_admission_threshold": 0.0
+          },
+          "train_trigger_diagnostics": {
+            "all_steps_rate": 0.448148,
+            "arrival_steps_rate": 0.889908,
+            "active_decision_steps_rate": 0.832753,
+            "effective_all_steps_rate": 0.316667,
+            "effective_arrival_steps_rate": 0.610092,
+            "effective_active_decision_steps_rate": 0.595819,
+            "mean_ov_given_trigger": 0.954442,
+            "p95_ov_given_trigger": 1.0,
+            "n_total_steps": 540,
+            "n_arrival_steps": 218,
+            "n_active_decision_steps": 287,
+            "n_overload_steps": 242,
+            "n_overload_arrival_steps": 194,
+            "n_overload_active_decision_steps": 239,
+            "n_effective_correction_steps": 171
+          },
+          "val_trigger_diagnostics": {
+            "all_steps_rate": 0.52963,
+            "arrival_steps_rate": 0.899281,
+            "active_decision_steps_rate": 0.863636,
+            "effective_all_steps_rate": 0.412963,
+            "effective_arrival_steps_rate": 0.697842,
+            "effective_active_decision_steps_rate": 0.675758,
+            "mean_ov_given_trigger": 0.977098,
+            "p95_ov_given_trigger": 1.0,
+            "n_total_steps": 540,
+            "n_arrival_steps": 278,
+            "n_active_decision_steps": 330,
+            "n_overload_steps": 286,
+            "n_overload_arrival_steps": 250,
+            "n_overload_active_decision_steps": 285,
+            "n_effective_correction_steps": 223
+          },
+          "train_summary": {
+            "weighted_attack_recall_no_backend_fail": 0.6285,
+            "unnecessary_mtd_count": 5,
+            "queue_delay_p95": 8.25,
+            "average_service_cost_per_step": 8.296207,
+            "pred_expected_consequence_served_ratio": 0.699
+          },
+          "val_summary": {
+            "weighted_attack_recall_no_backend_fail": 0.6486,
+            "unnecessary_mtd_count": 2,
+            "queue_delay_p95": 9.0,
+            "average_service_cost_per_step": 10.883374,
+            "pred_expected_consequence_served_ratio": 0.7124
+          },
+          "val_objective": 0.18322129822129712,
+          "val_delta_objective_vs_phase3": 0.0,
+          "val_delta_recall_vs_phase3": 4.9e-05,
+          "val_delta_unnecessary_vs_phase3": 0,
+          "val_delta_delay_vs_phase3": 0.0,
+          "val_delta_cost_vs_phase3": 0.0
+        },
+        "2": {
+          "phase3_reference": {
+            "config": {
+              "v_weight": 4.0,
+              "clean_penalty": 0.5,
+              "age_bonus": 0.0,
+              "urgency_bonus": 0.0,
+              "fail_penalty": 0.0,
+              "busy_penalty": 0.5,
+              "cost_penalty": 0.0,
+              "admission_score_threshold": 0.1
+            },
+            "val_summary": {
+              "weighted_attack_recall_no_backend_fail": 0.8986,
+              "unnecessary_mtd_count": 5,
+              "queue_delay_p95": 1.0,
+              "average_service_cost_per_step": 13.843554,
+              "pred_expected_consequence_served_ratio": 0.9182
+            },
+            "val_objective": 0.7448950873950871
+          },
+          "variant_config": {
+            "name": "olc_t",
+            "tau_gain": 0.06,
+            "clean_gain": 0.0,
+            "use_urgency_mask": false,
+            "description": "threshold-only overload correction",
+            "base_phase3_clean_penalty": 0.5,
+            "base_phase3_admission_threshold": 0.1
+          },
+          "train_trigger_diagnostics": {
+            "all_steps_rate": 0.3,
+            "arrival_steps_rate": 0.62844,
+            "active_decision_steps_rate": 0.60223,
+            "effective_all_steps_rate": 0.257407,
+            "effective_arrival_steps_rate": 0.522936,
+            "effective_active_decision_steps_rate": 0.516729,
+            "mean_ov_given_trigger": 0.766358,
+            "p95_ov_given_trigger": 1.0,
+            "n_total_steps": 540,
+            "n_arrival_steps": 218,
+            "n_active_decision_steps": 269,
+            "n_overload_steps": 162,
+            "n_overload_arrival_steps": 137,
+            "n_overload_active_decision_steps": 162,
+            "n_effective_correction_steps": 139
+          },
+          "val_trigger_diagnostics": {
+            "all_steps_rate": 0.333333,
+            "arrival_steps_rate": 0.557554,
+            "active_decision_steps_rate": 0.5625,
+            "effective_all_steps_rate": 0.301852,
+            "effective_arrival_steps_rate": 0.503597,
+            "effective_active_decision_steps_rate": 0.509375,
+            "mean_ov_given_trigger": 0.885833,
+            "p95_ov_given_trigger": 1.0,
+            "n_total_steps": 540,
+            "n_arrival_steps": 278,
+            "n_active_decision_steps": 320,
+            "n_overload_steps": 180,
+            "n_overload_arrival_steps": 155,
+            "n_overload_active_decision_steps": 180,
+            "n_effective_correction_steps": 163
+          },
+          "train_summary": {
+            "weighted_attack_recall_no_backend_fail": 0.9136,
+            "unnecessary_mtd_count": 7,
+            "queue_delay_p95": 7.0,
+            "average_service_cost_per_step": 10.551233,
+            "pred_expected_consequence_served_ratio": 0.9483
+          },
+          "val_summary": {
+            "weighted_attack_recall_no_backend_fail": 0.8986,
+            "unnecessary_mtd_count": 5,
+            "queue_delay_p95": 1.0,
+            "average_service_cost_per_step": 13.843554,
+            "pred_expected_consequence_served_ratio": 0.9182
+          },
+          "val_objective": 0.7448950873950871,
+          "val_delta_objective_vs_phase3": 0.0,
+          "val_delta_recall_vs_phase3": 4.9e-05,
+          "val_delta_unnecessary_vs_phase3": 0,
+          "val_delta_delay_vs_phase3": 0.0,
+          "val_delta_cost_vs_phase3": 0.0
+        }
+      },
+      "joint_val_delta_objective": 0.0
+    },
+    "olc_tc": {
+      "variant": {
+        "name": "olc_tc",
+        "tau_gain": 0.03,
+        "clean_gain": 0.1,
+        "use_urgency_mask": false,
+        "description": "threshold + clean-penalty overload correction"
+      },
+      "by_slot": {
+        "1": {
+          "phase3_reference": {
+            "config": {
+              "v_weight": 4.0,
+              "clean_penalty": 0.5,
+              "age_bonus": 0.0,
+              "urgency_bonus": 0.0,
+              "fail_penalty": 0.05,
+              "busy_penalty": 0.5,
+              "cost_penalty": 0.0,
+              "admission_score_threshold": 0.0
+            },
+            "val_summary": {
+              "weighted_attack_recall_no_backend_fail": 0.6486,
+              "unnecessary_mtd_count": 2,
+              "queue_delay_p95": 9.0,
+              "average_service_cost_per_step": 10.883374,
+              "pred_expected_consequence_served_ratio": 0.7124
+            },
+            "val_objective": 0.18322129822129712
+          },
+          "variant_config": {
+            "name": "olc_tc",
+            "tau_gain": 0.03,
+            "clean_gain": 0.1,
+            "use_urgency_mask": false,
+            "description": "threshold + clean-penalty overload correction",
+            "base_phase3_clean_penalty": 0.5,
+            "base_phase3_admission_threshold": 0.0
+          },
+          "train_trigger_diagnostics": {
+            "all_steps_rate": 0.448148,
+            "arrival_steps_rate": 0.889908,
+            "active_decision_steps_rate": 0.832753,
+            "effective_all_steps_rate": 0.316667,
+            "effective_arrival_steps_rate": 0.610092,
+            "effective_active_decision_steps_rate": 0.595819,
+            "mean_ov_given_trigger": 0.954442,
+            "p95_ov_given_trigger": 1.0,
+            "n_total_steps": 540,
+            "n_arrival_steps": 218,
+            "n_active_decision_steps": 287,
+            "n_overload_steps": 242,
+            "n_overload_arrival_steps": 194,
+            "n_overload_active_decision_steps": 239,
+            "n_effective_correction_steps": 171
+          },
+          "val_trigger_diagnostics": {
+            "all_steps_rate": 0.52963,
+            "arrival_steps_rate": 0.899281,
+            "active_decision_steps_rate": 0.863636,
+            "effective_all_steps_rate": 0.412963,
+            "effective_arrival_steps_rate": 0.697842,
+            "effective_active_decision_steps_rate": 0.675758,
+            "mean_ov_given_trigger": 0.977098,
+            "p95_ov_given_trigger": 1.0,
+            "n_total_steps": 540,
+            "n_arrival_steps": 278,
+            "n_active_decision_steps": 330,
+            "n_overload_steps": 286,
+            "n_overload_arrival_steps": 250,
+            "n_overload_active_decision_steps": 285,
+            "n_effective_correction_steps": 223
+          },
+          "train_summary": {
+            "weighted_attack_recall_no_backend_fail": 0.6285,
+            "unnecessary_mtd_count": 5,
+            "queue_delay_p95": 8.25,
+            "average_service_cost_per_step": 8.296207,
+            "pred_expected_consequence_served_ratio": 0.699
+          },
+          "val_summary": {
+            "weighted_attack_recall_no_backend_fail": 0.6486,
+            "unnecessary_mtd_count": 2,
+            "queue_delay_p95": 9.0,
+            "average_service_cost_per_step": 10.883374,
+            "pred_expected_consequence_served_ratio": 0.7124
+          },
+          "val_objective": 0.18322129822129712,
+          "val_delta_objective_vs_phase3": 0.0,
+          "val_delta_recall_vs_phase3": 4.9e-05,
+          "val_delta_unnecessary_vs_phase3": 0,
+          "val_delta_delay_vs_phase3": 0.0,
+          "val_delta_cost_vs_phase3": 0.0
+        },
+        "2": {
+          "phase3_reference": {
+            "config": {
+              "v_weight": 4.0,
+              "clean_penalty": 0.5,
+              "age_bonus": 0.0,
+              "urgency_bonus": 0.0,
+              "fail_penalty": 0.0,
+              "busy_penalty": 0.5,
+              "cost_penalty": 0.0,
+              "admission_score_threshold": 0.1
+            },
+            "val_summary": {
+              "weighted_attack_recall_no_backend_fail": 0.8986,
+              "unnecessary_mtd_count": 5,
+              "queue_delay_p95": 1.0,
+              "average_service_cost_per_step": 13.843554,
+              "pred_expected_consequence_served_ratio": 0.9182
+            },
+            "val_objective": 0.7448950873950871
+          },
+          "variant_config": {
+            "name": "olc_tc",
+            "tau_gain": 0.03,
+            "clean_gain": 0.1,
+            "use_urgency_mask": false,
+            "description": "threshold + clean-penalty overload correction",
+            "base_phase3_clean_penalty": 0.5,
+            "base_phase3_admission_threshold": 0.1
+          },
+          "train_trigger_diagnostics": {
+            "all_steps_rate": 0.3,
+            "arrival_steps_rate": 0.62844,
+            "active_decision_steps_rate": 0.60223,
+            "effective_all_steps_rate": 0.257407,
+            "effective_arrival_steps_rate": 0.522936,
+            "effective_active_decision_steps_rate": 0.516729,
+            "mean_ov_given_trigger": 0.766358,
+            "p95_ov_given_trigger": 1.0,
+            "n_total_steps": 540,
+            "n_arrival_steps": 218,
+            "n_active_decision_steps": 269,
+            "n_overload_steps": 162,
+            "n_overload_arrival_steps": 137,
+            "n_overload_active_decision_steps": 162,
+            "n_effective_correction_steps": 139
+          },
+          "val_trigger_diagnostics": {
+            "all_steps_rate": 0.333333,
+            "arrival_steps_rate": 0.557554,
+            "active_decision_steps_rate": 0.5625,
+            "effective_all_steps_rate": 0.301852,
+            "effective_arrival_steps_rate": 0.503597,
+            "effective_active_decision_steps_rate": 0.509375,
+            "mean_ov_given_trigger": 0.885833,
+            "p95_ov_given_trigger": 1.0,
+            "n_total_steps": 540,
+            "n_arrival_steps": 278,
+            "n_active_decision_steps": 320,
+            "n_overload_steps": 180,
+            "n_overload_arrival_steps": 155,
+            "n_overload_active_decision_steps": 180,
+            "n_effective_correction_steps": 163
+          },
+          "train_summary": {
+            "weighted_attack_recall_no_backend_fail": 0.9136,
+            "unnecessary_mtd_count": 7,
+            "queue_delay_p95": 7.0,
+            "average_service_cost_per_step": 10.551233,
+            "pred_expected_consequence_served_ratio": 0.9483
+          },
+          "val_summary": {
+            "weighted_attack_recall_no_backend_fail": 0.8986,
+            "unnecessary_mtd_count": 5,
+            "queue_delay_p95": 1.0,
+            "average_service_cost_per_step": 13.843554,
+            "pred_expected_consequence_served_ratio": 0.9182
+          },
+          "val_objective": 0.7448950873950871,
+          "val_delta_objective_vs_phase3": 0.0,
+          "val_delta_recall_vs_phase3": 4.9e-05,
+          "val_delta_unnecessary_vs_phase3": 0,
+          "val_delta_delay_vs_phase3": 0.0,
+          "val_delta_cost_vs_phase3": 0.0
+        }
+      },
+      "joint_val_delta_objective": 0.0
+    },
+    "olc_u": {
+      "variant": {
+        "name": "olc_u",
+        "tau_gain": 0.08,
+        "clean_gain": 0.0,
+        "use_urgency_mask": true,
+        "description": "urgency-masked threshold overload correction"
+      },
+      "by_slot": {
+        "1": {
+          "phase3_reference": {
+            "config": {
+              "v_weight": 4.0,
+              "clean_penalty": 0.5,
+              "age_bonus": 0.0,
+              "urgency_bonus": 0.0,
+              "fail_penalty": 0.05,
+              "busy_penalty": 0.5,
+              "cost_penalty": 0.0,
+              "admission_score_threshold": 0.0
+            },
+            "val_summary": {
+              "weighted_attack_recall_no_backend_fail": 0.6486,
+              "unnecessary_mtd_count": 2,
+              "queue_delay_p95": 9.0,
+              "average_service_cost_per_step": 10.883374,
+              "pred_expected_consequence_served_ratio": 0.7124
+            },
+            "val_objective": 0.18322129822129712
+          },
+          "variant_config": {
+            "name": "olc_u",
+            "tau_gain": 0.08,
+            "clean_gain": 0.0,
+            "use_urgency_mask": true,
+            "description": "urgency-masked threshold overload correction",
+            "base_phase3_clean_penalty": 0.5,
+            "base_phase3_admission_threshold": 0.0
+          },
+          "train_trigger_diagnostics": {
+            "all_steps_rate": 0.448148,
+            "arrival_steps_rate": 0.889908,
+            "active_decision_steps_rate": 0.832753,
+            "effective_all_steps_rate": 0.316667,
+            "effective_arrival_steps_rate": 0.610092,
+            "effective_active_decision_steps_rate": 0.595819,
+            "mean_ov_given_trigger": 0.954442,
+            "p95_ov_given_trigger": 1.0,
+            "n_total_steps": 540,
+            "n_arrival_steps": 218,
+            "n_active_decision_steps": 287,
+            "n_overload_steps": 242,
+            "n_overload_arrival_steps": 194,
+            "n_overload_active_decision_steps": 239,
+            "n_effective_correction_steps": 171
+          },
+          "val_trigger_diagnostics": {
+            "all_steps_rate": 0.52963,
+            "arrival_steps_rate": 0.899281,
+            "active_decision_steps_rate": 0.863636,
+            "effective_all_steps_rate": 0.412963,
+            "effective_arrival_steps_rate": 0.697842,
+            "effective_active_decision_steps_rate": 0.675758,
+            "mean_ov_given_trigger": 0.977098,
+            "p95_ov_given_trigger": 1.0,
+            "n_total_steps": 540,
+            "n_arrival_steps": 278,
+            "n_active_decision_steps": 330,
+            "n_overload_steps": 286,
+            "n_overload_arrival_steps": 250,
+            "n_overload_active_decision_steps": 285,
+            "n_effective_correction_steps": 223
+          },
+          "train_summary": {
+            "weighted_attack_recall_no_backend_fail": 0.6285,
+            "unnecessary_mtd_count": 5,
+            "queue_delay_p95": 8.25,
+            "average_service_cost_per_step": 8.296207,
+            "pred_expected_consequence_served_ratio": 0.699
+          },
+          "val_summary": {
+            "weighted_attack_recall_no_backend_fail": 0.6486,
+            "unnecessary_mtd_count": 2,
+            "queue_delay_p95": 9.0,
+            "average_service_cost_per_step": 10.883374,
+            "pred_expected_consequence_served_ratio": 0.7124
+          },
+          "val_objective": 0.18322129822129712,
+          "val_delta_objective_vs_phase3": 0.0,
+          "val_delta_recall_vs_phase3": 4.9e-05,
+          "val_delta_unnecessary_vs_phase3": 0,
+          "val_delta_delay_vs_phase3": 0.0,
+          "val_delta_cost_vs_phase3": 0.0
+        },
+        "2": {
+          "phase3_reference": {
+            "config": {
+              "v_weight": 4.0,
+              "clean_penalty": 0.5,
+              "age_bonus": 0.0,
+              "urgency_bonus": 0.0,
+              "fail_penalty": 0.0,
+              "busy_penalty": 0.5,
+              "cost_penalty": 0.0,
+              "admission_score_threshold": 0.1
+            },
+            "val_summary": {
+              "weighted_attack_recall_no_backend_fail": 0.8986,
+              "unnecessary_mtd_count": 5,
+              "queue_delay_p95": 1.0,
+              "average_service_cost_per_step": 13.843554,
+              "pred_expected_consequence_served_ratio": 0.9182
+            },
+            "val_objective": 0.7448950873950871
+          },
+          "variant_config": {
+            "name": "olc_u",
+            "tau_gain": 0.08,
+            "clean_gain": 0.0,
+            "use_urgency_mask": true,
+            "description": "urgency-masked threshold overload correction",
+            "base_phase3_clean_penalty": 0.5,
+            "base_phase3_admission_threshold": 0.1
+          },
+          "train_trigger_diagnostics": {
+            "all_steps_rate": 0.3,
+            "arrival_steps_rate": 0.62844,
+            "active_decision_steps_rate": 0.60223,
+            "effective_all_steps_rate": 0.257407,
+            "effective_arrival_steps_rate": 0.522936,
+            "effective_active_decision_steps_rate": 0.516729,
+            "mean_ov_given_trigger": 0.766358,
+            "p95_ov_given_trigger": 1.0,
+            "n_total_steps": 540,
+            "n_arrival_steps": 218,
+            "n_active_decision_steps": 269,
+            "n_overload_steps": 162,
+            "n_overload_arrival_steps": 137,
+            "n_overload_active_decision_steps": 162,
+            "n_effective_correction_steps": 139
+          },
+          "val_trigger_diagnostics": {
+            "all_steps_rate": 0.333333,
+            "arrival_steps_rate": 0.557554,
+            "active_decision_steps_rate": 0.5625,
+            "effective_all_steps_rate": 0.301852,
+            "effective_arrival_steps_rate": 0.503597,
+            "effective_active_decision_steps_rate": 0.509375,
+            "mean_ov_given_trigger": 0.885833,
+            "p95_ov_given_trigger": 1.0,
+            "n_total_steps": 540,
+            "n_arrival_steps": 278,
+            "n_active_decision_steps": 320,
+            "n_overload_steps": 180,
+            "n_overload_arrival_steps": 155,
+            "n_overload_active_decision_steps": 180,
+            "n_effective_correction_steps": 163
+          },
+          "train_summary": {
+            "weighted_attack_recall_no_backend_fail": 0.9136,
+            "unnecessary_mtd_count": 7,
+            "queue_delay_p95": 7.0,
+            "average_service_cost_per_step": 10.551233,
+            "pred_expected_consequence_served_ratio": 0.9483
+          },
+          "val_summary": {
+            "weighted_attack_recall_no_backend_fail": 0.8986,
+            "unnecessary_mtd_count": 5,
+            "queue_delay_p95": 1.0,
+            "average_service_cost_per_step": 13.843554,
+            "pred_expected_consequence_served_ratio": 0.9182
+          },
+          "val_objective": 0.7448950873950871,
+          "val_delta_objective_vs_phase3": 0.0,
+          "val_delta_recall_vs_phase3": 4.9e-05,
+          "val_delta_unnecessary_vs_phase3": 0,
+          "val_delta_delay_vs_phase3": 0.0,
+          "val_delta_cost_vs_phase3": 0.0
+        }
+      },
+      "joint_val_delta_objective": 0.0
+    }
+  },
+  "selection": {
+    "winner_variant": "olc_t",
+    "winner_joint_val_delta_objective": 0.0,
+    "winner_payload": {
+      "variant": {
+        "name": "olc_t",
+        "tau_gain": 0.06,
+        "clean_gain": 0.0,
+        "use_urgency_mask": false,
+        "description": "threshold-only overload correction"
+      },
+      "by_slot": {
+        "1": {
+          "phase3_reference": {
+            "config": {
+              "v_weight": 4.0,
+              "clean_penalty": 0.5,
+              "age_bonus": 0.0,
+              "urgency_bonus": 0.0,
+              "fail_penalty": 0.05,
+              "busy_penalty": 0.5,
+              "cost_penalty": 0.0,
+              "admission_score_threshold": 0.0
+            },
+            "val_summary": {
+              "weighted_attack_recall_no_backend_fail": 0.6486,
+              "unnecessary_mtd_count": 2,
+              "queue_delay_p95": 9.0,
+              "average_service_cost_per_step": 10.883374,
+              "pred_expected_consequence_served_ratio": 0.7124
+            },
+            "val_objective": 0.18322129822129712
+          },
+          "variant_config": {
+            "name": "olc_t",
+            "tau_gain": 0.06,
+            "clean_gain": 0.0,
+            "use_urgency_mask": false,
+            "description": "threshold-only overload correction",
+            "base_phase3_clean_penalty": 0.5,
+            "base_phase3_admission_threshold": 0.0
+          },
+          "train_trigger_diagnostics": {
+            "all_steps_rate": 0.448148,
+            "arrival_steps_rate": 0.889908,
+            "active_decision_steps_rate": 0.832753,
+            "effective_all_steps_rate": 0.316667,
+            "effective_arrival_steps_rate": 0.610092,
+            "effective_active_decision_steps_rate": 0.595819,
+            "mean_ov_given_trigger": 0.954442,
+            "p95_ov_given_trigger": 1.0,
+            "n_total_steps": 540,
+            "n_arrival_steps": 218,
+            "n_active_decision_steps": 287,
+            "n_overload_steps": 242,
+            "n_overload_arrival_steps": 194,
+            "n_overload_active_decision_steps": 239,
+            "n_effective_correction_steps": 171
+          },
+          "val_trigger_diagnostics": {
+            "all_steps_rate": 0.52963,
+            "arrival_steps_rate": 0.899281,
+            "active_decision_steps_rate": 0.863636,
+            "effective_all_steps_rate": 0.412963,
+            "effective_arrival_steps_rate": 0.697842,
+            "effective_active_decision_steps_rate": 0.675758,
+            "mean_ov_given_trigger": 0.977098,
+            "p95_ov_given_trigger": 1.0,
+            "n_total_steps": 540,
+            "n_arrival_steps": 278,
+            "n_active_decision_steps": 330,
+            "n_overload_steps": 286,
+            "n_overload_arrival_steps": 250,
+            "n_overload_active_decision_steps": 285,
+            "n_effective_correction_steps": 223
+          },
+          "train_summary": {
+            "weighted_attack_recall_no_backend_fail": 0.6285,
+            "unnecessary_mtd_count": 5,
+            "queue_delay_p95": 8.25,
+            "average_service_cost_per_step": 8.296207,
+            "pred_expected_consequence_served_ratio": 0.699
+          },
+          "val_summary": {
+            "weighted_attack_recall_no_backend_fail": 0.6486,
+            "unnecessary_mtd_count": 2,
+            "queue_delay_p95": 9.0,
+            "average_service_cost_per_step": 10.883374,
+            "pred_expected_consequence_served_ratio": 0.7124
+          },
+          "val_objective": 0.18322129822129712,
+          "val_delta_objective_vs_phase3": 0.0,
+          "val_delta_recall_vs_phase3": 4.9e-05,
+          "val_delta_unnecessary_vs_phase3": 0,
+          "val_delta_delay_vs_phase3": 0.0,
+          "val_delta_cost_vs_phase3": 0.0
+        },
+        "2": {
+          "phase3_reference": {
+            "config": {
+              "v_weight": 4.0,
+              "clean_penalty": 0.5,
+              "age_bonus": 0.0,
+              "urgency_bonus": 0.0,
+              "fail_penalty": 0.0,
+              "busy_penalty": 0.5,
+              "cost_penalty": 0.0,
+              "admission_score_threshold": 0.1
+            },
+            "val_summary": {
+              "weighted_attack_recall_no_backend_fail": 0.8986,
+              "unnecessary_mtd_count": 5,
+              "queue_delay_p95": 1.0,
+              "average_service_cost_per_step": 13.843554,
+              "pred_expected_consequence_served_ratio": 0.9182
+            },
+            "val_objective": 0.7448950873950871
+          },
+          "variant_config": {
+            "name": "olc_t",
+            "tau_gain": 0.06,
+            "clean_gain": 0.0,
+            "use_urgency_mask": false,
+            "description": "threshold-only overload correction",
+            "base_phase3_clean_penalty": 0.5,
+            "base_phase3_admission_threshold": 0.1
+          },
+          "train_trigger_diagnostics": {
+            "all_steps_rate": 0.3,
+            "arrival_steps_rate": 0.62844,
+            "active_decision_steps_rate": 0.60223,
+            "effective_all_steps_rate": 0.257407,
+            "effective_arrival_steps_rate": 0.522936,
+            "effective_active_decision_steps_rate": 0.516729,
+            "mean_ov_given_trigger": 0.766358,
+            "p95_ov_given_trigger": 1.0,
+            "n_total_steps": 540,
+            "n_arrival_steps": 218,
+            "n_active_decision_steps": 269,
+            "n_overload_steps": 162,
+            "n_overload_arrival_steps": 137,
+            "n_overload_active_decision_steps": 162,
+            "n_effective_correction_steps": 139
+          },
+          "val_trigger_diagnostics": {
+            "all_steps_rate": 0.333333,
+            "arrival_steps_rate": 0.557554,
+            "active_decision_steps_rate": 0.5625,
+            "effective_all_steps_rate": 0.301852,
+            "effective_arrival_steps_rate": 0.503597,
+            "effective_active_decision_steps_rate": 0.509375,
+            "mean_ov_given_trigger": 0.885833,
+            "p95_ov_given_trigger": 1.0,
+            "n_total_steps": 540,
+            "n_arrival_steps": 278,
+            "n_active_decision_steps": 320,
+            "n_overload_steps": 180,
+            "n_overload_arrival_steps": 155,
+            "n_overload_active_decision_steps": 180,
+            "n_effective_correction_steps": 163
+          },
+          "train_summary": {
+            "weighted_attack_recall_no_backend_fail": 0.9136,
+            "unnecessary_mtd_count": 7,
+            "queue_delay_p95": 7.0,
+            "average_service_cost_per_step": 10.551233,
+            "pred_expected_consequence_served_ratio": 0.9483
+          },
+          "val_summary": {
+            "weighted_attack_recall_no_backend_fail": 0.8986,
+            "unnecessary_mtd_count": 5,
+            "queue_delay_p95": 1.0,
+            "average_service_cost_per_step": 13.843554,
+            "pred_expected_consequence_served_ratio": 0.9182
+          },
+          "val_objective": 0.7448950873950871,
+          "val_delta_objective_vs_phase3": 0.0,
+          "val_delta_recall_vs_phase3": 4.9e-05,
+          "val_delta_unnecessary_vs_phase3": 0,
+          "val_delta_delay_vs_phase3": 0.0,
+          "val_delta_cost_vs_phase3": 0.0
+        }
+      },
+      "joint_val_delta_objective": 0.0
+    }
+  }
+}
