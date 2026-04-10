@@ -1,0 +1,1179 @@
+{
+  "method": "case39_make_final_bundle_v2",
+  "repo_root": "/home/pang/projects/DDET-MTD-q1-case39",
+  "stage_paths": {
+    "source_fixed_replay": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39_source_fixed_replay/postrun_bundle/summary.json",
+    "source_anchor": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39_source_anchor/postrun_bundle/summary.json",
+    "local_protected": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39_localretune_protectedec/postrun_bundle/summary.json"
+  },
+  "stages": {
+    "source_fixed_replay": {
+      "stage": "case39_source_fixed_case14winner_native_test",
+      "n_holdouts": 8,
+      "merged_8_holdouts": {
+        "1": {
+          "phase3_oracle_upgrade": {
+            "mean_recall": 0.0628875,
+            "mean_unnecessary": 7.875,
+            "mean_cost": 0.280820375,
+            "mean_served_ratio": 0.4529375
+          },
+          "phase3_proposed": {
+            "mean_recall": 0.0008625,
+            "mean_unnecessary": 0.125,
+            "mean_cost": 0.005042,
+            "mean_served_ratio": 0.010375
+          },
+          "topk_expected_consequence": {
+            "mean_recall": 0.0722875,
+            "mean_unnecessary": 14.75,
+            "mean_cost": 0.35276775,
+            "mean_served_ratio": 0.5175375
+          }
+        },
+        "2": {
+          "phase3_oracle_upgrade": {
+            "mean_recall": 0.12639999999999998,
+            "mean_unnecessary": 11.5,
+            "mean_cost": 0.457006,
+            "mean_served_ratio": 0.6903375
+          },
+          "phase3_proposed": {
+            "mean_recall": 0.0008625,
+            "mean_unnecessary": 0.625,
+            "mean_cost": 0.01037775,
+            "mean_served_ratio": 0.0232625
+          },
+          "topk_expected_consequence": {
+            "mean_recall": 0.1321625,
+            "mean_unnecessary": 17.5,
+            "mean_cost": 0.496002375,
+            "mean_served_ratio": 0.68695
+          }
+        }
+      },
+      "paired": {
+        "1": {
+          "oracle_vs_phase3": {
+            "recall": {
+              "mean": 0.062025000000000004,
+              "std": 0.0154140966326282,
+              "min": 0.0359,
+              "max": 0.0764,
+              "raw_deltas": [
+                0.0755,
+                0.068,
+                0.0734,
+                0.0764,
+                0.0458,
+                0.0747,
+                0.0359,
+                0.0465
+              ]
+            },
+            "unnecessary": {
+              "mean": 7.75,
+              "std": 3.5619517121937516,
+              "min": 1,
+              "max": 13,
+              "raw_deltas": [
+                10,
+                5,
+                6,
+                11,
+                1,
+                13,
+                9,
+                7
+              ]
+            },
+            "cost": {
+              "mean": 0.275778375,
+              "std": 0.08556205011706051,
+              "min": 0.174816,
+              "max": 0.445677,
+              "raw_deltas": [
+                0.27169,
+                0.445677,
+                0.225849,
+                0.231466,
+                0.235392,
+                0.384726,
+                0.236611,
+                0.174816
+              ]
+            },
+            "served_ratio": {
+              "mean": 0.44256249999999997,
+              "std": 0.08295870866732435,
+              "min": 0.3409,
+              "max": 0.5742999999999999,
+              "raw_deltas": [
+                0.443,
+                0.5742999999999999,
+                0.3409,
+                0.4629,
+                0.4916,
+                0.5282,
+                0.3514,
+                0.3482
+              ]
+            },
+            "delay_p95": {
+              "mean": 1.5375,
+              "std": 4.559588111880283,
+              "min": -1.7000000000000002,
+              "max": 9.8,
+              "raw_deltas": [
+                -1.5,
+                -0.5,
+                -1.0,
+                9.0,
+                -1.7000000000000002,
+                -0.5999999999999996,
+                -1.1999999999999993,
+                9.8
+              ]
+            }
+          },
+          "oracle_vs_topk_expected": {
+            "recall": {
+              "mean": -0.009399999999999999,
+              "std": 0.0157113016647253,
+              "min": -0.03699999999999999,
+              "max": 0.011499999999999996,
+              "raw_deltas": [
+                0.0102,
+                -0.0034999999999999892,
+                -0.03699999999999999,
+                -0.020000000000000004,
+                -0.017300000000000003,
+                0.011499999999999996,
+                0.0,
+                -0.019100000000000006
+              ]
+            },
+            "unnecessary": {
+              "mean": -6.875,
+              "std": 5.395310463726809,
+              "min": -17,
+              "max": 0,
+              "raw_deltas": [
+                -7,
+                -17,
+                -3,
+                -12,
+                0,
+                -4,
+                -10,
+                -2
+              ]
+            },
+            "cost": {
+              "mean": -0.07194737500000001,
+              "std": 0.035999875888457954,
+              "min": -0.13825200000000004,
+              "max": -0.01308699999999996,
+              "raw_deltas": [
+                -0.08757000000000004,
+                -0.13825200000000004,
+                -0.07317699999999999,
+                -0.08219399999999999,
+                -0.029034000000000032,
+                -0.01308699999999996,
+                -0.08796300000000001,
+                -0.064302
+              ]
+            },
+            "served_ratio": {
+              "mean": -0.06460000000000002,
+              "std": 0.046628505230170106,
+              "min": -0.12459999999999999,
+              "max": 0.04190000000000005,
+              "raw_deltas": [
+                -0.10659999999999997,
+                -0.07930000000000004,
+                -0.12459999999999999,
+                -0.04590000000000005,
+                -0.059900000000000064,
+                0.04190000000000005,
+                -0.06870000000000004,
+                -0.07369999999999999
+              ]
+            },
+            "delay_p95": {
+              "mean": 0.3500000000000002,
+              "std": 1.1779218989389748,
+              "min": -1.2000000000000002,
+              "max": 2.8000000000000007,
+              "raw_deltas": [
+                0.0,
+                0.0,
+                -1.0,
+                1.0,
+                -1.2000000000000002,
+                0.40000000000000036,
+                2.8000000000000007,
+                0.8000000000000007
+              ]
+            }
+          }
+        },
+        "2": {
+          "oracle_vs_phase3": {
+            "recall": {
+              "mean": 0.1255375,
+              "std": 0.027098152035701623,
+              "min": 0.0608,
+              "max": 0.1532,
+              "raw_deltas": [
+                0.147,
+                0.1415,
+                0.1364,
+                0.1532,
+                0.1181,
+                0.127,
+                0.0608,
+                0.1203
+              ]
+            },
+            "unnecessary": {
+              "mean": 10.875,
+              "std": 5.622221536012255,
+              "min": 0,
+              "max": 20,
+              "raw_deltas": [
+                11,
+                13,
+                6,
+                14,
+                0,
+                20,
+                14,
+                9
+              ]
+            },
+            "cost": {
+              "mean": 0.44662825,
+              "std": 0.10026388308452601,
+              "min": 0.330949,
+              "max": 0.62599,
+              "raw_deltas": [
+                0.479189,
+                0.62599,
+                0.529151,
+                0.330949,
+                0.37422900000000003,
+                0.520655,
+                0.354467,
+                0.35839600000000005
+              ]
+            },
+            "served_ratio": {
+              "mean": 0.667075,
+              "std": 0.09394671029365532,
+              "min": 0.5276,
+              "max": 0.7911,
+              "raw_deltas": [
+                0.7389,
+                0.7911,
+                0.7506,
+                0.606,
+                0.6619,
+                0.7229,
+                0.5376,
+                0.5276
+              ]
+            },
+            "delay_p95": {
+              "mean": -2.0,
+              "std": 4.489362426893155,
+              "min": -7.0,
+              "max": 8.0,
+              "raw_deltas": [
+                -1.0,
+                -1.9000000000000004,
+                -1.1500000000000004,
+                8.0,
+                -7.0,
+                -1.0,
+                -6.949999999999999,
+                -5.0
+              ]
+            }
+          },
+          "oracle_vs_topk_expected": {
+            "recall": {
+              "mean": -0.005762499999999999,
+              "std": 0.013594938166464753,
+              "min": -0.025300000000000017,
+              "max": 0.010400000000000006,
+              "raw_deltas": [
+                0.0,
+                0.010099999999999998,
+                -0.025300000000000017,
+                0.00839999999999999,
+                -0.016699999999999993,
+                0.010400000000000006,
+                -0.016599999999999997,
+                -0.016399999999999984
+              ]
+            },
+            "unnecessary": {
+              "mean": -6,
+              "std": 3.4641016151377544,
+              "min": -10,
+              "max": -1,
+              "raw_deltas": [
+                -5,
+                -9,
+                -2,
+                -8,
+                -1,
+                -10,
+                -10,
+                -3
+              ]
+            },
+            "cost": {
+              "mean": -0.03899637500000001,
+              "std": 0.03478383874350812,
+              "min": -0.09495400000000004,
+              "max": 0.02894100000000005,
+              "raw_deltas": [
+                -0.014388999999999985,
+                -0.053544999999999954,
+                -0.05339000000000005,
+                -0.06339800000000001,
+                -0.021333999999999964,
+                -0.039902000000000104,
+                -0.09495400000000004,
+                0.02894100000000005
+              ]
+            },
+            "served_ratio": {
+              "mean": 0.0033874999999999877,
+              "std": 0.0316566516509564,
+              "min": -0.02970000000000006,
+              "max": 0.06559999999999999,
+              "raw_deltas": [
+                -0.02059999999999995,
+                0.012900000000000023,
+                0.06559999999999999,
+                -0.012399999999999967,
+                -0.012600000000000056,
+                0.04139999999999999,
+                -0.01750000000000007,
+                -0.02970000000000006
+              ]
+            },
+            "delay_p95": {
+              "mean": 0.7562499999999999,
+              "std": 1.6235450217040488,
+              "min": -1.0,
+              "max": 3.0,
+              "raw_deltas": [
+                3.0,
+                -0.8000000000000007,
+                -0.15000000000000036,
+                3.0,
+                -1.0,
+                1.0,
+                2.0,
+                -1.0
+              ]
+            }
+          }
+        }
+      },
+      "used_summary_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case14/phase3_oracle_family/screen_train_val_summary.json"
+    },
+    "source_anchor": {
+      "stage": "case39_source_anchored_localretune",
+      "n_holdouts": 8,
+      "merged_8_holdouts": {
+        "1": {
+          "phase3_oracle_upgrade": {
+            "mean_recall": 0.017475,
+            "mean_unnecessary": 0.125,
+            "mean_cost": 0.043281625,
+            "mean_served_ratio": 0.0748875
+          },
+          "phase3_proposed": {
+            "mean_recall": 0.0008625,
+            "mean_unnecessary": 0.125,
+            "mean_cost": 0.005042,
+            "mean_served_ratio": 0.010375
+          },
+          "topk_expected_consequence": {
+            "mean_recall": 0.0722875,
+            "mean_unnecessary": 14.75,
+            "mean_cost": 0.35276775,
+            "mean_served_ratio": 0.5175375
+          }
+        },
+        "2": {
+          "phase3_oracle_upgrade": {
+            "mean_recall": 0.0542875,
+            "mean_unnecessary": 1.125,
+            "mean_cost": 0.185487375,
+            "mean_served_ratio": 0.3007125
+          },
+          "phase3_proposed": {
+            "mean_recall": 0.0008625,
+            "mean_unnecessary": 0.625,
+            "mean_cost": 0.01037775,
+            "mean_served_ratio": 0.0232625
+          },
+          "topk_expected_consequence": {
+            "mean_recall": 0.1321625,
+            "mean_unnecessary": 17.5,
+            "mean_cost": 0.496002375,
+            "mean_served_ratio": 0.68695
+          }
+        }
+      },
+      "paired": {
+        "1": {
+          "oracle_vs_phase3": {
+            "recall": {
+              "mean": 0.0166125,
+              "std": 0.006867211497398344,
+              "min": 0.0,
+              "max": 0.0245,
+              "raw_deltas": [
+                0.0179,
+                0.0178,
+                0.0245,
+                0.0168,
+                0.022600000000000002,
+                0.0169,
+                0.0,
+                0.0164
+              ]
+            },
+            "unnecessary": {
+              "mean": 0,
+              "std": 0.0,
+              "min": 0,
+              "max": 0,
+              "raw_deltas": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "cost": {
+              "mean": 0.038239625,
+              "std": 0.015526842321746396,
+              "min": 0.011841999999999998,
+              "max": 0.059772,
+              "raw_deltas": [
+                0.033614,
+                0.041387,
+                0.059679,
+                0.059772,
+                0.032889,
+                0.043395,
+                0.011841999999999998,
+                0.023339
+              ]
+            },
+            "served_ratio": {
+              "mean": 0.0645125,
+              "std": 0.02580990301705917,
+              "min": 0.0299,
+              "max": 0.111,
+              "raw_deltas": [
+                0.0693,
+                0.0425,
+                0.0856,
+                0.111,
+                0.0842,
+                0.0299,
+                0.048,
+                0.0456
+              ]
+            },
+            "delay_p95": {
+              "mean": 2.5125,
+              "std": 4.06830354693452,
+              "min": -0.5,
+              "max": 10.0,
+              "raw_deltas": [
+                0.5,
+                0.5,
+                1.0,
+                10.0,
+                -0.5,
+                0.0,
+                -0.40000000000000036,
+                9.0
+              ]
+            }
+          },
+          "oracle_vs_topk_expected": {
+            "recall": {
+              "mean": -0.0548125,
+              "std": 0.016968827117688483,
+              "min": -0.0859,
+              "max": -0.0359,
+              "raw_deltas": [
+                -0.0474,
+                -0.0537,
+                -0.0859,
+                -0.0796,
+                -0.04050000000000001,
+                -0.04630000000000001,
+                -0.0359,
+                -0.04920000000000001
+              ]
+            },
+            "unnecessary": {
+              "mean": -14.625,
+              "std": 7.105235745561156,
+              "min": -23,
+              "max": -1,
+              "raw_deltas": [
+                -17,
+                -22,
+                -9,
+                -23,
+                -1,
+                -17,
+                -19,
+                -9
+              ]
+            },
+            "cost": {
+              "mean": -0.309486125,
+              "std": 0.09967028848337593,
+              "min": -0.5425420000000001,
+              "max": -0.215779,
+              "raw_deltas": [
+                -0.325646,
+                -0.5425420000000001,
+                -0.23934699999999998,
+                -0.253888,
+                -0.23153700000000002,
+                -0.354418,
+                -0.312732,
+                -0.215779
+              ]
+            },
+            "served_ratio": {
+              "mean": -0.44265,
+              "std": 0.07576140178217401,
+              "min": -0.6111,
+              "max": -0.3721,
+              "raw_deltas": [
+                -0.48029999999999995,
+                -0.6111,
+                -0.3799,
+                -0.39780000000000004,
+                -0.46730000000000005,
+                -0.4564,
+                -0.3721,
+                -0.37629999999999997
+              ]
+            },
+            "delay_p95": {
+              "mean": 1.325,
+              "std": 1.1132722039106158,
+              "min": 0.0,
+              "max": 3.5999999999999996,
+              "raw_deltas": [
+                2.0,
+                1.0,
+                1.0,
+                2.0,
+                0.0,
+                1.0,
+                3.5999999999999996,
+                0.0
+              ]
+            }
+          }
+        },
+        "2": {
+          "oracle_vs_phase3": {
+            "recall": {
+              "mean": 0.053425,
+              "std": 0.021027229370509087,
+              "min": 0.0276,
+              "max": 0.0992,
+              "raw_deltas": [
+                0.05,
+                0.0446,
+                0.0658,
+                0.0992,
+                0.0464,
+                0.061,
+                0.0276,
+                0.0328
+              ]
+            },
+            "unnecessary": {
+              "mean": 0.5,
+              "std": 1.0,
+              "min": -1,
+              "max": 2,
+              "raw_deltas": [
+                -1,
+                2,
+                0,
+                1,
+                -1,
+                1,
+                1,
+                1
+              ]
+            },
+            "cost": {
+              "mean": 0.175109625,
+              "std": 0.06681896857543054,
+              "min": 0.036219,
+              "max": 0.263943,
+              "raw_deltas": [
+                0.13151,
+                0.263943,
+                0.171233,
+                0.24202200000000001,
+                0.16115,
+                0.219245,
+                0.17555500000000002,
+                0.036219
+              ]
+            },
+            "served_ratio": {
+              "mean": 0.27745,
+              "std": 0.07936359366863373,
+              "min": 0.1342,
+              "max": 0.3801,
+              "raw_deltas": [
+                0.1776,
+                0.3351,
+                0.2598,
+                0.3801,
+                0.35059999999999997,
+                0.29,
+                0.2922,
+                0.1342
+              ]
+            },
+            "delay_p95": {
+              "mean": 0.09375,
+              "std": 3.2393515458344435,
+              "min": -2.0,
+              "max": 8.45,
+              "raw_deltas": [
+                -2.0,
+                -1.0,
+                0.5,
+                8.45,
+                -1.0,
+                -1.0,
+                -1.9499999999999993,
+                -1.25
+              ]
+            }
+          },
+          "oracle_vs_topk_expected": {
+            "recall": {
+              "mean": -0.077875,
+              "std": 0.022035355113998047,
+              "min": -0.10389999999999999,
+              "max": -0.045600000000000016,
+              "raw_deltas": [
+                -0.09699999999999999,
+                -0.08679999999999999,
+                -0.09590000000000001,
+                -0.045600000000000016,
+                -0.08839999999999999,
+                -0.0556,
+                -0.0498,
+                -0.10389999999999999
+              ]
+            },
+            "unnecessary": {
+              "mean": -16.375,
+              "std": 8.245263792020241,
+              "min": -29,
+              "max": -2,
+              "raw_deltas": [
+                -17,
+                -20,
+                -8,
+                -21,
+                -2,
+                -29,
+                -23,
+                -11
+              ]
+            },
+            "cost": {
+              "mean": -0.310515,
+              "std": 0.08460487230502746,
+              "min": -0.41559199999999996,
+              "max": -0.152325,
+              "raw_deltas": [
+                -0.362068,
+                -0.41559199999999996,
+                -0.41130800000000006,
+                -0.152325,
+                -0.23441299999999998,
+                -0.34131200000000006,
+                -0.273866,
+                -0.293236
+              ]
+            },
+            "served_ratio": {
+              "mean": -0.3862375,
+              "std": 0.10332314524708391,
+              "min": -0.5819,
+              "max": -0.23829999999999996,
+              "raw_deltas": [
+                -0.5819,
+                -0.44309999999999994,
+                -0.4252,
+                -0.23829999999999996,
+                -0.3239000000000001,
+                -0.3915,
+                -0.2629,
+                -0.42310000000000003
+              ]
+            },
+            "delay_p95": {
+              "mean": 2.8499999999999996,
+              "std": 2.113793982392797,
+              "min": 0.09999999999999964,
+              "max": 7.0,
+              "raw_deltas": [
+                2.0,
+                0.09999999999999964,
+                1.5,
+                3.4499999999999993,
+                5.0,
+                1.0,
+                7.0,
+                2.75
+              ]
+            }
+          }
+        }
+      },
+      "v1_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39_source_anchor/phase3_oracle_confirm_v1/aggregate_summary.json",
+      "v2_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39_source_anchor/phase3_oracle_confirm_v2/aggregate_summary.json"
+    },
+    "local_protected": {
+      "stage": "case39_localretune_protocol_compliant_oracle_protected_ec",
+      "n_holdouts": 8,
+      "merged_8_holdouts": {
+        "1": {
+          "phase3_oracle_upgrade": {
+            "mean_recall": 0.0155125,
+            "mean_unnecessary": 0,
+            "mean_cost": 0.0370815,
+            "mean_served_ratio": 0.0574
+          },
+          "phase3_proposed": {
+            "mean_recall": 0.0008625,
+            "mean_unnecessary": 0.125,
+            "mean_cost": 0.005042,
+            "mean_served_ratio": 0.010375
+          },
+          "topk_expected_consequence": {
+            "mean_recall": 0.0722875,
+            "mean_unnecessary": 14.75,
+            "mean_cost": 0.35276775,
+            "mean_served_ratio": 0.5175375
+          }
+        },
+        "2": {
+          "phase3_oracle_upgrade": {
+            "mean_recall": 0.0156125,
+            "mean_unnecessary": 0,
+            "mean_cost": 0.040386625,
+            "mean_served_ratio": 0.06775
+          },
+          "phase3_proposed": {
+            "mean_recall": 0.0008625,
+            "mean_unnecessary": 0.625,
+            "mean_cost": 0.01037775,
+            "mean_served_ratio": 0.0232625
+          },
+          "topk_expected_consequence": {
+            "mean_recall": 0.1321625,
+            "mean_unnecessary": 17.5,
+            "mean_cost": 0.496002375,
+            "mean_served_ratio": 0.68695
+          }
+        }
+      },
+      "paired": {
+        "1": {
+          "oracle_vs_phase3": {
+            "recall": {
+              "mean": 0.01465,
+              "std": 0.009402659198333203,
+              "min": 0.0,
+              "max": 0.0255,
+              "raw_deltas": [
+                0.0255,
+                0.0178,
+                0.0233,
+                0.0116,
+                0.022600000000000002,
+                0.0,
+                0.0,
+                0.0164
+              ]
+            },
+            "unnecessary": {
+              "mean": -0.125,
+              "std": 0.33071891388307384,
+              "min": -1,
+              "max": 0,
+              "raw_deltas": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                -1,
+                0,
+                0
+              ]
+            },
+            "cost": {
+              "mean": 0.0320395,
+              "std": 0.018909460687708678,
+              "min": 0.008663,
+              "max": 0.071865,
+              "raw_deltas": [
+                0.008663,
+                0.041387,
+                0.041941,
+                0.071865,
+                0.032889,
+                0.024234,
+                0.011841999999999998,
+                0.023495
+              ]
+            },
+            "served_ratio": {
+              "mean": 0.047025,
+              "std": 0.019379741355343212,
+              "min": 0.0194,
+              "max": 0.0842,
+              "raw_deltas": [
+                0.0194,
+                0.0425,
+                0.0596,
+                0.0579,
+                0.0842,
+                0.0243,
+                0.048,
+                0.0403
+              ]
+            },
+            "delay_p95": {
+              "mean": 2.6375,
+              "std": 3.9884011520908977,
+              "min": -0.40000000000000036,
+              "max": 10.0,
+              "raw_deltas": [
+                0.5,
+                0.5,
+                1.0,
+                10.0,
+                0.5,
+                0.0,
+                -0.40000000000000036,
+                9.0
+              ]
+            }
+          },
+          "oracle_vs_topk_expected": {
+            "recall": {
+              "mean": -0.056775000000000006,
+              "std": 0.018714683406352347,
+              "min": -0.0871,
+              "max": -0.0359,
+              "raw_deltas": [
+                -0.0398,
+                -0.0537,
+                -0.0871,
+                -0.0848,
+                -0.04050000000000001,
+                -0.0632,
+                -0.0359,
+                -0.04920000000000001
+              ]
+            },
+            "unnecessary": {
+              "mean": -14.75,
+              "std": 7.1545440106270926,
+              "min": -23,
+              "max": -1,
+              "raw_deltas": [
+                -17,
+                -22,
+                -9,
+                -23,
+                -1,
+                -18,
+                -19,
+                -9
+              ]
+            },
+            "cost": {
+              "mean": -0.31568625,
+              "std": 0.10126102623510935,
+              "min": -0.5425420000000001,
+              "max": -0.215623,
+              "raw_deltas": [
+                -0.350597,
+                -0.5425420000000001,
+                -0.257085,
+                -0.24179499999999998,
+                -0.23153700000000002,
+                -0.373579,
+                -0.312732,
+                -0.215623
+              ]
+            },
+            "served_ratio": {
+              "mean": -0.4601375,
+              "std": 0.07474872804101752,
+              "min": -0.6111,
+              "max": -0.3721,
+              "raw_deltas": [
+                -0.5302,
+                -0.6111,
+                -0.4059,
+                -0.4509,
+                -0.46730000000000005,
+                -0.46199999999999997,
+                -0.3721,
+                -0.3816
+              ]
+            },
+            "delay_p95": {
+              "mean": 1.45,
+              "std": 1.0087120500916007,
+              "min": 0.0,
+              "max": 3.5999999999999996,
+              "raw_deltas": [
+                2.0,
+                1.0,
+                1.0,
+                2.0,
+                1.0,
+                1.0,
+                3.5999999999999996,
+                0.0
+              ]
+            }
+          }
+        },
+        "2": {
+          "oracle_vs_phase3": {
+            "recall": {
+              "mean": 0.01475,
+              "std": 0.010099009852455834,
+              "min": 0.0,
+              "max": 0.0317,
+              "raw_deltas": [
+                0.0179,
+                0.0178,
+                0.0317,
+                0.0116,
+                0.022600000000000002,
+                0.0,
+                0.0,
+                0.0164
+              ]
+            },
+            "unnecessary": {
+              "mean": -0.625,
+              "std": 0.4841229182759271,
+              "min": -1,
+              "max": 0,
+              "raw_deltas": [
+                -1,
+                0,
+                -1,
+                -1,
+                -1,
+                -1,
+                0,
+                0
+              ]
+            },
+            "cost": {
+              "mean": 0.030008875,
+              "std": 0.01640188103875208,
+              "min": 0.0036279999999999993,
+              "max": 0.062481,
+              "raw_deltas": [
+                0.021802000000000002,
+                0.030926000000000002,
+                0.044312,
+                0.062481,
+                0.032557,
+                0.0036279999999999993,
+                0.022264999999999997,
+                0.022099999999999998
+              ]
+            },
+            "served_ratio": {
+              "mean": 0.0444875,
+              "std": 0.02727244202028854,
+              "min": 0.008,
+              "max": 0.0951,
+              "raw_deltas": [
+                0.0109,
+                0.0367,
+                0.07,
+                0.0484,
+                0.0951,
+                0.008,
+                0.0534,
+                0.0334
+              ]
+            },
+            "delay_p95": {
+              "mean": 1.38125,
+              "std": 3.3389685439518595,
+              "min": -1.0,
+              "max": 10.0,
+              "raw_deltas": [
+                0.0,
+                1.0,
+                1.5,
+                10.0,
+                0.0,
+                0.0,
+                -0.4499999999999993,
+                -1.0
+              ]
+            }
+          },
+          "oracle_vs_topk_expected": {
+            "recall": {
+              "mean": -0.11655,
+              "std": 0.016545543206555657,
+              "min": -0.1332,
+              "max": -0.0774,
+              "raw_deltas": [
+                -0.1291,
+                -0.11359999999999999,
+                -0.13,
+                -0.1332,
+                -0.1122,
+                -0.1166,
+                -0.0774,
+                -0.12029999999999999
+              ]
+            },
+            "unnecessary": {
+              "mean": -17.5,
+              "std": 8.789197915623474,
+              "min": -31,
+              "max": -2,
+              "raw_deltas": [
+                -17,
+                -22,
+                -9,
+                -23,
+                -2,
+                -31,
+                -24,
+                -12
+              ]
+            },
+            "cost": {
+              "mean": -0.45561575,
+              "std": 0.11251591315648424,
+              "min": -0.648609,
+              "max": -0.307355,
+              "raw_deltas": [
+                -0.471776,
+                -0.648609,
+                -0.5382290000000001,
+                -0.331866,
+                -0.363006,
+                -0.556929,
+                -0.42715600000000004,
+                -0.307355
+              ]
+            },
+            "served_ratio": {
+              "mean": -0.6192,
+              "std": 0.08772171908940223,
+              "min": -0.7485999999999999,
+              "max": -0.5017,
+              "raw_deltas": [
+                -0.7485999999999999,
+                -0.7414999999999999,
+                -0.615,
+                -0.57,
+                -0.5794,
+                -0.6735,
+                -0.5017,
+                -0.5239
+              ]
+            },
+            "delay_p95": {
+              "mean": 4.1375,
+              "std": 2.1201046554356697,
+              "min": 2.0,
+              "max": 8.5,
+              "raw_deltas": [
+                4.0,
+                2.0999999999999996,
+                2.5,
+                5.0,
+                6.0,
+                2.0,
+                8.5,
+                3.0
+              ]
+            }
+          }
+        }
+      },
+      "v1_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39_localretune_protectedec/phase3_oracle_confirm_v1/aggregate_summary.json",
+      "v2_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39_localretune_protectedec/phase3_oracle_confirm_v2/aggregate_summary.json"
+    }
+  },
+  "missing": [
+    {
+      "label": "transfer_frozen_dev",
+      "stage": "native_clean_attack_test_with_frozen_case14_dev"
+    },
+    {
+      "label": "local_unconstrained",
+      "stage": "case39_fully_native_localretune"
+    }
+  ],
+  "transfer_hash_audit": {
+    "path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/postrun_audits/20260409_231456/fallback_case14_hash_audit.json",
+    "all_hashes_match_asset_protocol": true
+  },
+  "local_hash_audit": {
+    "path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39_localretune/postrun_bundle/fallback_case14_hash_audit.json",
+    "all_hashes_match_asset_protocol": true
+  },
+  "claim_recommendation": "# Claim recommendation\n\nPrimary result: use **native_clean_attack_test_with_frozen_case14_dev** as the main paper result.\n\nInterpretation: native case39 local selection drifts toward over-conservative policies, while source-frozen transfer acts like regularization and yields the most useful risk–cost trade-off.\n\nRecommended stage roles:\n- Main result: transfer_frozen_dev\n- Mechanism/isolation: source_fixed_replay\n- Repair attempt: source_anchor\n- Protocol-compliant negative control: local_protected\n- Protocol-violating stress test: local_unconstrained\n\nKey oracle recalls (slot1 / slot2):\n- transfer_frozen_dev: None / None\n- source_fixed_replay: 0.0628875 / 0.12639999999999998\n- source_anchor: 0.017475 / 0.0542875\n- local_protected: 0.0155125 / 0.0156125\n- local_unconstrained: None / None\n\nNext best step is not another heavy run. Focus on paper packaging, significance presentation, and artifact cleanup.",
+  "source_fixed_hash_audit": {
+    "path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39_source_fixed_replay/postrun_bundle/fallback_case14_hash_audit.json",
+    "all_hashes_match_asset_protocol": true
+  }
+}
