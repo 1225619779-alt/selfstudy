@@ -1,0 +1,89 @@
+{
+  "workdir": "/home/pang/projects/DDET-MTD-q1-case39",
+  "case_name": "case39",
+  "clean_bank": "metric/case39/metric_clean_alarm_scores_full.npy",
+  "attack_bank": "metric/case39/metric_attack_alarm_scores_400.npy",
+  "train_bank": "metric/case39/mixed_bank_fit.npy",
+  "val_bank": "metric/case39/mixed_bank_eval.npy",
+  "schedule": "confirm_multi_family_v1",
+  "confirm_families": [
+    {
+      "family_tag": "cfA_frontloaded",
+      "schedule": "clean:90;att-1-0.15:90;clean:45;att-2-0.25:90;clean:45;att-3-0.25:60;clean:120",
+      "seeds": [
+        20260511,
+        20260512
+      ],
+      "offsets": [
+        1020,
+        1080
+      ]
+    },
+    {
+      "family_tag": "cfB_backloaded",
+      "schedule": "clean:150;att-2-0.20:60;clean:30;att-3-0.35:90;clean:30;att-1-0.15:60;clean:120",
+      "seeds": [
+        20260521,
+        20260522
+      ],
+      "offsets": [
+        1140,
+        1200
+      ]
+    }
+  ],
+  "frozen_regime": {
+    "decision_step_group": 1,
+    "busy_time_quantile": 0.65,
+    "use_cost_budget": false,
+    "cost_budget_window_steps": 20,
+    "cost_budget_quantile": 0.6,
+    "slot_budget_list": [
+      1,
+      2
+    ],
+    "max_wait_steps": 10
+  },
+  "holdouts": [
+    {
+      "tag": "cfA_frontloaded_0_seed20260511_off1020",
+      "family_tag": "cfA_frontloaded",
+      "schedule": "clean:90;att-1-0.15:90;clean:45;att-2-0.25:90;clean:45;att-3-0.25:60;clean:120",
+      "seed_base": 20260511,
+      "start_offset": 1020,
+      "test_bank": "metric/case39/phase3_confirm_blind_v1/banks/mixed_bank_test_cfA_frontloaded_0_seed20260511_off1020.npy",
+      "result_npy": "metric/case39/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfA_frontloaded_0_seed20260511_off1020.npy",
+      "result_summary": "metric/case39/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfA_frontloaded_0_seed20260511_off1020.summary.json"
+    },
+    {
+      "tag": "cfA_frontloaded_1_seed20260512_off1080",
+      "family_tag": "cfA_frontloaded",
+      "schedule": "clean:90;att-1-0.15:90;clean:45;att-2-0.25:90;clean:45;att-3-0.25:60;clean:120",
+      "seed_base": 20260512,
+      "start_offset": 1080,
+      "test_bank": "metric/case39/phase3_confirm_blind_v1/banks/mixed_bank_test_cfA_frontloaded_1_seed20260512_off1080.npy",
+      "result_npy": "metric/case39/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfA_frontloaded_1_seed20260512_off1080.npy",
+      "result_summary": "metric/case39/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfA_frontloaded_1_seed20260512_off1080.summary.json"
+    },
+    {
+      "tag": "cfB_backloaded_0_seed20260521_off1140",
+      "family_tag": "cfB_backloaded",
+      "schedule": "clean:150;att-2-0.20:60;clean:30;att-3-0.35:90;clean:30;att-1-0.15:60;clean:120",
+      "seed_base": 20260521,
+      "start_offset": 1140,
+      "test_bank": "metric/case39/phase3_confirm_blind_v1/banks/mixed_bank_test_cfB_backloaded_0_seed20260521_off1140.npy",
+      "result_npy": "metric/case39/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfB_backloaded_0_seed20260521_off1140.npy",
+      "result_summary": "metric/case39/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfB_backloaded_0_seed20260521_off1140.summary.json"
+    },
+    {
+      "tag": "cfB_backloaded_1_seed20260522_off1200",
+      "family_tag": "cfB_backloaded",
+      "schedule": "clean:150;att-2-0.20:60;clean:30;att-3-0.35:90;clean:30;att-1-0.15:60;clean:120",
+      "seed_base": 20260522,
+      "start_offset": 1200,
+      "test_bank": "metric/case39/phase3_confirm_blind_v1/banks/mixed_bank_test_cfB_backloaded_1_seed20260522_off1200.npy",
+      "result_npy": "metric/case39/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfB_backloaded_1_seed20260522_off1200.npy",
+      "result_summary": "metric/case39/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfB_backloaded_1_seed20260522_off1200.summary.json"
+    }
+  ]
+}

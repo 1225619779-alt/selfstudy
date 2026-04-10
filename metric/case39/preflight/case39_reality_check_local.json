@@ -1,0 +1,83 @@
+{
+  "repo_root": "/home/pang/projects/DDET-MTD-q1-case39",
+  "python_executable": "/home/pang/projects/DDET-MTD/.venv_q1/bin/python",
+  "python_version": "3.12.3 (main, Mar  3 2026, 12:15:18) [GCC 13.3.0]",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "case_name": "case39",
+  "cwd": "/home/pang/projects/DDET-MTD-q1-case39",
+  "torch": {
+    "torch_version": "2.9.1+rocm7.2.0.git7e1940d4",
+    "cuda_is_available": true,
+    "cuda_device_count": 1,
+    "torch_cuda_version": null,
+    "torch_hip_version": "7.2.26015-fc0010cf6a",
+    "device_name_0": "AMD Radeon RX 9070 XT"
+  },
+  "sys_config": {
+    "case_name": "case39",
+    "measure_type": "HALF_RTU",
+    "pv_bus": [
+      29,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38
+    ],
+    "fpr": 0.02
+  },
+  "basic_paths": {
+    "noise_sigma": "gen_data/case39/noise_sigma.npy",
+    "load_active": "gen_data/case39/load_active.npy",
+    "load_reactive": "gen_data/case39/load_reactive.npy",
+    "pv_active": "gen_data/case39/pv_active.npy",
+    "pv_reactive": "gen_data/case39/pv_reactive.npy"
+  },
+  "basic_exists": {
+    "noise_sigma": true,
+    "load_active": true,
+    "load_reactive": true,
+    "pv_active": true,
+    "pv_reactive": true
+  },
+  "array_shapes": {
+    "load_active": [
+      35134,
+      39
+    ],
+    "load_reactive": [
+      35134,
+      39
+    ],
+    "pv_active": [
+      35134,
+      9
+    ],
+    "pv_reactive": [
+      35134,
+      9
+    ],
+    "noise_sigma": [
+      170
+    ],
+    "total_steps": 35134
+  },
+  "benchmark": {
+    "start_idx": 0,
+    "end_idx_exclusive": 8,
+    "n_steps": 8,
+    "sec_per_iter_mean": 28.513710276747588,
+    "sec_per_iter_min": 11.83254407098866,
+    "sec_per_iter_max": 43.26879872899735,
+    "success_rate_in_slice": 1.0,
+    "first_z_noise_shape": [
+      170,
+      1
+    ],
+    "estimated_hours_for_total_steps_if_constant": 278.2779713509027
+  },
+  "status": "OK"
+}

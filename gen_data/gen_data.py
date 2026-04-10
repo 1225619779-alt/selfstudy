@@ -1,3 +1,4 @@
+from pathlib import Path
 """
 Functions to create synthetic grid and data
 case: modify the IEEE standard case reported in PyPower
@@ -12,7 +13,7 @@ import copy
 from pypower.idx_bus import PD, QD, GS, BS
 from pypower.idx_gen import QMAX, PMAX, QMIN
 from pypower.idx_brch import RATE_A, BR_B, TAP, SHIFT
-from pypower.api import ext2int, bustypes, case14
+from pypower.api import ext2int, bustypes, case14, case39
 from os.path import exists
 import sys
 from tqdm import tqdm
@@ -143,6 +144,14 @@ def gen_case(case_name):
         # case['gencost'][:,4] = 20
         # case['gencost'][:,5] = case['gencost'][:,6]  # Constant cost
     
+
+    elif case_name == 'case39':
+        # Conservative native case39 support.
+        # Do not invent case14-style load surgery without evidence; start from pypower case39 as-is.
+        case = case39()
+        # Keep generator reactive bounds symmetric, same generic adjustment used in case14 support.
+        case['gen'][:,QMIN] = -case['gen'][:,QMAX]
+
     return case
 
 """
@@ -239,19 +248,19 @@ if __name__ == "__main__":
     from utils.class_se import SE
     
     print(f'Generating measurement.')
-    
-    # Loading path
-    noise_sigma_dir = f'gen_data\{sys_config["case_name"]}\\noise_sigma.npy'
-    load_active_dir = f'gen_data\{sys_config["case_name"]}\load_active.npy'
-    load_reactive_dir = f'gen_data\{sys_config["case_name"]}\load_reactive.npy'
-    pv_active_dir = f'gen_data\{sys_config["case_name"]}\pv_active.npy'
-    pv_reactive_dir = f'gen_data\{sys_config["case_name"]}\pv_reactive.npy'
-    
-    # Saving path
-    z_noise_summary_dir = f'gen_data\{sys_config["case_name"]}\z_noise_summary.npy'
-    v_est_summary_dir = f'gen_data\{sys_config["case_name"]}\\v_est_summary.npy'
-    success_summary_dir = f'gen_data\{sys_config["case_name"]}\\success_summary.npy'
-    
+    # Loading/saving paths
+    case_dir = Path('gen_data') / sys_config["case_name"]
+    case_dir.mkdir(parents=True, exist_ok=True)
+    noise_sigma_dir = case_dir / 'noise_sigma.npy'
+    load_active_dir = case_dir / 'load_active.npy'
+    load_reactive_dir = case_dir / 'load_reactive.npy'
+    pv_active_dir = case_dir / 'pv_active.npy'
+    pv_reactive_dir = case_dir / 'pv_reactive.npy'
+
+    z_noise_summary_dir = case_dir / 'z_noise_summary.npy'
+    v_est_summary_dir = case_dir / 'v_est_summary.npy'
+    success_summary_dir = case_dir / 'success_summary.npy'
+
     # Modify case
     case = gen_case(sys_config['case_name'])
     idx, no_mea, noise_sigma = define_mea_idx_noise(case, choice = sys_config['measure_type'])

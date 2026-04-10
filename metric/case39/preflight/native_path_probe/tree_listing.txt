@@ -1,0 +1,63 @@
+=== saved_model tree ===
+saved_model/case14/checkpoint_rnn.pt
+
+=== gen_data tree ===
+gen_data/__pycache__/gen_data.cpython-312.pyc
+gen_data/gen_data.py
+gen_data/raw_data/.placeholder
+
+=== metric/case39 tree ===
+metric/case39/asset_protocol.json
+metric/case39/bridge_bundle_20260408_093631/aggregate_summary_v1.json
+metric/case39/bridge_bundle_20260408_093631/aggregate_summary_v2.json
+metric/case39/bridge_bundle_20260408_093631/asset_protocol.json
+metric/case39/bridge_bundle_20260408_093631/bridge_contract.json
+metric/case39/bridge_bundle_20260408_093631/case39_capability_audit_rerun.json
+metric/case39/bridge_bundle_20260408_093631/case39_external_asset_scan.txt
+metric/case39/bridge_bundle_20260408_093631/case39_native_readiness.json
+metric/case39/bridge_bundle_20260408_093631/manifest_v1.json
+metric/case39/bridge_bundle_20260408_093631/manifest_v2.json
+metric/case39/bridge_contract.json
+metric/case39/phase3_confirm_blind_v1/manifest.json
+metric/case39/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfA_frontloaded_0_seed20260511_off1020.npy
+metric/case39/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfA_frontloaded_0_seed20260511_off1020.summary.json
+metric/case39/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfA_frontloaded_1_seed20260512_off1080.npy
+metric/case39/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfA_frontloaded_1_seed20260512_off1080.summary.json
+metric/case39/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfB_backloaded_0_seed20260521_off1140.npy
+metric/case39/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfB_backloaded_0_seed20260521_off1140.summary.json
+metric/case39/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfB_backloaded_1_seed20260522_off1200.npy
+metric/case39/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfB_backloaded_1_seed20260522_off1200.summary.json
+metric/case39/phase3_confirm_blind_v2/manifest.json
+metric/case39/phase3_confirm_blind_v2/results/budget_scheduler_phase3_holdout_cfC_interleaved_0_seed20260611_off1260.npy
+metric/case39/phase3_confirm_blind_v2/results/budget_scheduler_phase3_holdout_cfC_interleaved_0_seed20260611_off1260.summary.json
+metric/case39/phase3_confirm_blind_v2/results/budget_scheduler_phase3_holdout_cfC_interleaved_1_seed20260612_off1320.npy
+metric/case39/phase3_confirm_blind_v2/results/budget_scheduler_phase3_holdout_cfC_interleaved_1_seed20260612_off1320.summary.json
+metric/case39/phase3_confirm_blind_v2/results/budget_scheduler_phase3_holdout_cfD_tailheavy_0_seed20260621_off1380.npy
+metric/case39/phase3_confirm_blind_v2/results/budget_scheduler_phase3_holdout_cfD_tailheavy_0_seed20260621_off1380.summary.json
+metric/case39/phase3_confirm_blind_v2/results/budget_scheduler_phase3_holdout_cfD_tailheavy_1_seed20260622_off1440.npy
+metric/case39/phase3_confirm_blind_v2/results/budget_scheduler_phase3_holdout_cfD_tailheavy_1_seed20260622_off1440.summary.json
+metric/case39/phase3_oracle_confirm_v1/aggregate_summary.json
+metric/case39/phase3_oracle_confirm_v2/aggregate_summary.json
+metric/case39/preflight/case39_capability_audit.json
+metric/case39/preflight/case39_capability_audit_rerun.json
+metric/case39/preflight/case39_external_asset_scan.txt
+metric/case39/preflight/case39_native_readiness.json
+metric/case39/preflight/native_path_probe/collect_attack_help.txt
+metric/case39/preflight/native_path_probe/collect_clean_help.txt
+metric/case39/preflight/native_path_probe/config.py.txt
+metric/case39/preflight/native_path_probe/evaluation_mixed_timeline_help.txt
+metric/case39/preflight/native_path_probe/gen_data.py.txt
+metric/case39/preflight/native_path_probe/gen_data_help.txt
+metric/case39/preflight/native_path_probe/key_grep.txt
+metric/case39/preflight/native_path_probe/load_data.py.txt
+metric/case39/preflight/native_path_probe/nn_setting.py.txt
+metric/case39/preflight/native_path_probe/oldrepo_bootstrap_q1_case39_workspace.sh.txt
+metric/case39/preflight/native_path_probe/oldrepo_case39_preflight_help.txt
+metric/case39/preflight/native_path_probe/oldrepo_phase3_case39_preflight.py.txt
+metric/case39/preflight/native_path_probe/run.py.txt
+metric/case39/preflight/native_path_probe/run_help.txt
+metric/case39/preflight/native_path_probe/tree_listing.txt
+
+=== old repo case39 helper hits ===
+-rw-r--r-- 1 pang pang 1773 Apr  7 16:25 /home/pang/projects/DDET-MTD/bootstrap_q1_case39_workspace.sh
+-rw-r--r-- 1 pang pang 5710 Apr  7 15:55 /home/pang/projects/DDET-MTD/phase3_case39_preflight.py

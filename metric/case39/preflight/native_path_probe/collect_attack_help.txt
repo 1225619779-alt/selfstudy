@@ -1,0 +1,27 @@
+usage: collect_attack_alarm_scores.py [-h] [--total_run TOTAL_RUN]
+                                      [--ang_no_list [ANG_NO_LIST ...]]
+                                      [--ang_str_list [ANG_STR_LIST ...]]
+                                      [--mag_no MAG_NO] [--mag_str MAG_STR]
+                                      [--seed_base SEED_BASE] [--is_shuffle]
+                                      [--output OUTPUT]
+
+Collect attack alarm scores for gate ablation.
+
+options:
+  -h, --help            show this help message and exit
+  --total_run TOTAL_RUN
+                        Number of attacked samples to test per attack group.
+  --ang_no_list [ANG_NO_LIST ...]
+                        Attack angle-number list.
+  --ang_str_list [ANG_STR_LIST ...]
+                        Attack angle-strength list.
+  --mag_no MAG_NO       Attack magnitude-number, keep 0 to match current repo
+                        setup.
+  --mag_str MAG_STR     Attack magnitude-strength, keep 0.0 to match current
+                        repo setup.
+  --seed_base SEED_BASE
+                        Base seed. Effective seed matches
+                        evaluation_event_trigger.py style.
+  --is_shuffle          Shuffle dataloader. Keep this OFF for strict
+                        comparability.
+  --output OUTPUT       Output .npy path.

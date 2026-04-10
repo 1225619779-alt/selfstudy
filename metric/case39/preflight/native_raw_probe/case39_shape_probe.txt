@@ -1,0 +1,9 @@
+n_bus = 39
+n_branch = 46
+ref_idx_0based = [30]
+pv_bus_0based = [29, 31, 32, 33, 34, 35, 36, 37, 38]
+pq_bus_count = 29
+feature_size_half_rtu = 170
+noise_sigma_len = 170
+expected_saved_model_path = saved_model/case39/checkpoint_rnn.pt
+expected_gen_data_root = gen_data/case39

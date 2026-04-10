@@ -1,0 +1,30 @@
+label=case39_fully_native_localretune
+n_holdouts=8
+reference_label=native_clean_attack_test_with_frozen_case14_dev
+== merged_8_holdouts ==
+-- slot_budget=1 --
+phase3_oracle_upgrade: recall=0.000000, unnecessary=0.000, cost=0.000403, served_ratio=0.005500
+phase3_proposed: recall=0.000862, unnecessary=0.125, cost=0.005042, served_ratio=0.010375
+topk_expected_consequence: recall=0.072288, unnecessary=14.750, cost=0.352768, served_ratio=0.517537
+-- slot_budget=2 --
+phase3_oracle_upgrade: recall=0.083263, unnecessary=0.250, cost=0.186990, served_ratio=0.318837
+phase3_proposed: recall=0.000862, unnecessary=0.625, cost=0.010378, served_ratio=0.023262
+topk_expected_consequence: recall=0.132163, unnecessary=17.500, cost=0.496002, served_ratio=0.686950
+== paired_significance ==
+-- slot_budget=1 --
+oracle_vs_phase3: dRecall=-0.000862 CI95=[-0.002213,0.000000] p_perm=0.5000; dUnnecessary=-0.125 CI95=[-0.375,0.000] p_perm=1.0000; dCost=-0.004639 CI95=[-0.007798,-0.001601] p_perm=0.0625
+oracle_vs_topk_expected: dRecall=-0.072288 CI95=[-0.086975,-0.058225] p_perm=0.0078; dUnnecessary=-14.750 CI95=[-19.253,-9.625] p_perm=0.0078; dCost=-0.352365 CI95=[-0.431115,-0.292218] p_perm=0.0078
+oracle_vs_best_threshold: dRecall=-0.055113 CI95=[-0.064138,-0.046199] p_perm=0.0078; dUnnecessary=-0.625 CI95=[-1.875,0.000] p_perm=1.0000; dCost=-0.076645 CI95=[-0.096912,-0.060320] p_perm=0.0078
+-- slot_budget=2 --
+oracle_vs_phase3: dRecall=0.082400 CI95=[0.062938,0.104412] p_perm=0.0078; dUnnecessary=-0.375 CI95=[-0.875,0.125] p_perm=0.3750; dCost=0.176613 CI95=[0.131972,0.219038] p_perm=0.0078
+oracle_vs_topk_expected: dRecall=-0.048900 CI95=[-0.062350,-0.035313] p_perm=0.0078; dUnnecessary=-17.250 CI95=[-23.250,-11.125] p_perm=0.0078; dCost=-0.309012 CI95=[-0.365663,-0.249288] p_perm=0.0078
+oracle_vs_best_threshold: dRecall=-0.004950 CI95=[-0.024851,0.016213] p_perm=0.6250; dUnnecessary=0.250 CI95=[0.000,0.625] p_perm=0.5000; dCost=0.072418 CI95=[0.035628,0.109585] p_perm=0.0156
+== delta_vs_reference ==
+-- slot_budget=1 --
+phase3_oracle_upgrade: dRecall=-0.091662, dUnnecessary=-13.500, dCost=-0.387704, dServed=-0.555763
+phase3_proposed: dRecall=-0.091850, dUnnecessary=-15.750, dCost=-0.421109, dServed=-0.577325
+topk_expected_consequence: dRecall=-0.021863, dUnnecessary=-1.250, dCost=-0.073752, dServed=-0.074700
+-- slot_budget=2 --
+phase3_oracle_upgrade: dRecall=-0.093962, dUnnecessary=-17.250, dCost=-0.370491, dServed=-0.423375
+phase3_proposed: dRecall=-0.174763, dUnnecessary=-16.875, dCost=-0.568045, dServed=-0.741000
+topk_expected_consequence: dRecall=-0.035488, dUnnecessary=0.000, dCost=-0.070998, dServed=-0.068500

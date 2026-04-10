@@ -1,0 +1,67 @@
+nohup: ignoring input
+Traceback (most recent call last):
+  File "/home/pang/projects/DDET-MTD-q1-case39/evaluation_baseline_with_attack.py", line 168, in <module>
+    case_class = load_case()
+                 ^^^^^^^^^^^
+  File "/home/pang/projects/DDET-MTD-q1-case39/utils/load_data.py", line 29, in load_case
+    noise_sigma = np.load(noise_sigma_dir)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pang/projects/DDET-MTD/.venv_q1/lib/python3.12/site-packages/numpy/lib/npyio.py", line 427, in load
+    fid = stack.enter_context(open(os_fspath(file), "rb"))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'gen_data/case14/noise_sigma.npy'
+Traceback (most recent call last):
+  File "/home/pang/projects/DDET-MTD-q1-case39/evaluation_baseline_with_attack.py", line 168, in <module>
+    case_class = load_case()
+                 ^^^^^^^^^^^
+  File "/home/pang/projects/DDET-MTD-q1-case39/utils/load_data.py", line 29, in load_case
+    noise_sigma = np.load(noise_sigma_dir)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pang/projects/DDET-MTD/.venv_q1/lib/python3.12/site-packages/numpy/lib/npyio.py", line 427, in load
+    fid = stack.enter_context(open(os_fspath(file), "rb"))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'gen_data/case14/noise_sigma.npy'
+Traceback (most recent call last):
+  File "/home/pang/projects/DDET-MTD-q1-case39/evaluation_baseline_with_attack.py", line 168, in <module>
+    case_class = load_case()
+                 ^^^^^^^^^^^
+  File "/home/pang/projects/DDET-MTD-q1-case39/utils/load_data.py", line 29, in load_case
+    noise_sigma = np.load(noise_sigma_dir)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pang/projects/DDET-MTD/.venv_q1/lib/python3.12/site-packages/numpy/lib/npyio.py", line 427, in load
+    fid = stack.enter_context(open(os_fspath(file), "rb"))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'gen_data/case14/noise_sigma.npy'
+Traceback (most recent call last):
+  File "/home/pang/projects/DDET-MTD-q1-case39/evaluation_baseline_with_attack.py", line 168, in <module>
+    case_class = load_case()
+                 ^^^^^^^^^^^
+  File "/home/pang/projects/DDET-MTD-q1-case39/utils/load_data.py", line 29, in load_case
+    noise_sigma = np.load(noise_sigma_dir)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pang/projects/DDET-MTD/.venv_q1/lib/python3.12/site-packages/numpy/lib/npyio.py", line 427, in load
+    fid = stack.enter_context(open(os_fspath(file), "rb"))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'gen_data/case14/noise_sigma.npy'
+Traceback (most recent call last):
+  File "/home/pang/projects/DDET-MTD-q1-case39/evaluation_baseline_no_attack.py", line 50, in <module>
+    case_class = load_case()
+                 ^^^^^^^^^^^
+  File "/home/pang/projects/DDET-MTD-q1-case39/utils/load_data.py", line 29, in load_case
+    noise_sigma = np.load(noise_sigma_dir)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pang/projects/DDET-MTD/.venv_q1/lib/python3.12/site-packages/numpy/lib/npyio.py", line 427, in load
+    fid = stack.enter_context(open(os_fspath(file), "rb"))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'gen_data/case14/noise_sigma.npy'
+Traceback (most recent call last):
+  File "/home/pang/projects/DDET-MTD-q1-case39/evaluation_baseline_no_attack.py", line 50, in <module>
+    case_class = load_case()
+                 ^^^^^^^^^^^
+  File "/home/pang/projects/DDET-MTD-q1-case39/utils/load_data.py", line 29, in load_case
+    noise_sigma = np.load(noise_sigma_dir)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pang/projects/DDET-MTD/.venv_q1/lib/python3.12/site-packages/numpy/lib/npyio.py", line 427, in load
+    fid = stack.enter_context(open(os_fspath(file), "rb"))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'gen_data/case14/noise_sigma.npy'

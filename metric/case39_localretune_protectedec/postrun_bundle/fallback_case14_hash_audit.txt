@@ -1,0 +1,15 @@
+all_hashes_match_asset_protocol=True
+n_checks=13
+[assets] clean_bank hash_match=True source=/home/pang/projects/DDET-MTD-q1-case39/metric/case14/metric_clean_alarm_scores_full.npy
+[assets] attack_bank hash_match=True source=/home/pang/projects/DDET-MTD-q1-case39/metric/case14/metric_attack_alarm_scores_400.npy
+[assets] train_bank hash_match=True source=/home/pang/projects/DDET-MTD-q1-case39/metric/case14/mixed_bank_fit.npy
+[assets] val_bank hash_match=True source=/home/pang/projects/DDET-MTD-q1-case39/metric/case14/mixed_bank_eval.npy
+[assets] test_bank_smoke hash_match=True source=/home/pang/projects/DDET-MTD-q1-case39/metric/case14/mixed_bank_test_holdout.npy
+[holdout_test_banks] cfA_frontloaded_0_seed20260511_off1020 hash_match=True source=/home/pang/projects/DDET-MTD/metric/case14/phase3_confirm_blind_v1/banks/mixed_bank_test_cfA_frontloaded_0_seed20260511_off1020.npy
+[holdout_test_banks] cfA_frontloaded_1_seed20260512_off1080 hash_match=True source=/home/pang/projects/DDET-MTD/metric/case14/phase3_confirm_blind_v1/banks/mixed_bank_test_cfA_frontloaded_1_seed20260512_off1080.npy
+[holdout_test_banks] cfB_backloaded_0_seed20260521_off1140 hash_match=True source=/home/pang/projects/DDET-MTD/metric/case14/phase3_confirm_blind_v1/banks/mixed_bank_test_cfB_backloaded_0_seed20260521_off1140.npy
+[holdout_test_banks] cfB_backloaded_1_seed20260522_off1200 hash_match=True source=/home/pang/projects/DDET-MTD/metric/case14/phase3_confirm_blind_v1/banks/mixed_bank_test_cfB_backloaded_1_seed20260522_off1200.npy
+[holdout_test_banks] cfC_interleaved_0_seed20260611_off1260 hash_match=True source=/home/pang/projects/DDET-MTD/metric/case14/phase3_confirm_blind_v2/banks/mixed_bank_test_cfC_interleaved_0_seed20260611_off1260.npy
+[holdout_test_banks] cfC_interleaved_1_seed20260612_off1320 hash_match=True source=/home/pang/projects/DDET-MTD/metric/case14/phase3_confirm_blind_v2/banks/mixed_bank_test_cfC_interleaved_1_seed20260612_off1320.npy
+[holdout_test_banks] cfD_tailheavy_0_seed20260621_off1380 hash_match=True source=/home/pang/projects/DDET-MTD/metric/case14/phase3_confirm_blind_v2/banks/mixed_bank_test_cfD_tailheavy_0_seed20260621_off1380.npy
+[holdout_test_banks] cfD_tailheavy_1_seed20260622_off1440 hash_match=True source=/home/pang/projects/DDET-MTD/metric/case14/phase3_confirm_blind_v2/banks/mixed_bank_test_cfD_tailheavy_1_seed20260622_off1440.npy

@@ -1,0 +1,102 @@
+configs/config.py:26:case_name = os.environ.get("DDET_CASE_NAME", "case14")
+configs/config.py:28:if case_name == "case14":
+configs/config.py:31:        'case_name': 'case14',
+configs/config.py:56:elif case_name == "case39":
+configs/config.py:58:        "case39 raw generation is disabled in the first-stage bridge. "
+configs/config.py:59:        "Stage precomputed case39 banks under metric/case39 via prepare_case_bank_assets.py. "
+configs/config.py:60:        "Do not fall back to case14 raw assets or checkpoint."
+configs/nn_setting.py:10:if sys_config["case_name"] == "case14":
+configs/nn_setting.py:24:        "model_path": "saved_model/case14/checkpoint_rnn.pt",
+configs/nn_setting.py:42:elif sys_config["case_name"] == "case39":
+configs/nn_setting.py:43:    model_path = Path("saved_model/case39/checkpoint_rnn.pt")
+configs/nn_setting.py:45:        "case39 raw generation is disabled in the first-stage bridge. "
+configs/nn_setting.py:46:        f"Do not fall back to case14 checkpoint. Expected future model path would be: {model_path}"
+gen_data/gen_data.py:15:from pypower.api import ext2int, bustypes, case14
+gen_data/gen_data.py:110:    if case_name == 'case14':
+gen_data/gen_data.py:112:        case14:
+gen_data/gen_data.py:116:        case = case14()
+gen_data/gen_data.py:244:    noise_sigma_dir = f'gen_data\{sys_config["case_name"]}\\noise_sigma.npy'
+gen_data/gen_data.py:245:    load_active_dir = f'gen_data\{sys_config["case_name"]}\load_active.npy'
+gen_data/gen_data.py:246:    load_reactive_dir = f'gen_data\{sys_config["case_name"]}\load_reactive.npy'
+gen_data/gen_data.py:247:    pv_active_dir = f'gen_data\{sys_config["case_name"]}\pv_active.npy'
+gen_data/gen_data.py:248:    pv_reactive_dir = f'gen_data\{sys_config["case_name"]}\pv_reactive.npy'
+gen_data/gen_data.py:251:    z_noise_summary_dir = f'gen_data\{sys_config["case_name"]}\z_noise_summary.npy'
+gen_data/gen_data.py:252:    v_est_summary_dir = f'gen_data\{sys_config["case_name"]}\\v_est_summary.npy'
+gen_data/gen_data.py:253:    success_summary_dir = f'gen_data\{sys_config["case_name"]}\\success_summary.npy'
+models/model.py:213:        self.load_state_dict(torch.load(self.path))
+models/model.py:232:    z_noise_summary = np.load(f'gen_data/{sys_config["case_name"]}/z_noise_summary.npy')
+models/evaluation.py:34:        model.load_state_dict(torch.load(nn_setting['model_path'], map_location=torch.device(nn_setting['device'])))
+models/early_stopping.py:54:        torch.save(model.state_dict(), self.path)
+models/dataset.py:20:        z_noise_summary = np.load(f'gen_data/{sys_config["case_name"]}/z_noise_summary.npy')
+models/dataset.py:68:        v_est = np.load(f'gen_data/{sys_config["case_name"]}/v_est_summary.npy')
+models/dataset.py:115:        z_noise_summary = np.load(f'gen_data/{sys_config["case_name"]}/z_noise_summary.npy')
+utils/load_data.py:5:from pypower.api import case14
+utils/load_data.py:9:from gen_data.gen_data import gen_case
+utils/load_data.py:20:    if sys_config['case_name'] == 'case14':
+utils/load_data.py:21:        case = case14()
+utils/load_data.py:27:    noise_sigma_dir = f'gen_data/{sys_config["case_name"]}/noise_sigma.npy'
+utils/load_data.py:39:    load_active_dir = f'gen_data/{sys_config["case_name"]}/load_active.npy'
+utils/load_data.py:40:    load_reactive_dir = f'gen_data/{sys_config["case_name"]}/load_reactive.npy'
+utils/load_data.py:41:    pv_active_dir = f'gen_data/{sys_config["case_name"]}/pv_active.npy'
+utils/load_data.py:42:    pv_reactive_dir = f'gen_data/{sys_config["case_name"]}/pv_reactive.npy'
+utils/load_data.py:60:    z_noise_summary = np.load('gen_data/case14/z_noise_summary.npy')     # Measurement with noise
+utils/load_data.py:61:    v_est_summary = np.load('gen_data/case14/v_est_summary.npy')          # Estimated voltage state
+utils/load_data.py:62:    success_summary = np.load('gen_data/case14/success_summary.npy')
+utils/class_se.py:46:        case: the instances case by calling from pypower api, e.g. case = case14()
+utils/class_se.py:642:    case = case14()
+collect_clean_alarm_scores.py:20:    parser = argparse.ArgumentParser(
+collect_clean_alarm_scores.py:23:    parser.add_argument(
+collect_clean_alarm_scores.py:29:    parser.add_argument(
+collect_clean_alarm_scores.py:35:    parser.add_argument(
+collect_clean_alarm_scores.py:40:    parser.add_argument(
+collect_clean_alarm_scores.py:85:        torch.load(nn_setting["model_path"], map_location=torch.device(nn_setting["device"]))
+collect_attack_alarm_scores.py:21:    parser = argparse.ArgumentParser(
+collect_attack_alarm_scores.py:24:    parser.add_argument(
+collect_attack_alarm_scores.py:30:    parser.add_argument(
+collect_attack_alarm_scores.py:37:    parser.add_argument(
+collect_attack_alarm_scores.py:44:    parser.add_argument(
+collect_attack_alarm_scores.py:50:    parser.add_argument(
+collect_attack_alarm_scores.py:56:    parser.add_argument(
+collect_attack_alarm_scores.py:62:    parser.add_argument(
+collect_attack_alarm_scores.py:67:    parser.add_argument(
+collect_attack_alarm_scores.py:122:        torch.load(nn_setting["model_path"], map_location=torch.device(nn_setting["device"]))
+evaluation_mixed_timeline.py:33:    parser = argparse.ArgumentParser(
+evaluation_mixed_timeline.py:36:    parser.add_argument(
+evaluation_mixed_timeline.py:42:    parser.add_argument(
+evaluation_mixed_timeline.py:51:    parser.add_argument(
+evaluation_mixed_timeline.py:57:    parser.add_argument(
+evaluation_mixed_timeline.py:63:    parser.add_argument(
+evaluation_mixed_timeline.py:68:    parser.add_argument(
+evaluation_mixed_timeline.py:77:    parser.add_argument(
+evaluation_mixed_timeline.py:197:        torch.load(nn_setting["model_path"], map_location=torch.device(nn_setting["device"]))
+/home/pang/projects/DDET-MTD/bootstrap_q1_case39_workspace.sh:4:# Safe workspace bootstrap for a separate case39 expansion worktree.
+/home/pang/projects/DDET-MTD/bootstrap_q1_case39_workspace.sh:6:#   bash bootstrap_q1_case39_workspace.sh ~/projects/DDET-MTD ~/projects/DDET-MTD-q1-case39 q1_case39_expansion
+/home/pang/projects/DDET-MTD/bootstrap_q1_case39_workspace.sh:9:TARGET_DIR="${2:-$HOME/projects/DDET-MTD-q1-case39}"
+/home/pang/projects/DDET-MTD/bootstrap_q1_case39_workspace.sh:10:BRANCH_NAME="${3:-q1_case39_expansion}"
+/home/pang/projects/DDET-MTD/bootstrap_q1_case39_workspace.sh:52:echo "  # optional: create a separate venv for case39 isolation"
+/home/pang/projects/DDET-MTD/bootstrap_q1_case39_workspace.sh:53:echo "  python3 -m venv .venv_q1_case39"
+/home/pang/projects/DDET-MTD/bootstrap_q1_case39_workspace.sh:54:echo "  source .venv_q1_case39/bin/activate"
+/home/pang/projects/DDET-MTD/bootstrap_q1_case39_workspace.sh:56:echo "  python phase3_case39_capability_audit.py --repo_root . --output metric/case39/preflight/case39_capability_audit.json"
+/home/pang/projects/DDET-MTD/phase3_case39_preflight.py:9:    'case39',
+/home/pang/projects/DDET-MTD/phase3_case39_preflight.py:10:    'case39.xlsx',
+/home/pang/projects/DDET-MTD/phase3_case39_preflight.py:11:    'case39.py',
+/home/pang/projects/DDET-MTD/phase3_case39_preflight.py:42:        'case39_hits': [],
+/home/pang/projects/DDET-MTD/phase3_case39_preflight.py:50:    for needle in ['case39', 'case39.xlsx', 'case39.py']:
+/home/pang/projects/DDET-MTD/phase3_case39_preflight.py:59:    probe['case39_hits'] = case_hits_dedup[:20]
+/home/pang/projects/DDET-MTD/phase3_case39_preflight.py:74:        probe['recommended_role'] = 'preferred_case39_asset_source'
+/home/pang/projects/DDET-MTD/phase3_case39_preflight.py:85:        if p['exists'] and p['case39_hits'] and p['recommended_role'] == 'preferred_case39_asset_source':
+/home/pang/projects/DDET-MTD/phase3_case39_preflight.py:90:        if p['exists'] and p['case39_hits']:
+/home/pang/projects/DDET-MTD/phase3_case39_preflight.py:99:            'why': 'Found case39 assets in a paper-backed external repo suitable for system expansion.',
+/home/pang/projects/DDET-MTD/phase3_case39_preflight.py:106:            'why': 'Found case39-named assets locally, though not in the preferred GridForge/LAPSO path.',
+/home/pang/projects/DDET-MTD/phase3_case39_preflight.py:112:        'why': 'No case39 assets detected locally. Clone xuwkk/gridforge or xuwkk/lapso_exp, then rerun preflight.',
+/home/pang/projects/DDET-MTD/phase3_case39_preflight.py:117:    parser = argparse.ArgumentParser(
+/home/pang/projects/DDET-MTD/phase3_case39_preflight.py:118:        description='Preflight check for case39 system expansion. Detect local/external case39 assets and recommend the asset source.'
+/home/pang/projects/DDET-MTD/phase3_case39_preflight.py:120:    parser.add_argument('--repo_root', default='.', help='Current q1_scheduler repo root.')
+/home/pang/projects/DDET-MTD/phase3_case39_preflight.py:121:    parser.add_argument('--gridforge_root', default='../gridforge', help='Optional local GridForge clone path.')
+/home/pang/projects/DDET-MTD/phase3_case39_preflight.py:122:    parser.add_argument('--lapso_root', default='../lapso_exp', help='Optional local LAPSO_EXP clone path.')
+/home/pang/projects/DDET-MTD/phase3_case39_preflight.py:123:    parser.add_argument('--robust_mtd_root', default='../Robust_MTD', help='Optional local Robust_MTD clone path.')
+/home/pang/projects/DDET-MTD/phase3_case39_preflight.py:124:    parser.add_argument('--output', required=True, help='Output json path.')
+/home/pang/projects/DDET-MTD/phase3_case39_preflight.py:137:        'method': 'phase3_case39_preflight',
+/home/pang/projects/DDET-MTD/phase3_case39_preflight.py:142:            'Then build case39 banks and run the fixed oracle_protected_ec vs phase3/best-threshold/topk stack.'
+/home/pang/projects/DDET-MTD/phase3_case39_preflight.py:145:            'This is a readiness check, not a scientific result. It tells us whether case39 expansion can start '
+/home/pang/projects/DDET-MTD/phase3_case39_preflight.py:154:    print(json.dumps({'case39_preflight_summary_path': str(out_path.resolve())}, ensure_ascii=False, indent=2))

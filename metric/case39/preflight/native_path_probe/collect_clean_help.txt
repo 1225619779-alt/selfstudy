@@ -1,0 +1,17 @@
+usage: collect_clean_alarm_scores.py [-h] [--max_total_run MAX_TOTAL_RUN]
+                                     [--stop_ddd_alarm_at STOP_DDD_ALARM_AT]
+                                     [--is_shuffle] [--output OUTPUT]
+
+Collect clean false-alarm scores for gate ablation.
+
+options:
+  -h, --help            show this help message and exit
+  --max_total_run MAX_TOTAL_RUN
+                        Max number of clean samples to scan. -1 means full
+                        test set.
+  --stop_ddd_alarm_at STOP_DDD_ALARM_AT
+                        Stop when the number of clean DDD alarms reaches this
+                        value. -1 disables early stop.
+  --is_shuffle          Shuffle dataloader. Keep this OFF for strict
+                        comparability.
+  --output OUTPUT       Output .npy path.

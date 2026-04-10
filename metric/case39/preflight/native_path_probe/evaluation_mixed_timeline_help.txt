@@ -1,0 +1,31 @@
+usage: evaluation_mixed_timeline.py [-h] [--tau_verify TAU_VERIFY]
+                                    [--schedule SCHEDULE]
+                                    [--start_offset START_OFFSET]
+                                    [--seed_base SEED_BASE] [--is_shuffle]
+                                    [--next_load_extra NEXT_LOAD_EXTRA]
+                                    [--output OUTPUT]
+
+Run a mixed clean/attack timeline case study for the verification-gated DDET-
+MTD pipeline.
+
+options:
+  -h, --help            show this help message and exit
+  --tau_verify TAU_VERIFY
+                        Verification threshold. Default keeps the current main
+                        operating point.
+  --schedule SCHEDULE   Semicolon-separated timeline specification. Use
+                        clean:N or att-angNo-angStr:N, e.g.
+                        clean:80;att-1-0.2:30;clean:40.
+  --start_offset START_OFFSET
+                        How many test-loader samples to skip before starting
+                        the timeline.
+  --seed_base SEED_BASE
+                        Base seed. Attack steps follow the repo's per-sample
+                        deterministic seeding style.
+  --is_shuffle          Shuffle the dataloader. Keep this OFF for reproducible
+                        timelines.
+  --next_load_extra NEXT_LOAD_EXTRA
+                        Extra offset added to next_load_idx. Default 0 follows
+                        the cleaned-up indexing used in
+                        evaluation_event_trigger_clean.py.
+  --output OUTPUT       Output .npy path.

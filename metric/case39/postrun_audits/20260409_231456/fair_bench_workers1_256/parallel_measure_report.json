@@ -1,0 +1,108 @@
+{
+  "repo_root": "/home/pang/projects/DDET-MTD-q1-case39",
+  "case_name": "case39",
+  "workers": 1,
+  "start_idx": 0,
+  "end_idx_exclusive": 256,
+  "n_steps": 256,
+  "chunk_steps": 16,
+  "n_chunks": 16,
+  "noise_seed": 20260408,
+  "probe": {
+    "z_dim": 170,
+    "v_shape": [
+      39
+    ],
+    "v_dtype": "<c16",
+    "n_bus": 39,
+    "pv_bus": [
+      29,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38
+    ],
+    "total_steps": 35134,
+    "noise_sigma_len": 170
+  },
+  "chunks": [
+    {
+      "start": 0,
+      "end": 16
+    },
+    {
+      "start": 16,
+      "end": 32
+    },
+    {
+      "start": 32,
+      "end": 48
+    },
+    {
+      "start": 48,
+      "end": 64
+    },
+    {
+      "start": 64,
+      "end": 80
+    },
+    {
+      "start": 80,
+      "end": 96
+    },
+    {
+      "start": 96,
+      "end": 112
+    },
+    {
+      "start": 112,
+      "end": 128
+    },
+    {
+      "start": 128,
+      "end": 144
+    },
+    {
+      "start": 144,
+      "end": 160
+    },
+    {
+      "start": 160,
+      "end": 176
+    },
+    {
+      "start": 176,
+      "end": 192
+    },
+    {
+      "start": 192,
+      "end": 208
+    },
+    {
+      "start": 208,
+      "end": 224
+    },
+    {
+      "start": 224,
+      "end": 240
+    },
+    {
+      "start": 240,
+      "end": 256
+    }
+  ],
+  "success_rate_raw": 1.0,
+  "n_forward_filled": 0,
+  "elapsed_sec": 76.58731484413147,
+  "sec_per_iter_effective": 0.29916919860988855,
+  "outputs": {
+    "z_noise_summary": "metric/case39/postrun_audits/20260409_231456/fair_bench_workers1_256/z_noise_summary.npy",
+    "v_est_summary": "metric/case39/postrun_audits/20260409_231456/fair_bench_workers1_256/v_est_summary.npy",
+    "success_summary": "metric/case39/postrun_audits/20260409_231456/fair_bench_workers1_256/success_summary.npy"
+  },
+  "note": "Coarse-chunk parallel generator with worker-local cached case class and arrays."
+}

@@ -1,0 +1,23 @@
+{
+  "workdir": "/home/pang/projects/DDET-MTD-q1-case39",
+  "case_name": "case39",
+  "clean_bank": "metric/case39/metric_clean_alarm_scores_full.npy",
+  "attack_bank": "metric/case39/metric_attack_alarm_scores_400.npy",
+  "train_bank": "metric/case39_localretune/mixed_bank_fit_native.npy",
+  "val_bank": "metric/case39_localretune/mixed_bank_eval_native.npy",
+  "schedule": "case39_localretune_screen_only",
+  "confirm_families": [],
+  "frozen_regime": {
+    "decision_step_group": 1,
+    "busy_time_quantile": 0.65,
+    "use_cost_budget": false,
+    "cost_budget_window_steps": 20,
+    "cost_budget_quantile": 0.6,
+    "slot_budget_list": [
+      1,
+      2
+    ],
+    "max_wait_steps": 10
+  },
+  "holdouts": []
+}

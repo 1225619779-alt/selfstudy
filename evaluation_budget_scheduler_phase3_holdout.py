@@ -19,7 +19,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--train_bank", type=str, required=True)
     parser.add_argument("--val_bank", type=str, required=True)
     parser.add_argument("--test_bank", type=str, required=True)
-    parser.add_argument("--output", type=str, default="metric/case14/budget_scheduler_phase3_holdout.npy")
+    parser.add_argument("--output", type=str, default=f"metric/{os.environ.get("DDET_CASE_NAME", "case14")}/budget_scheduler_phase3_holdout.npy")
     parser.add_argument("--n_bins", type=int, default=20)
     parser.add_argument("--slot_budget_list", type=int, nargs="*", default=[1, 2])
     parser.add_argument("--max_wait_steps", type=int, default=10)

@@ -15,7 +15,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--attack_bank", type=str, required=True)
     p.add_argument("--train_bank", type=str, required=True)
     p.add_argument("--val_bank", type=str, required=True)
-    p.add_argument("--output", type=str, default="metric/case14/phase3_val_regime_ranking.json")
+    p.add_argument("--output", type=str, default=f"metric/{os.environ.get("DDET_CASE_NAME", "case14")}/phase3_val_regime_ranking.json")
     p.add_argument("--slot_budget_list", type=int, nargs="*", default=[1, 2])
     p.add_argument("--decision_step_group_list", type=int, nargs="*", default=[1, 2])
     p.add_argument("--busy_time_quantile_list", type=float, nargs="*", default=[0.35, 0.50, 0.65])

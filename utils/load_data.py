@@ -2,7 +2,6 @@
 Load the case class based on the specifications in sys_config
 """
 
-from pypower.api import case14
 import numpy as np
 from configs.config import sys_config
 from configs.config_mea_idx import define_mea_idx_noise
@@ -17,19 +16,13 @@ def load_case():
     """
     Return the instance case class
     """
-    if sys_config['case_name'] == 'case14':
-        case = case14()
-    else:
-        print("I have not written other cases!")
-        
-    case = gen_case(sys_config['case_name']) # Modify case
-    # Instance case class
+    case = gen_case(sys_config['case_name'])
     noise_sigma_dir = f'gen_data/{sys_config["case_name"]}/noise_sigma.npy'
     idx, no_mea, _ = define_mea_idx_noise(case, sys_config['measure_type'])
     noise_sigma = np.load(noise_sigma_dir)
 
     case_class = FDI(case, noise_sigma, idx, sys_config['fpr'])
-    
+
     return case_class
 
 # Load and PV
@@ -57,9 +50,9 @@ def load_load_pv():
 def load_measurement():
 
     # Load measurement
-    z_noise_summary = np.load('gen_data/case14/z_noise_summary.npy')     # Measurement with noise
-    v_est_summary = np.load('gen_data/case14/v_est_summary.npy')          # Estimated voltage state
-    success_summary = np.load('gen_data/case14/success_summary.npy')
+    z_noise_summary = np.load(f'gen_data/{sys_config["case_name"]}/z_noise_summary.npy')     # Measurement with noise
+    v_est_summary = np.load(f'gen_data/{sys_config["case_name"]}/v_est_summary.npy')          # Estimated voltage state
+    success_summary = np.load(f'gen_data/{sys_config["case_name"]}/success_summary.npy')
     print(f'z noise size: {z_noise_summary.shape}')
     print(f'v est size: {v_est_summary.shape}')
     

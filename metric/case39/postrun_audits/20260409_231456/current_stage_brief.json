@@ -1,0 +1,46 @@
+{
+  "stage": "native_clean_attack_test_with_frozen_case14_dev",
+  "merged_8_holdouts": {
+    "1": {
+      "phase3_oracle_upgrade": {
+        "mean_recall": 0.0916625,
+        "mean_unnecessary": 13.5,
+        "mean_cost": 0.388106625,
+        "mean_served_ratio": 0.5612625
+      },
+      "phase3_proposed": {
+        "mean_recall": 0.0927125,
+        "mean_unnecessary": 15.875,
+        "mean_cost": 0.42615125,
+        "mean_served_ratio": 0.5876999999999999
+      },
+      "topk_expected_consequence": {
+        "mean_recall": 0.09415000000000001,
+        "mean_unnecessary": 16.0,
+        "mean_cost": 0.426519375,
+        "mean_served_ratio": 0.5922375
+      }
+    },
+    "2": {
+      "phase3_oracle_upgrade": {
+        "mean_recall": 0.177225,
+        "mean_unnecessary": 17.5,
+        "mean_cost": 0.5574813750000001,
+        "mean_served_ratio": 0.7422124999999999
+      },
+      "phase3_proposed": {
+        "mean_recall": 0.175625,
+        "mean_unnecessary": 17.5,
+        "mean_cost": 0.578423125,
+        "mean_served_ratio": 0.7642625000000001
+      },
+      "topk_expected_consequence": {
+        "mean_recall": 0.16765000000000002,
+        "mean_unnecessary": 17.5,
+        "mean_cost": 0.5670007499999999,
+        "mean_served_ratio": 0.75545
+      }
+    }
+  },
+  "used_summary_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/postrun_audits/20260409_231456/summary.json"
+}

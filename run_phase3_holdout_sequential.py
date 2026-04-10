@@ -12,6 +12,8 @@ from typing import Any, Dict, List
 
 import numpy as np
 
+DEFAULT_CASE_NAME = os.environ.get("DDET_CASE_NAME", "case14")
+
 
 def _score_one(compact: Dict[str, Any]) -> float:
     return (
@@ -81,13 +83,13 @@ def _build_ns(args: argparse.Namespace, *, decision_step_group: int, busy_time_q
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Sequential runner for phase-3 holdout protocol.")
     p.add_argument("--workdir", type=str, default=".")
-    p.add_argument("--clean_bank", type=str, default="metric/case14/metric_clean_alarm_scores_full.npy")
-    p.add_argument("--attack_bank", type=str, default="metric/case14/metric_attack_alarm_scores_400.npy")
-    p.add_argument("--train_bank", type=str, default="metric/case14/mixed_bank_fit.npy")
-    p.add_argument("--val_bank", type=str, default="metric/case14/mixed_bank_eval.npy")
-    p.add_argument("--test_bank", type=str, default="metric/case14/mixed_bank_test_holdout.npy")
-    p.add_argument("--ranking_output", type=str, default="metric/case14/phase3_val_regime_ranking_holdout.json")
-    p.add_argument("--holdout_output", type=str, default="metric/case14/budget_scheduler_phase3_holdout_auto.npy")
+    p.add_argument("--clean_bank", type=str, default=f"metric/{DEFAULT_CASE_NAME}/metric_clean_alarm_scores_full.npy")
+    p.add_argument("--attack_bank", type=str, default=f"metric/{DEFAULT_CASE_NAME}/metric_attack_alarm_scores_400.npy")
+    p.add_argument("--train_bank", type=str, default=f"metric/{DEFAULT_CASE_NAME}/mixed_bank_fit.npy")
+    p.add_argument("--val_bank", type=str, default=f"metric/{DEFAULT_CASE_NAME}/mixed_bank_eval.npy")
+    p.add_argument("--test_bank", type=str, default=f"metric/{DEFAULT_CASE_NAME}/mixed_bank_test_holdout.npy")
+    p.add_argument("--ranking_output", type=str, default=f"metric/{DEFAULT_CASE_NAME}/phase3_val_regime_ranking_holdout.json")
+    p.add_argument("--holdout_output", type=str, default=f"metric/{DEFAULT_CASE_NAME}/budget_scheduler_phase3_holdout_auto.npy")
     p.add_argument("--slot_budget_list", type=int, nargs="*", default=[1, 2])
     p.add_argument("--decision_step_group_list", type=int, nargs="*", default=[1, 2])
     p.add_argument("--busy_time_quantile_list", type=float, nargs="*", default=[0.35, 0.50, 0.65])

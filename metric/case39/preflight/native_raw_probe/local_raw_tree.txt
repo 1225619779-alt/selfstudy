@@ -1,0 +1,5 @@
+=== gen_data/raw_data tree ===
+gen_data/raw_data/.placeholder
+
+=== saved_model tree ===
+saved_model/case14/checkpoint_rnn.pt

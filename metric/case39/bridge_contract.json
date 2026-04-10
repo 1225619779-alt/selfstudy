@@ -1,0 +1,30 @@
+{
+  "stage": "case39_pure_migration_v1",
+  "winner": "oracle_protected_ec",
+  "allowed_methods": [
+    "phase3_proposed",
+    "oracle_protected_ec",
+    "best-threshold",
+    "topk_expected_consequence"
+  ],
+  "allow_retune": false,
+  "frozen_regime": {
+    "decision_step_group": 1,
+    "busy_time_quantile": 0.65,
+    "use_cost_budget": false,
+    "cost_budget_window_steps": 20,
+    "cost_budget_quantile": 0.6,
+    "slot_budget_list": [
+      1,
+      2
+    ],
+    "max_wait_steps": 10
+  },
+  "case_name": "case39",
+  "updated_at_utc": "2026-04-07T17:42:03.842364+00:00",
+  "notes": [
+    "First-stage bridge is pure migration only.",
+    "Do not run case39 raw generation through configs/config.py or configs/nn_setting.py.",
+    "Do not report select_regime_phase3_val.py outputs as case39 main results."
+  ]
+}

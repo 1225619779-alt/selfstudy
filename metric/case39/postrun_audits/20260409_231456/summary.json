@@ -1,0 +1,471 @@
+{
+  "native_case39_stage": "native_clean_attack_test_with_frozen_case14_dev",
+  "v1_schedule": "confirm_multi_family_v1",
+  "v2_schedule": "confirm_multi_family_v2",
+  "slot1_v1": {
+    "phase3_oracle_upgrade": {
+      "mean_recall": 0.10984999999999999,
+      "mean_unnecessary": 15.0,
+      "mean_cost": 0.40687999999999996,
+      "mean_served_ratio": 0.6049
+    },
+    "phase3_proposed": {
+      "mean_recall": 0.10245,
+      "mean_unnecessary": 17.75,
+      "mean_cost": 0.4665145,
+      "mean_served_ratio": 0.6293749999999999
+    },
+    "topk_expected_consequence": {
+      "mean_recall": 0.10877500000000001,
+      "mean_unnecessary": 17.75,
+      "mean_cost": 0.47990049999999995,
+      "mean_served_ratio": 0.6521999999999999
+    },
+    "paired": {
+      "oracle_vs_phase3": {
+        "delta_recall": {
+          "mean": 0.007399999999999997,
+          "std": 0.006130660649554826,
+          "min": 0.0,
+          "max": 0.0169
+        },
+        "delta_unnecessary": {
+          "mean": -2.75,
+          "std": 0.82915619758885,
+          "min": -4.0,
+          "max": -2.0
+        },
+        "delta_delay_p95": {
+          "mean": 0.03750000000000009,
+          "std": 0.1293010054098574,
+          "min": -0.09999999999999964,
+          "max": 0.25
+        },
+        "delta_cost_per_step": {
+          "mean": -0.059634500000000035,
+          "std": 0.042129376558999794,
+          "min": -0.13217200000000007,
+          "max": -0.02945800000000004
+        },
+        "wins_on_recall": 3,
+        "lower_unnecessary": 4
+      },
+      "oracle_vs_best_threshold": {
+        "delta_recall": {
+          "mean": 0.0033749999999999995,
+          "std": 0.02884530941071702,
+          "min": -0.022900000000000004,
+          "max": 0.05059999999999999
+        },
+        "delta_unnecessary": {
+          "mean": 15.0,
+          "std": 5.244044240850758,
+          "min": 7.0,
+          "max": 21.0
+        },
+        "delta_delay_p95": {
+          "mean": -1.5,
+          "std": 0.5,
+          "min": -2.0,
+          "max": -1.0
+        },
+        "delta_cost_per_step": {
+          "mean": 0.06387699999999999,
+          "std": 0.030785739905027452,
+          "min": 0.033665999999999974,
+          "max": 0.10739699999999996
+        },
+        "wins_on_recall": 2,
+        "lower_unnecessary": 0
+      },
+      "oracle_vs_topk_expected": {
+        "delta_recall": {
+          "mean": 0.001074999999999996,
+          "std": 0.006117750812185798,
+          "min": -0.008400000000000005,
+          "max": 0.007599999999999996
+        },
+        "delta_unnecessary": {
+          "mean": -2.75,
+          "std": 0.82915619758885,
+          "min": -4.0,
+          "max": -2.0
+        },
+        "delta_delay_p95": {
+          "mean": 0.19999999999999996,
+          "std": 0.22638462845343532,
+          "min": 0.0,
+          "max": 0.5499999999999998
+        },
+        "delta_cost_per_step": {
+          "mean": -0.07302050000000003,
+          "std": 0.04226928130746962,
+          "min": -0.13217200000000007,
+          "max": -0.028676000000000035
+        },
+        "wins_on_recall": 2,
+        "lower_unnecessary": 4
+      }
+    }
+  },
+  "slot2_v1": {
+    "phase3_oracle_upgrade": {
+      "mean_recall": 0.18622499999999997,
+      "mean_unnecessary": 17.5,
+      "mean_cost": 0.6258892500000001,
+      "mean_served_ratio": 0.8134499999999999
+    },
+    "phase3_proposed": {
+      "mean_recall": 0.192025,
+      "mean_unnecessary": 17.75,
+      "mean_cost": 0.6485702499999999,
+      "mean_served_ratio": 0.83165
+    },
+    "topk_expected_consequence": {
+      "mean_recall": 0.18152500000000002,
+      "mean_unnecessary": 17.75,
+      "mean_cost": 0.63757475,
+      "mean_served_ratio": 0.836425
+    },
+    "paired": {
+      "oracle_vs_phase3": {
+        "delta_recall": {
+          "mean": -0.0058000000000000065,
+          "std": 0.023904915812443264,
+          "min": -0.03360000000000002,
+          "max": 0.02049999999999999
+        },
+        "delta_unnecessary": {
+          "mean": -0.25,
+          "std": 0.4330127018922193,
+          "min": -1.0,
+          "max": 0.0
+        },
+        "delta_delay_p95": {
+          "mean": 0.25,
+          "std": 1.299038105676658,
+          "min": -1.0,
+          "max": 2.0
+        },
+        "delta_cost_per_step": {
+          "mean": -0.022680999999999993,
+          "std": 0.0359835278634544,
+          "min": -0.08398699999999998,
+          "max": 0.00624199999999997
+        },
+        "wins_on_recall": 2,
+        "lower_unnecessary": 1
+      },
+      "oracle_vs_best_threshold": {
+        "delta_recall": {
+          "mean": -0.004650000000000001,
+          "std": 0.006156500629416032,
+          "min": -0.012699999999999989,
+          "max": 0.0025000000000000022
+        },
+        "delta_unnecessary": {
+          "mean": 17.5,
+          "std": 5.361902647381804,
+          "min": 9.0,
+          "max": 23.0
+        },
+        "delta_delay_p95": {
+          "mean": -3.25,
+          "std": 0.4330127018922193,
+          "min": -4.0,
+          "max": -3.0
+        },
+        "delta_cost_per_step": {
+          "mean": 0.10630675,
+          "std": 0.04293698759446802,
+          "min": 0.0675,
+          "max": 0.17905300000000002
+        },
+        "wins_on_recall": 1,
+        "lower_unnecessary": 0
+      },
+      "oracle_vs_topk_expected": {
+        "delta_recall": {
+          "mean": 0.004699999999999989,
+          "std": 0.013282883723047494,
+          "min": -0.008500000000000008,
+          "max": 0.02049999999999999
+        },
+        "delta_unnecessary": {
+          "mean": -0.25,
+          "std": 0.4330127018922193,
+          "min": -1.0,
+          "max": 0.0
+        },
+        "delta_delay_p95": {
+          "mean": 0.32499999999999996,
+          "std": 0.7189401922274203,
+          "min": -0.7000000000000002,
+          "max": 1.0
+        },
+        "delta_cost_per_step": {
+          "mean": -0.011685499999999988,
+          "std": 0.013891621404645322,
+          "min": -0.028523999999999994,
+          "max": 0.00624199999999997
+        },
+        "wins_on_recall": 2,
+        "lower_unnecessary": 1
+      }
+    }
+  },
+  "slot1_v2": {
+    "phase3_oracle_upgrade": {
+      "mean_recall": 0.073475,
+      "mean_unnecessary": 12.0,
+      "mean_cost": 0.36933325,
+      "mean_served_ratio": 0.517625
+    },
+    "phase3_proposed": {
+      "mean_recall": 0.08297500000000001,
+      "mean_unnecessary": 14.0,
+      "mean_cost": 0.385788,
+      "mean_served_ratio": 0.546025
+    },
+    "topk_expected_consequence": {
+      "mean_recall": 0.079525,
+      "mean_unnecessary": 14.25,
+      "mean_cost": 0.37313825,
+      "mean_served_ratio": 0.532275
+    },
+    "paired": {
+      "oracle_vs_phase3": {
+        "delta_recall": {
+          "mean": -0.0095,
+          "std": 0.019701395889631778,
+          "min": -0.040999999999999995,
+          "max": 0.008299999999999995
+        },
+        "delta_unnecessary": {
+          "mean": -2.0,
+          "std": 1.4142135623730951,
+          "min": -4.0,
+          "max": 0.0
+        },
+        "delta_delay_p95": {
+          "mean": -0.2999999999999998,
+          "std": 1.2975939272360981,
+          "min": -2.0,
+          "max": 1.1500000000000004
+        },
+        "delta_cost_per_step": {
+          "mean": -0.016454750000000018,
+          "std": 0.028735369550216334,
+          "min": -0.06027300000000002,
+          "max": 0.019791999999999976
+        },
+        "wins_on_recall": 2,
+        "lower_unnecessary": 3
+      },
+      "oracle_vs_best_threshold": {
+        "delta_recall": {
+          "mean": -0.019525,
+          "std": 0.02288355031458187,
+          "min": -0.04920000000000001,
+          "max": 0.008299999999999995
+        },
+        "delta_unnecessary": {
+          "mean": 12.0,
+          "std": 6.670832032063167,
+          "min": 2.0,
+          "max": 19.0
+        },
+        "delta_delay_p95": {
+          "mean": -1.275,
+          "std": 3.0621683493890406,
+          "min": -5.1,
+          "max": 3.0
+        },
+        "delta_cost_per_step": {
+          "mean": 0.07937324999999998,
+          "std": 0.05978127499215369,
+          "min": 0.004330999999999974,
+          "max": 0.171224
+        },
+        "wins_on_recall": 1,
+        "lower_unnecessary": 0
+      },
+      "oracle_vs_topk_expected": {
+        "delta_recall": {
+          "mean": -0.0060500000000000016,
+          "std": 0.02807084786749414,
+          "min": -0.04920000000000001,
+          "max": 0.0249
+        },
+        "delta_unnecessary": {
+          "mean": -2.25,
+          "std": 1.7853571071357126,
+          "min": -5.0,
+          "max": 0.0
+        },
+        "delta_delay_p95": {
+          "mean": -0.28749999999999987,
+          "std": 1.3021016665376017,
+          "min": -2.0,
+          "max": 1.0
+        },
+        "delta_cost_per_step": {
+          "mean": -0.0038050000000000167,
+          "std": 0.027665049746927985,
+          "min": -0.046577000000000035,
+          "max": 0.021455999999999975
+        },
+        "wins_on_recall": 2,
+        "lower_unnecessary": 3
+      }
+    }
+  },
+  "slot2_v2": {
+    "phase3_oracle_upgrade": {
+      "mean_recall": 0.168225,
+      "mean_unnecessary": 17.5,
+      "mean_cost": 0.4890735,
+      "mean_served_ratio": 0.6709750000000001
+    },
+    "phase3_proposed": {
+      "mean_recall": 0.159225,
+      "mean_unnecessary": 17.25,
+      "mean_cost": 0.5082760000000001,
+      "mean_served_ratio": 0.696875
+    },
+    "topk_expected_consequence": {
+      "mean_recall": 0.153775,
+      "mean_unnecessary": 17.25,
+      "mean_cost": 0.49642674999999997,
+      "mean_served_ratio": 0.6744749999999999
+    },
+    "paired": {
+      "oracle_vs_phase3": {
+        "delta_recall": {
+          "mean": 0.009000000000000001,
+          "std": 0.009362691920596349,
+          "min": -0.006000000000000005,
+          "max": 0.01720000000000002
+        },
+        "delta_unnecessary": {
+          "mean": 0.25,
+          "std": 0.4330127018922193,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "delta_delay_p95": {
+          "mean": -1.2875,
+          "std": 1.3221076922853146,
+          "min": -3.0,
+          "max": 0.0
+        },
+        "delta_cost_per_step": {
+          "mean": -0.019202499999999983,
+          "std": 0.029941773607286504,
+          "min": -0.05490399999999995,
+          "max": 0.020689999999999986
+        },
+        "wins_on_recall": 3,
+        "lower_unnecessary": 0
+      },
+      "oracle_vs_best_threshold": {
+        "delta_recall": {
+          "mean": 0.005249999999999998,
+          "std": 0.011921094748386162,
+          "min": -0.008300000000000002,
+          "max": 0.01780000000000001
+        },
+        "delta_unnecessary": {
+          "mean": 17.5,
+          "std": 11.434596626029272,
+          "min": 2.0,
+          "max": 32.0
+        },
+        "delta_delay_p95": {
+          "mean": -4.3125,
+          "std": 2.677306248825487,
+          "min": -8.25,
+          "max": -1.0
+        },
+        "delta_cost_per_step": {
+          "mean": 0.10963575000000002,
+          "std": 0.07267170705087021,
+          "min": 0.019933000000000034,
+          "max": 0.19698900000000003
+        },
+        "wins_on_recall": 2,
+        "lower_unnecessary": 0
+      },
+      "oracle_vs_topk_expected": {
+        "delta_recall": {
+          "mean": 0.014449999999999998,
+          "std": 0.012168298977260544,
+          "min": -0.006000000000000005,
+          "max": 0.024599999999999983
+        },
+        "delta_unnecessary": {
+          "mean": 0.25,
+          "std": 0.4330127018922193,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "delta_delay_p95": {
+          "mean": -0.3125,
+          "std": 1.708206296089556,
+          "min": -3.0,
+          "max": 1.75
+        },
+        "delta_cost_per_step": {
+          "mean": -0.007353249999999978,
+          "std": 0.030795681242464793,
+          "min": -0.04803499999999994,
+          "max": 0.03478899999999996
+        },
+        "wins_on_recall": 3,
+        "lower_unnecessary": 0
+      }
+    }
+  },
+  "merged_8_holdouts": {
+    "1": {
+      "phase3_oracle_upgrade": {
+        "mean_recall": 0.0916625,
+        "mean_unnecessary": 13.5,
+        "mean_cost": 0.388106625,
+        "mean_served_ratio": 0.5612625
+      },
+      "phase3_proposed": {
+        "mean_recall": 0.0927125,
+        "mean_unnecessary": 15.875,
+        "mean_cost": 0.42615125,
+        "mean_served_ratio": 0.5876999999999999
+      },
+      "topk_expected_consequence": {
+        "mean_recall": 0.09415000000000001,
+        "mean_unnecessary": 16.0,
+        "mean_cost": 0.426519375,
+        "mean_served_ratio": 0.5922375
+      }
+    },
+    "2": {
+      "phase3_oracle_upgrade": {
+        "mean_recall": 0.177225,
+        "mean_unnecessary": 17.5,
+        "mean_cost": 0.5574813750000001,
+        "mean_served_ratio": 0.7422124999999999
+      },
+      "phase3_proposed": {
+        "mean_recall": 0.175625,
+        "mean_unnecessary": 17.5,
+        "mean_cost": 0.578423125,
+        "mean_served_ratio": 0.7642625000000001
+      },
+      "topk_expected_consequence": {
+        "mean_recall": 0.16765000000000002,
+        "mean_unnecessary": 17.5,
+        "mean_cost": 0.5670007499999999,
+        "mean_served_ratio": 0.75545
+      }
+    }
+  }
+}

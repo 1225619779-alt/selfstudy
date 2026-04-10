@@ -1,0 +1,11 @@
+stage=case39_localretune_protocol_compliant_oracle_protected_ec
+n_holdouts=8
+== merged_8_holdouts ==
+-- slot_budget=1 --
+phase3_oracle_upgrade: recall=0.015513, unnecessary=0.000, cost=0.037082, served_ratio=0.057400
+phase3_proposed: recall=0.000862, unnecessary=0.125, cost=0.005042, served_ratio=0.010375
+topk_expected_consequence: recall=0.072288, unnecessary=14.750, cost=0.352768, served_ratio=0.517537
+-- slot_budget=2 --
+phase3_oracle_upgrade: recall=0.015612, unnecessary=0.000, cost=0.040387, served_ratio=0.067750
+phase3_proposed: recall=0.000862, unnecessary=0.625, cost=0.010378, served_ratio=0.023262
+topk_expected_consequence: recall=0.132162, unnecessary=17.500, cost=0.496002, served_ratio=0.686950

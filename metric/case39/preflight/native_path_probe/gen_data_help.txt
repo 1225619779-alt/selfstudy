@@ -1,0 +1,35 @@
+/home/pang/projects/DDET-MTD-q1-case39/gen_data/gen_data.py:244: SyntaxWarning: invalid escape sequence '\{'
+  noise_sigma_dir = f'gen_data\{sys_config["case_name"]}\\noise_sigma.npy'
+/home/pang/projects/DDET-MTD-q1-case39/gen_data/gen_data.py:245: SyntaxWarning: invalid escape sequence '\{'
+  load_active_dir = f'gen_data\{sys_config["case_name"]}\load_active.npy'
+/home/pang/projects/DDET-MTD-q1-case39/gen_data/gen_data.py:245: SyntaxWarning: invalid escape sequence '\l'
+  load_active_dir = f'gen_data\{sys_config["case_name"]}\load_active.npy'
+/home/pang/projects/DDET-MTD-q1-case39/gen_data/gen_data.py:246: SyntaxWarning: invalid escape sequence '\{'
+  load_reactive_dir = f'gen_data\{sys_config["case_name"]}\load_reactive.npy'
+/home/pang/projects/DDET-MTD-q1-case39/gen_data/gen_data.py:246: SyntaxWarning: invalid escape sequence '\l'
+  load_reactive_dir = f'gen_data\{sys_config["case_name"]}\load_reactive.npy'
+/home/pang/projects/DDET-MTD-q1-case39/gen_data/gen_data.py:247: SyntaxWarning: invalid escape sequence '\{'
+  pv_active_dir = f'gen_data\{sys_config["case_name"]}\pv_active.npy'
+/home/pang/projects/DDET-MTD-q1-case39/gen_data/gen_data.py:247: SyntaxWarning: invalid escape sequence '\p'
+  pv_active_dir = f'gen_data\{sys_config["case_name"]}\pv_active.npy'
+/home/pang/projects/DDET-MTD-q1-case39/gen_data/gen_data.py:248: SyntaxWarning: invalid escape sequence '\{'
+  pv_reactive_dir = f'gen_data\{sys_config["case_name"]}\pv_reactive.npy'
+/home/pang/projects/DDET-MTD-q1-case39/gen_data/gen_data.py:248: SyntaxWarning: invalid escape sequence '\p'
+  pv_reactive_dir = f'gen_data\{sys_config["case_name"]}\pv_reactive.npy'
+/home/pang/projects/DDET-MTD-q1-case39/gen_data/gen_data.py:251: SyntaxWarning: invalid escape sequence '\{'
+  z_noise_summary_dir = f'gen_data\{sys_config["case_name"]}\z_noise_summary.npy'
+/home/pang/projects/DDET-MTD-q1-case39/gen_data/gen_data.py:251: SyntaxWarning: invalid escape sequence '\z'
+  z_noise_summary_dir = f'gen_data\{sys_config["case_name"]}\z_noise_summary.npy'
+/home/pang/projects/DDET-MTD-q1-case39/gen_data/gen_data.py:252: SyntaxWarning: invalid escape sequence '\{'
+  v_est_summary_dir = f'gen_data\{sys_config["case_name"]}\\v_est_summary.npy'
+/home/pang/projects/DDET-MTD-q1-case39/gen_data/gen_data.py:253: SyntaxWarning: invalid escape sequence '\{'
+  success_summary_dir = f'gen_data\{sys_config["case_name"]}\\success_summary.npy'
+Generating measurement.
+Traceback (most recent call last):
+  File "/home/pang/projects/DDET-MTD-q1-case39/gen_data/gen_data.py", line 258, in <module>
+    noise_sigma = np.load(noise_sigma_dir)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pang/projects/DDET-MTD/.venv_q1/lib/python3.12/site-packages/numpy/lib/npyio.py", line 427, in load
+    fid = stack.enter_context(open(os_fspath(file), "rb"))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'gen_data\\case14\\noise_sigma.npy'

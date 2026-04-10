@@ -1,0 +1,459 @@
+{
+  "method": "phase3_case39_capability_audit",
+  "repo_root": "/home/pang/projects/DDET-MTD-q1-case39",
+  "status": "NEEDS_CASE39_BRIDGE",
+  "counts": {
+    "case14_total_files": 116,
+    "case39_total_files": 30,
+    "case14_by_classification": {
+      "artifact_or_result": 49,
+      "likely_code_or_runner": 27,
+      "other_text_file": 40
+    },
+    "case39_by_classification": {
+      "artifact_or_result": 15,
+      "likely_code_or_runner": 4,
+      "other_text_file": 11
+    }
+  },
+  "sample_case14_code_or_runner_hits": [
+    {
+      "path": "README_phase3.md",
+      "classification": "likely_code_or_runner",
+      "matched_patterns": [
+        "case14",
+        "metric/case14",
+        "case14/"
+      ]
+    },
+    {
+      "path": "README_phase3_holdout.md",
+      "classification": "likely_code_or_runner",
+      "matched_patterns": [
+        "case14",
+        "metric/case14",
+        "case14/"
+      ]
+    },
+    {
+      "path": "case39_run_all.sh",
+      "classification": "likely_code_or_runner",
+      "matched_patterns": [
+        "case14",
+        "metric/case14",
+        "case14_"
+      ]
+    },
+    {
+      "path": "evaluation_baseline_no_attack.py",
+      "classification": "likely_code_or_runner",
+      "matched_patterns": [
+        "case14"
+      ]
+    },
+    {
+      "path": "evaluation_baseline_with_attack.py",
+      "classification": "likely_code_or_runner",
+      "matched_patterns": [
+        "case14"
+      ]
+    },
+    {
+      "path": "evaluation_budget_scheduler.py",
+      "classification": "likely_code_or_runner",
+      "matched_patterns": [
+        "case14",
+        "metric/case14",
+        "case14/"
+      ]
+    },
+    {
+      "path": "evaluation_budget_scheduler_hard.py",
+      "classification": "likely_code_or_runner",
+      "matched_patterns": [
+        "case14",
+        "metric/case14",
+        "case14/"
+      ]
+    },
+    {
+      "path": "evaluation_budget_scheduler_phase3.py",
+      "classification": "likely_code_or_runner",
+      "matched_patterns": [
+        "case14"
+      ]
+    },
+    {
+      "path": "evaluation_budget_scheduler_phase3_holdout.py",
+      "classification": "likely_code_or_runner",
+      "matched_patterns": [
+        "case14"
+      ]
+    },
+    {
+      "path": "evaluation_event_trigger_clean.py",
+      "classification": "likely_code_or_runner",
+      "matched_patterns": [
+        "case14"
+      ]
+    },
+    {
+      "path": "make_phase3_confirm_manifest.py",
+      "classification": "likely_code_or_runner",
+      "matched_patterns": [
+        "case14"
+      ]
+    },
+    {
+      "path": "make_phase3_confirm_manifest_v2.py",
+      "classification": "likely_code_or_runner",
+      "matched_patterns": [
+        "case14"
+      ]
+    },
+    {
+      "path": "phase3_case39_capability_audit.py",
+      "classification": "likely_code_or_runner",
+      "matched_patterns": [
+        "case14",
+        "metric/case14",
+        "case14/",
+        "case14_"
+      ]
+    },
+    {
+      "path": "run_after_clean.py",
+      "classification": "likely_code_or_runner",
+      "matched_patterns": [
+        "case14",
+        "metric/case14",
+        "case14/"
+      ]
+    },
+    {
+      "path": "run_carkm_multi_holdout_from_manifest.py",
+      "classification": "likely_code_or_runner",
+      "matched_patterns": [
+        "case14",
+        "metric/case14",
+        "case14/"
+      ]
+    },
+    {
+      "path": "run_dualhelp_phase3_multi_holdout.py",
+      "classification": "likely_code_or_runner",
+      "matched_patterns": [
+        "case14",
+        "metric/case14",
+        "case14/"
+      ]
+    },
+    {
+      "path": "run_joint_selection_then_final_suite.sh",
+      "classification": "likely_code_or_runner",
+      "matched_patterns": [
+        "case14",
+        "metric/case14",
+        "case14/"
+      ]
+    },
+    {
+      "path": "run_lagadm_phase3_multi_holdout.py",
+      "classification": "likely_code_or_runner",
+      "matched_patterns": [
+        "case14",
+        "metric/case14",
+        "case14/"
+      ]
+    },
+    {
+      "path": "run_phase3_holdout_sequential.py",
+      "classification": "likely_code_or_runner",
+      "matched_patterns": [
+        "case14"
+      ]
+    },
+    {
+      "path": "run_phase3_holdout_sequential_cli_fixed.py",
+      "classification": "likely_code_or_runner",
+      "matched_patterns": [
+        "case14",
+        "metric/case14",
+        "case14/"
+      ]
+    },
+    {
+      "path": "run_phase3_multi_holdout_batch.py",
+      "classification": "likely_code_or_runner",
+      "matched_patterns": [
+        "case14"
+      ]
+    },
+    {
+      "path": "run_phase3_sequential.py",
+      "classification": "likely_code_or_runner",
+      "matched_patterns": [
+        "case14",
+        "metric/case14",
+        "case14/"
+      ]
+    },
+    {
+      "path": "run_selected_tau_suite.sh",
+      "classification": "likely_code_or_runner",
+      "matched_patterns": [
+        "case14"
+      ]
+    },
+    {
+      "path": "run_tau_suite.sh",
+      "classification": "likely_code_or_runner",
+      "matched_patterns": [
+        "case14",
+        "metric/case14",
+        "case14/"
+      ]
+    },
+    {
+      "path": "run_validation_calibrated_suite.py",
+      "classification": "likely_code_or_runner",
+      "matched_patterns": [
+        "case14",
+        "metric/case14",
+        "case14/"
+      ]
+    }
+  ],
+  "sample_case39_hits": [
+    {
+      "path": "metric/case39/asset_protocol.json",
+      "classification": "artifact_or_result",
+      "matched_patterns": [
+        "case39",
+        "metric/case39",
+        "case39/"
+      ]
+    },
+    {
+      "path": "metric/case39/bridge_contract.json",
+      "classification": "artifact_or_result",
+      "matched_patterns": [
+        "case39",
+        "case39_"
+      ]
+    },
+    {
+      "path": "metric/case39/phase3_confirm_blind_v1/manifest.json",
+      "classification": "artifact_or_result",
+      "matched_patterns": [
+        "case39",
+        "metric/case39",
+        "case39/"
+      ]
+    },
+    {
+      "path": "metric/case39/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfA_frontloaded_0_seed20260511_off1020.summary.json",
+      "classification": "artifact_or_result",
+      "matched_patterns": [
+        "case39",
+        "metric/case39",
+        "case39/"
+      ]
+    },
+    {
+      "path": "metric/case39/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfA_frontloaded_1_seed20260512_off1080.summary.json",
+      "classification": "artifact_or_result",
+      "matched_patterns": [
+        "case39",
+        "metric/case39",
+        "case39/"
+      ]
+    },
+    {
+      "path": "metric/case39/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfB_backloaded_0_seed20260521_off1140.summary.json",
+      "classification": "artifact_or_result",
+      "matched_patterns": [
+        "case39",
+        "metric/case39",
+        "case39/"
+      ]
+    },
+    {
+      "path": "metric/case39/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfB_backloaded_1_seed20260522_off1200.summary.json",
+      "classification": "artifact_or_result",
+      "matched_patterns": [
+        "case39",
+        "metric/case39",
+        "case39/"
+      ]
+    },
+    {
+      "path": "metric/case39/phase3_confirm_blind_v2/manifest.json",
+      "classification": "artifact_or_result",
+      "matched_patterns": [
+        "case39",
+        "metric/case39",
+        "case39/"
+      ]
+    },
+    {
+      "path": "metric/case39/phase3_confirm_blind_v2/results/budget_scheduler_phase3_holdout_cfC_interleaved_0_seed20260611_off1260.summary.json",
+      "classification": "artifact_or_result",
+      "matched_patterns": [
+        "case39",
+        "metric/case39",
+        "case39/"
+      ]
+    },
+    {
+      "path": "metric/case39/phase3_confirm_blind_v2/results/budget_scheduler_phase3_holdout_cfC_interleaved_1_seed20260612_off1320.summary.json",
+      "classification": "artifact_or_result",
+      "matched_patterns": [
+        "case39",
+        "metric/case39",
+        "case39/"
+      ]
+    },
+    {
+      "path": "metric/case39/phase3_confirm_blind_v2/results/budget_scheduler_phase3_holdout_cfD_tailheavy_0_seed20260621_off1380.summary.json",
+      "classification": "artifact_or_result",
+      "matched_patterns": [
+        "case39",
+        "metric/case39",
+        "case39/"
+      ]
+    },
+    {
+      "path": "metric/case39/phase3_confirm_blind_v2/results/budget_scheduler_phase3_holdout_cfD_tailheavy_1_seed20260622_off1440.summary.json",
+      "classification": "artifact_or_result",
+      "matched_patterns": [
+        "case39",
+        "metric/case39",
+        "case39/"
+      ]
+    },
+    {
+      "path": "metric/case39/phase3_oracle_confirm_v1/aggregate_summary.json",
+      "classification": "artifact_or_result",
+      "matched_patterns": [
+        "case39",
+        "metric/case39",
+        "case39/"
+      ]
+    },
+    {
+      "path": "metric/case39/phase3_oracle_confirm_v2/aggregate_summary.json",
+      "classification": "artifact_or_result",
+      "matched_patterns": [
+        "case39",
+        "metric/case39",
+        "case39/"
+      ]
+    },
+    {
+      "path": "metric/case39/preflight/case39_capability_audit.json",
+      "classification": "artifact_or_result",
+      "matched_patterns": [
+        "case39",
+        "metric/case39",
+        "case39/",
+        "case39_"
+      ]
+    },
+    {
+      "path": "case39_run_all.sh",
+      "classification": "likely_code_or_runner",
+      "matched_patterns": [
+        "case39",
+        "case39_"
+      ]
+    },
+    {
+      "path": "make_phase3_confirm_manifest.py",
+      "classification": "likely_code_or_runner",
+      "matched_patterns": [
+        "case39"
+      ]
+    },
+    {
+      "path": "make_phase3_confirm_manifest_v2.py",
+      "classification": "likely_code_or_runner",
+      "matched_patterns": [
+        "case39"
+      ]
+    },
+    {
+      "path": "phase3_case39_capability_audit.py",
+      "classification": "likely_code_or_runner",
+      "matched_patterns": [
+        "case39",
+        "metric/case39",
+        "case39/",
+        "case39_"
+      ]
+    },
+    {
+      "path": "README_phase2_hard.md",
+      "classification": "other_text_file",
+      "matched_patterns": [
+        "case39"
+      ]
+    },
+    {
+      "path": "case39_bridge_patch_spec.md",
+      "classification": "other_text_file",
+      "matched_patterns": [
+        "case39",
+        "metric/case39",
+        "case39/"
+      ]
+    },
+    {
+      "path": "case39_external_asset_scan.sh",
+      "classification": "other_text_file",
+      "matched_patterns": [
+        "case39",
+        "metric/case39",
+        "case39/",
+        "case39_"
+      ]
+    },
+    {
+      "path": "case39_first_batch_patch.py",
+      "classification": "other_text_file",
+      "matched_patterns": [
+        "case39",
+        "metric/case39",
+        "case39/",
+        "case39_"
+      ]
+    },
+    {
+      "path": "case39_first_runbook.md",
+      "classification": "other_text_file",
+      "matched_patterns": [
+        "case39",
+        "metric/case39",
+        "case39/",
+        "case39_"
+      ]
+    },
+    {
+      "path": "case39_native_readiness_audit.py",
+      "classification": "other_text_file",
+      "matched_patterns": [
+        "case39",
+        "metric/case39",
+        "case39/",
+        "case39_"
+      ]
+    }
+  ],
+  "recommendations": [
+    "There are likely code/runner files with case14-hardcoded strings. Expect a small bridge patch rather than zero-code case39 support.",
+    "Keep all existing metric/case14 assets frozen. Create a fresh metric/case39 root instead of editing case14 outputs.",
+    "Do not mutate the current shared DDET-MTD workspace in place. Use a separate git worktree or clone for case39 expansion.",
+    "First bridge goal: parameterize case root / bank paths / manifest generation. Do not rewrite the phase3 policy shell."
+  ],
+  "next_step": "Create an isolated case39 worktree, then patch only the minimal path/case-parameter plumbing needed to generate metric/case39 banks and run the fixed oracle_protected_ec vs phase3/best-threshold/topk stack."
+}

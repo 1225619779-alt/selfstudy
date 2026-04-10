@@ -1,0 +1,20 @@
+usage: phase3_case39_preflight.py [-h] [--repo_root REPO_ROOT]
+                                  [--gridforge_root GRIDFORGE_ROOT]
+                                  [--lapso_root LAPSO_ROOT]
+                                  [--robust_mtd_root ROBUST_MTD_ROOT] --output
+                                  OUTPUT
+
+Preflight check for case39 system expansion. Detect local/external case39
+assets and recommend the asset source.
+
+options:
+  -h, --help            show this help message and exit
+  --repo_root REPO_ROOT
+                        Current q1_scheduler repo root.
+  --gridforge_root GRIDFORGE_ROOT
+                        Optional local GridForge clone path.
+  --lapso_root LAPSO_ROOT
+                        Optional local LAPSO_EXP clone path.
+  --robust_mtd_root ROBUST_MTD_ROOT
+                        Optional local Robust_MTD clone path.
+  --output OUTPUT       Output json path.

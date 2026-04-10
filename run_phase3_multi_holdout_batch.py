@@ -11,6 +11,8 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List, Sequence, Tuple
 
+DEFAULT_CASE_NAME = os.environ.get("DDET_CASE_NAME", "case14")
+
 
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(
@@ -22,10 +24,10 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--workdir", type=str, default=".")
     p.add_argument("--python_exe", type=str, default=sys.executable)
 
-    p.add_argument("--clean_bank", type=str, default="metric/case14/metric_clean_alarm_scores_full.npy")
-    p.add_argument("--attack_bank", type=str, default="metric/case14/metric_attack_alarm_scores_400.npy")
-    p.add_argument("--train_bank", type=str, default="metric/case14/mixed_bank_fit.npy")
-    p.add_argument("--val_bank", type=str, default="metric/case14/mixed_bank_eval.npy")
+    p.add_argument("--clean_bank", type=str, default=f"metric/{DEFAULT_CASE_NAME}/metric_clean_alarm_scores_full.npy")
+    p.add_argument("--attack_bank", type=str, default=f"metric/{DEFAULT_CASE_NAME}/metric_attack_alarm_scores_400.npy")
+    p.add_argument("--train_bank", type=str, default=f"metric/{DEFAULT_CASE_NAME}/mixed_bank_fit.npy")
+    p.add_argument("--val_bank", type=str, default=f"metric/{DEFAULT_CASE_NAME}/mixed_bank_eval.npy")
 
     p.add_argument("--schedule", type=str, default="clean:120;att-1-0.2:60;clean:60;att-2-0.2:60;clean:60;att-3-0.3:60;clean:120")
     p.add_argument("--num_holdouts", type=int, default=5)
@@ -62,7 +64,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--vq_admission_threshold_grid", type=float, nargs="*", default=[-0.10, 0.0, 0.10])
     p.add_argument("--rng_seed", type=int, default=20260402)
 
-    p.add_argument("--out_dir", type=str, default="metric/case14/phase3_multi_holdout")
+    p.add_argument("--out_dir", type=str, default=f"metric/{DEFAULT_CASE_NAME}/phase3_multi_holdout")
     p.add_argument("--force", action="store_true")
     return p.parse_args()
 
