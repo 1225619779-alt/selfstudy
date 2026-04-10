@@ -1,0 +1,11 @@
+stage=case39_source_anchored_localretune
+n_holdouts=8
+== merged_8_holdouts ==
+-- slot_budget=1 --
+phase3_oracle_upgrade: recall=0.017475, unnecessary=0.125, cost=0.043282, served_ratio=0.074887
+phase3_proposed: recall=0.000862, unnecessary=0.125, cost=0.005042, served_ratio=0.010375
+topk_expected_consequence: recall=0.072288, unnecessary=14.750, cost=0.352768, served_ratio=0.517537
+-- slot_budget=2 --
+phase3_oracle_upgrade: recall=0.054288, unnecessary=1.125, cost=0.185487, served_ratio=0.300712
+phase3_proposed: recall=0.000862, unnecessary=0.625, cost=0.010378, served_ratio=0.023262
+topk_expected_consequence: recall=0.132162, unnecessary=17.500, cost=0.496002, served_ratio=0.686950

@@ -1,0 +1,10 @@
+stage=case39_source_fixed_case14winner_native_test
+used_summary_path=/home/pang/projects/DDET-MTD-q1-case39/metric/case14/phase3_oracle_family/screen_train_val_summary.json
+[1]
+  phase3_oracle_upgrade: recall=0.062887, unnecessary=7.875, cost=0.280820, served_ratio=0.452937
+  phase3_proposed: recall=0.000862, unnecessary=0.125, cost=0.005042, served_ratio=0.010375
+  topk_expected_consequence: recall=0.072288, unnecessary=14.750, cost=0.352768, served_ratio=0.517537
+[2]
+  phase3_oracle_upgrade: recall=0.126400, unnecessary=11.500, cost=0.457006, served_ratio=0.690338
+  phase3_proposed: recall=0.000862, unnecessary=0.625, cost=0.010378, served_ratio=0.023262
+  topk_expected_consequence: recall=0.132162, unnecessary=17.500, cost=0.496002, served_ratio=0.686950
