@@ -1,0 +1,58 @@
+{
+  "workdir": "/home/pang/projects/DDET-MTD",
+  "clean_bank": "metric/case14/metric_clean_alarm_scores_full.npy",
+  "attack_bank": "metric/case14/metric_attack_alarm_scores_400.npy",
+  "train_bank": "metric/case14/mixed_bank_fit.npy",
+  "val_bank": "metric/case14/mixed_bank_eval.npy",
+  "schedule": "confirm_multi_family_v2",
+  "confirm_families": [
+    {
+      "family_tag": "cfC_interleaved",
+      "schedule": "clean:120;att-1-0.15:45;clean:60;att-2-0.25:45;clean:60;att-3-0.35:45;clean:60;att-2-0.20:45;clean:60",
+      "seeds": [
+        20260611,
+        20260612
+      ],
+      "offsets": [
+        1260,
+        1320
+      ]
+    },
+    {
+      "family_tag": "cfD_tailheavy",
+      "schedule": "clean:180;att-1-0.10:45;clean:45;att-2-0.20:45;clean:30;att-3-0.40:105;clean:90",
+      "seeds": [
+        20260621,
+        20260622
+      ],
+      "offsets": [
+        1380,
+        1440
+      ]
+    }
+  ],
+  "frozen_regime": {
+    "decision_step_group": 1,
+    "busy_time_quantile": 0.65,
+    "use_cost_budget": false,
+    "cost_budget_window_steps": 20,
+    "cost_budget_quantile": 0.6,
+    "slot_budget_list": [
+      1,
+      2
+    ],
+    "max_wait_steps": 10
+  },
+  "holdouts": [
+    {
+      "tag": "cfC_interleaved_0_seed20260611_off1260",
+      "family_tag": "cfC_interleaved",
+      "schedule": "clean:120;att-1-0.15:45;clean:60;att-2-0.25:45;clean:60;att-3-0.35:45;clean:60;att-2-0.20:45;clean:60",
+      "seed_base": 20260611,
+      "start_offset": 1260,
+      "test_bank": "metric/case14/phase3_confirm_blind_v2/banks/mixed_bank_test_cfC_interleaved_0_seed20260611_off1260.npy",
+      "result_npy": "metric/case14/phase3_confirm_blind_v2/results/budget_scheduler_phase3_holdout_cfC_interleaved_0_seed20260611_off1260.npy",
+      "result_summary": "metric/case14/phase3_confirm_blind_v2/results/budget_scheduler_phase3_holdout_cfC_interleaved_0_seed20260611_off1260.summary.json"
+    }
+  ]
+}

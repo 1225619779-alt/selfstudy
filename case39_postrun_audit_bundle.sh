@@ -4,11 +4,69 @@ set -euo pipefail
 REPO_ROOT="${1:-.}"
 cd "$REPO_ROOT"
 
-WAIT_FOR_PID="${WAIT_FOR_PID:-}"
-WAIT_FOR_FILE="${WAIT_FOR_FILE:-}"
-WAIT_STABLE_SEC="${WAIT_STABLE_SEC:-20}"
-STAMP_PATH="${STAMP_PATH:-}"
+TS="$(date +%Y%m%d_%H%M%S)"
+OUT_DIR="metric/case39/postrun_audits/${TS}"
+mkdir -p "$OUT_DIR"
 
+echo "postrun_out_dir=$OUT_DIR"
+
+# Try to discover the latest stage stamp created by earlier native runs.
+STAMP=""
+for cand in /tmp/case39_resume_step3_*.stamp /tmp/case39_native_stage2_*.stamp /tmp/case39_native_stage2_*.tmpstamp; do
+  if [[ -e "$cand" ]]; then
+    STAMP="$cand"
+  fi
+done
+if [[ -n "$STAMP" ]]; then
+  echo "using_stamp=$STAMP"
+else
+  echo "using_stamp=NONE_FOUND"
+fi
+
+audit_slice() {
+  local s="$1"
+  local e="$2"
+  local SLICE_DIR="$OUT_DIR/slice_${s}_${e}"
+  mkdir -p "$SLICE_DIR"
+  echo "[audit] slice ${s}:${e}"
+  python - "$SLICE_DIR" "$s" "$e" <<'PY'
+import sys
+from pathlib import Path
+import numpy as np
+
+out = Path(sys.argv[1])
+s = int(sys.argv[2]); e = int(sys.argv[3])
+
+z = np.load('gen_data/case39/z_noise_summary.npy')
+v = np.load('gen_data/case39/v_est_summary.npy')
+succ = np.load('gen_data/case39/success_summary.npy')
+
+if e > len(z):
+    raise ValueError(f"slice end {e} exceeds total length {len(z)}")
+
+np.save(out / 'z_noise_summary.npy', z[s:e], allow_pickle=False)
+np.save(out / 'v_est_summary.npy', v[s:e], allow_pickle=False)
+np.save(out / 'success_summary.npy', succ[s:e], allow_pickle=False)
+print({'slice_saved': str(out), 'n_steps': int(e-s)})
+PY
+
+  env DDET_CASE_NAME=case39 python case39_measure_v2_audit.py \
+    --repo_root . \
+    --case_name case39 \
+    --parallel_out_root "$SLICE_DIR" \
+    --start_idx "$s" \
+    --end_idx "$e" \
+    --output "$OUT_DIR/case39_measure_v2_audit_${s}_${e}.json"
+}
+
+# exact-match sampled audits from the FULL run outputs
+audit_slice 0 16
+audit_slice 128 144
+audit_slice 4096 4112
+audit_slice 20000 20016
+audit_slice 34000 34016
+
+# fair runtime benchmarks: same script, only workers differ
 export OMP_NUM_THREADS=1
 export OPENBLAS_NUM_THREADS=1
 export MKL_NUM_THREADS=1
@@ -16,196 +74,105 @@ export NUMEXPR_NUM_THREADS=1
 export VECLIB_MAXIMUM_THREADS=1
 export BLIS_NUM_THREADS=1
 export PYTHONUNBUFFERED=1
-export DDET_CASE_NAME=case39
 
-if [[ -z "$STAMP_PATH" ]]; then
-  STAMP_PATH="$(ls -1t /tmp/case39_*stage2*.stamp /tmp/case39_native_stage2_*.stamp /tmp/case39_bridge_*.stamp 2>/dev/null | head -n 1 || true)"
+echo "[bench] workers=1 over 256 steps"
+env DDET_CASE_NAME=case39 python case39_measure_parallel_v2.py \
+  --repo_root . \
+  --case_name case39 \
+  --workers 1 \
+  --chunk_steps 16 \
+  --start_idx 0 \
+  --end_idx 256 \
+  --out_root "$OUT_DIR/fair_bench_workers1_256"
+
+echo "[bench] workers=4 over 256 steps"
+env DDET_CASE_NAME=case39 python case39_measure_parallel_v2.py \
+  --repo_root . \
+  --case_name case39 \
+  --workers 4 \
+  --chunk_steps 16 \
+  --start_idx 0 \
+  --end_idx 256 \
+  --out_root "$OUT_DIR/fair_bench_workers4_256"
+
+# anti-write audit if we have a usable stamp
+if [[ -n "$STAMP" ]]; then
+  echo "[audit] anti-write checks"
+  find metric/case14 -type f -newer "$STAMP" -print > "$OUT_DIR/anti_write_q1_case14.txt" || true
+  find /home/pang/projects/DDET-MTD/metric/case14 -type f -newer "$STAMP" -print > "$OUT_DIR/anti_write_oldrepo_case14.txt" || true
+else
+  : > "$OUT_DIR/anti_write_q1_case14.txt"
+  : > "$OUT_DIR/anti_write_oldrepo_case14.txt"
 fi
 
-wait_for_pid() {
-  local pid="$1"
-  echo "[wait] waiting for PID $pid to exit ..."
-  while kill -0 "$pid" 2>/dev/null; do sleep 20; done
-  echo "[wait] PID $pid exited."
-}
-
-wait_for_file_stable() {
-  local path="$1"
-  local stable_sec="$2"
-  local last_mtime=""
-  local stable_start=""
-  echo "[wait] waiting for file to appear and stabilize: $path"
-  while true; do
-    if [[ -f "$path" ]]; then
-      local mtime now
-      mtime="$(stat -c %Y "$path" 2>/dev/null || true)"
-      if [[ -n "$mtime" && "$mtime" == "$last_mtime" ]]; then
-        if [[ -z "$stable_start" ]]; then stable_start="$(date +%s)"; fi
-        now="$(date +%s)"
-        if (( now - stable_start >= stable_sec )); then
-          echo "[wait] file stable for >= ${stable_sec}s: $path"
-          break
-        fi
-      else
-        last_mtime="$mtime"
-        stable_start=""
-      fi
-    fi
-    sleep 10
-  done
-}
-
-if [[ -n "$WAIT_FOR_PID" ]]; then
-  wait_for_pid "$WAIT_FOR_PID"
-elif [[ -n "$WAIT_FOR_FILE" ]]; then
-  wait_for_file_stable "$WAIT_FOR_FILE" "$WAIT_STABLE_SEC"
-fi
-
-TS="$(date +%Y%m%d_%H%M%S)"
-OUT_DIR="metric/case39/postrun_audits/${TS}"
-mkdir -p "$OUT_DIR"
-LOG="$OUT_DIR/postrun.log"
-SUMMARY_JSON="$OUT_DIR/summary.json"
-SUMMARY_TXT="$OUT_DIR/summary.txt"
-
-echo "postrun_out_dir=$OUT_DIR" | tee "$LOG"
-
-audit_slice() {
-  local s="$1" e="$2" out_json="$OUT_DIR/case39_measure_v2_audit_${s}_${e}.json"
-  echo "[audit] slice ${s}:${e}" | tee -a "$LOG"
-  env DDET_CASE_NAME=case39 python case39_measure_v2_audit.py \
-    --repo_root . \
-    --case_name case39 \
-    --parallel_out_root gen_data/case39 \
-    --start_idx "$s" \
-    --end_idx "$e" \
-    --output "$out_json" >> "$LOG" 2>&1
-}
-
-# 1) sampled exact-match audits on the finished full output
-for s in 0 128 4096 20000 34000; do
-  e=$((s+16))
-  audit_slice "$s" "$e"
-done
-
-# 2) fair runtime comparison under the same v2 implementation
-SEQ_OUT="gen_data/case39_bench_sequential_v2_256"
-PAR_OUT="gen_data/case39_bench_parallel_v2_256_postrun"
-rm -rf "$SEQ_OUT" "$PAR_OUT"
-
-echo "[bench] workers=1 chunk_steps=16 0:256" | tee -a "$LOG"
-env DDET_CASE_NAME=case39 python case39_measure_parallel_v2.py \
-  --repo_root . --case_name case39 --workers 1 --chunk_steps 16 \
-  --start_idx 0 --end_idx 256 --out_root "$SEQ_OUT" >> "$LOG" 2>&1
-
-echo "[bench] workers=4 chunk_steps=16 0:256" | tee -a "$LOG"
-env DDET_CASE_NAME=case39 python case39_measure_parallel_v2.py \
-  --repo_root . --case_name case39 --workers 4 --chunk_steps 16 \
-  --start_idx 0 --end_idx 256 --out_root "$PAR_OUT" >> "$LOG" 2>&1
-
-OUT_DIR="$OUT_DIR" SUMMARY_JSON="$SUMMARY_JSON" STAMP_PATH="$STAMP_PATH" python - <<'PY'
-from __future__ import annotations
-import json, os
+# compact result snapshot
+python - "$OUT_DIR" <<'PY'
+import json, sys
 from pathlib import Path
 
-repo = Path('.').resolve()
-out_dir = Path(os.environ['OUT_DIR'])
-stamp_path = os.environ.get('STAMP_PATH','')
-summary_json = Path(os.environ['SUMMARY_JSON'])
+out = Path(sys.argv[1])
 
-def load_json(p: Path):
-    if not p.exists():
-        return None
-    return json.loads(p.read_text(encoding='utf-8'))
+def loadj(p):
+    with open(p, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+v1 = loadj('metric/case39/phase3_oracle_confirm_v1_native_clean_attack_test/aggregate_summary.json')
+v2 = loadj('metric/case39/phase3_oracle_confirm_v2_native_clean_attack_test/aggregate_summary.json')
+
+def slot_stats(obj, slot):
+    ps = obj['slot_budget_aggregates'][str(slot)]['policy_stats']
+    res = {}
+    for m in ['phase3_oracle_upgrade','phase3_proposed','topk_expected_consequence']:
+        res[m] = {
+            'mean_recall': ps[m]['weighted_attack_recall_no_backend_fail']['mean'],
+            'mean_unnecessary': ps[m]['unnecessary_mtd_count']['mean'],
+            'mean_cost': ps[m]['average_service_cost_per_step']['mean'],
+            'mean_served_ratio': ps[m]['pred_expected_consequence_served_ratio']['mean'],
+        }
+    res['paired'] = obj['slot_budget_aggregates'][str(slot)]['paired_stats']
+    return res
 
 summary = {
-    'repo_root': str(repo),
-    'postrun_dir': str(out_dir),
-    'checkpoint_case39_exists': (repo/'saved_model'/'case39'/'checkpoint_rnn.pt').exists(),
-    'clean_bank_exists': (repo/'metric'/'case39'/'metric_clean_alarm_scores_full.npy').exists(),
-    'attack_bank_exists': (repo/'metric'/'case39'/'metric_attack_alarm_scores_400.npy').exists(),
-    'native_confirm_candidates': {},
-    'audits': {},
-    'benchmarks': {},
-    'anti_write': {},
+    'native_case39_stage': 'native_clean_attack_test_with_frozen_case14_dev',
+    'v1_schedule': v1['confirm_manifest']['schedule'],
+    'v2_schedule': v2['confirm_manifest']['schedule'],
+    'slot1_v1': slot_stats(v1, 1),
+    'slot2_v1': slot_stats(v1, 2),
+    'slot1_v2': slot_stats(v2, 1),
+    'slot2_v2': slot_stats(v2, 2),
 }
-for k,p in {
-    'v1_native_clean_attack_test': repo/'metric'/'case39'/'phase3_oracle_confirm_v1_native_clean_attack_test'/'aggregate_summary.json',
-    'v2_native_clean_attack_test': repo/'metric'/'case39'/'phase3_oracle_confirm_v2_native_clean_attack_test'/'aggregate_summary.json',
-    'v1_bridge_or_existing': repo/'metric'/'case39'/'phase3_oracle_confirm_v1'/'aggregate_summary.json',
-    'v2_bridge_or_existing': repo/'metric'/'case39'/'phase3_oracle_confirm_v2'/'aggregate_summary.json',
-}.items():
-    summary['native_confirm_candidates'][k] = {'path': str(p), 'exists': p.exists()}
 
-for p in sorted(out_dir.glob('case39_measure_v2_audit_*_*.json')):
-    d = load_json(p)
-    if d is None:
-        continue
-    summary['audits'][p.name] = {
-        'success_exact_equal': d['agreement']['success_exact_equal'],
-        'z_max_abs_diff': d['agreement']['z_max_abs_diff'],
-        'v_max_abs_diff': d['agreement']['v_max_abs_diff'],
-        'seq_sec_per_iter_mean': d['sequential_runtime']['sec_per_iter_mean'],
-    }
+# merged 8-holdout averages (v1/v2 each have 4 holdouts)
+merged = {}
+for slot in ['1','2']:
+    merged[slot] = {}
+    for m in ['phase3_oracle_upgrade','phase3_proposed','topk_expected_consequence']:
+        a = v1['slot_budget_aggregates'][slot]['policy_stats'][m]
+        b = v2['slot_budget_aggregates'][slot]['policy_stats'][m]
+        merged[slot][m] = {
+            'mean_recall': (a['weighted_attack_recall_no_backend_fail']['mean'] + b['weighted_attack_recall_no_backend_fail']['mean'])/2,
+            'mean_unnecessary': (a['unnecessary_mtd_count']['mean'] + b['unnecessary_mtd_count']['mean'])/2,
+            'mean_cost': (a['average_service_cost_per_step']['mean'] + b['average_service_cost_per_step']['mean'])/2,
+            'mean_served_ratio': (a['pred_expected_consequence_served_ratio']['mean'] + b['pred_expected_consequence_served_ratio']['mean'])/2,
+        }
+summary['merged_8_holdouts'] = merged
 
-for k,p in {
-    'workers1': repo/'gen_data'/'case39_bench_sequential_v2_256'/'parallel_measure_report.json',
-    'workers4': repo/'gen_data'/'case39_bench_parallel_v2_256_postrun'/'parallel_measure_report.json',
-}.items():
-    d = load_json(p)
-    if d is None:
-        continue
-    summary['benchmarks'][k] = {
-        'path': str(p),
-        'sec_per_iter_effective': d['sec_per_iter_effective'],
-        'elapsed_sec': d['elapsed_sec'],
-        'success_rate_raw': d['success_rate_raw'],
-        'n_forward_filled': d['n_forward_filled'],
-    }
+with open(out / 'summary.json', 'w', encoding='utf-8') as f:
+    json.dump(summary, f, ensure_ascii=False, indent=2)
 
-if stamp_path:
-    sp = Path(stamp_path)
-    summary['anti_write']['stamp_path'] = str(sp)
-    if sp.exists():
-        q1_root = repo/'metric'/'case14'
-        old_root = Path('/home/pang/projects/DDET-MTD/metric/case14')
-        summary['anti_write']['q1_case14_newer_than_stamp'] = [str(p) for p in q1_root.rglob('*') if p.is_file() and p.stat().st_mtime > sp.stat().st_mtime]
-        summary['anti_write']['old_repo_case14_newer_than_stamp'] = [str(p) for p in old_root.rglob('*') if p.is_file() and p.stat().st_mtime > sp.stat().st_mtime] if old_root.exists() else None
-    else:
-        summary['anti_write']['warning'] = 'stamp path does not exist'
-else:
-    summary['anti_write']['warning'] = 'no stamp path provided or auto-detected'
+lines = []
+lines.append(f"postrun_out_dir={out}")
+lines.append("== merged_8_holdouts ==")
+for slot in ['1','2']:
+    lines.append(f"-- slot_budget={slot} --")
+    for m in ['phase3_oracle_upgrade','phase3_proposed','topk_expected_consequence']:
+        x = summary['merged_8_holdouts'][slot][m]
+        lines.append(f"{m}: recall={x['mean_recall']:.6f}, unnecessary={x['mean_unnecessary']:.3f}, cost={x['mean_cost']:.6f}, served_ratio={x['mean_served_ratio']:.6f}")
+with open(out / 'summary.txt', 'w', encoding='utf-8') as f:
+    f.write('\n'.join(lines) + '\n')
 
-summary_json.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding='utf-8')
+print('\n'.join(lines))
 PY
 
-SUMMARY_JSON="$SUMMARY_JSON" python - <<'PY' > "$SUMMARY_TXT"
-from __future__ import annotations
-import json, os
-from pathlib import Path
-p = Path(os.environ['SUMMARY_JSON'])
-d = json.loads(p.read_text(encoding='utf-8'))
-print('=== case39 postrun audit bundle ===')
-print('postrun_dir:', d['postrun_dir'])
-print('checkpoint_case39_exists:', d['checkpoint_case39_exists'])
-print('clean_bank_exists:', d['clean_bank_exists'])
-print('attack_bank_exists:', d['attack_bank_exists'])
-print('\n--- native confirm candidates ---')
-for k, v in d['native_confirm_candidates'].items():
-    print(f"{k}: {v['exists']} -> {v['path']}")
-print('\n--- sampled audits ---')
-for k, v in sorted(d['audits'].items()):
-    print(f"{k}: success_exact_equal={v['success_exact_equal']}, z_max_abs_diff={v['z_max_abs_diff']}, v_max_abs_diff={v['v_max_abs_diff']}, seq_sec_per_iter_mean={v['seq_sec_per_iter_mean']}")
-print('\n--- fair runtime ---')
-for k, v in d['benchmarks'].items():
-    print(f"{k}: sec_per_iter_effective={v['sec_per_iter_effective']}, elapsed_sec={v['elapsed_sec']}, success_rate_raw={v['success_rate_raw']}, n_forward_filled={v['n_forward_filled']}")
-print('\n--- anti-write ---')
-for k, v in d['anti_write'].items():
-    print(f"{k}: {v}")
-PY
-
-echo "=== case39 postrun audit bundle ==="
-echo "summary_txt=$SUMMARY_TXT"
-echo "summary_json=$SUMMARY_JSON"
-echo "log=$LOG"
-cat "$SUMMARY_TXT"
+echo "DONE. postrun outputs:"
+ls -lh "$OUT_DIR"

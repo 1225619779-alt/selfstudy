@@ -1,0 +1,17 @@
+{
+  "method": "phase3_foundation_audit",
+  "status": "PASS",
+  "core_foundation_pass": true,
+  "confirm_holdout_count": 8,
+  "issues": [],
+  "notes": [
+    "confirm_input_1: no NaN in core summary",
+    "confirm_input_2: no NaN in core summary",
+    "confirm_merged: no NaN in merged confirm summary",
+    "ablation_merged: no NaN in merged ablation summary",
+    "external_bundle: no NaN in external baseline bundle",
+    "paper_bundle: no NaN in paper bundle summary",
+    "significance: significance output looks usable"
+  ],
+  "recommended_next_step": "Core summaries look consistent. Fix significance only, then proceed to system expansion."
+}

@@ -2,7 +2,7 @@
 set -euo pipefail
 ROOT="${1:-.}"
 cd "$ROOT"
-python case39_stage_compare_significance_v2.py \
+python case39_stage_compare_significance.py \
   --transfer_summary metric/case39/postrun_audits/20260409_231456/summary.json \
   --transfer_v1 metric/case39/phase3_oracle_confirm_v1_native_clean_attack_test/aggregate_summary.json \
   --transfer_v2 metric/case39/phase3_oracle_confirm_v2_native_clean_attack_test/aggregate_summary.json \

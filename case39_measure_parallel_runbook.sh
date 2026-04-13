@@ -2,22 +2,27 @@
 set -euo pipefail
 
 REPO_ROOT="${1:-.}"
-WORKERS="${2:-8}"
-CASE_NAME="${3:-case39}"
+CASE_NAME="${2:-case39}"
+WORKERS="${3:-4}"
+CHUNK_STEPS="${4:-8}"
+START_IDX="${5:-0}"
+END_IDX="${6:-16}"
+OUT_ROOT="${7:-gen_data/${CASE_NAME}_smoke_parallel}"
 
 cd "$REPO_ROOT"
+export OMP_NUM_THREADS=1
+export OPENBLAS_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+export NUMEXPR_NUM_THREADS=1
+export VECLIB_MAXIMUM_THREADS=1
+export BLIS_NUM_THREADS=1
+export PYTHONUNBUFFERED=1
 
-printf '\n[1/2] 先做 64 步 smoke，避免长跑前才发现报错\n'
-env DDET_CASE_NAME="$CASE_NAME" python case39_measure_parallel.py \
+env DDET_CASE_NAME="$CASE_NAME" python case39_measure_parallel_v2.py \
   --repo_root . \
   --case_name "$CASE_NAME" \
   --workers "$WORKERS" \
-  --start_idx 0 \
-  --end_idx 64 \
-  --out_root "gen_data/${CASE_NAME}_smoke_parallel"
-
-printf '\n[2/2] smoke 成功后，开始全量并行 measurement 生成\n'
-env DDET_CASE_NAME="$CASE_NAME" python case39_measure_parallel.py \
-  --repo_root . \
-  --case_name "$CASE_NAME" \
-  --workers "$WORKERS"
+  --chunk_steps "$CHUNK_STEPS" \
+  --start_idx "$START_IDX" \
+  --end_idx "$END_IDX" \
+  --out_root "$OUT_ROOT"

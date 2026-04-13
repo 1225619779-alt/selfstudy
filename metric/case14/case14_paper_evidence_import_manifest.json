@@ -1,0 +1,105 @@
+{
+  "source_root": "/home/pang/projects/DDET-MTD",
+  "dest_root": "/home/pang/projects/DDET-MTD-q1-case39",
+  "copied": [
+    {
+      "relative_path": "metric/case14/phase3_oracle_ablation_merged/aggregate_summary.json",
+      "sha256": "6f93f0063945c74ea3c853f7a874814dd3b98864054af18db05e924f33ff2b5d",
+      "src_path": "/home/pang/projects/DDET-MTD/metric/case14/phase3_oracle_ablation_merged/aggregate_summary.json",
+      "dst_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case14/phase3_oracle_ablation_merged/aggregate_summary.json"
+    },
+    {
+      "relative_path": "metric/case14/phase3_external_baseline_bundle/external_baseline_bundle_summary.json",
+      "sha256": "e89942a5ac5c26a98e5f0476dc127a0bb10a77609b1b9056b4c7b17c529ffc08",
+      "src_path": "/home/pang/projects/DDET-MTD/metric/case14/phase3_external_baseline_bundle/external_baseline_bundle_summary.json",
+      "dst_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case14/phase3_external_baseline_bundle/external_baseline_bundle_summary.json"
+    },
+    {
+      "relative_path": "metric/case14/phase3_external_baseline_bundle/external_baseline_family_breakdown.csv",
+      "sha256": "c52388334d29c110976a3786519def5a1b28ea4b53222a27c29607ddd86494d7",
+      "src_path": "/home/pang/projects/DDET-MTD/metric/case14/phase3_external_baseline_bundle/external_baseline_family_breakdown.csv",
+      "dst_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case14/phase3_external_baseline_bundle/external_baseline_family_breakdown.csv"
+    },
+    {
+      "relative_path": "metric/case14/phase3_external_baseline_bundle/external_baseline_main_table.csv",
+      "sha256": "4aa58bd2c96980bd1ed21ad9b0901c09b96304dc7f7a4db68add4281ba547204",
+      "src_path": "/home/pang/projects/DDET-MTD/metric/case14/phase3_external_baseline_bundle/external_baseline_main_table.csv",
+      "dst_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case14/phase3_external_baseline_bundle/external_baseline_main_table.csv"
+    },
+    {
+      "relative_path": "metric/case14/phase3_paper_bundle/paper_bundle_summary.json",
+      "sha256": "562dcef6880721957f2c22de9364cba50d516e437dfbb38737de9384438563e5",
+      "src_path": "/home/pang/projects/DDET-MTD/metric/case14/phase3_paper_bundle/paper_bundle_summary.json",
+      "dst_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case14/phase3_paper_bundle/paper_bundle_summary.json"
+    },
+    {
+      "relative_path": "metric/case14/phase3_paper_bundle/table_ablation.csv",
+      "sha256": "59894c78963f8518abae457dd8a5fb67d2c58c9ec7c6828620398f534902ee08",
+      "src_path": "/home/pang/projects/DDET-MTD/metric/case14/phase3_paper_bundle/table_ablation.csv",
+      "dst_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case14/phase3_paper_bundle/table_ablation.csv"
+    },
+    {
+      "relative_path": "metric/case14/phase3_paper_bundle/table_confirm_main.csv",
+      "sha256": "d8a584ec04e2b1c76f25fe9dc4430806d1457f3bdfbdd17843ed28b0ced0bb20",
+      "src_path": "/home/pang/projects/DDET-MTD/metric/case14/phase3_paper_bundle/table_confirm_main.csv",
+      "dst_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case14/phase3_paper_bundle/table_confirm_main.csv"
+    },
+    {
+      "relative_path": "metric/case14/phase3_significance_v3/significance_summary.json",
+      "sha256": "c6a10fb7e9d732218002a59b684aa309c6ece96fea1435b3e318f4e7b0828752",
+      "src_path": "/home/pang/projects/DDET-MTD/metric/case14/phase3_significance_v3/significance_summary.json",
+      "dst_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case14/phase3_significance_v3/significance_summary.json"
+    },
+    {
+      "relative_path": "metric/case14/phase3_foundation_audit/foundation_audit_summary.json",
+      "sha256": "eed821c926acd34664f4c58f01d3ccf6efd367061fdd67f58b4d00e6cadda375",
+      "src_path": "/home/pang/projects/DDET-MTD/metric/case14/phase3_foundation_audit/foundation_audit_summary.json",
+      "dst_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case14/phase3_foundation_audit/foundation_audit_summary.json"
+    },
+    {
+      "relative_path": "metric/case14/phase3_recompute_guard/recompute_guard_summary.json",
+      "sha256": "5737a86ce8183270fb61f39dc35d2e54f135d4b339fb4a639f5caf28becb18c7",
+      "src_path": "/home/pang/projects/DDET-MTD/metric/case14/phase3_recompute_guard/recompute_guard_summary.json",
+      "dst_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case14/phase3_recompute_guard/recompute_guard_summary.json"
+    },
+    {
+      "relative_path": "metric/case14/phase3_repro_spotcheck_v1/repro_spotcheck_summary.json",
+      "sha256": "c509c99822116a49c3117b9e496b8601b2fc6af6790e6782988c7f1681dcbcae",
+      "src_path": "/home/pang/projects/DDET-MTD/metric/case14/phase3_repro_spotcheck_v1/repro_spotcheck_summary.json",
+      "dst_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case14/phase3_repro_spotcheck_v1/repro_spotcheck_summary.json"
+    },
+    {
+      "relative_path": "metric/case14/phase3_repro_spotcheck_v1/mini_manifest.json",
+      "sha256": "6ac7afbba3547c121bbed06955a2d155bdd859c1fae86878369c87d9f003f068",
+      "src_path": "/home/pang/projects/DDET-MTD/metric/case14/phase3_repro_spotcheck_v1/mini_manifest.json",
+      "dst_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case14/phase3_repro_spotcheck_v1/mini_manifest.json"
+    },
+    {
+      "relative_path": "metric/case14/phase3_repro_spotcheck_v1/rerun_output/aggregate_summary.json",
+      "sha256": "3a9e790196390972b4acaa79c9ce86e3af807334c4f1d41c2f3d877c2a3548a4",
+      "src_path": "/home/pang/projects/DDET-MTD/metric/case14/phase3_repro_spotcheck_v1/rerun_output/aggregate_summary.json",
+      "dst_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case14/phase3_repro_spotcheck_v1/rerun_output/aggregate_summary.json"
+    },
+    {
+      "relative_path": "metric/case14/phase3_repro_spotcheck_v2/repro_spotcheck_summary.json",
+      "sha256": "6e53da7fb6e9a21be11755036bf02148a18005f7e9d8b2fcf64bc409b6ec0e73",
+      "src_path": "/home/pang/projects/DDET-MTD/metric/case14/phase3_repro_spotcheck_v2/repro_spotcheck_summary.json",
+      "dst_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case14/phase3_repro_spotcheck_v2/repro_spotcheck_summary.json"
+    },
+    {
+      "relative_path": "metric/case14/phase3_repro_spotcheck_v2/mini_manifest.json",
+      "sha256": "c2b67037be3b353dca529d3d191b92cd431a5fa04296f191526b9ae5b798fad7",
+      "src_path": "/home/pang/projects/DDET-MTD/metric/case14/phase3_repro_spotcheck_v2/mini_manifest.json",
+      "dst_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case14/phase3_repro_spotcheck_v2/mini_manifest.json"
+    },
+    {
+      "relative_path": "metric/case14/phase3_repro_spotcheck_v2/rerun_output/aggregate_summary.json",
+      "sha256": "7def0b6b4ad51544eed9805748dcdbd7dc2de6882fb427fb1f74b0ba98d0ed3e",
+      "src_path": "/home/pang/projects/DDET-MTD/metric/case14/phase3_repro_spotcheck_v2/rerun_output/aggregate_summary.json",
+      "dst_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case14/phase3_repro_spotcheck_v2/rerun_output/aggregate_summary.json"
+    }
+  ],
+  "already_same": [],
+  "conflicts": [],
+  "missing_sources": []
+}

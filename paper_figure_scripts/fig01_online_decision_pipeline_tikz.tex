@@ -1,0 +1,46 @@
+% Include this file inside a figure* environment.
+\begin{tikzpicture}[x=1cm,y=1cm,>=Latex, every node/.style={font=\small}]
+  \tikzstyle{box}=[draw, rounded corners=2pt, align=center, minimum height=0.95cm, inner sep=3pt]
+
+  % top row
+  \node[box, minimum width=2.15cm] (det) at (1.70,3.15) {Detector\\score stream};
+  \node[box, minimum width=1.90cm] (ver) at (4.40,3.15) {Verification\\gate};
+  \node[box, minimum width=2.35cm] (adm) at (7.05,3.15) {Admission and\\priority policy};
+  \node[box, minimum width=2.05cm] (que) at (9.90,3.15) {Queue and\\service slots};
+  \node[box, minimum width=2.25cm] (mtd) at (12.75,3.15) {Backend defense\\solver};
+
+  % arrows along the pipeline
+  \draw[->, line width=0.9pt] (det.east) -- (ver.west);
+  \draw[->, line width=0.9pt] (ver.east) -- (adm.west);
+  \draw[->, line width=0.9pt] (adm.east) -- (que.west);
+  \draw[->, line width=0.9pt] (que.east) -- (mtd.west);
+
+  % dashed scheduler boundary
+  \draw[dashed, rounded corners=4pt, line width=0.9pt]
+    (3.10,2.25) rectangle (11.55,4.00);
+  \node[font=\small] at (7.32,3.86) {Optimized scheduler};
+
+  % fixed labels
+  \node[font=\small] at (1.70,3.82) {Fixed detector};
+  \node[font=\small] at (12.75,3.82) {Fixed backend solver};
+
+  % outcome node
+  \node[box, minimum width=2.35cm] (out) at (8.85,1.70) {Served actions /\\outcomes};
+  \draw[->, line width=0.9pt] (mtd.south) -- ++(0,-0.55) -| (out.east);
+
+  % constraint box
+  \node[box, minimum width=1.80cm, minimum height=1.05cm] (cons) at (1.05,0.82) {Hard limits:\\slot budget\\max wait\\service cost};
+
+  % metrics container
+  \draw[rounded corners=3pt, line width=0.9pt] (3.00,0.25) rectangle (13.95,1.35);
+  \draw[line width=0.75pt] (5.72,0.25) -- (5.72,1.35);
+  \draw[line width=0.75pt] (8.45,0.25) -- (8.45,1.35);
+  \draw[line width=0.75pt] (11.20,0.25) -- (11.20,1.35);
+
+  \node[align=center] at (4.36,0.80) {Attack recall\\$R_{\mathrm{atk}}$};
+  \node[align=center] at (7.08,0.80) {Unnecessary actions\\$N_{\mathrm{unnec}}$};
+  \node[align=center] at (9.83,0.80) {Queue delay\\$D_{95}$};
+  \node[align=center] at (12.57,0.80) {Service cost\\$C_{\mathrm{avg}}$};
+
+  \draw[->, line width=0.9pt] (out.south) -- (8.85,1.35);
+\end{tikzpicture}

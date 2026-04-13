@@ -12,16 +12,16 @@ DEFAULT_CASE_NAME = os.environ.get("DDET_CASE_NAME", "case14")
 
 DEFAULT_FAMILIES = [
     {
-        "family_tag": "cfA_frontloaded",
-        "schedule": "clean:90;att-1-0.15:90;clean:45;att-2-0.25:90;clean:45;att-3-0.25:60;clean:120",
-        "seeds": [20260511, 20260512],
-        "offsets": [1020, 1080],
+        "family_tag": "cfC_interleaved",
+        "schedule": "clean:120;att-1-0.15:45;clean:60;att-2-0.25:45;clean:60;att-3-0.35:45;clean:60;att-2-0.20:45;clean:60",
+        "seeds": [20260611, 20260612],
+        "offsets": [1260, 1320],
     },
     {
-        "family_tag": "cfB_backloaded",
-        "schedule": "clean:150;att-2-0.20:60;clean:30;att-3-0.35:90;clean:30;att-1-0.15:60;clean:120",
-        "seeds": [20260521, 20260522],
-        "offsets": [1140, 1200],
+        "family_tag": "cfD_tailheavy",
+        "schedule": "clean:180;att-1-0.10:45;clean:45;att-2-0.20:45;clean:30;att-3-0.40:105;clean:90",
+        "seeds": [20260621, 20260622],
+        "offsets": [1380, 1440],
     },
 ]
 
@@ -102,7 +102,7 @@ def build_manifest(
         "attack_bank": attack_bank or banks["attack_bank"],
         "train_bank": train_bank or banks["train_bank"],
         "val_bank": val_bank or banks["val_bank"],
-        "schedule": "confirm_multi_family_v1",
+        "schedule": "confirm_multi_family_v2",
         "confirm_families": DEFAULT_FAMILIES,
         "frozen_regime": FROZEN_REGIME,
         "holdouts": holdouts,
@@ -172,7 +172,7 @@ def generate_assets(manifest: Dict[str, object], workdir: Path, force: bool = Fa
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Create a 4-holdout blind confirm manifest and baseline phase3 holdout summaries.")
+    parser = argparse.ArgumentParser(description="Create 4 additional blind confirm holdouts from 2 new schedule families and baseline phase3 summaries.")
     parser.add_argument("--workdir", default=".", help="Repo root.")
     parser.add_argument("--case_name", default=DEFAULT_CASE_NAME, help="Case tag used for default metric root.")
     parser.add_argument("--output_dir", default=None, help="Directory for confirm manifest/banks/results.")
@@ -186,7 +186,7 @@ def main() -> None:
     args = parser.parse_args()
 
     workdir = Path(args.workdir).resolve()
-    output_dir = args.output_dir or f"metric/{args.case_name}/phase3_confirm_blind_v1"
+    output_dir = args.output_dir or f"metric/{args.case_name}/phase3_confirm_blind_v2"
     out_dir = (workdir / output_dir).resolve()
     out_dir.mkdir(parents=True, exist_ok=True)
 

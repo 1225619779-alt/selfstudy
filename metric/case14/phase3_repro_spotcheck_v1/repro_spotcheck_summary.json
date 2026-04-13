@@ -1,0 +1,22 @@
+{
+  "method": "phase3_oracle_repro_spotcheck",
+  "manifest": "metric/case14/phase3_confirm_blind_v1/manifest.json",
+  "reference_confirm": "metric/case14/phase3_confirm_blind_v1/oracle_protected_ec_confirm/aggregate_summary.json",
+  "dev_screen_summary": "metric/case14/phase3_oracle_family/screen_train_val_summary.json",
+  "mini_manifest_path": "/home/pang/projects/DDET-MTD/metric/case14/phase3_repro_spotcheck_v1/mini_manifest.json",
+  "rerun_aggregate_summary_path": "/home/pang/projects/DDET-MTD/metric/case14/phase3_repro_spotcheck_v1/rerun_output/aggregate_summary.json",
+  "selected_holdout_tags": [
+    "cfA_frontloaded_0_seed20260511_off1020"
+  ],
+  "n_selected_holdouts": 1,
+  "checks": {
+    "cfA_frontloaded_0_seed20260511_off1020": {
+      "status": "PASS",
+      "max_abs_error": 0.0,
+      "issues": []
+    }
+  },
+  "max_abs_error": 0.0,
+  "issues": [],
+  "status": "PASS"
+}

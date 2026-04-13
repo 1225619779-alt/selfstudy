@@ -11,13 +11,11 @@ import tempfile
 import time
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
-from typing import Iterable, Sequence
+from typing import Sequence
 
 import numpy as np
 
-
-# Standard-library only at module import time. Repo imports happen inside functions
-# after DDET_CASE_NAME is set, so this script is robust to case-aware config logic.
+_G = {}
 
 
 def _set_repo_env(repo_root: str, case_name: str) -> None:
@@ -52,9 +50,25 @@ def _build_case_class(repo_root: str, case_name: str):
     return case_class, pv_bus, noise_sigma
 
 
-def _probe_shapes_and_seed(repo_root: str, case_name: str, start_idx: int, noise_seed: int):
+def _worker_init(repo_root: str, case_name: str, noise_seed: int) -> None:
+    _set_repo_env(repo_root, case_name)
     case_class, pv_bus, noise_sigma = _build_case_class(repo_root, case_name)
-    arr = _load_basic_arrays(case_name)
+    arrays = _load_basic_arrays(case_name)
+    _G["repo_root"] = repo_root
+    _G["case_name"] = case_name
+    _G["noise_seed"] = int(noise_seed)
+    _G["case_class"] = case_class
+    _G["pv_bus"] = pv_bus
+    _G["noise_sigma"] = noise_sigma
+    _G["arrays"] = arrays
+
+
+def _probe_shapes(repo_root: str, case_name: str, start_idx: int, noise_seed: int):
+    _worker_init(repo_root, case_name, noise_seed)
+    case_class = _G["case_class"]
+    pv_bus = _G["pv_bus"]
+    noise_sigma = _G["noise_sigma"]
+    arr = _G["arrays"]
 
     i = start_idx
     pv_active_pad = np.zeros(arr["load_active"].shape[1], dtype=float)
@@ -68,13 +82,9 @@ def _probe_shapes_and_seed(repo_root: str, case_name: str, start_idx: int, noise
     )
     if not result["success"]:
         raise RuntimeError(
-            "The first probed step did not converge. The original sequential code would also fail "
-            "if the first step had no previous measurement to copy from. Try a different start_idx."
+            "The first probed step did not converge. Pick a different start_idx or inspect OPF convergence."
         )
 
-    # Use deterministic per-step noise instead of relying on global np.random state.
-    # This is not byte-identical to the old implementation, but it is logically cleaner and
-    # reproducible, which is preferable for the new native case39 branch.
     z, _z_noise_unused, vang_ref, vmag_ref = case_class.construct_mea(result)
     rng = np.random.default_rng(noise_seed + i)
     noise_vec = rng.normal(loc=0.0, scale=noise_sigma, size=noise_sigma.shape[0])
@@ -93,16 +103,15 @@ def _probe_shapes_and_seed(repo_root: str, case_name: str, start_idx: int, noise
     }
 
 
-def _chunk_ranges(start: int, stop: int, workers: int, oversubscribe: int = 4) -> list[tuple[int, int]]:
+def _chunk_ranges(start: int, stop: int, chunk_steps: int) -> list[tuple[int, int]]:
     total = max(0, stop - start)
     if total == 0:
         return []
-    n_chunks = min(total, max(workers * oversubscribe, workers))
-    chunk_size = math.ceil(total / n_chunks)
+    chunk_steps = max(1, int(chunk_steps))
     chunks = []
     s = start
     while s < stop:
-        e = min(stop, s + chunk_size)
+        e = min(stop, s + chunk_steps)
         chunks.append((s, e))
         s = e
     return chunks
@@ -118,26 +127,17 @@ def _fill_nan_value(dtype_str: str, shape: Sequence[int]) -> np.ndarray:
     return out
 
 
-def _worker_process(
-    repo_root: str,
-    case_name: str,
-    start: int,
-    end: int,
-    z_dim: int,
-    v_shape: Sequence[int],
-    v_dtype_str: str,
-    noise_seed: int,
-    tmp_dir: str,
-) -> str:
-    _set_repo_env(repo_root, case_name)
-    case_class, pv_bus, noise_sigma = _build_case_class(repo_root, case_name)
-    arr = _load_basic_arrays(case_name)
+def _worker_process(start: int, end: int, z_dim: int, v_shape: Sequence[int], v_dtype_str: str, tmp_dir: str) -> str:
+    case_class = _G["case_class"]
+    pv_bus = _G["pv_bus"]
+    noise_sigma = _G["noise_sigma"]
+    arr = _G["arrays"]
+    noise_seed = _G["noise_seed"]
 
     n = end - start
     z_chunk = np.empty((n, z_dim), dtype=float)
     v_chunk = np.empty((n,) + tuple(v_shape), dtype=np.dtype(v_dtype_str))
     success = np.zeros((n,), dtype=bool)
-
     v_nan = _fill_nan_value(v_dtype_str, v_shape)
 
     for local_idx, global_idx in enumerate(range(start, end)):
@@ -162,8 +162,8 @@ def _worker_process(
         noise_vec = rng.normal(loc=0.0, scale=noise_sigma, size=noise_sigma.shape[0])
         z_noise = z.flatten() + noise_vec
         z_noise = np.expand_dims(z_noise, axis=1)
-
         v_est = case_class.ac_se_pypower(z_noise=z_noise, vang_ref=vang_ref, vmag_ref=vmag_ref)
+
         z_chunk[local_idx] = z_noise.flatten()
         v_chunk[local_idx] = np.asarray(v_est)
         success[local_idx] = True
@@ -178,8 +178,7 @@ def _forward_fill_failures(z_full: np.ndarray, v_full: np.ndarray, success_full:
         return z_full, v_full
     if not bool(success_full[0]):
         raise RuntimeError(
-            "The first step failed. The original sequential implementation would also have no prior "
-            "measurement to copy. Pick a different start_idx or inspect OPF convergence."
+            "The first step failed. The original sequential implementation would also have no prior measurement to copy."
         )
     for i in range(1, z_full.shape[0]):
         if not bool(success_full[i]):
@@ -191,17 +190,18 @@ def _forward_fill_failures(z_full: np.ndarray, v_full: np.ndarray, success_full:
 def main() -> None:
     parser = argparse.ArgumentParser(
         description=(
-            "Parallel measurement generation for gen_data/{case}/z_noise_summary.npy, "
-            "v_est_summary.npy, success_summary.npy. Uses deterministic per-step noise seeds "
-            "for reproducibility."
+            "Coarse-chunk parallel measurement generation for gen_data/{case}/z_noise_summary.npy, "
+            "v_est_summary.npy, success_summary.npy. This version caches the case class and arrays once "
+            "per worker and uses larger chunks to reduce overhead."
         )
     )
-    parser.add_argument("--repo_root", default=".", help="Repository root.")
-    parser.add_argument("--case_name", default="case39", help="Case name, usually case39.")
-    parser.add_argument("--workers", type=int, default=min(8, max(1, (os.cpu_count() or 2) - 1)))
+    parser.add_argument("--repo_root", default=".")
+    parser.add_argument("--case_name", default="case39")
+    parser.add_argument("--workers", type=int, default=min(4, max(1, (os.cpu_count() or 2) // 2)))
     parser.add_argument("--start_idx", type=int, default=0)
     parser.add_argument("--end_idx", type=int, default=-1, help="Exclusive end idx. -1 means full length.")
     parser.add_argument("--noise_seed", type=int, default=20260408)
+    parser.add_argument("--chunk_steps", type=int, default=8, help="Contiguous steps per task chunk.")
     parser.add_argument("--out_root", default=None, help="Defaults to gen_data/{case_name}")
     parser.add_argument("--keep_tmp", action="store_true")
     args = parser.parse_args()
@@ -220,27 +220,31 @@ def main() -> None:
     out_root = Path(args.out_root) if args.out_root else Path("gen_data") / args.case_name
     out_root.mkdir(parents=True, exist_ok=True)
 
-    probe = _probe_shapes_and_seed(repo_root, args.case_name, start_idx, args.noise_seed)
-
-    chunks = _chunk_ranges(start_idx, end_idx, args.workers)
+    probe = _probe_shapes(repo_root, args.case_name, start_idx, args.noise_seed)
+    chunks = _chunk_ranges(start_idx, end_idx, args.chunk_steps)
     tmp_dir = tempfile.mkdtemp(prefix=f"measure_parallel_{args.case_name}_", dir=str(out_root))
-    t0 = time.time()
 
+    print(json.dumps({
+        "case_name": args.case_name,
+        "workers": args.workers,
+        "start_idx": start_idx,
+        "end_idx_exclusive": end_idx,
+        "n_steps": end_idx - start_idx,
+        "chunk_steps": args.chunk_steps,
+        "n_chunks": len(chunks),
+        "out_root": str(out_root),
+        "tmp_dir": tmp_dir,
+    }, ensure_ascii=False, indent=2), flush=True)
+
+    t0 = time.time()
     chunk_paths: list[str] = []
-    with ProcessPoolExecutor(max_workers=args.workers) as ex:
+    with ProcessPoolExecutor(
+        max_workers=args.workers,
+        initializer=_worker_init,
+        initargs=(repo_root, args.case_name, args.noise_seed),
+    ) as ex:
         futs = {
-            ex.submit(
-                _worker_process,
-                repo_root,
-                args.case_name,
-                s,
-                e,
-                probe["z_dim"],
-                probe["v_shape"],
-                probe["v_dtype"],
-                args.noise_seed,
-                tmp_dir,
-            ): (s, e)
+            ex.submit(_worker_process, s, e, probe["z_dim"], probe["v_shape"], probe["v_dtype"], tmp_dir): (s, e)
             for s, e in chunks
         }
         for fut in as_completed(futs):
@@ -249,7 +253,6 @@ def main() -> None:
             print(f"finished chunk [{s}, {e}) -> {path}", flush=True)
             chunk_paths.append(path)
 
-    # Reassemble in order.
     loaded = []
     for path in sorted(chunk_paths, key=lambda p: int(Path(p).stem.split("_")[1])):
         with np.load(path, allow_pickle=True) as npz:
@@ -258,18 +261,11 @@ def main() -> None:
     z_full = np.concatenate([x[2] for x in loaded], axis=0)
     v_full = np.concatenate([x[3] for x in loaded], axis=0)
     success_full = np.concatenate([x[4] for x in loaded], axis=0)
-
     z_full, v_full = _forward_fill_failures(z_full, v_full, success_full)
 
-    z_out = out_root / "z_noise_summary.npy"
-    v_out = out_root / "v_est_summary.npy"
-    s_out = out_root / "success_summary.npy"
-    rep_out = out_root / "parallel_measure_report.json"
-
-    # Save in a layout close to the original sequential implementation.
-    np.save(z_out, [row.copy() for row in z_full], allow_pickle=True)
-    np.save(v_out, [row.copy() for row in v_full], allow_pickle=True)
-    np.save(s_out, success_full.tolist(), allow_pickle=True)
+    np.save(out_root / "z_noise_summary.npy", z_full)
+    np.save(out_root / "v_est_summary.npy", v_full)
+    np.save(out_root / "success_summary.npy", success_full)
 
     elapsed = time.time() - t0
     report = {
@@ -279,25 +275,25 @@ def main() -> None:
         "start_idx": start_idx,
         "end_idx_exclusive": end_idx,
         "n_steps": end_idx - start_idx,
+        "chunk_steps": args.chunk_steps,
+        "n_chunks": len(chunks),
         "noise_seed": args.noise_seed,
         "probe": probe,
         "chunks": [{"start": s, "end": e} for s, e in chunks],
-        "success_rate_raw": float(np.mean(success_full.astype(float))),
-        "n_forward_filled": int(np.sum(~success_full)),
+        "success_rate_raw": float(np.mean(success_full.astype(float))) if success_full.size else None,
+        "n_forward_filled": int(np.count_nonzero(~success_full)),
         "elapsed_sec": elapsed,
         "sec_per_iter_effective": elapsed / max(1, (end_idx - start_idx)),
         "outputs": {
-            "z_noise_summary": str(z_out),
-            "v_est_summary": str(v_out),
-            "success_summary": str(s_out),
+            "z_noise_summary": str(out_root / "z_noise_summary.npy"),
+            "v_est_summary": str(out_root / "v_est_summary.npy"),
+            "success_summary": str(out_root / "success_summary.npy"),
         },
-        "note": (
-            "This parallel generator preserves the sequential fallback semantics for failed OPF steps "
-            "via a final forward-fill pass. Noise is made deterministic per step using noise_seed + index."
-        ),
+        "note": "Coarse-chunk parallel generator with worker-local cached case class and arrays.",
     }
-    rep_out.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(json.dumps(report, ensure_ascii=False, indent=2))
+    with open(out_root / "parallel_measure_report.json", "w", encoding="utf-8") as f:
+        json.dump(report, f, ensure_ascii=False, indent=2)
+    print(json.dumps(report, ensure_ascii=False, indent=2), flush=True)
 
     if not args.keep_tmp:
         shutil.rmtree(tmp_dir, ignore_errors=True)

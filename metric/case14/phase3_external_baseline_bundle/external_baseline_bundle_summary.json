@@ -1,0 +1,163 @@
+{
+  "method": "phase3_external_baseline_bundle",
+  "source_confirm": [
+    "/home/pang/projects/DDET-MTD/metric/case14/phase3_confirm_blind_v1/oracle_protected_ec_confirm/aggregate_summary.json",
+    "/home/pang/projects/DDET-MTD/metric/case14/phase3_confirm_blind_v2/oracle_protected_ec_confirm/aggregate_summary.json"
+  ],
+  "winner_variant": {
+    "name": "oracle_protected_ec",
+    "mode": "protected_ec",
+    "description": "deliverable/protected consequence = fused consequence × (1-fail risk)",
+    "clean_scale": 0.0,
+    "protected_blend": 0.0
+  },
+  "n_confirm_holdouts": 8,
+  "main_table_rows_full": [
+    {
+      "slot_budget": 1,
+      "oracle_method": "oracle_protected_ec",
+      "oracle_recall_mean": 0.72035,
+      "oracle_unnecessary_mean": 3.75,
+      "oracle_delay_mean": 8.60625,
+      "oracle_cost_mean": 9.321669,
+      "phase3_recall_mean": 0.7137,
+      "phase3_unnecessary_mean": 6.125,
+      "phase3_delay_mean": 8.1375,
+      "phase3_cost_mean": 9.373114,
+      "historical_baseline_name": "best_threshold_family (DDET-style static trigger family)",
+      "historical_recall_mean": 0.6544625,
+      "historical_unnecessary_mean": 0.875,
+      "historical_delay_mean": 10.0,
+      "historical_cost_mean": 6.602948875,
+      "aggressive_baseline_name": "topk_expected_consequence",
+      "aggressive_recall_mean": 0.729225,
+      "aggressive_unnecessary_mean": 46.25,
+      "aggressive_delay_mean": 6.38125,
+      "aggressive_cost_mean": 12.396536375
+    },
+    {
+      "slot_budget": 2,
+      "oracle_method": "oracle_protected_ec",
+      "oracle_recall_mean": 0.9724625,
+      "oracle_unnecessary_mean": 7.25,
+      "oracle_delay_mean": 1.0,
+      "oracle_cost_mean": 12.165109375,
+      "phase3_recall_mean": 0.9709625,
+      "phase3_unnecessary_mean": 9.125,
+      "phase3_delay_mean": 0.78125,
+      "phase3_cost_mean": 12.120658249999998,
+      "historical_baseline_name": "best_threshold_family (DDET-style static trigger family)",
+      "historical_recall_mean": 0.8900625,
+      "historical_unnecessary_mean": 2.625,
+      "historical_delay_mean": 1.14375,
+      "historical_cost_mean": 8.487877625,
+      "aggressive_baseline_name": "topk_expected_consequence",
+      "aggressive_recall_mean": 0.9823250000000001,
+      "aggressive_unnecessary_mean": 47.0,
+      "aggressive_delay_mean": 0.5,
+      "aggressive_cost_mean": 14.891170624999999
+    }
+  ],
+  "family_breakdown_rows": [
+    {
+      "slot_budget": 1,
+      "family_tag": "cfA_frontloaded",
+      "n_holdouts": 2,
+      "oracle_recall_mean": 0.639,
+      "phase3_recall_mean": 0.6286,
+      "historical_recall_mean": 0.5658000000000001,
+      "oracle_unnecessary_mean": 4.5,
+      "phase3_unnecessary_mean": 8.0,
+      "historical_unnecessary_mean": 1.0
+    },
+    {
+      "slot_budget": 1,
+      "family_tag": "cfB_backloaded",
+      "n_holdouts": 2,
+      "oracle_recall_mean": 0.7378,
+      "phase3_recall_mean": 0.7322,
+      "historical_recall_mean": 0.6425000000000001,
+      "oracle_unnecessary_mean": 4.0,
+      "phase3_unnecessary_mean": 5.5,
+      "historical_unnecessary_mean": 0.0
+    },
+    {
+      "slot_budget": 1,
+      "family_tag": "cfC_interleaved",
+      "n_holdouts": 2,
+      "oracle_recall_mean": 0.74685,
+      "phase3_recall_mean": 0.7352000000000001,
+      "historical_recall_mean": 0.7202999999999999,
+      "oracle_unnecessary_mean": 3.0,
+      "phase3_unnecessary_mean": 5.0,
+      "historical_unnecessary_mean": 1.5
+    },
+    {
+      "slot_budget": 1,
+      "family_tag": "cfD_tailheavy",
+      "n_holdouts": 2,
+      "oracle_recall_mean": 0.7577499999999999,
+      "phase3_recall_mean": 0.7587999999999999,
+      "historical_recall_mean": 0.6892499999999999,
+      "oracle_unnecessary_mean": 3.5,
+      "phase3_unnecessary_mean": 6.0,
+      "historical_unnecessary_mean": 1.0
+    },
+    {
+      "slot_budget": 2,
+      "family_tag": "cfA_frontloaded",
+      "n_holdouts": 2,
+      "oracle_recall_mean": 0.9481999999999999,
+      "phase3_recall_mean": 0.9437500000000001,
+      "historical_recall_mean": 0.8499000000000001,
+      "oracle_unnecessary_mean": 11.0,
+      "phase3_unnecessary_mean": 16.0,
+      "historical_unnecessary_mean": 5.0
+    },
+    {
+      "slot_budget": 2,
+      "family_tag": "cfB_backloaded",
+      "n_holdouts": 2,
+      "oracle_recall_mean": 0.986,
+      "phase3_recall_mean": 0.986,
+      "historical_recall_mean": 0.89855,
+      "oracle_unnecessary_mean": 6.5,
+      "phase3_unnecessary_mean": 8.5,
+      "historical_unnecessary_mean": 3.0
+    },
+    {
+      "slot_budget": 2,
+      "family_tag": "cfC_interleaved",
+      "n_holdouts": 2,
+      "oracle_recall_mean": 0.9682999999999999,
+      "phase3_recall_mean": 0.96675,
+      "historical_recall_mean": 0.85945,
+      "oracle_unnecessary_mean": 5.5,
+      "phase3_unnecessary_mean": 6.0,
+      "historical_unnecessary_mean": 1.5
+    },
+    {
+      "slot_budget": 2,
+      "family_tag": "cfD_tailheavy",
+      "n_holdouts": 2,
+      "oracle_recall_mean": 0.98735,
+      "phase3_recall_mean": 0.98735,
+      "historical_recall_mean": 0.95235,
+      "oracle_unnecessary_mean": 6.0,
+      "phase3_unnecessary_mean": 6.0,
+      "historical_unnecessary_mean": 1.0
+    }
+  ],
+  "historical_baseline_note": "The historical baseline reported here is the best member of the static threshold family already evaluated on the same confirm holdouts. In most holdouts it resolves to a verify-score or DDD-score FIFO trigger, which is the closest historical counterpart to the original DDET-MTD event-trigger style under the current resource-constrained backend setting.",
+  "best_threshold_frequency": {
+    "1": {
+      "threshold_verify_fifo": 3,
+      "threshold_ddd_fifo": 5
+    },
+    "2": {
+      "threshold_verify_fifo": 6,
+      "threshold_ddd_fifo": 1,
+      "threshold_expected_consequence_fifo": 1
+    }
+  }
+}
