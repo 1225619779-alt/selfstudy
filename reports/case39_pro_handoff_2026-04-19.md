@@ -290,3 +290,147 @@ Given this branch and the attached compact summaries, what would you prioritize 
 - backend calibration / robustness repair,
 - limitation-aware rewriting around the current comparator story,
 - or one more tightly scoped ablation to improve the score design?
+
+## Likely Review Questions / Code Risks
+
+These are the implementation choices I expect a careful reviewer or collaborator to question first.
+
+### 1. Rounded tau is used in the clean/attack suites by default
+
+Files:
+
+- `run_case39_clean_suite_from_tau.sh`
+- `run_case39_attack_suite_from_tau.sh`
+
+Current behavior:
+
+- validation selection computes exact taus,
+- but the runners default to `USE_ROUNDED=1`,
+- so the actual clean/attack suites use `tau_main_rounded_3dp = 0.013` and `tau_strict_rounded_3dp = 0.016`.
+
+Why this may be questioned:
+
+- the selected validation operating point and the executed test operating point are not numerically identical;
+- although the difference is small, it is still a post-selection rounding choice.
+
+My view:
+
+- this is defensible only if explicitly stated as a deployment simplification;
+- if the goal is maximal methodological cleanliness, rerunning with exact taus would remove this question entirely.
+
+### 2. Attack-side backend metric failures are now caught and converted to NaN instead of crashing the full suite
+
+File:
+
+- `evaluation_event_trigger_attack_cli.py`
+
+Current behavior:
+
+- stage-one / stage-two `mtd_metric_with_attack()` calls are wrapped in `try/except`;
+- failures are logged and tracked via `backend_metric_fail`;
+- burden-related outputs for the failed sample are written as `NaN` or `False`,
+- and the suite continues instead of aborting.
+
+Why this may be questioned:
+
+- this changes failure handling from “stop the experiment” to “keep the run and mark the sample as failed”;
+- ARR is still computed from gate triggers, so retention is preserved, but backend burden summaries can now mix successful and failed backend metrics.
+
+My view:
+
+- this was necessary to finish the suite and audit the failure pattern;
+- it is acceptable only because the failure flag is retained and explicitly audited in `backend_failure_audit.*`;
+- however, any paper using these numbers should explain that backend metric failures were preserved as failures, not silently imputed as successful outcomes.
+
+### 3. `recover_input_mode=repo_compatible` preserves the old repo behavior, which may itself be scientifically debatable
+
+Files:
+
+- `evaluation_event_trigger_attack_cli.py`
+- `select_tau_joint_valid.py`
+
+Current behavior:
+
+- the default passes the original `input_batch` into `recover()` rather than the attacked measurement `z_att_noise`;
+- the alternative `attacked_measurement` mode exists but was not used for the reported results.
+
+Why this may be questioned:
+
+- this keeps consistency with the existing repo worldline,
+- but if `recover()` is intended to operate on attacked measurements, then the default may be preserving a historical semantic quirk rather than the most principled attack-time behavior.
+
+My view:
+
+- for reproducibility this was the safer choice;
+- for scientific clarity, this is exactly the kind of point I want explicit advice on before we rerun anything major.
+
+### 4. Case39 data construction includes manual modeling choices that are reasonable but not uniquely determined
+
+Files:
+
+- `configs/config.py`
+- `gen_data/gen_data.py`
+- `generate_case_basic_npy.py`
+
+Current behavior:
+
+- case39 uses a manually chosen `pv_bus` set,
+- raw load data are drawn from summer 2012 while raw PV data are drawn from summer 2019,
+- PV cloud perturbation is synthetically injected,
+- and `gen_case('case39')` keeps the standard network mostly intact except for symmetrizing `QMIN = -QMAX`.
+
+Why this may be questioned:
+
+- these choices affect the realism and difficulty of the case39 testbed;
+- they are sensible engineering scaffolds, but they are not canonical IEEE-39 assumptions.
+
+My view:
+
+- these assumptions should be treated as explicit dataset-generation choices, not hidden defaults;
+- if `pro` thinks this weakens the paper, then importing a more standardized case39 asset pipeline would be the next thing to revisit.
+
+### 5. Parallel measurement generation is not perfectly semantics-equivalent to the original serial generator in every edge case
+
+Files:
+
+- `generate_measurement_bank_parallel.py`
+- `gen_data/gen_data.py`
+
+Current behavior:
+
+- chunked parallel generation reproduces the same outputs on tested samples and was used successfully for case39,
+- but chunk workers cannot borrow a previous-sample fallback across chunk boundaries if a chunk’s first OPF sample fails.
+
+Why this may be questioned:
+
+- the original serial generator can reuse the immediately previous sample globally,
+- while the parallel generator only has chunk-local previous state.
+
+My view:
+
+- this did not affect the reported case39 bank because `success_rate = 1.0`,
+- so there were no failed OPF rows to trigger the edge case;
+- still, it is a legitimate implementation caveat that should be stated if someone inspects the generator closely.
+
+### 6. The attack backend still relies on a historical magic offset for `next_load_idx`
+
+Files:
+
+- `evaluation_event_trigger_attack_cli.py`
+- `select_tau_joint_valid.py`
+
+Current behavior:
+
+- `next_load_idx = test_start_idx + next_load_extra + idx`,
+- with `next_load_extra` defaulting to `7`,
+- explicitly preserving the old `6 + 1` behavior from the earlier scripts.
+
+Why this may be questioned:
+
+- this affects which load snapshot is used for backend metric evaluation after an attack trigger;
+- the offset is preserved for compatibility, but it is not self-evident from first principles.
+
+My view:
+
+- this is another point where I intentionally preserved the repo worldline rather than re-defining semantics;
+- if `pro` believes this constant is unjustified, then it should be normalized before any final rerun.
