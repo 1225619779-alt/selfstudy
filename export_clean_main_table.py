@@ -10,12 +10,17 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import numpy as np
 
-DEFAULT_BASELINE = "metric/case14/metric_event_trigger_clean_tau_-1.0_mode_0_0.03_1.1.npy"
-DEFAULT_MAIN = "metric/case14/metric_event_trigger_clean_tau_0.021_mode_0_0.03_1.1.npy"
-STRICT_CANDIDATES = [
-    "metric/case14/metric_event_trigger_clean_tau_0.03_mode_0_0.03_1.1.npy",
-    "metric/case14/metric_event_trigger_clean_tau_0.030_mode_0_0.03_1.1.npy",
-]
+from paper_worldline import (
+    BASELINE_CLEAN_METRIC,
+    MAIN_CLEAN_METRIC,
+    STRICT_CLEAN_METRIC_CANDIDATES,
+    TAU_MAIN_LABEL,
+    TAU_STRICT_LABEL,
+)
+
+DEFAULT_BASELINE = BASELINE_CLEAN_METRIC
+DEFAULT_MAIN = MAIN_CLEAN_METRIC
+STRICT_CANDIDATES = STRICT_CLEAN_METRIC_CANDIDATES
 
 
 PAPER_COLUMNS = [
@@ -67,7 +72,7 @@ def parse_args() -> argparse.Namespace:
         "--strict",
         type=str,
         default="",
-        help="Optional strict tau metric file. If omitted, the script will try common 0.03 / 0.030 filenames.",
+        help="Optional strict tau metric file. If omitted, the script will try the current paper strict metric first.",
     )
     parser.add_argument(
         "--output_dir",
@@ -79,8 +84,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--main_label", type=str, default="Main OP")
     parser.add_argument("--strict_label", type=str, default="Strict OP")
     parser.add_argument("--baseline_tau_label", type=str, default="-1.0")
-    parser.add_argument("--main_tau_label", type=str, default="0.021")
-    parser.add_argument("--strict_tau_label", type=str, default="0.030")
+    parser.add_argument("--main_tau_label", type=str, default=TAU_MAIN_LABEL)
+    parser.add_argument("--strict_tau_label", type=str, default=TAU_STRICT_LABEL)
     parser.add_argument("--rtol", type=float, default=1e-8)
     parser.add_argument("--atol", type=float, default=1e-10)
     return parser.parse_args()
@@ -412,3 +417,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

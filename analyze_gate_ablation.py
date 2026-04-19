@@ -8,17 +8,24 @@ from typing import Any, Dict, Iterable, List, Sequence, Tuple
 
 import numpy as np
 
+from paper_worldline import (
+    ATTACK_SCORE_METRIC,
+    BASELINE_CLEAN_METRIC,
+    CLEAN_SCORE_METRIC,
+    GATE_ABLATION_CSV,
+    GATE_ABLATION_NPY,
+    MAIN_CLEAN_METRIC,
+    STRICT_CLEAN_METRIC_CANDIDATES,
+)
 
-DEFAULT_CLEAN_SCORES = "metric/case14/metric_clean_alarm_scores_full.npy"
-DEFAULT_ATTACK_SCORES = "metric/case14/metric_attack_alarm_scores_200.npy"
-DEFAULT_BASELINE_CLEAN = "metric/case14/metric_event_trigger_clean_tau_-1.0_mode_0_0.03_1.1.npy"
-DEFAULT_MAIN_CLEAN = "metric/case14/metric_event_trigger_clean_tau_0.021_mode_0_0.03_1.1.npy"
-DEFAULT_STRICT_CANDIDATES = [
-    "metric/case14/metric_event_trigger_clean_tau_0.03_mode_0_0.03_1.1.npy",
-    "metric/case14/metric_event_trigger_clean_tau_0.030_mode_0_0.03_1.1.npy",
-]
-DEFAULT_OUT_NPY = "metric/case14/metric_gate_ablation_summary.npy"
-DEFAULT_OUT_CSV = "metric/case14/metric_gate_ablation_summary.csv"
+
+DEFAULT_CLEAN_SCORES = CLEAN_SCORE_METRIC
+DEFAULT_ATTACK_SCORES = ATTACK_SCORE_METRIC
+DEFAULT_BASELINE_CLEAN = BASELINE_CLEAN_METRIC
+DEFAULT_MAIN_CLEAN = MAIN_CLEAN_METRIC
+DEFAULT_STRICT_CANDIDATES = STRICT_CLEAN_METRIC_CANDIDATES
+DEFAULT_OUT_NPY = GATE_ABLATION_NPY
+DEFAULT_OUT_CSV = GATE_ABLATION_CSV
 
 
 def parse_args() -> argparse.Namespace:
@@ -33,14 +40,14 @@ def parse_args() -> argparse.Namespace:
         "--strict_clean_metric",
         type=str,
         default="",
-        help="Optional. If empty, the script tries common 0.03/0.030 candidates.",
+        help="Optional. If empty, the script tries the current paper strict metric first, then legacy candidates.",
     )
     parser.add_argument(
         "--budgets",
         type=int,
         nargs="*",
         default=None,
-        help="Optional explicit budgets. If omitted, infer from main/strict clean metrics, otherwise fallback to 130 90.",
+        help="Optional explicit budgets. If omitted, infer from the provided main/strict clean metrics.",
     )
     parser.add_argument(
         "--weak_keys",
@@ -257,8 +264,9 @@ def build_budget_items(
                 seen.add(k)
 
     if not items:
-        for k, label in [(130, "Main OP"), (90, "Strict OP")]:
-            items.append((label, k, "fallback"))
+        raise ValueError(
+            "Could not infer matched budgets. Provide main/strict clean metrics or pass --budgets explicitly."
+        )
 
     return items
 
@@ -473,3 +481,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

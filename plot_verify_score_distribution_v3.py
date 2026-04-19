@@ -3,6 +3,8 @@ from pathlib import Path
 import numpy as np
 import matplotlib.pyplot as plt
 
+from paper_worldline import ATTACK_SCORE_METRIC, CLEAN_SCORE_METRIC, TAU_MAIN, TAU_STRICT
+
 
 def _flatten_scores(x):
     """Return a 1D finite float array from a list/ndarray or dict of lists."""
@@ -28,11 +30,11 @@ def _savefig(path_base: Path):
 
 def main():
     parser = argparse.ArgumentParser(description='Plot verify-score distributions using fixed operating-point taus.')
-    parser.add_argument('--clean_scores', default='metric/case14/metric_clean_alarm_scores_full.npy')
-    parser.add_argument('--attack_scores', default='metric/case14/metric_attack_alarm_scores_200.npy')
+    parser.add_argument('--clean_scores', default=CLEAN_SCORE_METRIC)
+    parser.add_argument('--attack_scores', default=ATTACK_SCORE_METRIC)
     parser.add_argument('--outdir', default='metric/case14/plots_verify_score_v3')
-    parser.add_argument('--tau_main', type=float, default=0.021048, help='Main operating-point threshold.')
-    parser.add_argument('--tau_strict', type=float, default=0.030386, help='Strict operating-point threshold.')
+    parser.add_argument('--tau_main', type=float, default=TAU_MAIN, help='Main operating-point threshold.')
+    parser.add_argument('--tau_strict', type=float, default=TAU_STRICT, help='Strict operating-point threshold.')
     parser.add_argument('--title_suffix', default='')
     args = parser.parse_args()
 
@@ -124,3 +126,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+

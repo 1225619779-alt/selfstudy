@@ -4,13 +4,13 @@ Goal:
 - Run DDD on CLEAN data (no injected attack)
 - For clean false alarms (DDD alarms), run recovery to compute verify_score = ||c_recover_no_ref||_2
 - Insert a verification gate between recovery and backend MTD trigger
-- Compare baseline tau_verify=-1.0 vs gated tau_verify=0.021
+- Compare baseline tau_verify=-1.0 vs the current paper operating points
 
 This script is a minimal runnable adaptation of:
 - evaluation_event_trigger.py  (event-trigger pipeline + metric saving style)
 - evaluation_verify_score.py   (clean false-alarm verify_score construction)
 
-Author: generated for dev3025 user (庞文博)
+Author: generated for dev3025 user (搴炴枃鍗?
 Date: 2026-03-24 (America/Los_Angeles)
 """
 
@@ -30,21 +30,22 @@ from models.dataset import scaler
 from models.evaluation import Evaluation
 from models.model import LSTM_AE
 from optim.optimization import mtd_optim
+from paper_worldline import TAU_MAIN, TAU_MAIN_LABEL
 from utils.load_data import load_case, load_load_pv, load_measurement, load_dataset
 
 
 def parse_args() -> argparse.Namespace:
     """
-    MOD: add argparse for easy baseline/gated runs without editing code.
-    Defaults are chosen for quick reproducibility; for paper-grade results, run full test loader.
+    Add argparse for baseline/gated runs without editing code.
+    Defaults follow the current paper worldline and scan the full clean loader.
     """
     parser = argparse.ArgumentParser(description="DDET-MTD clean false-alarm verification-gated event-trigger experiment")
 
-    parser.add_argument("--tau_verify", type=float, default=0.021,
-                        help="Verification gate threshold. Baseline: -1.0 (always trigger). Gated: 0.021.")
+    parser.add_argument("--tau_verify", type=float, default=TAU_MAIN,
+                        help=f"Verification gate threshold. Baseline: -1.0 (always trigger). Current paper main OP: {TAU_MAIN_LABEL}.")
     parser.add_argument("--max_total_run", type=int, default=-1,
                         help="Max number of clean samples to scan. -1 means scan the full test loader.")
-    parser.add_argument("--stop_ddd_alarm_at", type=int, default=50,
+    parser.add_argument("--stop_ddd_alarm_at", type=int, default=-1,
                         help="Stop once total_DDD_alarm reaches this number. -1 means no stop (scan full).")
     parser.add_argument("--seed_base", type=int, default=20260324,
                         help="Base seed for deterministic MTD multi-run init per sample (seed_base + idx).")
@@ -535,3 +536,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

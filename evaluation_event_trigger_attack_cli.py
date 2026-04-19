@@ -180,6 +180,7 @@ def main() -> None:
     cost_no_mtd: Dict[str, List[float]] = {}
     cost_with_mtd_one: Dict[str, List[float]] = {}
     cost_with_mtd_two: Dict[str, List[float]] = {}
+    backend_metric_fail: Dict[str, List[bool]] = {}
 
     group_summary: Dict[str, Dict[str, float]] = {}
 
@@ -210,6 +211,7 @@ def main() -> None:
             cost_no_mtd[key] = []
             cost_with_mtd_one[key] = []
             cost_with_mtd_two[key] = []
+            backend_metric_fail[key] = []
 
             for idx_, (idx, input, v_est_pre, v_est_last) in tqdm(enumerate(test_dataloader_unscaled), desc=key):
                 if idx_ >= total_run:
@@ -294,34 +296,74 @@ def main() -> None:
 
                 next_load_idx = int(test_start_idx + next_load_extra + idx_val)
 
-                is_converged, x_mtd_change_ratio, cost_no_mtd_, cost_with_mtd_, residual_normal, residual_hid, residual_eff = mtd_optim_.mtd_metric_with_attack(
-                    b_mtd=b_mtd_one_final,
-                    c_actual=c_true,
-                    load_active=load_active[next_load_idx],
-                    load_reactive=load_reactive[next_load_idx],
-                    pv_active=pv_active_[next_load_idx],
-                    mode=mtd_config["mode"],
-                )
-                mtd_stage_one_hidden[key].append(residual_hid)
-                mtd_stage_one_eff[key].append(residual_eff)
-                x_ratio_stage_one[key].append(x_mtd_change_ratio)
-                cost_no_mtd[key].append(cost_no_mtd_)
-                cost_with_mtd_one[key].append(cost_with_mtd_)
+                metric_failed = False
+                nan_ratio = np.full(case_class.no_brh, np.nan, dtype=float)
 
-                is_converged, x_mtd_change_ratio, cost_no_mtd_, cost_with_mtd_, residual_normal_, residual_hid, residual_eff = mtd_optim_.mtd_metric_with_attack(
-                    b_mtd=b_mtd_two_final,
-                    c_actual=c_true,
-                    load_active=load_active[next_load_idx],
-                    load_reactive=load_reactive[next_load_idx],
-                    pv_active=pv_active_[next_load_idx],
-                    mode=mtd_config["mode"],
-                )
-                mtd_stage_two_hidden[key].append(residual_hid)
-                mtd_stage_two_eff[key].append(residual_eff)
-                post_mtd_opf_converge.append(bool(is_converged))
-                x_ratio_stage_two[key].append(x_mtd_change_ratio)
-                cost_with_mtd_two[key].append(cost_with_mtd_)
-                residual_no_att.append(residual_normal_)
+                try:
+                    (
+                        is_converged,
+                        x_mtd_change_ratio,
+                        cost_no_mtd_,
+                        cost_with_mtd_,
+                        residual_normal,
+                        residual_hid,
+                        residual_eff,
+                    ) = mtd_optim_.mtd_metric_with_attack(
+                        b_mtd=b_mtd_one_final,
+                        c_actual=c_true,
+                        load_active=load_active[next_load_idx],
+                        load_reactive=load_reactive[next_load_idx],
+                        pv_active=pv_active_[next_load_idx],
+                        mode=mtd_config["mode"],
+                    )
+                    mtd_stage_one_hidden[key].append(float(residual_hid))
+                    mtd_stage_one_eff[key].append(float(residual_eff))
+                    x_ratio_stage_one[key].append(x_mtd_change_ratio)
+                    cost_no_mtd[key].append(float(cost_no_mtd_))
+                    cost_with_mtd_one[key].append(float(cost_with_mtd_))
+                except Exception as e:
+                    print(f"[WARN] stage-one backend metric failed at group={key}, idx={idx_val}: {repr(e)}")
+                    metric_failed = True
+                    mtd_stage_one_hidden[key].append(float("nan"))
+                    mtd_stage_one_eff[key].append(float("nan"))
+                    x_ratio_stage_one[key].append(nan_ratio.copy())
+                    cost_no_mtd[key].append(float("nan"))
+                    cost_with_mtd_one[key].append(float("nan"))
+
+                try:
+                    (
+                        is_converged,
+                        x_mtd_change_ratio,
+                        cost_no_mtd_,
+                        cost_with_mtd_,
+                        residual_normal_,
+                        residual_hid,
+                        residual_eff,
+                    ) = mtd_optim_.mtd_metric_with_attack(
+                        b_mtd=b_mtd_two_final,
+                        c_actual=c_true,
+                        load_active=load_active[next_load_idx],
+                        load_reactive=load_reactive[next_load_idx],
+                        pv_active=pv_active_[next_load_idx],
+                        mode=mtd_config["mode"],
+                    )
+                    mtd_stage_two_hidden[key].append(float(residual_hid))
+                    mtd_stage_two_eff[key].append(float(residual_eff))
+                    post_mtd_opf_converge.append(bool(is_converged))
+                    x_ratio_stage_two[key].append(x_mtd_change_ratio)
+                    cost_with_mtd_two[key].append(float(cost_with_mtd_))
+                    residual_no_att.append(float(residual_normal_))
+                except Exception as e:
+                    print(f"[WARN] stage-two backend metric failed at group={key}, idx={idx_val}: {repr(e)}")
+                    metric_failed = True
+                    mtd_stage_two_hidden[key].append(float("nan"))
+                    mtd_stage_two_eff[key].append(float("nan"))
+                    post_mtd_opf_converge.append(False)
+                    x_ratio_stage_two[key].append(nan_ratio.copy())
+                    cost_with_mtd_two[key].append(float("nan"))
+                    residual_no_att.append(float("nan"))
+
+                backend_metric_fail[key].append(metric_failed)
 
             front_end_alarms = int(sum(TP_DDD[key]))
             backend_triggers = int(sum(trigger_after_verification[key]))
@@ -383,6 +425,7 @@ def main() -> None:
         cost_no_mtd=cost_no_mtd,
         cost_with_mtd_one=cost_with_mtd_one,
         cost_with_mtd_two=cost_with_mtd_two,
+        backend_metric_fail=backend_metric_fail,
     )
 
     summary_path = str(Path(output).with_suffix(".summary.txt"))

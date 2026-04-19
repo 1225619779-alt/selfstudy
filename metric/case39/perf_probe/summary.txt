@@ -1,0 +1,6 @@
+[probe] threads=1 start_at=2026-04-19T04:35:02+08:00
+{"threads": 1, "elapsed_sec": 211, "total_clean_sample": 22, "total_DDD_alarm": 20, "recover_fail_count": 0, "mean_score_phys_l2": 0.055957293931554554}
+[probe] threads=4 start_at=2026-04-19T04:38:33+08:00
+{"threads": 4, "elapsed_sec": 224, "total_clean_sample": 22, "total_DDD_alarm": 20, "recover_fail_count": 0, "mean_score_phys_l2": 0.055957293931554554}
+[probe] threads=8 start_at=2026-04-19T04:42:17+08:00
+{"threads": 8, "elapsed_sec": 225, "total_clean_sample": 22, "total_DDD_alarm": 20, "recover_fail_count": 0, "mean_score_phys_l2": 0.055957293931554554}

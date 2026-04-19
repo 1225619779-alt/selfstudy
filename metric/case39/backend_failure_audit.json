@@ -1,0 +1,348 @@
+{
+  "clean": [
+    {
+      "path": "metric/case39/metric_event_trigger_clean_tau_-1.0_mode_0_0.03_1.1.npy",
+      "tau_verify": -1.0,
+      "total_clean_sample": 7021,
+      "total_DDD_alarm": 819,
+      "total_trigger_after_verification": 819,
+      "trigger_rate": 1.0,
+      "uMTD_rate": 0.11665004985044865,
+      "fail_per_alarm": 0.967032967032967,
+      "fail_mean_triggered_only": 0.9633699633699634,
+      "post_mtd_opf_converge_mean": 1.0,
+      "obj_one_quantiles": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        36.73691536559555
+      ],
+      "obj_two_quantiles": [
+        11.329637104763941,
+        1000.0,
+        1000.0,
+        1000.0,
+        1000.0,
+        1000.0,
+        452386.72707720107
+      ],
+      "stage_one_time_per_alarm": 9.174316442929781,
+      "stage_two_time_per_alarm": 1.5303784837361802,
+      "delta_cost_one_per_alarm": 0.7953259726223612,
+      "delta_cost_two_per_alarm": 0.7287458970121977
+    },
+    {
+      "path": "metric/case39/metric_event_trigger_clean_tau_0.013_mode_0_0.03_1.1.npy",
+      "tau_verify": 0.013,
+      "total_clean_sample": 7021,
+      "total_DDD_alarm": 819,
+      "total_trigger_after_verification": 758,
+      "trigger_rate": 0.9255189255189256,
+      "uMTD_rate": 0.10796182879931633,
+      "fail_per_alarm": 0.9096459096459096,
+      "fail_mean_triggered_only": 0.9802110817941952,
+      "post_mtd_opf_converge_mean": 1.0,
+      "obj_one_quantiles": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        36.73691536559555
+      ],
+      "obj_two_quantiles": [
+        11.329637104763941,
+        1000.0,
+        1000.0,
+        1000.0,
+        1000.0,
+        1000.0,
+        151536.14010878434
+      ],
+      "stage_one_time_per_alarm": 6.474970915669778,
+      "stage_two_time_per_alarm": 0.4681130948957506,
+      "delta_cost_one_per_alarm": 0.6826293502068045,
+      "delta_cost_two_per_alarm": 0.6455698254252143
+    },
+    {
+      "path": "metric/case39/metric_event_trigger_clean_tau_0.016_mode_0_0.03_1.1.npy",
+      "tau_verify": 0.016,
+      "total_clean_sample": 7021,
+      "total_DDD_alarm": 819,
+      "total_trigger_after_verification": 681,
+      "trigger_rate": 0.8315018315018315,
+      "uMTD_rate": 0.096994730095428,
+      "fail_per_alarm": 0.8168498168498168,
+      "fail_mean_triggered_only": 0.9794419970631424,
+      "post_mtd_opf_converge_mean": 1.0,
+      "obj_one_quantiles": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        36.73691536559555
+      ],
+      "obj_two_quantiles": [
+        11.329637104763941,
+        1000.0,
+        1000.0,
+        1000.0,
+        1000.0,
+        1000.0,
+        151536.14010878434
+      ],
+      "stage_one_time_per_alarm": 4.1464741637564115,
+      "stage_two_time_per_alarm": 0.36410234524653506,
+      "delta_cost_one_per_alarm": 0.5753700812984246,
+      "delta_cost_two_per_alarm": 0.5532392322677226
+    }
+  ],
+  "attack": [
+    {
+      "path": "metric/case39/metric_event_trigger_tau_-1.0_mode_0_0.03_1.1.npy",
+      "tau_verify": -1.0,
+      "total_DDD_alarm": 292,
+      "total_trigger_after_gate": 292,
+      "overall_arr": 1.0,
+      "fail_rate_triggered_only": 0.7842465753424658,
+      "backend_metric_fail_rate": 0.0821917808219178,
+      "post_mtd_opf_converge_mean": 0.9246575342465754,
+      "mean_stage_one_time_triggered": 6.087153247774464,
+      "mean_stage_two_time_triggered": 12.154337813592937,
+      "obj_one_quantiles": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        21.157376396052953,
+        102.54648610379625
+      ],
+      "obj_two_quantiles": [
+        1.2947325083280696,
+        163.7811020943838,
+        1000.0,
+        1000.0,
+        1000.0,
+        1000.0,
+        1220903.8587343204
+      ],
+      "groups": [
+        {
+          "group": "(1,0.2)",
+          "front_end_alarms": 47,
+          "backend_triggers": 47,
+          "arr": 1.0,
+          "backend_metric_fail_rate": 0.06382978723404255,
+          "fail_rate_triggered_only": 0.9787234042553191
+        },
+        {
+          "group": "(1,0.3)",
+          "front_end_alarms": 47,
+          "backend_triggers": 47,
+          "arr": 1.0,
+          "backend_metric_fail_rate": 0.10638297872340426,
+          "fail_rate_triggered_only": 0.7446808510638298
+        },
+        {
+          "group": "(2,0.2)",
+          "front_end_alarms": 49,
+          "backend_triggers": 49,
+          "arr": 1.0,
+          "backend_metric_fail_rate": 0.08163265306122448,
+          "fail_rate_triggered_only": 0.8367346938775511
+        },
+        {
+          "group": "(2,0.3)",
+          "front_end_alarms": 49,
+          "backend_triggers": 49,
+          "arr": 1.0,
+          "backend_metric_fail_rate": 0.061224489795918366,
+          "fail_rate_triggered_only": 0.673469387755102
+        },
+        {
+          "group": "(3,0.2)",
+          "front_end_alarms": 50,
+          "backend_triggers": 50,
+          "arr": 1.0,
+          "backend_metric_fail_rate": 0.1,
+          "fail_rate_triggered_only": 0.86
+        },
+        {
+          "group": "(3,0.3)",
+          "front_end_alarms": 50,
+          "backend_triggers": 50,
+          "arr": 1.0,
+          "backend_metric_fail_rate": 0.08,
+          "fail_rate_triggered_only": 0.62
+        }
+      ]
+    },
+    {
+      "path": "metric/case39/metric_event_trigger_tau_0.013_mode_0_0.03_1.1.npy",
+      "tau_verify": 0.013,
+      "total_DDD_alarm": 292,
+      "total_trigger_after_gate": 290,
+      "overall_arr": 0.9931506849315068,
+      "fail_rate_triggered_only": 0.7862068965517242,
+      "backend_metric_fail_rate": 0.08275862068965517,
+      "post_mtd_opf_converge_mean": 0.9241379310344827,
+      "mean_stage_one_time_triggered": 6.528410120668083,
+      "mean_stage_two_time_triggered": 13.164437713294193,
+      "obj_one_quantiles": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        21.25359612595849,
+        102.54648610379625
+      ],
+      "obj_two_quantiles": [
+        1.2947325083280696,
+        171.5014134990392,
+        1000.0,
+        1000.0,
+        1000.0,
+        1000.0,
+        1220903.8587343204
+      ],
+      "groups": [
+        {
+          "group": "(1,0.2)",
+          "front_end_alarms": 47,
+          "backend_triggers": 46,
+          "arr": 0.9787234042553191,
+          "backend_metric_fail_rate": 0.06521739130434782,
+          "fail_rate_triggered_only": 0.9782608695652174
+        },
+        {
+          "group": "(1,0.3)",
+          "front_end_alarms": 47,
+          "backend_triggers": 47,
+          "arr": 1.0,
+          "backend_metric_fail_rate": 0.10638297872340426,
+          "fail_rate_triggered_only": 0.7446808510638298
+        },
+        {
+          "group": "(2,0.2)",
+          "front_end_alarms": 49,
+          "backend_triggers": 49,
+          "arr": 1.0,
+          "backend_metric_fail_rate": 0.08163265306122448,
+          "fail_rate_triggered_only": 0.8367346938775511
+        },
+        {
+          "group": "(2,0.3)",
+          "front_end_alarms": 49,
+          "backend_triggers": 49,
+          "arr": 1.0,
+          "backend_metric_fail_rate": 0.061224489795918366,
+          "fail_rate_triggered_only": 0.673469387755102
+        },
+        {
+          "group": "(3,0.2)",
+          "front_end_alarms": 50,
+          "backend_triggers": 49,
+          "arr": 0.98,
+          "backend_metric_fail_rate": 0.10204081632653061,
+          "fail_rate_triggered_only": 0.8775510204081632
+        },
+        {
+          "group": "(3,0.3)",
+          "front_end_alarms": 50,
+          "backend_triggers": 50,
+          "arr": 1.0,
+          "backend_metric_fail_rate": 0.08,
+          "fail_rate_triggered_only": 0.62
+        }
+      ]
+    },
+    {
+      "path": "metric/case39/metric_event_trigger_tau_0.016_mode_0_0.03_1.1.npy",
+      "tau_verify": 0.016,
+      "total_DDD_alarm": 292,
+      "total_trigger_after_gate": 288,
+      "overall_arr": 0.9863013698630136,
+      "fail_rate_triggered_only": 0.7847222222222222,
+      "backend_metric_fail_rate": 0.0798611111111111,
+      "post_mtd_opf_converge_mean": 0.9270833333333334,
+      "mean_stage_one_time_triggered": 8.188219549755255,
+      "mean_stage_two_time_triggered": 14.52873381641176,
+      "obj_one_quantiles": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        21.42466696178375,
+        102.54648610379625
+      ],
+      "obj_two_quantiles": [
+        1.2947325083280696,
+        169.57133564787534,
+        1000.0,
+        1000.0,
+        1000.0,
+        1000.0,
+        1220903.8587343204
+      ],
+      "groups": [
+        {
+          "group": "(1,0.2)",
+          "front_end_alarms": 47,
+          "backend_triggers": 44,
+          "arr": 0.9361702127659575,
+          "backend_metric_fail_rate": 0.045454545454545456,
+          "fail_rate_triggered_only": 0.9772727272727273
+        },
+        {
+          "group": "(1,0.3)",
+          "front_end_alarms": 47,
+          "backend_triggers": 47,
+          "arr": 1.0,
+          "backend_metric_fail_rate": 0.10638297872340426,
+          "fail_rate_triggered_only": 0.7446808510638298
+        },
+        {
+          "group": "(2,0.2)",
+          "front_end_alarms": 49,
+          "backend_triggers": 49,
+          "arr": 1.0,
+          "backend_metric_fail_rate": 0.08163265306122448,
+          "fail_rate_triggered_only": 0.8367346938775511
+        },
+        {
+          "group": "(2,0.3)",
+          "front_end_alarms": 49,
+          "backend_triggers": 49,
+          "arr": 1.0,
+          "backend_metric_fail_rate": 0.061224489795918366,
+          "fail_rate_triggered_only": 0.673469387755102
+        },
+        {
+          "group": "(3,0.2)",
+          "front_end_alarms": 50,
+          "backend_triggers": 49,
+          "arr": 0.98,
+          "backend_metric_fail_rate": 0.10204081632653061,
+          "fail_rate_triggered_only": 0.8775510204081632
+        },
+        {
+          "group": "(3,0.3)",
+          "front_end_alarms": 50,
+          "backend_triggers": 50,
+          "arr": 1.0,
+          "backend_metric_fail_rate": 0.08,
+          "fail_rate_triggered_only": 0.62
+        }
+      ]
+    }
+  ]
+}

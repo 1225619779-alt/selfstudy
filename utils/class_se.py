@@ -348,24 +348,36 @@ class SE:
         """
         Verbose
         """
-        if len(kwargs.keys()) == 0:
-            # Default verbose
-            tol = 1e-5,    
-            max_it = 100     
+        config = kwargs.get('config')
+        return_meta = kwargs.get('return_meta', False)
+        v_init = kwargs.get('v_init')
+
+        if config is None:
+            tol = 1e-5
+            max_it = 100
             verbose = 0
-            
         else:
-            tol = kwargs['config']['tol']    
-            max_it = kwargs['config']['max_it']
-            verbose = kwargs['config']['verbose']
+            tol = config['tol']
+            max_it = config['max_it']
+            verbose = config['verbose']
         
         """
         Initialization
         """
-        is_converged = 0
+        is_converged = False
         ite_no = 0
-        vang_est, vmag_est = self.construct_v_flat(vang_ref, vmag_ref)      # Flat start state
-        v_est = vmag_est*np.exp(1j*vang_est)             # (no_bus, )
+        normF = np.inf
+
+        if v_init is None:
+            vang_est, vmag_est = self.construct_v_flat(vang_ref, vmag_ref)      # Flat start state
+            v_est = vmag_est*np.exp(1j*vang_est)             # (no_bus, )
+        else:
+            v_est = np.array(v_init, dtype=np.complex128, copy=True).reshape(-1)
+            vang_est = np.angle(v_est)
+            vmag_est = np.abs(v_est)
+            vang_est[self.ref_index] = vang_ref
+            vmag_est[self.ref_index] = vmag_ref
+            v_est = vmag_est*np.exp(1j*vang_est)
         
         # For the first run and also the dishonest Jacobian, the below value will never change
         J = self.jacobian(v_est)       # Jacobian matrix on the flat state 
@@ -425,6 +437,14 @@ class SE:
             vmag_est[self.non_ref_index] = vmag_est[self.non_ref_index] + dx[len(self.non_ref_index):]
             v_est = vmag_est*np.exp(1j*vang_est)
         
+        if return_meta:
+            meta = {
+                'iterations': int(ite_no),
+                'converged': bool(is_converged),
+                'final_normF': float(normF),
+            }
+            return v_est, meta
+
         return v_est
 
     def bdd_residual(self, z_noise, v_est):

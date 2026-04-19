@@ -116,6 +116,10 @@ ipython_config.py
 *.csv
 *.npy
 !metric/case14/*.npy
+logs/
+gen_data/case39/
+saved_model/case39/
+*:Zone.Identifier
 
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
 __pypackages__/

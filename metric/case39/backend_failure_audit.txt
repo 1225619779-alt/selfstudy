@@ -1,0 +1,29 @@
+Case39 backend failure audit
+
+[clean]
+tau=-1.000000 trigger_rate=1.000000 uMTD_rate=0.116650 fail_per_alarm=0.967033 obj1_q50=0.000000 obj2_q50=1000.000000
+tau=0.013000 trigger_rate=0.925519 uMTD_rate=0.107962 fail_per_alarm=0.909646 obj1_q50=0.000000 obj2_q50=1000.000000
+tau=0.016000 trigger_rate=0.831502 uMTD_rate=0.096995 fail_per_alarm=0.816850 obj1_q50=0.000000 obj2_q50=1000.000000
+
+[attack]
+tau=-1.000000 overall_arr=1.000000 fail_rate_triggered_only=0.784247 backend_metric_fail_rate=0.082192 post_mtd_opf_converge_mean=0.924658
+  (1,0.2): arr=1.000000 backend_metric_fail_rate=0.063830 fail_rate_triggered_only=0.978723
+  (1,0.3): arr=1.000000 backend_metric_fail_rate=0.106383 fail_rate_triggered_only=0.744681
+  (2,0.2): arr=1.000000 backend_metric_fail_rate=0.081633 fail_rate_triggered_only=0.836735
+  (2,0.3): arr=1.000000 backend_metric_fail_rate=0.061224 fail_rate_triggered_only=0.673469
+  (3,0.2): arr=1.000000 backend_metric_fail_rate=0.100000 fail_rate_triggered_only=0.860000
+  (3,0.3): arr=1.000000 backend_metric_fail_rate=0.080000 fail_rate_triggered_only=0.620000
+tau=0.013000 overall_arr=0.993151 fail_rate_triggered_only=0.786207 backend_metric_fail_rate=0.082759 post_mtd_opf_converge_mean=0.924138
+  (1,0.2): arr=0.978723 backend_metric_fail_rate=0.065217 fail_rate_triggered_only=0.978261
+  (1,0.3): arr=1.000000 backend_metric_fail_rate=0.106383 fail_rate_triggered_only=0.744681
+  (2,0.2): arr=1.000000 backend_metric_fail_rate=0.081633 fail_rate_triggered_only=0.836735
+  (2,0.3): arr=1.000000 backend_metric_fail_rate=0.061224 fail_rate_triggered_only=0.673469
+  (3,0.2): arr=0.980000 backend_metric_fail_rate=0.102041 fail_rate_triggered_only=0.877551
+  (3,0.3): arr=1.000000 backend_metric_fail_rate=0.080000 fail_rate_triggered_only=0.620000
+tau=0.016000 overall_arr=0.986301 fail_rate_triggered_only=0.784722 backend_metric_fail_rate=0.079861 post_mtd_opf_converge_mean=0.927083
+  (1,0.2): arr=0.936170 backend_metric_fail_rate=0.045455 fail_rate_triggered_only=0.977273
+  (1,0.3): arr=1.000000 backend_metric_fail_rate=0.106383 fail_rate_triggered_only=0.744681
+  (2,0.2): arr=1.000000 backend_metric_fail_rate=0.081633 fail_rate_triggered_only=0.836735
+  (2,0.3): arr=1.000000 backend_metric_fail_rate=0.061224 fail_rate_triggered_only=0.673469
+  (3,0.2): arr=0.980000 backend_metric_fail_rate=0.102041 fail_rate_triggered_only=0.877551
+  (3,0.3): arr=1.000000 backend_metric_fail_rate=0.080000 fail_rate_triggered_only=0.620000

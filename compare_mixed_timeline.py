@@ -7,6 +7,8 @@ from typing import Any, Dict
 import matplotlib.pyplot as plt
 import numpy as np
 
+from paper_worldline import BASELINE_MIXED_METRIC, MAIN_MIXED_METRIC
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -15,13 +17,13 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--baseline",
         type=str,
-        default="metric/case14/metric_mixed_timeline_tau_-1.0.npy",
+        default=BASELINE_MIXED_METRIC,
         help="Path to the baseline mixed-timeline metric (.npy).",
     )
     parser.add_argument(
         "--gated",
         type=str,
-        default="metric/case14/metric_mixed_timeline_tau_0.021.npy",
+        default=MAIN_MIXED_METRIC,
         help="Path to the gated mixed-timeline metric (.npy).",
     )
     parser.add_argument(
@@ -255,3 +257,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

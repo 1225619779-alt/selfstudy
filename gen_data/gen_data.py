@@ -4,18 +4,29 @@ case: modify the IEEE standard case reported in PyPower
 data: modify the raw load and PV data to be suit for a specific case
 """
 
-from optparse import Values
-from matplotlib.pyplot import axis
+from pathlib import Path
+import os
+import time
+
+os.environ.setdefault("OMP_NUM_THREADS", "1")
+os.environ.setdefault("OPENBLAS_NUM_THREADS", "1")
+os.environ.setdefault("MKL_NUM_THREADS", "1")
+os.environ.setdefault("NUMEXPR_NUM_THREADS", "1")
+os.environ.setdefault("VECLIB_MAXIMUM_THREADS", "1")
+
 import pandas as pd
 import numpy as np
-import copy
-from pypower.idx_bus import PD, QD, GS, BS
-from pypower.idx_gen import QMAX, PMAX, QMIN
-from pypower.idx_brch import RATE_A, BR_B, TAP, SHIFT
-from pypower.api import ext2int, bustypes, case14
-from os.path import exists
+from pypower.idx_bus import PD, QD
+from pypower.idx_gen import QMAX, QMIN
+from pypower.idx_brch import RATE_A
+from pypower.api import ext2int, bustypes, case14, case39
 import sys
-from tqdm import tqdm
+
+try:
+    from tqdm import tqdm
+except ImportError:
+    def tqdm(iterable, *args, **kwargs):
+        return iterable
 
 
 """
@@ -142,8 +153,20 @@ def gen_case(case_name):
         # case['gencost'][:,4] = case['gencost'][:,5]  # Linear cost
         # case['gencost'][:,4] = 20
         # case['gencost'][:,5] = case['gencost'][:,6]  # Constant cost
-    
-    return case
+        return case
+
+    if case_name == 'case39':
+        """
+        case39:
+            Keep the standard network structure and branch ratings for a stable first-pass
+            expansion, and only symmetrize the generator reactive limits to match the
+            existing case14 workflow.
+        """
+        case = case39()
+        case['gen'][:,QMIN] = -case['gen'][:,QMAX]
+        return case
+
+    raise ValueError(f'Unsupported case_name={case_name!r}. Please add the case settings in gen_case().')
 
 """
 Generate load and pv for the specific system
@@ -187,7 +210,7 @@ def gen_pv(pv_bus, pv_raw, load_active, penetration_ratio):
         
     return pv_active, pv_reactive
 
-def gen_measure(case, load_active, load_reactive, pv_active, pv_reactive, pv_bus):
+def gen_measure(case, load_active, load_reactive, pv_active, pv_reactive, pv_bus, progress_every=100, seed_base=None, se_config_override=None, warm_start=False):
     """
     Generate measurement
     case: the case class from SE
@@ -203,9 +226,15 @@ def gen_measure(case, load_active, load_reactive, pv_active, pv_reactive, pv_bus
     z_noise_summary = []
     v_est_summary = []
     success_summary = []
+    prev_v_est = None
     
+    total = len(load_active)
+    start_time = time.time()
+
     #for i in tqdm(range(len(load_active)-12*24,len(load_active))):
-    for i in tqdm(range(len(load_active))):
+    for i in tqdm(range(total)):
+        if seed_base is not None:
+            np.random.seed(seed_base + i)
         
         result = case.run_opf(load_active = load_active[i] - pv_active_[i], load_reactive = load_reactive[i] - pv_reactive_[i])
         z, z_noise, vang_ref, vmag_ref = case.construct_mea(result)
@@ -220,13 +249,35 @@ def gen_measure(case, load_active, load_reactive, pv_active, pv_reactive, pv_bus
             # The opf converges
             z_noise_summary.append(z_noise.flatten())
             # Do state estimation
-            v_est = case.ac_se_pypower(z_noise=z_noise, vang_ref=vang_ref, vmag_ref=vmag_ref)
+            se_kwargs = {}
+            if se_config_override is not None:
+                se_kwargs['config'] = se_config_override
+            if warm_start and prev_v_est is not None:
+                se_kwargs['v_init'] = prev_v_est
+            v_est = case.ac_se_pypower(z_noise=z_noise, vang_ref=vang_ref, vmag_ref=vmag_ref, **se_kwargs)
             v_est_summary.append(v_est)
+            prev_v_est = v_est
         
         success_rate = np.sum(success_summary)/len(success_summary)
         if success_rate <= 0.97:
             print(f'Too many OPF does not converge. Reduce the load level.')
             break
+
+        if (
+            (i + 1) == 1
+            or (i + 1) % progress_every == 0
+            or (i + 1) == total
+        ):
+            elapsed = time.time() - start_time
+            avg_per_sample = elapsed / (i + 1)
+            eta = avg_per_sample * (total - (i + 1))
+            print(
+                f'[gen_measure] processed {i + 1}/{total} | '
+                f'avg {avg_per_sample:.3f}s/sample | '
+                f'elapsed {elapsed/60:.1f} min | '
+                f'eta {eta/3600:.2f} h | '
+                f'opf_success_rate {success_rate:.4f}'
+            )
     
     return z_noise_summary, v_est_summary, success_summary
 
@@ -235,22 +286,31 @@ if __name__ == "__main__":
     import sys
     sys.path.append('./')
     from configs.config import sys_config
+    from configs.config import se_config
     from configs.config_mea_idx import define_mea_idx_noise
     from utils.class_se import SE
     
-    print(f'Generating measurement.')
-    
+    seed_base = os.getenv('DDET_MEASURE_SEED')
+    if seed_base is not None:
+        seed_base = int(seed_base)
+        print(f'Generating measurement with DDET_MEASURE_SEED={seed_base}.')
+    else:
+        print(f'Generating measurement.')
+
+    repo_root = Path(__file__).resolve().parents[1]
+    case_dir = repo_root / 'gen_data' / sys_config['case_name']
+
     # Loading path
-    noise_sigma_dir = f'gen_data\{sys_config["case_name"]}\\noise_sigma.npy'
-    load_active_dir = f'gen_data\{sys_config["case_name"]}\load_active.npy'
-    load_reactive_dir = f'gen_data\{sys_config["case_name"]}\load_reactive.npy'
-    pv_active_dir = f'gen_data\{sys_config["case_name"]}\pv_active.npy'
-    pv_reactive_dir = f'gen_data\{sys_config["case_name"]}\pv_reactive.npy'
-    
+    noise_sigma_dir = case_dir / 'noise_sigma.npy'
+    load_active_dir = case_dir / 'load_active.npy'
+    load_reactive_dir = case_dir / 'load_reactive.npy'
+    pv_active_dir = case_dir / 'pv_active.npy'
+    pv_reactive_dir = case_dir / 'pv_reactive.npy'
+
     # Saving path
-    z_noise_summary_dir = f'gen_data\{sys_config["case_name"]}\z_noise_summary.npy'
-    v_est_summary_dir = f'gen_data\{sys_config["case_name"]}\\v_est_summary.npy'
-    success_summary_dir = f'gen_data\{sys_config["case_name"]}\\success_summary.npy'
+    z_noise_summary_dir = case_dir / 'z_noise_summary.npy'
+    v_est_summary_dir = case_dir / 'v_est_summary.npy'
+    success_summary_dir = case_dir / 'success_summary.npy'
     
     # Modify case
     case = gen_case(sys_config['case_name'])
@@ -268,7 +328,9 @@ if __name__ == "__main__":
                                                                 load_reactive = load_reactive, 
                                                                 pv_active = pv_active, 
                                                                 pv_reactive=0, 
-                                                                pv_bus=sys_config['pv_bus'])
+                                                                pv_bus=sys_config['pv_bus'],
+                                                                seed_base=seed_base,
+                                                                se_config_override=se_config)
     
     np.save(z_noise_summary_dir, z_noise_summary, allow_pickle=True)
     np.save(v_est_summary_dir, v_est_summary, allow_pickle=True)

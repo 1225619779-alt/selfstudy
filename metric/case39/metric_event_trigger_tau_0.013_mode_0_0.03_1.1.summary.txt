@@ -1,0 +1,22 @@
+==== Attack evaluation summary ====
+case_name = case39
+tau_verify = 0.013
+total_run = 50
+ang_no_list = [1, 2, 3]
+ang_str_list = [0.2, 0.3]
+mag_no = 0
+mag_str = 0.0
+seed_base = 20260324
+is_shuffle = False
+recover_input_mode = repo_compatible
+next_load_extra = 7
+detector_quantile = 0.92
+detector_threshold = 0.007741191536188127
+
+[group_summary]
+(1,0.2): front_end_alarms=47 backend_triggers=46 arr=0.978723 mean_verify_score=0.038488 median_verify_score=0.030332
+(1,0.3): front_end_alarms=47 backend_triggers=47 arr=1.000000 mean_verify_score=0.041374 median_verify_score=0.034755
+(2,0.2): front_end_alarms=49 backend_triggers=49 arr=1.000000 mean_verify_score=0.039445 median_verify_score=0.030686
+(2,0.3): front_end_alarms=49 backend_triggers=49 arr=1.000000 mean_verify_score=0.044262 median_verify_score=0.037790
+(3,0.2): front_end_alarms=50 backend_triggers=49 arr=0.980000 mean_verify_score=0.041653 median_verify_score=0.034832
+(3,0.3): front_end_alarms=50 backend_triggers=50 arr=1.000000 mean_verify_score=0.047555 median_verify_score=0.042208

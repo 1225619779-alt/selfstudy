@@ -22,12 +22,14 @@ from typing import Any, Dict, List, Tuple
 
 import numpy as np
 
+from paper_worldline import BASELINE_CLEAN_METRIC, MAIN_CLEAN_METRIC
+
 
 # =========================
 # Default file paths
 # =========================
-DEFAULT_BASELINE = "metric/case14/metric_event_trigger_clean_tau_-1.0_mode_0_0.03_1.1.npy"
-DEFAULT_GATED = "metric/case14/metric_event_trigger_clean_tau_0.021_mode_0_0.03_1.1.npy"
+DEFAULT_BASELINE = BASELINE_CLEAN_METRIC
+DEFAULT_GATED = MAIN_CLEAN_METRIC
 
 
 # =========================

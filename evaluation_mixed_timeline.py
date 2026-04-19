@@ -16,6 +16,7 @@ from models.dataset import scaler
 from models.evaluation import Evaluation
 from models.model import LSTM_AE
 from optim.optimization import mtd_optim
+from paper_worldline import DEFAULT_MIXED_SCHEDULE, MAIN_MIXED_METRIC, TAU_MAIN, TAU_MAIN_LABEL
 from utils.load_data import load_case, load_load_pv, load_measurement, load_dataset
 
 
@@ -36,13 +37,13 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--tau_verify",
         type=float,
-        default=0.021,
-        help="Verification threshold. Default keeps the current main operating point.",
+        default=TAU_MAIN,
+        help=f"Verification threshold. Default keeps the current paper main operating point ({TAU_MAIN_LABEL}).",
     )
     parser.add_argument(
         "--schedule",
         type=str,
-        default="clean:80;att-1-0.2:30;clean:40;att-2-0.2:30;clean:40;att-3-0.3:30;clean:80",
+        default=DEFAULT_MIXED_SCHEDULE,
         help=(
             "Semicolon-separated timeline specification. "
             "Use clean:N or att-angNo-angStr:N, e.g. clean:80;att-1-0.2:30;clean:40."
@@ -77,7 +78,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--output",
         type=str,
-        default=f"metric/{sys_config['case_name']}/metric_mixed_timeline_tau_0.021.npy",
+        default=MAIN_MIXED_METRIC,
         help="Output .npy path.",
     )
     return parser.parse_args()
@@ -584,3 +585,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
