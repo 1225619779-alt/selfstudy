@@ -1,0 +1,91 @@
+{
+  "tau_main_exact": 0.013319196253,
+  "tau_strict_exact": 0.016153267226,
+  "threshold": 0.007741191536188127,
+  "rows": [
+    {
+      "group": "(1,0.2)",
+      "sample_count": 50,
+      "repo_recover_fail_count": 0,
+      "attacked_recover_fail_count": 0,
+      "finite_pair_count": 50,
+      "max_abs_diff": 0.0,
+      "mean_abs_diff": 0.0,
+      "median_abs_diff": 0.0,
+      "changed_trigger_count_tau_main_exact": 0,
+      "changed_trigger_count_tau_strict_exact": 0
+    },
+    {
+      "group": "(1,0.3)",
+      "sample_count": 50,
+      "repo_recover_fail_count": 0,
+      "attacked_recover_fail_count": 0,
+      "finite_pair_count": 50,
+      "max_abs_diff": 0.0,
+      "mean_abs_diff": 0.0,
+      "median_abs_diff": 0.0,
+      "changed_trigger_count_tau_main_exact": 0,
+      "changed_trigger_count_tau_strict_exact": 0
+    },
+    {
+      "group": "(2,0.2)",
+      "sample_count": 50,
+      "repo_recover_fail_count": 0,
+      "attacked_recover_fail_count": 0,
+      "finite_pair_count": 50,
+      "max_abs_diff": 0.0,
+      "mean_abs_diff": 0.0,
+      "median_abs_diff": 0.0,
+      "changed_trigger_count_tau_main_exact": 0,
+      "changed_trigger_count_tau_strict_exact": 0
+    },
+    {
+      "group": "(2,0.3)",
+      "sample_count": 50,
+      "repo_recover_fail_count": 0,
+      "attacked_recover_fail_count": 0,
+      "finite_pair_count": 50,
+      "max_abs_diff": 0.0,
+      "mean_abs_diff": 0.0,
+      "median_abs_diff": 0.0,
+      "changed_trigger_count_tau_main_exact": 0,
+      "changed_trigger_count_tau_strict_exact": 0
+    },
+    {
+      "group": "(3,0.2)",
+      "sample_count": 50,
+      "repo_recover_fail_count": 0,
+      "attacked_recover_fail_count": 0,
+      "finite_pair_count": 50,
+      "max_abs_diff": 0.0,
+      "mean_abs_diff": 0.0,
+      "median_abs_diff": 0.0,
+      "changed_trigger_count_tau_main_exact": 0,
+      "changed_trigger_count_tau_strict_exact": 0
+    },
+    {
+      "group": "(3,0.3)",
+      "sample_count": 50,
+      "repo_recover_fail_count": 0,
+      "attacked_recover_fail_count": 0,
+      "finite_pair_count": 50,
+      "max_abs_diff": 0.0,
+      "mean_abs_diff": 0.0,
+      "median_abs_diff": 0.0,
+      "changed_trigger_count_tau_main_exact": 0,
+      "changed_trigger_count_tau_strict_exact": 0
+    },
+    {
+      "group": "overall",
+      "sample_count": 300,
+      "repo_recover_fail_count": 0,
+      "attacked_recover_fail_count": 0,
+      "finite_pair_count": 300,
+      "max_abs_diff": 0.0,
+      "mean_abs_diff": 0.0,
+      "median_abs_diff": 0.0,
+      "changed_trigger_count_tau_main_exact": 0,
+      "changed_trigger_count_tau_strict_exact": 0
+    }
+  ]
+}

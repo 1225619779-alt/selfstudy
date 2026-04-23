@@ -11,6 +11,32 @@ import os
 import numpy as np
 from pypower.api import ppoption
 
+
+def _env_float(name: str, default: float) -> float:
+    raw = os.getenv(name)
+    if raw is None or raw == "":
+        return float(default)
+    return float(raw)
+
+
+def _env_int(name: str, default: int) -> int:
+    raw = os.getenv(name)
+    if raw is None or raw == "":
+        return int(default)
+    return int(raw)
+
+
+def _env_bool(name: str, default: bool) -> bool:
+    raw = os.getenv(name)
+    if raw is None or raw == "":
+        return bool(default)
+    raw_norm = raw.strip().lower()
+    if raw_norm in {"1", "true", "yes", "on"}:
+        return True
+    if raw_norm in {"0", "false", "no", "off"}:
+        return False
+    raise ValueError(f"Invalid boolean value for {name}: {raw!r}")
+
 # SE settings: output
 se_config = {
     "tol": 1e-3,       # the tolerance on the minimum jacobian matrix norm changes before considered as converged
@@ -63,14 +89,14 @@ sys_config = dict(CASE_PROFILES[case_name])
 # MTD setting
 mtd_config = {
     "max_ite": 100,
-    "multi_run_no": 15,   # The number of multi-runs in stage one
-    "upper_scale": 1.1,   # Improve the detection threshold
+    "multi_run_no": _env_int("DDET_MTD_MULTI_RUN_NO", 15),   # The number of multi-runs in stage one
+    "upper_scale": _env_float("DDET_MTD_UPPER_SCALE", 1.1),   # Improve the detection threshold
     "tol_one": 0.1,
     "tol_two": 1,
-    "verbose": True,
-    "is_worst": True,
-    "x_facts_ratio": 0.5,
-    "varrho_square": 0.03**2,
+    "verbose": _env_bool("DDET_MTD_VERBOSE", True),
+    "is_worst": _env_bool("DDET_MTD_IS_WORST", True),
+    "x_facts_ratio": _env_float("DDET_MTD_X_FACTS_RATIO", 0.5),
+    "varrho_square": _env_float("DDET_MTD_VARRHO", 0.03)**2,
     "total_run": 200,
     "mode": 0,            # The attacker either uses 0: true state and 1: estimated state
     "comment": "reduce_scaling",

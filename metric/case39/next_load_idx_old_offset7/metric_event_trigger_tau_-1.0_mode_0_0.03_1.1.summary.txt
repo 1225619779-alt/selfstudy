@@ -22,7 +22,7 @@ x_facts_ratio = 0.5
 split_start_idx = 28107
 sample_length = 6
 tau_verify = -1.0
-next_load_mode = sample_length
+next_load_mode = offset
 
 [group_summary]
 (1,0.2): front_end_alarms=47 recovery_error_count=0 backend_triggers=47 arr=1.000000 mean_verify_score=0.038488 median_verify_score=0.030332

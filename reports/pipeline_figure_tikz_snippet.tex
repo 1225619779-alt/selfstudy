@@ -1,0 +1,63 @@
+% Add to preamble:
+% \usepackage{tikz}
+% \usetikzlibrary{arrows.meta,positioning,shapes.geometric}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+    >=Latex,
+    node distance = 8mm and 16mm,
+    line/.style={-Latex, thick},
+    block/.style={
+        draw,
+        rounded corners=4pt,
+        thick,
+        align=center,
+        minimum width=7.2cm,
+        minimum height=0.95cm,
+        fill=white
+    },
+    highlight/.style={
+        block,
+        draw=blue!70!black,
+        fill=blue!8
+    },
+    decision/.style={
+        draw,
+        diamond,
+        aspect=2.2,
+        thick,
+        align=center,
+        inner xsep=12pt,
+        inner ysep=8pt,
+        draw=blue!70!black,
+        fill=blue!8
+    },
+    branch/.style={
+        draw,
+        rounded corners=4pt,
+        thick,
+        align=center,
+        minimum width=4.5cm,
+        minimum height=0.95cm,
+        fill=white
+    }
+]
+\node[block] (mea) {Measurement stream};
+\node[block, below=of mea] (det) {Front-end detector};
+\node[block, below=of det] (rec) {State recovery};
+\node[highlight, below=of rec] (score) {Recovery-aware verification score};
+\node[decision, below=10mm of score] (gate) {$s_t \geq \tau$?};
+\node[branch, below left=14mm and 23mm of gate] (mtd) {Two-stage backend MTD};
+\node[branch, below right=14mm and 23mm of gate] (skip) {Skip backend deployment};
+
+\draw[line] (mea) -- (det);
+\draw[line] (det) -- (rec);
+\draw[line] (rec) -- (score);
+\draw[line] (score) -- (gate);
+\draw[line] (gate) -- node[midway, above left] {Yes} (mtd);
+\draw[line] (gate) -- node[midway, above right] {No} (skip);
+\end{tikzpicture}
+\caption{Position of the proposed recovery-aware verification trigger in the detect--recover--defend pipeline. The front-end detector, recovery routine, and backend MTD optimizer are kept unchanged; only the post-recovery alarm escalation rule is added.}
+\label{fig:pipeline}
+\end{figure}

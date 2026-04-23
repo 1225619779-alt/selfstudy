@@ -51,6 +51,24 @@ def parse_args() -> argparse.Namespace:
                         help="Base seed for deterministic MTD multi-run init per sample (seed_base + idx).")
     parser.add_argument("--is_shuffle", action="store_true",
                         help="If set, shuffle dataloader (NOT recommended for reproducible comparison). Default: False.")
+    parser.add_argument(
+        "--next_load_mode",
+        choices=["sample_length", "offset"],
+        default="sample_length",
+        help="How to map a test-window sample to the next load snapshot used for backend no-attack metrics.",
+    )
+    parser.add_argument(
+        "--next_load_extra",
+        type=int,
+        default=7,
+        help="Compatibility offset used only when --next_load_mode=offset.",
+    )
+    parser.add_argument(
+        "--output",
+        type=str,
+        default="",
+        help="Optional output .npy path. If omitted, a tau-specific default path is used.",
+    )
     return parser.parse_args()
 
 
@@ -61,6 +79,14 @@ def safe_int_idx(idx: Any) -> int:
     return int(idx)
 
 
+def make_output_path(tau_verify: float) -> str:
+    return (
+        f"metric/{sys_config['case_name']}/"
+        f"metric_event_trigger_clean_tau_{tau_verify}_"
+        f"mode_{mtd_config['mode']}_{round(np.sqrt(mtd_config['varrho_square']), 5)}_{mtd_config['upper_scale']}.npy"
+    )
+
+
 def main() -> None:
     args = parse_args()
 
@@ -69,6 +95,9 @@ def main() -> None:
     stop_ddd_alarm_at: Optional[int] = None if args.stop_ddd_alarm_at < 0 else int(args.stop_ddd_alarm_at)
     seed_base: int = int(args.seed_base)
     is_shuffle: bool = bool(args.is_shuffle)
+    next_load_mode: str = str(args.next_load_mode)
+    next_load_extra: int = int(args.next_load_extra)
+    output_path: str = str(args.output).strip() or make_output_path(tau_verify)
 
     # -------------------------
     # Preparation
@@ -82,6 +111,9 @@ def main() -> None:
     print("max_total_run:", "FULL" if max_total_run is None else max_total_run)
     print("stop_ddd_alarm_at:", "DISABLED" if stop_ddd_alarm_at is None else stop_ddd_alarm_at)
     print("dataloader shuffle:", is_shuffle)
+    print("next_load_mode:", next_load_mode)
+    print("next_load_extra:", next_load_extra)
+    print("output_path:", output_path)
 
     # Load cases, measurement, and load (same as evaluation_event_trigger.py)
     case_class = load_case()
@@ -149,6 +181,7 @@ def main() -> None:
     pre_deviation: Dict[str, List[float]] = {group_key: []}
     recovery_ite_no: Dict[str, List[int]] = {group_key: []}
     recovery_time: List[float] = []
+    recovery_error_alarm: Dict[str, List[int]] = {group_key: []}
 
     # MTD triggered-only logs (preserve names)
     obj_one: Dict[str, List[float]] = {group_key: []}
@@ -181,6 +214,8 @@ def main() -> None:
     stage_two_time_alarm: Dict[str, List[float]] = {group_key: []}
     delta_cost_one_alarm: Dict[str, List[float]] = {group_key: []}
     delta_cost_two_alarm: Dict[str, List[float]] = {group_key: []}
+    backend_mtd_fail_alarm: Dict[str, List[int]] = {group_key: []}
+    backend_metric_fail_alarm: Dict[str, List[int]] = {group_key: []}
 
     # Aggregated per-alarm values (required for paper table)
     fail_per_alarm: Dict[str, float] = {group_key: float("nan")}
@@ -232,6 +267,7 @@ def main() -> None:
         except Exception as e:
             # If recovery fails, we treat it as an alarm that cannot be verified => force trigger (baseline-safe) but record zeros
             print(f"[WARN] Recovery error at idx={idx_val}: {repr(e)}")
+            recovery_error_alarm[group_key].append(1)
             # mark as skipped from perspective of backend (no MTD)
             trigger_after_verification[group_key].append(False)
             skip_by_verification[group_key].append(True)
@@ -245,12 +281,15 @@ def main() -> None:
             stage_two_time_alarm[group_key].append(0.0)
             delta_cost_one_alarm[group_key].append(0.0)
             delta_cost_two_alarm[group_key].append(0.0)
+            backend_mtd_fail_alarm[group_key].append(0)
+            backend_metric_fail_alarm[group_key].append(0)
 
             if stop_ddd_alarm_at is not None and total_DDD_alarm[group_key] >= stop_ddd_alarm_at:
                 break
             continue
 
         recovery_time.append(float(recover_time_single))
+        recovery_error_alarm[group_key].append(0)
 
         vang_recover = np.angle(v_recover.numpy())
         vang_pre = np.angle(v_est_pre.numpy())
@@ -291,6 +330,8 @@ def main() -> None:
             stage_two_time_alarm[group_key].append(0.0)
             delta_cost_one_alarm[group_key].append(0.0)
             delta_cost_two_alarm[group_key].append(0.0)
+            backend_mtd_fail_alarm[group_key].append(0)
+            backend_metric_fail_alarm[group_key].append(0)
 
             if stop_ddd_alarm_at is not None and total_DDD_alarm[group_key] >= stop_ddd_alarm_at:
                 break
@@ -308,7 +349,10 @@ def main() -> None:
 
         # Use next load index for cost evaluation (consistent with repo scripts).
         # MOD: generalize the "6+1" magic number by sample_length
-        next_load_idx = test_start_idx + int(nn_setting["sample_length"]) + idx_val
+        if next_load_mode == "sample_length":
+            next_load_idx = test_start_idx + int(nn_setting["sample_length"]) + idx_val
+        else:
+            next_load_idx = test_start_idx + next_load_extra + idx_val
 
         try:
             mtd_optim_ = mtd_optim(case_class, v_est_last.numpy(), c_recover_no_ref, varrho_square)
@@ -343,49 +387,87 @@ def main() -> None:
             worst_primal[group_key].append(float(obj_worst_primal))
             worst_dual[group_key].append(float(obj_worst_dual))
             fail[group_key].append(int(is_fail))
+            backend_mtd_fail_alarm[group_key].append(int(is_fail))
 
             mtd_stage_one_time.append(float(stage_one_time_))
             mtd_stage_two_time.append(float(stage_two_time_))
 
+            metric_failed = False
+            cost_base1 = float("nan")
+            cost_mtd1 = float("nan")
+            cost_base2 = float("nan")
+            cost_mtd2 = float("nan")
+
             # Stage-one evaluation: no attack
-            ok1, x_ratio1, residual1, cost_base1, cost_mtd1 = mtd_optim_.mtd_metric_no_attack(
-                b_mtd=b_mtd_one_final,
-                load_active=load_active[next_load_idx],
-                load_reactive=load_reactive[next_load_idx],
-                pv_active=pv_active_[next_load_idx],
-            )
+            try:
+                ok1, x_ratio1, residual1, cost_base1, cost_mtd1 = mtd_optim_.mtd_metric_no_attack(
+                    b_mtd=b_mtd_one_final,
+                    load_active=load_active[next_load_idx],
+                    load_reactive=load_reactive[next_load_idx],
+                    pv_active=pv_active_[next_load_idx],
+                )
 
-            x_ratio_stage_one[group_key].append(x_ratio1)
-            cost_no_mtd[group_key].append(float(cost_base1))
-            cost_with_mtd_one[group_key].append(float(cost_mtd1))
+                x_ratio_stage_one[group_key].append(x_ratio1)
+                cost_no_mtd[group_key].append(float(cost_base1))
+                cost_with_mtd_one[group_key].append(float(cost_mtd1))
 
-            # Map "eff/hidden" to residual_after_MTD for compatibility (clean case has no attacker)
-            mtd_stage_one_eff[group_key].append(float(residual1))
-            mtd_stage_one_hidden[group_key].append(float(residual1))
+                # Map "eff/hidden" to residual_after_MTD for compatibility (clean case has no attacker)
+                mtd_stage_one_eff[group_key].append(float(residual1))
+                mtd_stage_one_hidden[group_key].append(float(residual1))
+            except Exception as e:
+                print(f"[WARN] Stage-one clean backend metric error at idx={idx_val}: {repr(e)}")
+                metric_failed = True
+                ok1 = False
+                cost_base1 = float("nan")
+                cost_mtd1 = float("nan")
+                x_ratio_stage_one[group_key].append(np.full(case_class.no_brh, np.nan, dtype=float))
+                cost_no_mtd[group_key].append(float("nan"))
+                cost_with_mtd_one[group_key].append(float("nan"))
+                mtd_stage_one_eff[group_key].append(float("nan"))
+                mtd_stage_one_hidden[group_key].append(float("nan"))
 
             # Stage-two evaluation: no attack
-            ok2, x_ratio2, residual2, cost_base2, cost_mtd2 = mtd_optim_.mtd_metric_no_attack(
-                b_mtd=b_mtd_two_final,
-                load_active=load_active[next_load_idx],
-                load_reactive=load_reactive[next_load_idx],
-                pv_active=pv_active_[next_load_idx],
-            )
+            try:
+                ok2, x_ratio2, residual2, cost_base2, cost_mtd2 = mtd_optim_.mtd_metric_no_attack(
+                    b_mtd=b_mtd_two_final,
+                    load_active=load_active[next_load_idx],
+                    load_reactive=load_reactive[next_load_idx],
+                    pv_active=pv_active_[next_load_idx],
+                )
 
-            x_ratio_stage_two[group_key].append(x_ratio2)
-            cost_with_mtd_two[group_key].append(float(cost_mtd2))
+                x_ratio_stage_two[group_key].append(x_ratio2)
+                cost_with_mtd_two[group_key].append(float(cost_mtd2))
 
-            mtd_stage_two_eff[group_key].append(float(residual2))
-            mtd_stage_two_hidden[group_key].append(float(residual2))
+                mtd_stage_two_eff[group_key].append(float(residual2))
+                mtd_stage_two_hidden[group_key].append(float(residual2))
 
-            post_mtd_opf_converge.append(bool(ok2))
-            residual_no_att.append(float(residual2))
+                post_mtd_opf_converge.append(bool(ok2))
+                residual_no_att.append(float(residual2))
+            except Exception as e:
+                print(f"[WARN] Stage-two clean backend metric error at idx={idx_val}: {repr(e)}")
+                metric_failed = True
+                ok2 = False
+                residual2 = float("nan")
+                cost_base2 = float("nan")
+                cost_mtd2 = float("nan")
+                x_ratio_stage_two[group_key].append(np.full(case_class.no_brh, np.nan, dtype=float))
+                cost_with_mtd_two[group_key].append(float("nan"))
+                mtd_stage_two_eff[group_key].append(float("nan"))
+                mtd_stage_two_hidden[group_key].append(float("nan"))
+                post_mtd_opf_converge.append(False)
+                residual_no_att.append(float("nan"))
 
             # per-alarm burden (key outputs)
             fail_alarm[group_key].append(int(is_fail))
             stage_one_time_alarm[group_key].append(float(stage_one_time_))
             stage_two_time_alarm[group_key].append(float(stage_two_time_))
-            delta_cost_one_alarm[group_key].append(float(cost_mtd1 - cost_base1))
-            delta_cost_two_alarm[group_key].append(float(cost_mtd2 - cost_base2))
+            delta_cost_one_alarm[group_key].append(
+                0.0 if not np.isfinite(cost_base1) or not np.isfinite(cost_mtd1) else float(cost_mtd1 - cost_base1)
+            )
+            delta_cost_two_alarm[group_key].append(
+                0.0 if not np.isfinite(cost_base2) or not np.isfinite(cost_mtd2) else float(cost_mtd2 - cost_base2)
+            )
+            backend_metric_fail_alarm[group_key].append(int(metric_failed))
 
         except Exception as e:
             # Make the script robust: do not crash the whole run on solver/OPF failure.
@@ -396,6 +478,8 @@ def main() -> None:
             stage_two_time_alarm[group_key].append(0.0)
             delta_cost_one_alarm[group_key].append(0.0)
             delta_cost_two_alarm[group_key].append(0.0)
+            backend_mtd_fail_alarm[group_key].append(1)
+            backend_metric_fail_alarm[group_key].append(1)
 
         if stop_ddd_alarm_at is not None and total_DDD_alarm[group_key] >= stop_ddd_alarm_at:
             break
@@ -448,14 +532,8 @@ def main() -> None:
     # -------------------------
     # Save (preserve metric style + add new fields)
     # -------------------------
-    address = (
-        f"metric/{sys_config['case_name']}/"
-        f"metric_event_trigger_clean_tau_{tau_verify}_"
-        f"mode_{mtd_config['mode']}_{round(np.sqrt(mtd_config['varrho_square']), 5)}_{mtd_config['upper_scale']}.npy"
-    )
-
     save_metric(
-        address=address,
+        address=output_path,
 
         # Meta / settings
         group_key=group_key,
@@ -464,6 +542,9 @@ def main() -> None:
         stop_ddd_alarm_at=stop_ddd_alarm_at,
         seed_base=seed_base,
         is_shuffle=is_shuffle,
+        next_load_mode=next_load_mode,
+        next_load_extra=next_load_extra,
+        recovery_error_policy="skip",
 
         # Required counts/rates
         total_clean_sample=total_clean_sample,
@@ -504,6 +585,7 @@ def main() -> None:
         pre_deviation=pre_deviation,
         recovery_ite_no=recovery_ite_no,
         recovery_time=recovery_time,
+        recovery_error_alarm=recovery_error_alarm,
 
         # Optional idx logs
         clean_alarm_idx=clean_alarm_idx,
@@ -529,9 +611,11 @@ def main() -> None:
         cost_no_mtd=cost_no_mtd,
         cost_with_mtd_one=cost_with_mtd_one,
         cost_with_mtd_two=cost_with_mtd_two,
+        backend_mtd_fail_alarm=backend_mtd_fail_alarm,
+        backend_metric_fail_alarm=backend_metric_fail_alarm,
     )
 
-    print("\nSaved:", address)
+    print("\nSaved:", output_path)
 
 
 if __name__ == "__main__":

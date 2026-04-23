@@ -1,0 +1,18 @@
+=== tau = 0.03318 ===
+ (1,0.2)  front_end_alarms= 46  kept= 19  ARR=0.4130
+ (1,0.3)  front_end_alarms= 48  kept= 36  ARR=0.7500
+ (2,0.2)  front_end_alarms= 50  kept= 35  ARR=0.7000
+ (2,0.3)  front_end_alarms= 50  kept= 50  ARR=1.0000
+ (3,0.2)  front_end_alarms= 50  kept= 48  ARR=0.9600
+ (3,0.3)  front_end_alarms= 50  kept= 50  ARR=1.0000
+Overall  front_end_alarms=294  kept=238  ARR=0.8095
+
+=== tau = 0.03675 ===
+ (1,0.2)  front_end_alarms= 46  kept= 14  ARR=0.3043
+ (1,0.3)  front_end_alarms= 48  kept= 35  ARR=0.7292
+ (2,0.2)  front_end_alarms= 50  kept= 29  ARR=0.5800
+ (2,0.3)  front_end_alarms= 50  kept= 48  ARR=0.9600
+ (3,0.2)  front_end_alarms= 50  kept= 47  ARR=0.9400
+ (3,0.3)  front_end_alarms= 50  kept= 50  ARR=1.0000
+Overall  front_end_alarms=294  kept=223  ARR=0.7585
+

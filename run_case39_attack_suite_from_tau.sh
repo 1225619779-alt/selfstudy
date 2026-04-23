@@ -6,7 +6,7 @@ cd /home/pang/projects/DDET-MTD
 mkdir -p logs metric/case39
 
 SUMMARY_PATH="${1:-metric/case39/tau_selection_joint_valid/tau_selection_summary.txt}"
-USE_ROUNDED="${USE_ROUNDED:-1}"
+USE_ROUNDED="${USE_ROUNDED:-0}"
 
 export DDET_CASE_NAME="${DDET_CASE_NAME:-case39}"
 export DDET_DATA_SEED="${DDET_DATA_SEED:-20260417}"

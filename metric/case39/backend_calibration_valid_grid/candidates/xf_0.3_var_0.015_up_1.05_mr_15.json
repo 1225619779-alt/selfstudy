@@ -1,0 +1,292 @@
+{
+  "candidate": {
+    "x_facts_ratio": 0.3,
+    "varrho": 0.015,
+    "upper_scale": 1.05,
+    "multi_run_no": 15
+  },
+  "tau_main_exact": 0.013319196253,
+  "tau_strict_exact": 0.016153267226,
+  "runtime": {
+    "git_head": "371463f7de5bb07eb60393fdade5d6b642bc511e",
+    "clean_cache_fingerprint": {
+      "path": "metric/case39/backend_calibration_valid_grid/candidates/xf_0.3_var_0.015_up_1.05_mr_15_clean.npy",
+      "size": 1641408,
+      "mtime": 1776826489.0128005
+    },
+    "attack_cache_fingerprint": {
+      "path": "metric/case39/backend_calibration_valid_grid/candidates/xf_0.3_var_0.015_up_1.05_mr_15_attack.npy",
+      "size": 1307354,
+      "mtime": 1776826488.9568012
+    }
+  },
+  "clean_metadata": {
+    "case_name": "case39",
+    "split": "valid",
+    "seed_base": 20260324,
+    "is_shuffle": false,
+    "next_load_mode": "sample_length",
+    "next_load_extra": 7,
+    "detector_quantile": 0.92,
+    "detector_threshold": 0.007741191536188127,
+    "recovery_error_policy": "skip",
+    "mtd_mode": 0,
+    "varrho": 0.015,
+    "upper_scale": 1.05,
+    "multi_run_no": 15,
+    "x_facts_ratio": 0.3,
+    "split_start_idx": 21080,
+    "sample_length": 6,
+    "skip_backend": false,
+    "git_head": "371463f7de5bb07eb60393fdade5d6b642bc511e",
+    "repo_root": "/home/pang/projects/DDET-MTD",
+    "runner_name": "backfill_case39_cache_metadata.py",
+    "cwd": "/home/pang/projects/DDET-MTD",
+    "input_cache_fingerprint": {
+      "path": "/home/pang/projects/DDET-MTD/metric/case39/clean_alarm_cache_valid_mode_0_0.03_1.1.npy",
+      "size": 1637384,
+      "mtime": 1776652200.0807123
+    },
+    "output_cache_fingerprint": {
+      "path": "metric/case39/backend_calibration_valid_grid/candidates/xf_0.3_var_0.015_up_1.05_mr_15_clean.npy",
+      "size": 1640806,
+      "mtime": 1776792008.5453005
+    }
+  },
+  "attack_metadata": {
+    "case_name": "case39",
+    "split": "valid",
+    "total_run": 50,
+    "ang_no_list": [
+      1,
+      2,
+      3
+    ],
+    "ang_str_list": [
+      0.2,
+      0.3
+    ],
+    "mag_no": 0,
+    "mag_str": 0.0,
+    "seed_base": 20260324,
+    "is_shuffle": false,
+    "recover_input_mode": "repo_compatible",
+    "next_load_modes": [
+      "sample_length"
+    ],
+    "next_load_extra": 7,
+    "detector_quantile": 0.92,
+    "detector_threshold": 0.007741191536188127,
+    "recovery_error_policy": "count_as_non_trigger_non_skip",
+    "mtd_mode": 0,
+    "varrho": 0.015,
+    "upper_scale": 1.05,
+    "multi_run_no": 15,
+    "x_facts_ratio": 0.3,
+    "split_start_idx": 21080,
+    "sample_length": 6,
+    "skip_backend": false,
+    "git_head": "371463f7de5bb07eb60393fdade5d6b642bc511e",
+    "repo_root": "/home/pang/projects/DDET-MTD",
+    "runner_name": "backfill_case39_cache_metadata.py",
+    "cwd": "/home/pang/projects/DDET-MTD",
+    "input_cache_fingerprint": {
+      "path": "/home/pang/projects/DDET-MTD/metric/case39/attack_alarm_cache_valid_50_repo_compatible_mode_0_0.03_1.1.npy",
+      "size": 1303795,
+      "mtime": 1776654934.7950194
+    },
+    "output_cache_fingerprint": {
+      "path": "metric/case39/backend_calibration_valid_grid/candidates/xf_0.3_var_0.015_up_1.05_mr_15_attack.npy",
+      "size": 1306731,
+      "mtime": 1776798822.8283114
+    }
+  },
+  "consistency": {
+    "clean_matches_candidate": true,
+    "attack_matches_candidate": true,
+    "split_matches": true,
+    "case_matches": true,
+    "seed_matches": true
+  },
+  "detector_loss_threshold_main_budget": 0.007792830932885408,
+  "detector_loss_threshold_strict_budget": 0.007881992496550083,
+  "clean": {
+    "baseline": {
+      "total_alarms": 562,
+      "clean_alarm_count": 562,
+      "total_triggers": 562,
+      "clean_trigger_count": 562,
+      "clean_trigger_rate": 1.0,
+      "fail_count": 451,
+      "backend_metric_fail_count": 17,
+      "fail_per_alarm": 0.802491103202847,
+      "fail_per_trigger": 0.802491103202847,
+      "backend_metric_fail_rate_among_triggers": 0.030249110320284697,
+      "stage_one_time_per_alarm": 6.012687939766039,
+      "stage_one_time_per_trigger": 6.012687939766039,
+      "stage_two_time_per_alarm": 8.953384768496205,
+      "stage_two_time_per_trigger": 8.953384768496205,
+      "delta_cost_one_per_alarm": 0.155808119894812,
+      "delta_cost_two_per_alarm": 0.12003154133975108,
+      "delta_cost_two_per_trigger_success_only": 0.12377564446411028
+    },
+    "proposed_main": {
+      "total_alarms": 562,
+      "clean_alarm_count": 562,
+      "total_triggers": 541,
+      "clean_trigger_count": 541,
+      "clean_trigger_rate": 0.9626334519572953,
+      "fail_count": 433,
+      "backend_metric_fail_count": 17,
+      "fail_per_alarm": 0.7704626334519573,
+      "fail_per_trigger": 0.800369685767098,
+      "backend_metric_fail_rate_among_triggers": 0.031423290203327174,
+      "stage_one_time_per_alarm": 5.87399312694726,
+      "stage_one_time_per_trigger": 6.102003950728947,
+      "stage_two_time_per_alarm": 8.858354416606264,
+      "stage_two_time_per_trigger": 9.202209209117784,
+      "delta_cost_one_per_alarm": 0.14559376166613872,
+      "delta_cost_two_per_alarm": 0.11061378363893958,
+      "delta_cost_two_per_trigger_success_only": 0.11863539390283213
+    },
+    "proposed_strict": {
+      "total_alarms": 562,
+      "clean_alarm_count": 562,
+      "total_triggers": 512,
+      "clean_trigger_count": 512,
+      "clean_trigger_rate": 0.9110320284697508,
+      "fail_count": 405,
+      "backend_metric_fail_count": 15,
+      "fail_per_alarm": 0.7206405693950177,
+      "fail_per_trigger": 0.791015625,
+      "backend_metric_fail_rate_among_triggers": 0.029296875,
+      "stage_one_time_per_alarm": 5.664129459560978,
+      "stage_one_time_per_trigger": 6.21726710209623,
+      "stage_two_time_per_alarm": 8.839447456746763,
+      "stage_two_time_per_trigger": 9.70267474744469,
+      "delta_cost_one_per_alarm": 0.14129909727656625,
+      "delta_cost_two_per_alarm": 0.10640424614230927,
+      "delta_cost_two_per_trigger_success_only": 0.12032029443053885
+    },
+    "detector_main_budget": {
+      "total_alarms": 562,
+      "clean_alarm_count": 562,
+      "total_triggers": 541,
+      "clean_trigger_count": 541,
+      "clean_trigger_rate": 0.9626334519572953,
+      "fail_count": 434,
+      "backend_metric_fail_count": 17,
+      "fail_per_alarm": 0.7722419928825622,
+      "fail_per_trigger": 0.8022181146025879,
+      "backend_metric_fail_rate_among_triggers": 0.031423290203327174,
+      "stage_one_time_per_alarm": 5.753182499434176,
+      "stage_one_time_per_trigger": 5.9765038164177575,
+      "stage_two_time_per_alarm": 8.34561953680371,
+      "stage_two_time_per_trigger": 8.669571496642671,
+      "delta_cost_one_per_alarm": 0.1419022462421674,
+      "delta_cost_two_per_alarm": 0.10805386936670311,
+      "delta_cost_two_per_trigger_success_only": 0.11588983699253273
+    },
+    "detector_strict_budget": {
+      "total_alarms": 562,
+      "clean_alarm_count": 562,
+      "total_triggers": 512,
+      "clean_trigger_count": 512,
+      "clean_trigger_rate": 0.9110320284697508,
+      "fail_count": 414,
+      "backend_metric_fail_count": 16,
+      "fail_per_alarm": 0.7366548042704626,
+      "fail_per_trigger": 0.80859375,
+      "backend_metric_fail_rate_among_triggers": 0.03125,
+      "stage_one_time_per_alarm": 5.399591556223262,
+      "stage_one_time_per_trigger": 5.92689541913569,
+      "stage_two_time_per_alarm": 7.947203136847961,
+      "stage_two_time_per_trigger": 8.72329719318077,
+      "delta_cost_one_per_alarm": 0.12990029619980425,
+      "delta_cost_two_per_alarm": 0.09734557395649746,
+      "delta_cost_two_per_trigger_success_only": 0.11029881565232172
+    }
+  },
+  "attack": {
+    "baseline": {
+      "overall_arr": 1.0,
+      "total_alarms": 273,
+      "attack_alarm_count": 273,
+      "total_triggers": 273,
+      "attack_trigger_count": 273,
+      "backend_metric_fail_count": 10,
+      "backend_mtd_fail_count": 170,
+      "backend_metric_fail_rate_among_triggers": 0.03663003663003663,
+      "backend_mtd_fail_rate_among_triggers": 0.6227106227106227,
+      "protected_group_arr": {
+        "(2,0.3)": 1.0,
+        "(3,0.2)": 1.0,
+        "(3,0.3)": 1.0
+      }
+    },
+    "proposed_main": {
+      "overall_arr": 0.9743589743589743,
+      "total_alarms": 273,
+      "attack_alarm_count": 273,
+      "total_triggers": 266,
+      "attack_trigger_count": 266,
+      "backend_metric_fail_count": 10,
+      "backend_mtd_fail_count": 163,
+      "backend_metric_fail_rate_among_triggers": 0.03759398496240601,
+      "backend_mtd_fail_rate_among_triggers": 0.6127819548872181,
+      "protected_group_arr": {
+        "(2,0.3)": 1.0,
+        "(3,0.2)": 0.96,
+        "(3,0.3)": 1.0
+      }
+    },
+    "proposed_strict": {
+      "overall_arr": 0.8901098901098901,
+      "total_alarms": 273,
+      "attack_alarm_count": 273,
+      "total_triggers": 243,
+      "attack_trigger_count": 243,
+      "backend_metric_fail_count": 10,
+      "backend_mtd_fail_count": 146,
+      "backend_metric_fail_rate_among_triggers": 0.0411522633744856,
+      "backend_mtd_fail_rate_among_triggers": 0.6008230452674898,
+      "protected_group_arr": {
+        "(2,0.3)": 0.9375,
+        "(3,0.2)": 0.84,
+        "(3,0.3)": 1.0
+      }
+    },
+    "detector_main_budget": {
+      "overall_arr": 1.0,
+      "total_alarms": 273,
+      "attack_alarm_count": 273,
+      "total_triggers": 273,
+      "attack_trigger_count": 273,
+      "backend_metric_fail_count": 10,
+      "backend_mtd_fail_count": 170,
+      "backend_metric_fail_rate_among_triggers": 0.03663003663003663,
+      "backend_mtd_fail_rate_among_triggers": 0.6227106227106227,
+      "protected_group_arr": {
+        "(2,0.3)": 1.0,
+        "(3,0.2)": 1.0,
+        "(3,0.3)": 1.0
+      }
+    },
+    "detector_strict_budget": {
+      "overall_arr": 1.0,
+      "total_alarms": 273,
+      "attack_alarm_count": 273,
+      "total_triggers": 273,
+      "attack_trigger_count": 273,
+      "backend_metric_fail_count": 10,
+      "backend_mtd_fail_count": 170,
+      "backend_metric_fail_rate_among_triggers": 0.03663003663003663,
+      "backend_mtd_fail_rate_among_triggers": 0.6227106227106227,
+      "protected_group_arr": {
+        "(2,0.3)": 1.0,
+        "(3,0.2)": 1.0,
+        "(3,0.3)": 1.0
+      }
+    }
+  }
+}

@@ -21,13 +21,13 @@ multi_run_no = 15
 x_facts_ratio = 0.5
 split_start_idx = 28107
 sample_length = 6
-tau_verify = -1.0
+tau_verify = 0.016153267226
 next_load_mode = sample_length
 
 [group_summary]
-(1,0.2): front_end_alarms=47 recovery_error_count=0 backend_triggers=47 arr=1.000000 mean_verify_score=0.038488 median_verify_score=0.030332
+(1,0.2): front_end_alarms=47 recovery_error_count=0 backend_triggers=44 arr=0.936170 mean_verify_score=0.038488 median_verify_score=0.030332
 (1,0.3): front_end_alarms=47 recovery_error_count=0 backend_triggers=47 arr=1.000000 mean_verify_score=0.041374 median_verify_score=0.034755
 (2,0.2): front_end_alarms=49 recovery_error_count=0 backend_triggers=49 arr=1.000000 mean_verify_score=0.039445 median_verify_score=0.030686
 (2,0.3): front_end_alarms=49 recovery_error_count=0 backend_triggers=49 arr=1.000000 mean_verify_score=0.044262 median_verify_score=0.037790
-(3,0.2): front_end_alarms=50 recovery_error_count=0 backend_triggers=50 arr=1.000000 mean_verify_score=0.041653 median_verify_score=0.034832
+(3,0.2): front_end_alarms=50 recovery_error_count=0 backend_triggers=49 arr=0.980000 mean_verify_score=0.041653 median_verify_score=0.034832
 (3,0.3): front_end_alarms=50 recovery_error_count=0 backend_triggers=50 arr=1.000000 mean_verify_score=0.047555 median_verify_score=0.042208

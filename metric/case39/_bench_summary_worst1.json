@@ -1,0 +1,131 @@
+{
+  "candidate": {
+    "x_facts_ratio": 0.2,
+    "varrho": 0.015,
+    "upper_scale": 1.0,
+    "multi_run_no": 15
+  },
+  "tau_main_exact": 0.013319196253,
+  "tau_strict_exact": 0.016153267226,
+  "detector_loss_threshold_main_budget": 0.007838320917381214,
+  "detector_loss_threshold_strict_budget": 0.007838320917381214,
+  "clean": {
+    "baseline": {
+      "total_alarms": 3,
+      "total_triggers": 3,
+      "fail_per_alarm": 1.0,
+      "fail_per_trigger": 1.0,
+      "backend_metric_fail_rate_among_triggers": 0.0,
+      "stage_two_time_per_alarm": 0.0,
+      "stage_two_time_per_trigger": 0.0,
+      "delta_cost_two_per_alarm": 0.26072986810868315,
+      "delta_cost_two_per_trigger_success_only": 0.26072986810868315
+    },
+    "proposed_main": {
+      "total_alarms": 3,
+      "total_triggers": 3,
+      "fail_per_alarm": 1.0,
+      "fail_per_trigger": 1.0,
+      "backend_metric_fail_rate_among_triggers": 0.0,
+      "stage_two_time_per_alarm": 0.0,
+      "stage_two_time_per_trigger": 0.0,
+      "delta_cost_two_per_alarm": 0.26072986810868315,
+      "delta_cost_two_per_trigger_success_only": 0.26072986810868315
+    },
+    "proposed_strict": {
+      "total_alarms": 3,
+      "total_triggers": 3,
+      "fail_per_alarm": 1.0,
+      "fail_per_trigger": 1.0,
+      "backend_metric_fail_rate_among_triggers": 0.0,
+      "stage_two_time_per_alarm": 0.0,
+      "stage_two_time_per_trigger": 0.0,
+      "delta_cost_two_per_alarm": 0.26072986810868315,
+      "delta_cost_two_per_trigger_success_only": 0.26072986810868315
+    },
+    "detector_main_budget": {
+      "total_alarms": 3,
+      "total_triggers": 3,
+      "fail_per_alarm": 1.0,
+      "fail_per_trigger": 1.0,
+      "backend_metric_fail_rate_among_triggers": 0.0,
+      "stage_two_time_per_alarm": 0.0,
+      "stage_two_time_per_trigger": 0.0,
+      "delta_cost_two_per_alarm": 0.26072986810868315,
+      "delta_cost_two_per_trigger_success_only": 0.26072986810868315
+    },
+    "detector_strict_budget": {
+      "total_alarms": 3,
+      "total_triggers": 3,
+      "fail_per_alarm": 1.0,
+      "fail_per_trigger": 1.0,
+      "backend_metric_fail_rate_among_triggers": 0.0,
+      "stage_two_time_per_alarm": 0.0,
+      "stage_two_time_per_trigger": 0.0,
+      "delta_cost_two_per_alarm": 0.26072986810868315,
+      "delta_cost_two_per_trigger_success_only": 0.26072986810868315
+    }
+  },
+  "attack": {
+    "baseline": {
+      "overall_arr": 1.0,
+      "total_alarms": 18,
+      "total_triggers": 18,
+      "backend_metric_fail_rate_among_triggers": 1.0,
+      "backend_mtd_fail_rate_among_triggers": 0.5,
+      "protected_group_arr": {
+        "(2,0.3)": 1.0,
+        "(3,0.2)": 1.0,
+        "(3,0.3)": 1.0
+      }
+    },
+    "proposed_main": {
+      "overall_arr": 1.0,
+      "total_alarms": 18,
+      "total_triggers": 18,
+      "backend_metric_fail_rate_among_triggers": 1.0,
+      "backend_mtd_fail_rate_among_triggers": 0.5,
+      "protected_group_arr": {
+        "(2,0.3)": 1.0,
+        "(3,0.2)": 1.0,
+        "(3,0.3)": 1.0
+      }
+    },
+    "proposed_strict": {
+      "overall_arr": 0.9444444444444444,
+      "total_alarms": 18,
+      "total_triggers": 17,
+      "backend_metric_fail_rate_among_triggers": 1.0,
+      "backend_mtd_fail_rate_among_triggers": 0.47058823529411764,
+      "protected_group_arr": {
+        "(2,0.3)": 1.0,
+        "(3,0.2)": 1.0,
+        "(3,0.3)": 1.0
+      }
+    },
+    "detector_main_budget": {
+      "overall_arr": 1.0,
+      "total_alarms": 18,
+      "total_triggers": 18,
+      "backend_metric_fail_rate_among_triggers": 1.0,
+      "backend_mtd_fail_rate_among_triggers": 0.5,
+      "protected_group_arr": {
+        "(2,0.3)": 1.0,
+        "(3,0.2)": 1.0,
+        "(3,0.3)": 1.0
+      }
+    },
+    "detector_strict_budget": {
+      "overall_arr": 1.0,
+      "total_alarms": 18,
+      "total_triggers": 18,
+      "backend_metric_fail_rate_among_triggers": 1.0,
+      "backend_mtd_fail_rate_among_triggers": 0.5,
+      "protected_group_arr": {
+        "(2,0.3)": 1.0,
+        "(3,0.2)": 1.0,
+        "(3,0.3)": 1.0
+      }
+    }
+  }
+}
