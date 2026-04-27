@@ -1,0 +1,82 @@
+{
+  "repo_root": "/home/pang/projects/DDET-MTD-q1-case39",
+  "python_executable": "/tmp/case39_audit_py/bin/python",
+  "python_version": "3.12.3 (main, Mar 23 2026, 19:04:32) [GCC 13.3.0]",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "case_name": "case39",
+  "cwd": "/home/pang/projects/DDET-MTD-q1-case39",
+  "torch": {
+    "torch_version": "2.5.1+cpu",
+    "cuda_is_available": false,
+    "cuda_device_count": 0,
+    "torch_cuda_version": null,
+    "torch_hip_version": null
+  },
+  "sys_config": {
+    "case_name": "case39",
+    "measure_type": "HALF_RTU",
+    "pv_bus": [
+      29,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38
+    ],
+    "fpr": 0.02
+  },
+  "basic_paths": {
+    "noise_sigma": "gen_data/case39/noise_sigma.npy",
+    "load_active": "gen_data/case39/load_active.npy",
+    "load_reactive": "gen_data/case39/load_reactive.npy",
+    "pv_active": "gen_data/case39/pv_active.npy",
+    "pv_reactive": "gen_data/case39/pv_reactive.npy"
+  },
+  "basic_exists": {
+    "noise_sigma": true,
+    "load_active": true,
+    "load_reactive": true,
+    "pv_active": true,
+    "pv_reactive": true
+  },
+  "array_shapes": {
+    "load_active": [
+      35134,
+      39
+    ],
+    "load_reactive": [
+      35134,
+      39
+    ],
+    "pv_active": [
+      35134,
+      9
+    ],
+    "pv_reactive": [
+      35134,
+      9
+    ],
+    "noise_sigma": [
+      170
+    ],
+    "total_steps": 35134
+  },
+  "benchmark": {
+    "start_idx": 0,
+    "end_idx_exclusive": 8,
+    "n_steps": 8,
+    "sec_per_iter_mean": 0.4840395863748199,
+    "sec_per_iter_min": 0.3722693439995055,
+    "sec_per_iter_max": 0.6970458599971607,
+    "success_rate_in_slice": 1.0,
+    "first_z_noise_shape": [
+      170,
+      1
+    ],
+    "estimated_hours_for_total_steps_if_constant": 4.723957452136923
+  },
+  "status": "OK"
+}

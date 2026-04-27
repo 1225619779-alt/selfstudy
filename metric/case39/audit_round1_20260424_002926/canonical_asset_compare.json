@@ -1,0 +1,37 @@
+{
+  "notes": "Path-level resolution and content-level hash comparison for canonical case39 assets versus case14 counterparts.",
+  "assets": {
+    "clean": {
+      "case39_declared_path": "\\\\wsl.localhost\\Ubuntu\\home\\pang\\projects\\DDET-MTD-q1-case39\\metric\\case39\\metric_clean_alarm_scores_full.npy",
+      "case39_resolved_path": "\\\\wsl.localhost\\Ubuntu\\home\\pang\\projects\\DDET-MTD-q1-case39\\metric\\case39\\metric_clean_alarm_scores_full.npy",
+      "case14_reference_path": "\\\\wsl.localhost\\Ubuntu\\home\\pang\\projects\\DDET-MTD-q1-case39\\metric\\case14\\metric_clean_alarm_scores_full.npy",
+      "same_sha256_as_case14": false,
+      "case39_sha256": "ca6c92630cb6ec40c9aa026ddfe0b611db3e829cd2c548d0255d2acc8fa87920",
+      "case14_sha256": "8daa4ef1c5a63a404a60ce776fc38313cb4a2fa0ef026a16ea444c3d18834fd1"
+    },
+    "attack": {
+      "case39_declared_path": "\\\\wsl.localhost\\Ubuntu\\home\\pang\\projects\\DDET-MTD-q1-case39\\metric\\case39\\metric_attack_alarm_scores_400.npy",
+      "case39_resolved_path": "\\\\wsl.localhost\\Ubuntu\\home\\pang\\projects\\DDET-MTD-q1-case39\\metric\\case39\\metric_attack_alarm_scores_400.npy",
+      "case14_reference_path": "\\\\wsl.localhost\\Ubuntu\\home\\pang\\projects\\DDET-MTD-q1-case39\\metric\\case14\\metric_attack_alarm_scores_400.npy",
+      "same_sha256_as_case14": false,
+      "case39_sha256": "039cbb3e19d75084bbc899ed8691eb816020f4ec8b368eb0047e7054f39eb6dd",
+      "case14_sha256": "ed5e6dd90cc9304dc6095b214aaea87ad9d215639fe12f788602b507adf19142"
+    },
+    "train": {
+      "case39_declared_path": "\\\\wsl.localhost\\Ubuntu\\home\\pang\\projects\\DDET-MTD-q1-case39\\metric\\case39\\mixed_bank_fit.npy",
+      "case39_resolved_path": "\\\\wsl.localhost\\Ubuntu\\home\\pang\\projects\\DDET-MTD-q1-case39\\metric\\case39\\mixed_bank_fit.npy",
+      "case14_reference_path": "\\\\wsl.localhost\\Ubuntu\\home\\pang\\projects\\DDET-MTD-q1-case39\\metric\\case14\\mixed_bank_fit.npy",
+      "same_sha256_as_case14": false,
+      "case39_sha256": null,
+      "case14_sha256": "48014dd155995009744fa548a1c178c5a0d81215f29de5932b970a90f1d18036"
+    },
+    "val": {
+      "case39_declared_path": "\\\\wsl.localhost\\Ubuntu\\home\\pang\\projects\\DDET-MTD-q1-case39\\metric\\case39\\mixed_bank_eval.npy",
+      "case39_resolved_path": "\\\\wsl.localhost\\Ubuntu\\home\\pang\\projects\\DDET-MTD-q1-case39\\metric\\case39\\mixed_bank_eval.npy",
+      "case14_reference_path": "\\\\wsl.localhost\\Ubuntu\\home\\pang\\projects\\DDET-MTD-q1-case39\\metric\\case14\\mixed_bank_eval.npy",
+      "same_sha256_as_case14": false,
+      "case39_sha256": null,
+      "case14_sha256": "4ebedbb0f311656c331e1a73d1fa2593c5c6a2487a36ab3b77741bec2f1bb3b9"
+    }
+  }
+}

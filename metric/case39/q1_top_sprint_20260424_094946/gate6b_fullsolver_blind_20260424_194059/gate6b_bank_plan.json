@@ -1,0 +1,50 @@
+[
+  {
+    "schedule": "att-3-0.35:120;clean:60;att-2-0.25:90;clean:90;att-1-0.15:60;clean:120",
+    "seed_base": 20260711,
+    "start_offset": 1500,
+    "tag": "fresh_burst_frontloaded_0_seed20260711_off1500"
+  },
+  {
+    "schedule": "clean:120;att-1-0.15:60;clean:90;att-2-0.25:90;clean:60;att-3-0.35:120",
+    "seed_base": 20260712,
+    "start_offset": 1560,
+    "tag": "fresh_burst_backloaded_1_seed20260712_off1560"
+  },
+  {
+    "schedule": "clean:60;att-1-0.15:15;clean:75;att-2-0.25:15;clean:90;att-3-0.35:15;clean:75;att-1-0.15:15;clean:75;att-2-0.25:15;clean:60;att-3-0.35:15;clean:15",
+    "seed_base": 20260713,
+    "start_offset": 1620,
+    "tag": "fresh_sparse_interleaved_2_seed20260713_off1620"
+  },
+  {
+    "schedule": "clean:180;att-1-0.15:60;clean:90;att-2-0.25:90;att-3-0.35:120",
+    "seed_base": 20260714,
+    "start_offset": 1680,
+    "tag": "fresh_dense_tailheavy_3_seed20260714_off1680"
+  },
+  {
+    "schedule": "clean:120;att-1-0.15:45;clean:150;att-2-0.25:45;clean:135;att-3-0.35:45",
+    "seed_base": 20260715,
+    "start_offset": 1740,
+    "tag": "fresh_mixed_clean_heavy_4_seed20260715_off1740"
+  },
+  {
+    "schedule": "att-1-0.15:90;clean:60;att-2-0.25:90;clean:60;att-3-0.35:120;clean:120",
+    "seed_base": 20260716,
+    "start_offset": 1800,
+    "tag": "fresh_mixed_attack_heavy_5_seed20260716_off1800"
+  },
+  {
+    "schedule": "clean:60;att-1-0.15:60;clean:60;att-2-0.25:60;clean:60;att-3-0.35:60;clean:60;att-2-0.25:60;clean:120",
+    "seed_base": 20260717,
+    "start_offset": 1860,
+    "tag": "fresh_alternating_blocks_6_seed20260717_off1860"
+  },
+  {
+    "schedule": "clean:210;att-1-0.15:30;clean:60;att-2-0.25:60;clean:60;att-3-0.35:120",
+    "seed_base": 20260718,
+    "start_offset": 1920,
+    "tag": "fresh_long_tail_delayed_7_seed20260718_off1920"
+  }
+]

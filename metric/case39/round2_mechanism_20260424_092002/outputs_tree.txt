@@ -1,0 +1,12 @@
+claim_map.md
+funnel_by_holdout_budget_variant.csv
+funnel_summary.md
+generate_round2_pack.py
+loss_decomposition.md
+native_feasibility.md
+outputs_tree.txt
+paired_statistics.csv
+paired_statistics.md
+provenance_plan.md
+proxy_robustness.csv
+proxy_robustness.md

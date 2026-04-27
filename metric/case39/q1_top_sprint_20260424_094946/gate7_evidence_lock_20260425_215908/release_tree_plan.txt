@@ -1,0 +1,19 @@
+metric/
+  case39_transfer/
+    manifests/source_frozen_transfer_manifest.json
+    confirm/
+    gate5_trbg_source/
+  case39_native/
+    banks/mixed_bank_fit_native.npy
+    banks/mixed_bank_eval_native.npy
+    confirm/
+    local_retune/
+  case39_q1_sprint/
+    gate0_protocol/
+    gate1_provenance/
+    gate2_full_native/
+    gate3_funnel_ceiling/
+    gate4_proxy_robustness/
+    gate5_trbg/
+    gate6_locked_recombined_stress/
+    gate7_evidence_lock/

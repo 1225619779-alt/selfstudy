@@ -1,0 +1,49 @@
+{
+  "anti_write_oldrepo_case14_empty": true,
+  "anti_write_q1_case14_empty": true,
+  "branch": "q1_case39_expansion",
+  "canonical_case39_eval": {
+    "exists": true,
+    "is_symlink": true,
+    "path": "metric/case39/mixed_bank_eval.npy",
+    "resolved_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case14/mixed_bank_eval.npy",
+    "sha256": "4ebedbb0f311656c331e1a73d1fa2593c5c6a2487a36ab3b77741bec2f1bb3b9",
+    "size_bytes": 65479
+  },
+  "canonical_case39_eval_resolves_to_case14": true,
+  "canonical_case39_fit": {
+    "exists": true,
+    "is_symlink": true,
+    "path": "metric/case39/mixed_bank_fit.npy",
+    "resolved_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case14/mixed_bank_fit.npy",
+    "sha256": "48014dd155995009744fa548a1c178c5a0d81215f29de5932b970a90f1d18036",
+    "size_bytes": 65357
+  },
+  "canonical_case39_fit_resolves_to_case14": true,
+  "case14_hash_pre_post_equal": true,
+  "commit": "66c0e407fde30868fefbb6fc12afaf06d0d09f6c",
+  "full_native_manifest_exists": true,
+  "full_native_manifest_uses_canonical_case39_fit_eval": false,
+  "gate2_recommendation": "continue only with explicit full_native_case39_manifest.json; do not use canonical case39 fit/eval until they no longer resolve to case14",
+  "holdout_count": 8,
+  "native_train_bank": {
+    "exists": true,
+    "is_symlink": false,
+    "path": "metric/case39_localretune/mixed_bank_fit_native.npy",
+    "resolved_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39_localretune/mixed_bank_fit_native.npy",
+    "sha256": "abd0ed23f01273e7adf77a87a60edb60f557ade245364cf3f531d7ea0d35005c",
+    "size_bytes": 130930
+  },
+  "native_val_bank": {
+    "exists": true,
+    "is_symlink": false,
+    "path": "metric/case39_localretune/mixed_bank_eval_native.npy",
+    "resolved_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39_localretune/mixed_bank_eval_native.npy",
+    "sha256": "714cbbe00a9b56ee4d28371177fa3b35a50fff686f555e460e02f4b458dd5343",
+    "size_bytes": 131148
+  },
+  "readiness_status": "MANIFEST_NATIVE_READY_CANONICAL_STILL_CASE14",
+  "source_frozen_manifest_exists": true,
+  "stamp_exists": true,
+  "stamp_path": "/tmp/case39_q1_top_sprint_20260424_094946.stamp"
+}

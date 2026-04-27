@@ -1,0 +1,11 @@
+{
+  "status": "BRIDGE_ONLY_CASE14_BACKED",
+  "output": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/audit_round1_20260424_002926/native_readiness_audit.json",
+  "checkpoint_exists": true,
+  "canonical_exists": {
+    "clean_bank": true,
+    "attack_bank": true,
+    "train_bank": true,
+    "val_bank": true
+  }
+}

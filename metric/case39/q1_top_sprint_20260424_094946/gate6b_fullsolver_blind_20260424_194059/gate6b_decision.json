@@ -1,0 +1,14 @@
+{
+  "anti_write_oldrepo_case14_empty": true,
+  "anti_write_q1_case14_empty": true,
+  "auto_decision": {
+    "decision": "stop_after_smoke",
+    "estimated_8_bank_seconds": null,
+    "reason": "smoke_status=timeout",
+    "smoke_elapsed_seconds": 21641.839532613754
+  },
+  "banks_attempted": 1,
+  "banks_succeeded": 0,
+  "case14_unchanged": true,
+  "native_case39_unchanged": true
+}

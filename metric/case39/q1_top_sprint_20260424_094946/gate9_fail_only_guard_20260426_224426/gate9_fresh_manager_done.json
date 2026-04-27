@@ -1,0 +1,14 @@
+{
+  "avg_backend_fail_delta_vs_TRBG": 5.75,
+  "avg_backend_fail_reduction_vs_source": 0.14569967988652424,
+  "avg_cost_delta_vs_source": -0.05813727607426197,
+  "avg_recall_delta_vs_TRBG": 0.00742647058823529,
+  "avg_recall_delta_vs_topk": 0.0493745810289928,
+  "avg_recall_retention_vs_source": 0.75,
+  "avg_recover_delta_vs_source": -0.25,
+  "avg_unnecessary_delta_vs_source": -10.625,
+  "completed_banks": 4,
+  "primary_success": false,
+  "strong_success": false,
+  "trfg_not_pareto_dominated_in_at_least_one_plane_each_budget": false
+}

@@ -1,0 +1,27 @@
+﻿{
+    "any_full_native_operating_point_beats_source_frozen_transfer_on_recall":  false,
+    "best_full_native_by_slot_posthoc_recall":  {
+                                                    "1":  {
+                                                              "method":  "topk_expected_consequence",
+                                                              "recall_mean":  0.07229359801579625
+                                                          },
+                                                    "2":  {
+                                                              "method":  "topk_expected_consequence",
+                                                              "recall_mean":  0.13216015222761318
+                                                          }
+                                                },
+    "full_native_local_retune_still_collapses":  true,
+    "main_gap":  "Full-native canonical route is explicit and runnable, but full-native operating points do not beat source-frozen transfer; evidence supports transfer regularization/stress behavior, not native success.",
+    "paired_statistics_support_source_frozen_recall":  true,
+    "recommend_continue_gate3_funnel_ceiling":  true,
+    "source_advantage_interpretation":  "source-frozen has higher recall and served attack mass, but it also carries higher cost and backend-fail burden; clean service is not consistently higher versus top-k.",
+    "source_more_burden":  {
+                               "B1_backend_fail_delta_vs_best":  8.0,
+                               "B1_clean_delta_vs_best":  -1.25,
+                               "B1_cost_delta_vs_best":  0.03533870109272641,
+                               "B2_backend_fail_delta_vs_best":  6.125,
+                               "B2_clean_delta_vs_best":  0.0,
+                               "B2_cost_delta_vs_best":  0.06147868867723577
+                           },
+    "supports_q1_level_native_mechanism_claim":  false
+}

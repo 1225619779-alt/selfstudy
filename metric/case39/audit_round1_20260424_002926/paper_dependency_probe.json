@@ -1,0 +1,8 @@
+{
+  "build_paper_tables_and_manifest.py": "\\\\wsl.localhost\\Ubuntu\\home\\pang\\projects\\DDET-MTD-q1-case39\\build_paper_tables_and_manifest.py",
+  "uses_case39_postrun_summary": true,
+  "uses_case39_stage_compare_significance_v2": true,
+  "uses_prefixed_case39_v1_aggregate_directly": false,
+  "uses_prefixed_case39_v2_aggregate_directly": false,
+  "audit_call": "Current paper bundle points to postrun summary and stage-compare bundle, not directly to pre-fix case39 aggregate_summary files."
+}

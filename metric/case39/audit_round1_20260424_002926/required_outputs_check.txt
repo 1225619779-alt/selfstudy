@@ -1,0 +1,11 @@
+﻿=== REQUIRED CHECK ===
+OK audit_summary.md
+OK native_readiness_audit.json
+OK fallback_case14_hash_audit.json
+OK current_stage_brief.json
+OK summary.json
+OK anti_write_q1_case14.txt
+OK anti_write_oldrepo_case14.txt
+OK consistency_matrix.md
+OK artifact_status.csv
+OK outputs_tree.txt

@@ -1,0 +1,7 @@
+proxy,available,interpretation
+voltage_dev_proxy,False,not available without new OPF/flow logging
+angle_dev_proxy,True,limited sanity only
+state_error_proxy,True,limited sanity only
+branch_flow_dev_proxy,False,not available without new OPF/flow logging
+measurement_residual_proxy,True,limited sanity only
+backend_recovery_service_fields,True,limited sanity only

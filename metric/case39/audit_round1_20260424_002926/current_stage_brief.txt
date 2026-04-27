@@ -1,0 +1,10 @@
+stage=native_clean_attack_test_with_frozen_case14_dev
+used_summary_path=/home/pang/projects/DDET-MTD-q1-case39/metric/case39/postrun_audits/20260409_231456/summary.json
+[1]
+  phase3_oracle_upgrade: recall=0.091662, unnecessary=13.500, cost=0.388107, served_ratio=0.561262
+  phase3_proposed: recall=0.092713, unnecessary=15.875, cost=0.426151, served_ratio=0.587700
+  topk_expected_consequence: recall=0.094150, unnecessary=16.000, cost=0.426519, served_ratio=0.592237
+[2]
+  phase3_oracle_upgrade: recall=0.177225, unnecessary=17.500, cost=0.557481, served_ratio=0.742212
+  phase3_proposed: recall=0.175625, unnecessary=17.500, cost=0.578423, served_ratio=0.764263
+  topk_expected_consequence: recall=0.167650, unnecessary=17.500, cost=0.567001, served_ratio=0.755450

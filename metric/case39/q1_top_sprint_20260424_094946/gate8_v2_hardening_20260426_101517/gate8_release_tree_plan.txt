@@ -1,0 +1,11 @@
+metric/
+  case39_transfer/
+    banks/target_clean_attack_holdouts/
+    manifests/source_case14_to_case39.json
+    results/gate5_gate6_trbg/
+  case39_native/
+    banks/mixed_bank_fit_native.npy
+    banks/mixed_bank_eval_native.npy
+    results/full_native_local_retune/
+  case39_q1_sprint/
+    gate0_to_gate8_audit_and_rewrite_pack/

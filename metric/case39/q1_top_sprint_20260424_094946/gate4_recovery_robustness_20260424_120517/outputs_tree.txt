@@ -1,0 +1,15 @@
+fail_capped_extension_protocol.md
+figure_proxy_rank_heatmap.pdf
+figure_proxy_rank_heatmap.png
+figure_proxy_recall_vs_burden.pdf
+figure_proxy_recall_vs_burden.png
+gate3_interpretation_audit.md
+gate4_recovery_robustness.py
+gate4_robustness_decision.md
+outputs_tree.txt
+proxy_pairwise_statistics.csv
+proxy_rank_stability.csv
+proxy_robustness_by_holdout.csv
+proxy_robustness_summary.md
+recovery_field_audit.csv
+recovery_field_audit.md

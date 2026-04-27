@@ -1,0 +1,2 @@
+tag,status,returncode,elapsed_seconds,output,output_exists,output_sha256,log,schedule,seed_base,start_offset
+fresh_burst_frontloaded_0_seed20260711_off1500,timeout,-15,21641.839532613754,metric/case39/q1_top_sprint_20260424_094946/gate6b_fullsolver_blind_20260424_194059/fresh_banks/mixed_bank_test_fresh_burst_frontloaded_0_seed20260711_off1500.npy,False,,metric/case39/q1_top_sprint_20260424_094946/gate6b_fullsolver_blind_20260424_194059/logs/fresh_burst_frontloaded_0_seed20260711_off1500.log,att-3-0.35:120;clean:60;att-2-0.25:90;clean:90;att-1-0.15:60;clean:120,20260711,1500

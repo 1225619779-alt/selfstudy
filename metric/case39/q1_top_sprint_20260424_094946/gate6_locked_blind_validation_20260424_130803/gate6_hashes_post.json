@@ -1,0 +1,148 @@
+{
+  "blind_banks": {
+    "v3_alternating_blocks_6_seed20260717_off1860": {
+      "exists": true,
+      "is_symlink": false,
+      "mtime_ns": 1777014987699503287,
+      "path": "metric/case39/q1_top_sprint_20260424_094946/gate6_locked_blind_validation_20260424_130803/blind_v3_banks/mixed_bank_test_v3_alternating_blocks_6_seed20260717_off1860.npy",
+      "resolved_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate6_locked_blind_validation_20260424_130803/blind_v3_banks/mixed_bank_test_v3_alternating_blocks_6_seed20260717_off1860.npy",
+      "sha256": "9f88ab98af01aed54e56267b8c440a08b92d950c36c135a9a99c45b001fbe2aa",
+      "size": 95923
+    },
+    "v3_burst_backloaded_1_seed20260712_off1560": {
+      "exists": true,
+      "is_symlink": false,
+      "mtime_ns": 1777014987695317074,
+      "path": "metric/case39/q1_top_sprint_20260424_094946/gate6_locked_blind_validation_20260424_130803/blind_v3_banks/mixed_bank_test_v3_burst_backloaded_1_seed20260712_off1560.npy",
+      "resolved_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate6_locked_blind_validation_20260424_130803/blind_v3_banks/mixed_bank_test_v3_burst_backloaded_1_seed20260712_off1560.npy",
+      "sha256": "55a6e7a623dd5c228b4bfeda31667a7c921a5b0d52dcab334e532938f1a94612",
+      "size": 95730
+    },
+    "v3_burst_frontloaded_0_seed20260711_off1500": {
+      "exists": true,
+      "is_symlink": false,
+      "mtime_ns": 1777014987695317074,
+      "path": "metric/case39/q1_top_sprint_20260424_094946/gate6_locked_blind_validation_20260424_130803/blind_v3_banks/mixed_bank_test_v3_burst_frontloaded_0_seed20260711_off1500.npy",
+      "resolved_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate6_locked_blind_validation_20260424_130803/blind_v3_banks/mixed_bank_test_v3_burst_frontloaded_0_seed20260711_off1500.npy",
+      "sha256": "90485a83fee95642052edd38a5fc0e69d2d7ca643eca4a28dabd303764f5253f",
+      "size": 95731
+    },
+    "v3_dense_tailheavy_3_seed20260714_off1680": {
+      "exists": true,
+      "is_symlink": false,
+      "mtime_ns": 1777014987695317074,
+      "path": "metric/case39/q1_top_sprint_20260424_094946/gate6_locked_blind_validation_20260424_130803/blind_v3_banks/mixed_bank_test_v3_dense_tailheavy_3_seed20260714_off1680.npy",
+      "resolved_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate6_locked_blind_validation_20260424_130803/blind_v3_banks/mixed_bank_test_v3_dense_tailheavy_3_seed20260714_off1680.npy",
+      "sha256": "c02fcfa1dd500e8ae86b297f80854659efb294b20e84810e808ee768bfae0494",
+      "size": 95727
+    },
+    "v3_long_tail_delayed_7_seed20260718_off1920": {
+      "exists": true,
+      "is_symlink": false,
+      "mtime_ns": 1777014987699503287,
+      "path": "metric/case39/q1_top_sprint_20260424_094946/gate6_locked_blind_validation_20260424_130803/blind_v3_banks/mixed_bank_test_v3_long_tail_delayed_7_seed20260718_off1920.npy",
+      "resolved_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate6_locked_blind_validation_20260424_130803/blind_v3_banks/mixed_bank_test_v3_long_tail_delayed_7_seed20260718_off1920.npy",
+      "sha256": "8eedb996664ea36c274374599dc4909f6078c84a75707598f7bf2588b234cdae",
+      "size": 95726
+    },
+    "v3_mixed_attack_heavy_5_seed20260716_off1800": {
+      "exists": true,
+      "is_symlink": false,
+      "mtime_ns": 1777014987699503287,
+      "path": "metric/case39/q1_top_sprint_20260424_094946/gate6_locked_blind_validation_20260424_130803/blind_v3_banks/mixed_bank_test_v3_mixed_attack_heavy_5_seed20260716_off1800.npy",
+      "resolved_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate6_locked_blind_validation_20260424_130803/blind_v3_banks/mixed_bank_test_v3_mixed_attack_heavy_5_seed20260716_off1800.npy",
+      "sha256": "4059ad7eca8fcb59b9034b67a5991166a6a22c654958a7a91d192823d7a2596c",
+      "size": 95729
+    },
+    "v3_mixed_clean_heavy_4_seed20260715_off1740": {
+      "exists": true,
+      "is_symlink": false,
+      "mtime_ns": 1777014987699503287,
+      "path": "metric/case39/q1_top_sprint_20260424_094946/gate6_locked_blind_validation_20260424_130803/blind_v3_banks/mixed_bank_test_v3_mixed_clean_heavy_4_seed20260715_off1740.npy",
+      "resolved_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate6_locked_blind_validation_20260424_130803/blind_v3_banks/mixed_bank_test_v3_mixed_clean_heavy_4_seed20260715_off1740.npy",
+      "sha256": "a9a3b46ba089a7463ee41255c4d5a3e2c90ea44277e7d51cf166966499536567",
+      "size": 95729
+    },
+    "v3_sparse_interleaved_2_seed20260713_off1620": {
+      "exists": true,
+      "is_symlink": false,
+      "mtime_ns": 1777014987695317074,
+      "path": "metric/case39/q1_top_sprint_20260424_094946/gate6_locked_blind_validation_20260424_130803/blind_v3_banks/mixed_bank_test_v3_sparse_interleaved_2_seed20260713_off1620.npy",
+      "resolved_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate6_locked_blind_validation_20260424_130803/blind_v3_banks/mixed_bank_test_v3_sparse_interleaved_2_seed20260713_off1620.npy",
+      "sha256": "b38fe16af6453d41702c29cadd67e0a4289dd8232a93ea3c9937dbe7c2adc9b0",
+      "size": 95780
+    }
+  },
+  "case14_eval": {
+    "exists": true,
+    "is_symlink": false,
+    "mtime_ns": 1775550421000000000,
+    "path": "metric/case14/mixed_bank_eval.npy",
+    "resolved_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case14/mixed_bank_eval.npy",
+    "sha256": "4ebedbb0f311656c331e1a73d1fa2593c5c6a2487a36ab3b77741bec2f1bb3b9",
+    "size": 65479
+  },
+  "case14_fit": {
+    "exists": true,
+    "is_symlink": false,
+    "mtime_ns": 1775550421000000000,
+    "path": "metric/case14/mixed_bank_fit.npy",
+    "resolved_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case14/mixed_bank_fit.npy",
+    "sha256": "48014dd155995009744fa548a1c178c5a0d81215f29de5932b970a90f1d18036",
+    "size": 65357
+  },
+  "case39_canonical_eval": {
+    "exists": true,
+    "is_symlink": true,
+    "mtime_ns": 1775583723000000000,
+    "path": "metric/case39/mixed_bank_eval.npy",
+    "resolved_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case14/mixed_bank_eval.npy",
+    "sha256": "4ebedbb0f311656c331e1a73d1fa2593c5c6a2487a36ab3b77741bec2f1bb3b9",
+    "size": 65479
+  },
+  "case39_canonical_fit": {
+    "exists": true,
+    "is_symlink": true,
+    "mtime_ns": 1775583723000000000,
+    "path": "metric/case39/mixed_bank_fit.npy",
+    "resolved_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case14/mixed_bank_fit.npy",
+    "sha256": "48014dd155995009744fa548a1c178c5a0d81215f29de5932b970a90f1d18036",
+    "size": 65357
+  },
+  "case39_native_eval": {
+    "exists": true,
+    "is_symlink": false,
+    "mtime_ns": 1775816896000000000,
+    "path": "metric/case39_localretune/mixed_bank_eval_native.npy",
+    "resolved_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39_localretune/mixed_bank_eval_native.npy",
+    "sha256": "714cbbe00a9b56ee4d28371177fa3b35a50fff686f555e460e02f4b458dd5343",
+    "size": 131148
+  },
+  "case39_native_fit": {
+    "exists": true,
+    "is_symlink": false,
+    "mtime_ns": 1775794304000000000,
+    "path": "metric/case39_localretune/mixed_bank_fit_native.npy",
+    "resolved_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39_localretune/mixed_bank_fit_native.npy",
+    "sha256": "abd0ed23f01273e7adf77a87a60edb60f557ade245364cf3f531d7ea0d35005c",
+    "size": 130930
+  },
+  "native_manifest": {
+    "exists": true,
+    "is_symlink": false,
+    "mtime_ns": 1776995534802130875,
+    "path": "metric/case39/q1_top_sprint_20260424_094946/full_native_case39_manifest.json",
+    "resolved_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/full_native_case39_manifest.json",
+    "sha256": "62e0f3785b9a85188fb3ed829c97ad4538f05dd04dd4111e024803b3d1c75d12",
+    "size": 1794
+  },
+  "source_manifest": {
+    "exists": true,
+    "is_symlink": false,
+    "mtime_ns": 1776995534802130875,
+    "path": "metric/case39/q1_top_sprint_20260424_094946/source_frozen_transfer_manifest.json",
+    "resolved_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/source_frozen_transfer_manifest.json",
+    "sha256": "7eb1b613f6675c25aa19835c9388e451328c0a3a36d236e8759c9fb5b2a50711",
+    "size": 1607
+  }
+}

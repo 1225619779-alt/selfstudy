@@ -1,0 +1,52 @@
+{
+  "TRBG-native-burden": {
+    "alpha": 2.0,
+    "avg_backend_fail": 211.0,
+    "avg_cost": 0.3268037042308863,
+    "avg_recall": 0.0842602892102336,
+    "avg_unnecessary": 18.5,
+    "calibration_mode": "TRBG-native-burden",
+    "fail_cap_quantile": 1.0,
+    "guard_failed_on_dev": false,
+    "method": "TRBG-native-burden",
+    "passed": true,
+    "selection_split": "explicit native case39 val",
+    "source_dev_avg_recall": 0.0753615127919911,
+    "stats": {
+      "cost_mean": 41.50320261033125,
+      "cost_std": 11.213416219524554,
+      "fail_cap_q80": 0.18181818181818182,
+      "fail_cap_q90": 0.18181818181818182,
+      "fail_cap_q95": 0.18181818181818182,
+      "fail_mean": 0.08628593628593631,
+      "fail_std": 0.08028539830614541,
+      "time_mean": 8.811875627428964,
+      "time_std": 6.220329662525836
+    }
+  },
+  "TRBG-source": {
+    "alpha": 1.0,
+    "avg_backend_fail": 4.0,
+    "avg_cost": 15.525573872362806,
+    "avg_recall": 0.7342342342342337,
+    "avg_unnecessary": 74.0,
+    "calibration_mode": "TRBG-source",
+    "fail_cap_quantile": 1.0,
+    "guard_failed_on_dev": false,
+    "method": "TRBG-source",
+    "passed": true,
+    "selection_split": "case14 source val",
+    "source_dev_avg_recall": 0.7775900900900895,
+    "stats": {
+      "cost_mean": 35.355742671647086,
+      "cost_std": 11.142422540666232,
+      "fail_cap_q80": 0.09090909090909091,
+      "fail_cap_q90": 0.12454545454545549,
+      "fail_cap_q95": 0.18181818181818182,
+      "fail_mean": 0.04128440366972477,
+      "fail_std": 0.06130647397910201,
+      "time_mean": 10.661086388684193,
+      "time_std": 8.15102290379278
+    }
+  }
+}

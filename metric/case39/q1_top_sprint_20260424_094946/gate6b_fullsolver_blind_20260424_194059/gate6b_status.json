@@ -1,0 +1,8 @@
+{
+  "decision": "stop_after_smoke",
+  "estimated_8_bank_seconds": null,
+  "phase": "stopped",
+  "reason": "smoke_status=timeout",
+  "smoke_elapsed_seconds": 21641.839532613754,
+  "updated_time": "2026-04-25 01:49:44 +0800"
+}

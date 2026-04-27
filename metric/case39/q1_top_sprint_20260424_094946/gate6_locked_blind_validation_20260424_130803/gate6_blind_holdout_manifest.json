@@ -1,0 +1,90 @@
+{
+  "budgets": [
+    1,
+    2
+  ],
+  "case": "case39",
+  "created_at_unix": 1777014987.7083247,
+  "holdouts": [
+    {
+      "generation_method": "deterministic_recombined_case39_alarm_pool",
+      "regime_name": "burst_frontloaded",
+      "schedule": "att-3-0.35:120;clean:60;att-2-0.25:90;clean:90;att-1-0.15:60;clean:120",
+      "seed_base": 20260711,
+      "start_offset": 1500,
+      "tag": "v3_burst_frontloaded_0_seed20260711_off1500",
+      "test_bank": "metric/case39/q1_top_sprint_20260424_094946/gate6_locked_blind_validation_20260424_130803/blind_v3_banks/mixed_bank_test_v3_burst_frontloaded_0_seed20260711_off1500.npy"
+    },
+    {
+      "generation_method": "deterministic_recombined_case39_alarm_pool",
+      "regime_name": "burst_backloaded",
+      "schedule": "clean:180;att-1-0.15:60;clean:60;att-2-0.25:90;clean:30;att-3-0.35:120",
+      "seed_base": 20260712,
+      "start_offset": 1560,
+      "tag": "v3_burst_backloaded_1_seed20260712_off1560",
+      "test_bank": "metric/case39/q1_top_sprint_20260424_094946/gate6_locked_blind_validation_20260424_130803/blind_v3_banks/mixed_bank_test_v3_burst_backloaded_1_seed20260712_off1560.npy"
+    },
+    {
+      "generation_method": "deterministic_recombined_case39_alarm_pool",
+      "regime_name": "sparse_interleaved",
+      "schedule": "clean:90;att-1-0.10:30;clean:90;att-2-0.20:30;clean:90;att-3-0.30:30;clean:180",
+      "seed_base": 20260713,
+      "start_offset": 1620,
+      "tag": "v3_sparse_interleaved_2_seed20260713_off1620",
+      "test_bank": "metric/case39/q1_top_sprint_20260424_094946/gate6_locked_blind_validation_20260424_130803/blind_v3_banks/mixed_bank_test_v3_sparse_interleaved_2_seed20260713_off1620.npy"
+    },
+    {
+      "generation_method": "deterministic_recombined_case39_alarm_pool",
+      "regime_name": "dense_tailheavy",
+      "schedule": "clean:90;att-1-0.15:60;att-2-0.25:60;clean:60;att-3-0.35:150;clean:120",
+      "seed_base": 20260714,
+      "start_offset": 1680,
+      "tag": "v3_dense_tailheavy_3_seed20260714_off1680",
+      "test_bank": "metric/case39/q1_top_sprint_20260424_094946/gate6_locked_blind_validation_20260424_130803/blind_v3_banks/mixed_bank_test_v3_dense_tailheavy_3_seed20260714_off1680.npy"
+    },
+    {
+      "generation_method": "deterministic_recombined_case39_alarm_pool",
+      "regime_name": "mixed_clean_heavy",
+      "schedule": "clean:180;att-1-0.15:45;clean:120;att-2-0.25:45;clean:105;att-3-0.35:45",
+      "seed_base": 20260715,
+      "start_offset": 1740,
+      "tag": "v3_mixed_clean_heavy_4_seed20260715_off1740",
+      "test_bank": "metric/case39/q1_top_sprint_20260424_094946/gate6_locked_blind_validation_20260424_130803/blind_v3_banks/mixed_bank_test_v3_mixed_clean_heavy_4_seed20260715_off1740.npy"
+    },
+    {
+      "generation_method": "deterministic_recombined_case39_alarm_pool",
+      "regime_name": "mixed_attack_heavy",
+      "schedule": "clean:60;att-1-0.15:90;att-2-0.25:90;clean:60;att-3-0.35:120;clean:120",
+      "seed_base": 20260716,
+      "start_offset": 1800,
+      "tag": "v3_mixed_attack_heavy_5_seed20260716_off1800",
+      "test_bank": "metric/case39/q1_top_sprint_20260424_094946/gate6_locked_blind_validation_20260424_130803/blind_v3_banks/mixed_bank_test_v3_mixed_attack_heavy_5_seed20260716_off1800.npy"
+    },
+    {
+      "generation_method": "deterministic_recombined_case39_alarm_pool",
+      "regime_name": "alternating_blocks",
+      "schedule": "clean:60;att-1-0.15:60;clean:60;att-2-0.25:60;clean:60;att-3-0.35:60;clean:60;att-2-0.20:60;clean:60",
+      "seed_base": 20260717,
+      "start_offset": 1860,
+      "tag": "v3_alternating_blocks_6_seed20260717_off1860",
+      "test_bank": "metric/case39/q1_top_sprint_20260424_094946/gate6_locked_blind_validation_20260424_130803/blind_v3_banks/mixed_bank_test_v3_alternating_blocks_6_seed20260717_off1860.npy"
+    },
+    {
+      "generation_method": "deterministic_recombined_case39_alarm_pool",
+      "regime_name": "long_tail_delayed",
+      "schedule": "clean:240;att-1-0.10:45;clean:60;att-2-0.20:75;clean:30;att-3-0.40:90",
+      "seed_base": 20260718,
+      "start_offset": 1920,
+      "tag": "v3_long_tail_delayed_7_seed20260718_off1920",
+      "test_bank": "metric/case39/q1_top_sprint_20260424_094946/gate6_locked_blind_validation_20260424_130803/blind_v3_banks/mixed_bank_test_v3_long_tail_delayed_7_seed20260718_off1920.npy"
+    }
+  ],
+  "locked_method": {
+    "alpha": 1.0,
+    "fail_cap_quantile": 1.0,
+    "name": "TRBG-source"
+  },
+  "manifest_type": "gate6_locked_blind_holdouts",
+  "role": "post-design blind validation only; not used for alpha/cap selection",
+  "wmax": 10
+}

@@ -1,0 +1,7 @@
+{
+  "tmp_hits": [
+    "\\tmp\\case39_audit_py"
+  ],
+  "usable_stamp_found": false,
+  "note": "No current-run STAMP was available during round1 audit, so anti-write evidence is insufficient."
+}

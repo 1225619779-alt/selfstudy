@@ -1,0 +1,52 @@
+# Gate 5 Paired Statistics
+
+| B | comparison | metric | mean_delta | ci | W/L/T |
+| --- | --- | --- | --- | --- | --- |
+| 1 | TRBG-source vs source_frozen_transfer | recall | 0.0012 | [-0.0031, 0.0052] | 4/3/1 |
+| 1 | TRBG-source vs source_frozen_transfer | backend_fail | -9.7500 | [-15.2500, -3.8750] | 2/6/0 |
+| 1 | TRBG-source vs source_frozen_transfer | cost | -0.0429 | [-0.0963, 0.0126] | 3/5/0 |
+| 1 | TRBG-source vs source_frozen_transfer | recover_fail | 0.0000 | [-0.7500, 0.7500] | 1/1/6 |
+| 1 | TRBG-native-burden vs source_frozen_transfer | recall | 0.0011 | [-0.0065, 0.0096] | 3/3/2 |
+| 1 | TRBG-native-burden vs source_frozen_transfer | backend_fail | -2.3750 | [-5.3750, 0.8750] | 3/5/0 |
+| 1 | TRBG-native-burden vs source_frozen_transfer | cost | -0.0223 | [-0.0566, 0.0064] | 5/3/0 |
+| 1 | TRBG-native-burden vs source_frozen_transfer | recover_fail | 0.5000 | [-0.1250, 1.1250] | 4/1/3 |
+| 1 | TRBG-source vs topk_expected_consequence | recall | 0.0205 | [0.0063, 0.0359] | 7/1/0 |
+| 1 | TRBG-source vs topk_expected_consequence | backend_fail | -1.7500 | [-10.3750, 5.7500] | 3/5/0 |
+| 1 | TRBG-source vs topk_expected_consequence | cost | -0.0075 | [-0.0737, 0.0609] | 2/6/0 |
+| 1 | TRBG-source vs topk_expected_consequence | recover_fail | 0.2500 | [-0.6250, 1.0000] | 4/2/2 |
+| 1 | TRBG-native-burden vs topk_expected_consequence | recall | 0.0205 | [0.0097, 0.0317] | 6/1/1 |
+| 1 | TRBG-native-burden vs topk_expected_consequence | backend_fail | 5.6250 | [-0.3750, 10.6250] | 6/2/0 |
+| 1 | TRBG-native-burden vs topk_expected_consequence | cost | 0.0131 | [-0.0182, 0.0550] | 4/4/0 |
+| 1 | TRBG-native-burden vs topk_expected_consequence | recover_fail | 0.7500 | [0.0000, 1.6250] | 4/1/3 |
+| 1 | TRBG-source vs winner_replay | recall | 0.0299 | [0.0168, 0.0468] | 8/0/0 |
+| 1 | TRBG-source vs winner_replay | backend_fail | 15.1250 | [7.0000, 24.6250] | 7/0/1 |
+| 1 | TRBG-source vs winner_replay | cost | 0.0644 | [0.0045, 0.1265] | 6/2/0 |
+| 1 | TRBG-source vs winner_replay | recover_fail | 1.5000 | [0.1250, 2.8750] | 5/2/1 |
+| 1 | TRBG-native-burden vs winner_replay | recall | 0.0299 | [0.0226, 0.0379] | 8/0/0 |
+| 1 | TRBG-native-burden vs winner_replay | backend_fail | 22.5000 | [16.5000, 29.7500] | 8/0/0 |
+| 1 | TRBG-native-burden vs winner_replay | cost | 0.0850 | [0.0459, 0.1199] | 7/1/0 |
+| 1 | TRBG-native-burden vs winner_replay | recover_fail | 2.0000 | [1.0000, 3.1250] | 6/0/2 |
+| 2 | TRBG-source vs source_frozen_transfer | recall | -0.0069 | [-0.0201, 0.0044] | 2/4/2 |
+| 2 | TRBG-source vs source_frozen_transfer | backend_fail | -9.7500 | [-15.2500, -3.8750] | 2/6/0 |
+| 2 | TRBG-source vs source_frozen_transfer | cost | -0.0447 | [-0.0915, -0.0009] | 2/6/0 |
+| 2 | TRBG-source vs source_frozen_transfer | recover_fail | -0.5000 | [-1.3750, 0.2500] | 2/4/2 |
+| 2 | TRBG-native-burden vs source_frozen_transfer | recall | -0.0065 | [-0.0185, 0.0038] | 2/5/1 |
+| 2 | TRBG-native-burden vs source_frozen_transfer | backend_fail | -5.1250 | [-8.5000, -1.2500] | 1/7/0 |
+| 2 | TRBG-native-burden vs source_frozen_transfer | cost | -0.0376 | [-0.0725, -0.0009] | 2/6/0 |
+| 2 | TRBG-native-burden vs source_frozen_transfer | recover_fail | -0.3750 | [-1.2500, 0.3750] | 2/3/3 |
+| 2 | TRBG-source vs topk_expected_consequence | recall | 0.0382 | [0.0224, 0.0554] | 8/0/0 |
+| 2 | TRBG-source vs topk_expected_consequence | backend_fail | -3.6250 | [-13.0000, 5.6281] | 5/3/0 |
+| 2 | TRBG-source vs topk_expected_consequence | cost | 0.0168 | [-0.0312, 0.0651] | 5/3/0 |
+| 2 | TRBG-source vs topk_expected_consequence | recover_fail | 0.0000 | [-0.7500, 0.7500] | 3/4/1 |
+| 2 | TRBG-native-burden vs topk_expected_consequence | recall | 0.0386 | [0.0264, 0.0538] | 8/0/0 |
+| 2 | TRBG-native-burden vs topk_expected_consequence | backend_fail | 1.0000 | [-5.1250, 7.0000] | 4/4/0 |
+| 2 | TRBG-native-burden vs topk_expected_consequence | cost | 0.0238 | [-0.0156, 0.0640] | 4/4/0 |
+| 2 | TRBG-native-burden vs topk_expected_consequence | recover_fail | 0.1250 | [-0.5000, 0.8750] | 3/3/2 |
+| 2 | TRBG-source vs winner_replay | recall | 0.0440 | [0.0293, 0.0594] | 8/0/0 |
+| 2 | TRBG-source vs winner_replay | backend_fail | 2.5000 | [-7.0000, 11.2500] | 5/3/0 |
+| 2 | TRBG-source vs winner_replay | cost | 0.0558 | [0.0031, 0.1057] | 6/2/0 |
+| 2 | TRBG-source vs winner_replay | recover_fail | 0.5000 | [-0.1250, 1.1250] | 4/1/3 |
+| 2 | TRBG-native-burden vs winner_replay | recall | 0.0443 | [0.0332, 0.0560] | 8/0/0 |
+| 2 | TRBG-native-burden vs winner_replay | backend_fail | 7.1250 | [1.0000, 13.3750] | 6/2/0 |
+| 2 | TRBG-native-burden vs winner_replay | cost | 0.0628 | [0.0173, 0.1030] | 7/1/0 |
+| 2 | TRBG-native-burden vs winner_replay | recover_fail | 0.6250 | [0.0000, 1.2500] | 5/1/2 |

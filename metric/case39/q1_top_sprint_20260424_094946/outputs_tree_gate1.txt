@@ -1,0 +1,12 @@
+anti_write_oldrepo_case14.txt
+anti_write_q1_case14.txt
+anti_write_report.md
+full_native_case39_manifest.json
+gate1_provenance_cleanup.py
+hash_post_gate1.json
+hash_pre_gate1.json
+native_readiness_after_cleanup.json
+protocol_q1_top.md
+provenance_report.md
+source_frozen_transfer_manifest.json
+outputs_tree_gate1.txt

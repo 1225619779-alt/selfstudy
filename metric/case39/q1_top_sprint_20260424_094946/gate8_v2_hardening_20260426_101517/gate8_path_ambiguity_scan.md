@@ -1,0 +1,57 @@
+# Gate8 Path Ambiguity Scan
+
+- canonical metric/case39/mixed_bank_fit.npy resolves to: `/home/pang/projects/DDET-MTD-q1-case39/metric/case14/mixed_bank_fit.npy`.
+- canonical metric/case39/mixed_bank_eval.npy resolves to: `/home/pang/projects/DDET-MTD-q1-case39/metric/case14/mixed_bank_eval.npy`.
+- fit resolves to case14: `True`.
+- eval resolves to case14: `True`.
+
+## Scripts / docs mentioning canonical case39 fit/eval
+
+- `case39_first_runbook.md`
+- `case39_native_readiness_audit.py`
+- `metric/case39/asset_protocol.json`
+- `metric/case39/phase3_confirm_blind_v2/manifest.json`
+- `metric/case39/preflight/case39_native_readiness.json`
+- `metric/case39/q1_top_sprint_20260424_094946/full_native_case39_manifest.json`
+- `metric/case39/q1_top_sprint_20260424_094946/hash_post_gate1.json`
+- `metric/case39/q1_top_sprint_20260424_094946/hash_pre_gate1.json`
+- `metric/case39/q1_top_sprint_20260424_094946/native_readiness_after_cleanup.json`
+- `metric/case39/q1_top_sprint_20260424_094946/gate1_provenance_cleanup.py`
+- `metric/case39/q1_top_sprint_20260424_094946/provenance_report.md`
+- `metric/case39/phase3_oracle_confirm_v2/aggregate_summary.json`
+- `metric/case39/phase3_oracle_confirm_v1/aggregate_summary.json`
+- `metric/case39/phase3_oracle_confirm_v2_native_clean_attack_test/aggregate_summary.json`
+- `metric/case39/audit_round1_20260424_002926/native_readiness_audit.json`
+- `metric/case39/phase3_oracle_confirm_v1_native_clean_attack_test/aggregate_summary.json`
+- `metric/case39/phase3_confirm_blind_v1/manifest.json`
+- `metric/case39/bridge_bundle_20260408_093631/asset_protocol.json`
+- `metric/case39/bridge_bundle_20260408_093631/aggregate_summary_v1.json`
+- `metric/case39/bridge_bundle_20260408_093631/aggregate_summary_v2.json`
+- `metric/case39/bridge_bundle_20260408_093631/manifest_v2.json`
+- `metric/case39/bridge_bundle_20260408_093631/manifest_v1.json`
+- `metric/case39/bridge_bundle_20260408_093631/case39_native_readiness.json`
+- `metric/case39/round2_mechanism_20260424_092002/provenance_plan.md`
+- `metric/case39/round2_mechanism_20260424_092002/generate_round2_pack.py`
+- `metric/case39/round2_mechanism_20260424_092002/native_feasibility.md`
+- `metric/case39/phase3_confirm_blind_v2/results/budget_scheduler_phase3_holdout_cfC_interleaved_1_seed20260612_off1320.summary.json`
+- `metric/case39/phase3_confirm_blind_v2/results/budget_scheduler_phase3_holdout_cfC_interleaved_0_seed20260611_off1260.summary.json`
+- `metric/case39/phase3_confirm_blind_v2/results/budget_scheduler_phase3_holdout_cfD_tailheavy_1_seed20260622_off1440.summary.json`
+- `metric/case39/phase3_confirm_blind_v2/results/budget_scheduler_phase3_holdout_cfD_tailheavy_0_seed20260621_off1380.summary.json`
+- `metric/case39/q1_top_sprint_20260424_094946/gate6b_fullsolver_blind_20260424_194059/gate6b_hashes_pre.json`
+- `metric/case39/q1_top_sprint_20260424_094946/gate6b_fullsolver_blind_20260424_194059/gate6b_fullsolver_manager.py`
+- `metric/case39/q1_top_sprint_20260424_094946/gate6b_fullsolver_blind_20260424_194059/gate6b_hashes_post.json`
+- `metric/case39/q1_top_sprint_20260424_094946/gate8_v2_hardening_20260426_101517/gate8_static_and_sim.py`
+- `metric/case39/q1_top_sprint_20260424_094946/gate7_evidence_lock_20260425_215908/repo_release_cleanup_plan.md`
+- `metric/case39/q1_top_sprint_20260424_094946/gate7_evidence_lock_20260425_215908/gate7_build_static_reports.py`
+- `metric/case39/q1_top_sprint_20260424_094946/gate7_evidence_lock_20260425_215908/path_ambiguity_scan.md`
+- `metric/case39/q1_top_sprint_20260424_094946/gate6_locked_blind_validation_20260424_130803/gate6_hashes_pre.json`
+- `metric/case39/q1_top_sprint_20260424_094946/gate6_locked_blind_validation_20260424_130803/gate6_hashes_post.json`
+- `metric/case39/q1_top_sprint_20260424_094946/gate6_locked_blind_validation_20260424_130803/gate6_locked_blind_validation.py`
+- `metric/case39/q1_top_sprint_20260424_094946/gate2_full_native_20260424_100642/gate2_full_native_rerun.py`
+- `metric/case39/q1_top_sprint_20260424_094946/gate2_full_native_20260424_100642/gate2_protocol_used.md`
+- `metric/case39/q1_top_sprint_20260424_094946/gate2_full_native_20260424_100642/hash_post_gate2.json`
+- `metric/case39/q1_top_sprint_20260424_094946/gate2_full_native_20260424_100642/hash_pre_gate2.json`
+- `metric/case39/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfA_frontloaded_0_seed20260511_off1020.summary.json`
+- `metric/case39/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfB_backloaded_1_seed20260522_off1200.summary.json`
+- `metric/case39/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfA_frontloaded_1_seed20260512_off1080.summary.json`
+- `metric/case39/phase3_confirm_blind_v1/results/budget_scheduler_phase3_holdout_cfB_backloaded_0_seed20260521_off1140.summary.json`

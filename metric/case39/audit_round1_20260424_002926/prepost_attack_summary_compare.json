@@ -1,0 +1,270 @@
+{
+  "1": {
+    "phase3_oracle_upgrade": {
+      "pre_v1": {
+        "mean_recall": 0.6884,
+        "mean_unnecessary": 4.25,
+        "mean_cost": 10.144974,
+        "mean_served_ratio": 0.74015
+      },
+      "pre_v2": {
+        "mean_recall": 0.7523,
+        "mean_unnecessary": 3.25,
+        "mean_cost": 8.498364,
+        "mean_served_ratio": 0.781125
+      },
+      "post_v1": {
+        "mean_recall": 0.10984999999999999,
+        "mean_unnecessary": 15.0,
+        "mean_cost": 0.40687999999999996,
+        "mean_served_ratio": 0.6049
+      },
+      "post_v2": {
+        "mean_recall": 0.073475,
+        "mean_unnecessary": 12.0,
+        "mean_cost": 0.36933325,
+        "mean_served_ratio": 0.517625
+      },
+      "pre_merged_avg": {
+        "mean_recall": 0.72035,
+        "mean_unnecessary": 3.75,
+        "mean_cost": 9.321669,
+        "mean_served_ratio": 0.7606375
+      },
+      "post_merged_avg": {
+        "mean_recall": 0.0916625,
+        "mean_unnecessary": 13.5,
+        "mean_cost": 0.388106625,
+        "mean_served_ratio": 0.5612625
+      },
+      "delta_post_minus_pre": {
+        "mean_recall": -0.6286875000000001,
+        "mean_unnecessary": 9.75,
+        "mean_cost": -8.933562375,
+        "mean_served_ratio": -0.19937499999999997
+      }
+    },
+    "phase3_proposed": {
+      "pre_v1": {
+        "mean_recall": 0.6804,
+        "mean_unnecessary": 6.75,
+        "mean_cost": 10.224711,
+        "mean_served_ratio": 0.7363
+      },
+      "pre_v2": {
+        "mean_recall": 0.747,
+        "mean_unnecessary": 5.5,
+        "mean_cost": 8.521517,
+        "mean_served_ratio": 0.779875
+      },
+      "post_v1": {
+        "mean_recall": 0.10245,
+        "mean_unnecessary": 17.75,
+        "mean_cost": 0.4665145,
+        "mean_served_ratio": 0.6293749999999999
+      },
+      "post_v2": {
+        "mean_recall": 0.08297500000000001,
+        "mean_unnecessary": 14.0,
+        "mean_cost": 0.385788,
+        "mean_served_ratio": 0.546025
+      },
+      "pre_merged_avg": {
+        "mean_recall": 0.7137,
+        "mean_unnecessary": 6.125,
+        "mean_cost": 9.373114,
+        "mean_served_ratio": 0.7580875
+      },
+      "post_merged_avg": {
+        "mean_recall": 0.0927125,
+        "mean_unnecessary": 15.875,
+        "mean_cost": 0.42615125,
+        "mean_served_ratio": 0.5876999999999999
+      },
+      "delta_post_minus_pre": {
+        "mean_recall": -0.6209875,
+        "mean_unnecessary": 9.75,
+        "mean_cost": -8.946962749999999,
+        "mean_served_ratio": -0.17038750000000014
+      }
+    },
+    "topk_expected_consequence": {
+      "pre_v1": {
+        "mean_recall": 0.7035,
+        "mean_unnecessary": 55.25,
+        "mean_cost": 13.954742750000001,
+        "mean_served_ratio": 0.7794500000000001
+      },
+      "pre_v2": {
+        "mean_recall": 0.75495,
+        "mean_unnecessary": 37.25,
+        "mean_cost": 10.838330000000001,
+        "mean_served_ratio": 0.801925
+      },
+      "post_v1": {
+        "mean_recall": 0.10877500000000001,
+        "mean_unnecessary": 17.75,
+        "mean_cost": 0.47990049999999995,
+        "mean_served_ratio": 0.6521999999999999
+      },
+      "post_v2": {
+        "mean_recall": 0.079525,
+        "mean_unnecessary": 14.25,
+        "mean_cost": 0.37313825,
+        "mean_served_ratio": 0.532275
+      },
+      "pre_merged_avg": {
+        "mean_recall": 0.729225,
+        "mean_unnecessary": 46.25,
+        "mean_cost": 12.396536375,
+        "mean_served_ratio": 0.7906875
+      },
+      "post_merged_avg": {
+        "mean_recall": 0.09415000000000001,
+        "mean_unnecessary": 16.0,
+        "mean_cost": 0.426519375,
+        "mean_served_ratio": 0.5922375
+      },
+      "delta_post_minus_pre": {
+        "mean_recall": -0.6350750000000001,
+        "mean_unnecessary": -30.25,
+        "mean_cost": -11.970017,
+        "mean_served_ratio": -0.19845000000000002
+      }
+    }
+  },
+  "2": {
+    "phase3_oracle_upgrade": {
+      "pre_v1": {
+        "mean_recall": 0.9671,
+        "mean_unnecessary": 8.75,
+        "mean_cost": 13.721996,
+        "mean_served_ratio": 0.9821000000000001
+      },
+      "pre_v2": {
+        "mean_recall": 0.9778249999999999,
+        "mean_unnecessary": 5.75,
+        "mean_cost": 10.60822275,
+        "mean_served_ratio": 0.9918
+      },
+      "post_v1": {
+        "mean_recall": 0.18622499999999997,
+        "mean_unnecessary": 17.5,
+        "mean_cost": 0.6258892500000001,
+        "mean_served_ratio": 0.8134499999999999
+      },
+      "post_v2": {
+        "mean_recall": 0.168225,
+        "mean_unnecessary": 17.5,
+        "mean_cost": 0.4890735,
+        "mean_served_ratio": 0.6709750000000001
+      },
+      "pre_merged_avg": {
+        "mean_recall": 0.9724625,
+        "mean_unnecessary": 7.25,
+        "mean_cost": 12.165109375,
+        "mean_served_ratio": 0.98695
+      },
+      "post_merged_avg": {
+        "mean_recall": 0.177225,
+        "mean_unnecessary": 17.5,
+        "mean_cost": 0.5574813750000001,
+        "mean_served_ratio": 0.7422124999999999
+      },
+      "delta_post_minus_pre": {
+        "mean_recall": -0.7952375,
+        "mean_unnecessary": 10.25,
+        "mean_cost": -11.607628,
+        "mean_served_ratio": -0.24473750000000005
+      }
+    },
+    "phase3_proposed": {
+      "pre_v1": {
+        "mean_recall": 0.964875,
+        "mean_unnecessary": 12.25,
+        "mean_cost": 13.735946,
+        "mean_served_ratio": 0.98655
+      },
+      "pre_v2": {
+        "mean_recall": 0.97705,
+        "mean_unnecessary": 6.0,
+        "mean_cost": 10.5053705,
+        "mean_served_ratio": 0.99245
+      },
+      "post_v1": {
+        "mean_recall": 0.192025,
+        "mean_unnecessary": 17.75,
+        "mean_cost": 0.6485702499999999,
+        "mean_served_ratio": 0.83165
+      },
+      "post_v2": {
+        "mean_recall": 0.159225,
+        "mean_unnecessary": 17.25,
+        "mean_cost": 0.5082760000000001,
+        "mean_served_ratio": 0.696875
+      },
+      "pre_merged_avg": {
+        "mean_recall": 0.9709625,
+        "mean_unnecessary": 9.125,
+        "mean_cost": 12.12065825,
+        "mean_served_ratio": 0.9895
+      },
+      "post_merged_avg": {
+        "mean_recall": 0.175625,
+        "mean_unnecessary": 17.5,
+        "mean_cost": 0.578423125,
+        "mean_served_ratio": 0.7642625000000001
+      },
+      "delta_post_minus_pre": {
+        "mean_recall": -0.7953374999999999,
+        "mean_unnecessary": 8.375,
+        "mean_cost": -11.542235125,
+        "mean_served_ratio": -0.22523749999999998
+      }
+    },
+    "topk_expected_consequence": {
+      "pre_v1": {
+        "mean_recall": 0.9804,
+        "mean_unnecessary": 56.25,
+        "mean_cost": 17.026256749999998,
+        "mean_served_ratio": 0.9975499999999999
+      },
+      "pre_v2": {
+        "mean_recall": 0.9842500000000001,
+        "mean_unnecessary": 37.75,
+        "mean_cost": 12.7560845,
+        "mean_served_ratio": 1.0
+      },
+      "post_v1": {
+        "mean_recall": 0.18152500000000002,
+        "mean_unnecessary": 17.75,
+        "mean_cost": 0.63757475,
+        "mean_served_ratio": 0.836425
+      },
+      "post_v2": {
+        "mean_recall": 0.153775,
+        "mean_unnecessary": 17.25,
+        "mean_cost": 0.49642674999999997,
+        "mean_served_ratio": 0.6744749999999999
+      },
+      "pre_merged_avg": {
+        "mean_recall": 0.9823250000000001,
+        "mean_unnecessary": 47.0,
+        "mean_cost": 14.891170624999999,
+        "mean_served_ratio": 0.998775
+      },
+      "post_merged_avg": {
+        "mean_recall": 0.16765000000000002,
+        "mean_unnecessary": 17.5,
+        "mean_cost": 0.5670007499999999,
+        "mean_served_ratio": 0.75545
+      },
+      "delta_post_minus_pre": {
+        "mean_recall": -0.814675,
+        "mean_unnecessary": -29.5,
+        "mean_cost": -14.324169874999999,
+        "mean_served_ratio": -0.243325
+      }
+    }
+  }
+}

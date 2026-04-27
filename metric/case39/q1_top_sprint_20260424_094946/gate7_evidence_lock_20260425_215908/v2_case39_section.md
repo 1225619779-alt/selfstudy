@@ -1,0 +1,3 @@
+# V2 Case39 Section
+
+Case39 is presented as bridge transfer and stress evidence. Full-native case39 banks are evaluated separately from source-frozen transfer. The canonical case39 fit/eval ambiguity is disclosed and avoided by explicit manifests. The key mechanism result is that source-frozen transfer creates a high-recall/high-burden Pareto point, while TRBG-source moves that point toward lower backend/cost burden. Gate6 is a locked recombined stress replication. Gate7 adds one completed fresh physical-solver sanity bank, which supports the TRBG-source direction but remains a one-bank sanity check rather than an 8-bank statistical validation.

@@ -1,0 +1,79 @@
+{
+  "alpha0_exact_reproduces_original_proposed": true,
+  "alpha_grid": [
+    0.0,
+    0.05,
+    0.1,
+    0.25,
+    0.5,
+    1.0,
+    2.0
+  ],
+  "by_alpha": [
+    {
+      "alpha": 0.0,
+      "avg_backend_fail": 6.0,
+      "avg_cost": 12.363464226774138,
+      "avg_recall_retention": 1.0,
+      "avg_unnecessary": 3.5,
+      "passed_all_budgets": true
+    },
+    {
+      "alpha": 0.05,
+      "avg_backend_fail": 6.0,
+      "avg_cost": 12.314432783061743,
+      "avg_recall_retention": 0.9962406015037595,
+      "avg_unnecessary": 3.5,
+      "passed_all_budgets": true
+    },
+    {
+      "alpha": 0.1,
+      "avg_backend_fail": 6.0,
+      "avg_cost": 12.320466746463545,
+      "avg_recall_retention": 0.9962406015037595,
+      "avg_unnecessary": 3.5,
+      "passed_all_budgets": true
+    },
+    {
+      "alpha": 0.25,
+      "avg_backend_fail": 5.5,
+      "avg_cost": 12.230499114873021,
+      "avg_recall_retention": 0.9927683792815372,
+      "avg_unnecessary": 3.0,
+      "passed_all_budgets": true
+    },
+    {
+      "alpha": 0.5,
+      "avg_backend_fail": 5.5,
+      "avg_cost": 11.837702977564016,
+      "avg_recall_retention": 0.9823517126148705,
+      "avg_unnecessary": 2.5,
+      "passed_all_budgets": false
+    },
+    {
+      "alpha": 1.0,
+      "avg_backend_fail": 3.5,
+      "avg_cost": 10.182725186963063,
+      "avg_recall_retention": 0.9290282999164577,
+      "avg_unnecessary": 3.0,
+      "passed_all_budgets": false
+    },
+    {
+      "alpha": 2.0,
+      "avg_backend_fail": 3.5,
+      "avg_cost": 9.971574357068874,
+      "avg_recall_retention": 0.8769580200501252,
+      "avg_unnecessary": 16.0,
+      "passed_all_budgets": false
+    }
+  ],
+  "fail_guard_failed_source_dev": false,
+  "no_test_selection": true,
+  "normalization": {
+    "fail_mean": 0.04128440366972477,
+    "fail_std": 0.06130647397910201
+  },
+  "selected_alpha": 0.25,
+  "selection_rule": "pass all B budgets on recall>=0.98, unnecessary<=+5%, cost<=+5%, then lowest backend_fail/cost/unnecessary/alpha",
+  "selection_split": "case14 source val"
+}

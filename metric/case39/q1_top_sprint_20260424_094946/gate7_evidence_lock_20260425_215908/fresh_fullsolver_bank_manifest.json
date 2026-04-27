@@ -1,0 +1,43 @@
+{
+  "bank": {
+    "case_name": "case39",
+    "completed_steps": 540,
+    "exists": true,
+    "model_path": "saved_model/case39/checkpoint_rnn.pt",
+    "path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate7_evidence_lock_20260425_215908/fresh_banks/mixed_bank_test_fresh_fullsolver_540_seed20260711_off1500.npy",
+    "status": "complete",
+    "summary": {
+      "final_cumulative_delta_cost": 421.45709106868435,
+      "final_cumulative_stage_time": 12799.901430606842,
+      "total_DDD_alarm": 265,
+      "total_attack_steps": 270,
+      "total_backend_fail": 185,
+      "total_clean_steps": 270,
+      "total_recover_fail": 9,
+      "total_skip_by_gate": 9,
+      "total_steps": 540,
+      "total_trigger_after_gate": 265
+    },
+    "total_steps_requested": 540
+  },
+  "fixed_trbg_source": {
+    "alpha": 1.0,
+    "calibration_mode": "source",
+    "fail_cap_quantile": 1.0
+  },
+  "interpretation": "one fresh physical-solver sanity check, not 8-bank statistical validation",
+  "resume_input": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate7_evidence_lock_20260425_215908/partials/gate6c_seed20260711_step218_input.partial.npy",
+  "runtime_summary": {
+    "backend_fail": 185,
+    "completed_steps": 540,
+    "ddd_alarm": 265,
+    "elapsed_total_seconds_combined_sum": 57783.66710090637,
+    "recover_fail": 9,
+    "runtime_rows": 540,
+    "step_seconds_max": 1472.3849730491638,
+    "step_seconds_mean": 107.0067909276044,
+    "step_seconds_median": 0.06435036659240723,
+    "step_seconds_p95": 395.33660988807645,
+    "trigger_after_gate": 265
+  }
+}

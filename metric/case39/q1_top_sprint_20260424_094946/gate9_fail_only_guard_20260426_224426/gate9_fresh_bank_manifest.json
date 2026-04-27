@@ -1,0 +1,121 @@
+{
+  "TRFG-native-fail": {
+    "alpha": 2.0,
+    "calibration": "explicit native case39 train/val",
+    "diagnostic_only": true
+  },
+  "TRFG-source": {
+    "alpha": 0.25,
+    "calibration": "case14 source train/val"
+  },
+  "banks": [
+    {
+      "bank_id": "gate9_sparse_front_0",
+      "complete": true,
+      "exit_code": 0,
+      "offset": 2400,
+      "output": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate9_fail_only_guard_20260426_224426/reduced_fresh/mixed_bank_test_gate9_sparse_front_0.npy",
+      "output_completed_steps": 240,
+      "partial": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate9_fail_only_guard_20260426_224426/partials/mixed_bank_test_gate9_sparse_front_0.partial.npy",
+      "partial_completed_steps": 240,
+      "partial_status": "complete",
+      "runtime": {
+        "backend_fail": 96,
+        "last_step": 240,
+        "recover_fail": 3,
+        "runtime_rows": 240,
+        "step_seconds_max": 95.79586911201477,
+        "step_seconds_mean": 13.23521168132623,
+        "step_seconds_median": 0.005269765853881836,
+        "step_seconds_p95": 49.64077723026273
+      },
+      "runtime_jsonl": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate9_fail_only_guard_20260426_224426/logs/runtime_gate9_sparse_front_0.jsonl",
+      "schedule": "clean:100;att-1-0.12:15;clean:80;att-2-0.22:15;clean:30",
+      "seed": 20260911,
+      "stderr_log": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate9_fail_only_guard_20260426_224426/logs/gate9_sparse_front_0.stderr.log",
+      "stdout_log": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate9_fail_only_guard_20260426_224426/logs/gate9_sparse_front_0.stdout.log"
+    },
+    {
+      "bank_id": "gate9_late_mixed_1",
+      "complete": true,
+      "exit_code": 0,
+      "offset": 2480,
+      "output": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate9_fail_only_guard_20260426_224426/reduced_fresh/mixed_bank_test_gate9_late_mixed_1.npy",
+      "output_completed_steps": 240,
+      "partial": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate9_fail_only_guard_20260426_224426/partials/mixed_bank_test_gate9_late_mixed_1.partial.npy",
+      "partial_completed_steps": 240,
+      "partial_status": "complete",
+      "runtime": {
+        "backend_fail": 106,
+        "last_step": 240,
+        "recover_fail": 5,
+        "runtime_rows": 240,
+        "step_seconds_max": 420.6726539134979,
+        "step_seconds_mean": 28.08623534142971,
+        "step_seconds_median": 0.014409661293029785,
+        "step_seconds_p95": 98.38126094341277
+      },
+      "runtime_jsonl": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate9_fail_only_guard_20260426_224426/logs/runtime_gate9_late_mixed_1.jsonl",
+      "schedule": "clean:140;att-2-0.18:20;clean:40;att-3-0.28:20;clean:20",
+      "seed": 20260912,
+      "stderr_log": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate9_fail_only_guard_20260426_224426/logs/gate9_late_mixed_1.stderr.log",
+      "stdout_log": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate9_fail_only_guard_20260426_224426/logs/gate9_late_mixed_1.stdout.log"
+    },
+    {
+      "bank_id": "gate9_alternating_short_2",
+      "complete": true,
+      "exit_code": 0,
+      "offset": 2560,
+      "output": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate9_fail_only_guard_20260426_224426/reduced_fresh/mixed_bank_test_gate9_alternating_short_2.npy",
+      "output_completed_steps": 240,
+      "partial": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate9_fail_only_guard_20260426_224426/partials/mixed_bank_test_gate9_alternating_short_2.partial.npy",
+      "partial_completed_steps": 240,
+      "partial_status": "complete",
+      "runtime": {
+        "backend_fail": 75,
+        "last_step": 240,
+        "recover_fail": 2,
+        "runtime_rows": 240,
+        "step_seconds_max": 193.45296812057495,
+        "step_seconds_mean": 15.698435841997464,
+        "step_seconds_median": 0.00378262996673584,
+        "step_seconds_p95": 70.49686726331697
+      },
+      "runtime_jsonl": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate9_fail_only_guard_20260426_224426/logs/runtime_gate9_alternating_short_2.jsonl",
+      "schedule": "clean:60;att-1-0.10:10;clean:50;att-2-0.22:10;clean:50;att-3-0.32:10;clean:50",
+      "seed": 20260913,
+      "stderr_log": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate9_fail_only_guard_20260426_224426/logs/gate9_alternating_short_2.stderr.log",
+      "stdout_log": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate9_fail_only_guard_20260426_224426/logs/gate9_alternating_short_2.stdout.log"
+    },
+    {
+      "bank_id": "gate9_dense_middle_3",
+      "complete": true,
+      "exit_code": 0,
+      "offset": 2640,
+      "output": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate9_fail_only_guard_20260426_224426/reduced_fresh/mixed_bank_test_gate9_dense_middle_3.npy",
+      "output_completed_steps": 240,
+      "partial": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate9_fail_only_guard_20260426_224426/partials/mixed_bank_test_gate9_dense_middle_3.partial.npy",
+      "partial_completed_steps": 240,
+      "partial_status": "complete",
+      "runtime": {
+        "backend_fail": 34,
+        "last_step": 240,
+        "recover_fail": 3,
+        "runtime_rows": 240,
+        "step_seconds_max": 237.15959095954895,
+        "step_seconds_mean": 10.560896403590839,
+        "step_seconds_median": 0.0030957460403442383,
+        "step_seconds_p95": 61.176006090640996
+      },
+      "runtime_jsonl": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate9_fail_only_guard_20260426_224426/logs/runtime_gate9_dense_middle_3.jsonl",
+      "schedule": "clean:90;att-1-0.12:15;att-2-0.18:15;clean:60;att-3-0.30:20;clean:40",
+      "seed": 20260914,
+      "stderr_log": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate9_fail_only_guard_20260426_224426/logs/gate9_dense_middle_3.stderr.log",
+      "stdout_log": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate9_fail_only_guard_20260426_224426/logs/gate9_dense_middle_3.stdout.log"
+    }
+  ],
+  "checkpoint_every": 5,
+  "interpretation": "fresh sanity evidence, not full 8-bank statistical validation",
+  "scope": "Gate9 pre-registered reduced fresh physical-solver validation",
+  "serial_execution": true
+}

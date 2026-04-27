@@ -1,0 +1,32 @@
+{
+  "ablation": {
+    "driver": "fail_component",
+    "full_better_ct": true,
+    "full_better_fail": false
+  },
+  "case14": {
+    "avg_recall_retention": 0.9658005084663742,
+    "per_budget": [
+      {
+        "B": 1,
+        "backend_fail_delta": -1.5,
+        "cost_delta": -0.6262746823946213,
+        "recall_retention": 0.9586634154873444,
+        "unnecessary_delta": 16.5
+      },
+      {
+        "B": 2,
+        "backend_fail_delta": 0.125,
+        "cost_delta": 0.5894796471247883,
+        "recall_retention": 0.9729376014454041,
+        "unnecessary_delta": 29.75
+      }
+    ],
+    "status": "failure"
+  },
+  "cleanup": {
+    "eval_case14": true,
+    "fit_case14": true,
+    "mentions": 48
+  }
+}

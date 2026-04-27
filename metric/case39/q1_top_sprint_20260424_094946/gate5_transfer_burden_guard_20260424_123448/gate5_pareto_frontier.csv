@@ -1,0 +1,15 @@
+method,B,recall,backend_fail,cost,dominated_by_source_topk_winner_recall_cost,dominated_by_source_topk_winner_recall_backend_fail,pareto_efficient_recall_cost_all_methods,pareto_efficient_recall_backend_all_methods
+TRBG-native-burden,1,0.092755197720986,100.375,0.36585316870049067,False,False,False,False
+TRBG-source,1,0.09283636545315584,93.0,0.34522298292093523,False,False,True,True
+native_safeguarded_retune,1,0.015513059292472731,7.375,0.0370814754794072,False,False,True,True
+native_unconstrained_retune,1,0.0,0.625,0.00040251669716124313,False,False,True,True
+source_frozen_transfer,1,0.09165344704797701,102.75,0.38810656132903876,False,False,False,False
+topk_expected_consequence,1,0.07229359801579625,94.75,0.35276786023631235,False,False,False,False
+winner_replay,1,0.06289311908158118,77.875,0.2808203259011209,False,False,True,True
+TRBG-native-burden,2,0.17073059215271946,125.0,0.5198327214550741,False,False,True,True
+TRBG-source,2,0.17037316892686705,120.375,0.512812829541936,False,False,True,True
+native_safeguarded_retune,2,0.0156093090988977,8.5,0.040386710187248,False,False,True,True
+native_unconstrained_retune,2,0.08328306241820327,46.25,0.18699038463249198,False,False,True,True
+source_frozen_transfer,2,0.17722833468254356,130.125,0.557481206663066,False,False,True,True
+topk_expected_consequence,2,0.13216015222761318,124.0,0.4960025179858302,False,False,True,False
+winner_replay,2,0.12639928148054208,117.875,0.45700611389471124,False,False,True,True

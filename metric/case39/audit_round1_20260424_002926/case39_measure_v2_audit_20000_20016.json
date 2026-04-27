@@ -1,0 +1,51 @@
+{
+  "repo_root": "/home/pang/projects/DDET-MTD-q1-case39",
+  "case_name": "case39",
+  "slice": {
+    "start_idx": 20000,
+    "end_idx_exclusive": 20016,
+    "n_steps": 16,
+    "noise_seed": 20260408
+  },
+  "parallel_out_root": "metric/case39/postrun_audits/20260409_231456/slice_20000_20016",
+  "parallel_shapes": {
+    "z": [
+      16,
+      170
+    ],
+    "v": [
+      16,
+      39
+    ],
+    "success": [
+      16
+    ]
+  },
+  "sequential_shapes": {
+    "z": [
+      16,
+      170
+    ],
+    "v": [
+      16,
+      39
+    ],
+    "success": [
+      16
+    ]
+  },
+  "sequential_runtime": {
+    "elapsed_sec": 8.433368136000354,
+    "sec_per_iter_mean": 0.4549896021235327,
+    "sec_per_iter_min": 0.3959720630009542,
+    "sec_per_iter_max": 0.5524579829943832
+  },
+  "agreement": {
+    "success_exact_equal": true,
+    "z_max_abs_diff": 0.0,
+    "v_max_abs_diff": 1.3087246900791164e-14,
+    "z_allclose_rtol1e-7_atol1e-9": true,
+    "v_allclose_rtol1e-7_atol1e-9": true
+  },
+  "note": "This audit compares the saved v2 parallel outputs against a direct sequential recomputation using the same deterministic noise rule (noise_seed + global_idx)."
+}

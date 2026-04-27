@@ -1,0 +1,74 @@
+{
+  "case14_eval": {
+    "exists": true,
+    "is_symlink": false,
+    "lstat_mtime_ns": 1775550421000000000,
+    "path": "metric/case14/mixed_bank_eval.npy",
+    "resolved_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case14/mixed_bank_eval.npy",
+    "sha256": "4ebedbb0f311656c331e1a73d1fa2593c5c6a2487a36ab3b77741bec2f1bb3b9",
+    "size_bytes": 65479
+  },
+  "case14_fit": {
+    "exists": true,
+    "is_symlink": false,
+    "lstat_mtime_ns": 1775550421000000000,
+    "path": "metric/case14/mixed_bank_fit.npy",
+    "resolved_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case14/mixed_bank_fit.npy",
+    "sha256": "48014dd155995009744fa548a1c178c5a0d81215f29de5932b970a90f1d18036",
+    "size_bytes": 65357
+  },
+  "case39_canonical_eval": {
+    "exists": true,
+    "is_symlink": true,
+    "lstat_mtime_ns": 1775583723000000000,
+    "path": "metric/case39/mixed_bank_eval.npy",
+    "resolved_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case14/mixed_bank_eval.npy",
+    "sha256": "4ebedbb0f311656c331e1a73d1fa2593c5c6a2487a36ab3b77741bec2f1bb3b9",
+    "size_bytes": 65479
+  },
+  "case39_canonical_fit": {
+    "exists": true,
+    "is_symlink": true,
+    "lstat_mtime_ns": 1775583723000000000,
+    "path": "metric/case39/mixed_bank_fit.npy",
+    "resolved_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case14/mixed_bank_fit.npy",
+    "sha256": "48014dd155995009744fa548a1c178c5a0d81215f29de5932b970a90f1d18036",
+    "size_bytes": 65357
+  },
+  "case39_native_eval": {
+    "exists": true,
+    "is_symlink": false,
+    "lstat_mtime_ns": 1775816896000000000,
+    "path": "metric/case39_localretune/mixed_bank_eval_native.npy",
+    "resolved_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39_localretune/mixed_bank_eval_native.npy",
+    "sha256": "714cbbe00a9b56ee4d28371177fa3b35a50fff686f555e460e02f4b458dd5343",
+    "size_bytes": 131148
+  },
+  "case39_native_fit": {
+    "exists": true,
+    "is_symlink": false,
+    "lstat_mtime_ns": 1775794304000000000,
+    "path": "metric/case39_localretune/mixed_bank_fit_native.npy",
+    "resolved_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39_localretune/mixed_bank_fit_native.npy",
+    "sha256": "abd0ed23f01273e7adf77a87a60edb60f557ade245364cf3f531d7ea0d35005c",
+    "size_bytes": 130930
+  },
+  "full_native_case39_manifest": {
+    "exists": true,
+    "is_symlink": false,
+    "lstat_mtime_ns": 1776995534802130875,
+    "path": "metric/case39/q1_top_sprint_20260424_094946/full_native_case39_manifest.json",
+    "resolved_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/full_native_case39_manifest.json",
+    "sha256": "62e0f3785b9a85188fb3ed829c97ad4538f05dd04dd4111e024803b3d1c75d12",
+    "size_bytes": 1794
+  },
+  "source_frozen_transfer_manifest": {
+    "exists": true,
+    "is_symlink": false,
+    "lstat_mtime_ns": 1776995534802130875,
+    "path": "metric/case39/q1_top_sprint_20260424_094946/source_frozen_transfer_manifest.json",
+    "resolved_path": "/home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/source_frozen_transfer_manifest.json",
+    "sha256": "7eb1b613f6675c25aa19835c9388e451328c0a3a36d236e8759c9fb5b2a50711",
+    "size_bytes": 1607
+  }
+}

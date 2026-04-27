@@ -1,0 +1,9 @@
+{
+  "attempted_banks": 4,
+  "avg_backend_reduction": 0.24386562616677493,
+  "avg_cost_delta": -0.11903330537819297,
+  "avg_recall_retention": 0.9756944444444444,
+  "avg_recover_delta": -0.375,
+  "completed_banks": 4,
+  "serious_reverse": false
+}

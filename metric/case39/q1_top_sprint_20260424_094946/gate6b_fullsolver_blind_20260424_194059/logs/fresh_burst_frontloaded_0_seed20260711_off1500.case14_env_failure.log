@@ -1,0 +1,26 @@
+COMMAND: /home/pang/projects/DDET-MTD/.venv_rocm/bin/python /home/pang/projects/DDET-MTD-q1-case39/evaluation_mixed_timeline.py --tau_verify -1 --schedule att-3-0.35:120;clean:60;att-2-0.25:90;clean:90;att-1-0.15:60;clean:120 --seed_base 20260711 --start_offset 1500 --output /home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate6b_fullsolver_blind_20260424_194059/fresh_banks/mixed_bank_test_fresh_burst_frontloaded_0_seed20260711_off1500.npy
+START_TIME: 2026-04-24 19:46:12 +0800
+==== evaluation_mixed_timeline ====
+case_name: case14
+tau_verify: -1.0
+schedule: att-3-0.35:120;clean:60;att-2-0.25:90;clean:90;att-1-0.15:60;clean:120
+start_offset: 1500
+is_shuffle: False
+next_load_extra: 0
+output: /home/pang/projects/DDET-MTD-q1-case39/metric/case39/q1_top_sprint_20260424_094946/gate6b_fullsolver_blind_20260424_194059/fresh_banks/mixed_bank_test_fresh_burst_frontloaded_0_seed20260711_off1500.npy
+total_steps: 540
+Traceback (most recent call last):
+  File "/home/pang/projects/DDET-MTD-q1-case39/evaluation_mixed_timeline.py", line 586, in <module>
+    main()
+  File "/home/pang/projects/DDET-MTD-q1-case39/evaluation_mixed_timeline.py", line 187, in main
+    case_class = load_case()
+                 ^^^^^^^^^^^
+  File "/home/pang/projects/DDET-MTD-q1-case39/utils/load_data.py", line 22, in load_case
+    noise_sigma = np.load(noise_sigma_dir)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pang/projects/DDET-MTD/.venv_rocm/lib/python3.12/site-packages/numpy/lib/npyio.py", line 427, in load
+    fid = stack.enter_context(open(os_fspath(file), "rb"))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'gen_data/case14/noise_sigma.npy'
+END_TIME: 2026-04-24 19:47:10 +0800
+RETURN_CODE: 1

@@ -1,0 +1,180 @@
+{
+  "case14": {
+    "avg_recall_retention": 0.9969885324342245,
+    "pass_compat": false,
+    "per_budget": [
+      {
+        "B": 1,
+        "backend_fail_delta_vs_original": -0.125,
+        "cost_delta_vs_original": -0.21262177641082225,
+        "recall_retention_vs_original": 0.9953965097278701,
+        "unnecessary_delta_vs_TRBG": -16.125,
+        "unnecessary_delta_vs_original": 0.375
+      },
+      {
+        "B": 2,
+        "backend_fail_delta_vs_original": -0.5,
+        "cost_delta_vs_original": -0.1786428417148329,
+        "recall_retention_vs_original": 0.9985805551405789,
+        "unnecessary_delta_vs_TRBG": -31.5,
+        "unnecessary_delta_vs_original": -1.75
+      }
+    ]
+  },
+  "original8": {
+    "rows": 128,
+    "summary_rows": 16
+  },
+  "selected": {
+    "TRFG-native-fail": {
+      "by_alpha": [
+        {
+          "alpha": 0.0,
+          "avg_backend_fail": 223.0,
+          "avg_cost": 0.3686216914945918,
+          "avg_recall_retention": 1.0,
+          "avg_unnecessary": 29.0,
+          "passed_all_budgets": true
+        },
+        {
+          "alpha": 0.05,
+          "avg_backend_fail": 223.0,
+          "avg_cost": 0.3686216914945918,
+          "avg_recall_retention": 1.0,
+          "avg_unnecessary": 29.0,
+          "passed_all_budgets": true
+        },
+        {
+          "alpha": 0.1,
+          "avg_backend_fail": 223.0,
+          "avg_cost": 0.3686216914945918,
+          "avg_recall_retention": 1.0,
+          "avg_unnecessary": 29.0,
+          "passed_all_budgets": true
+        },
+        {
+          "alpha": 0.25,
+          "avg_backend_fail": 222.5,
+          "avg_cost": 0.3663162991712966,
+          "avg_recall_retention": 1.0646255349028233,
+          "avg_unnecessary": 27.5,
+          "passed_all_budgets": true
+        },
+        {
+          "alpha": 0.5,
+          "avg_backend_fail": 210.5,
+          "avg_cost": 0.32377773031310053,
+          "avg_recall_retention": 1.0646255349028233,
+          "avg_unnecessary": 21.5,
+          "passed_all_budgets": true
+        },
+        {
+          "alpha": 1.0,
+          "avg_backend_fail": 214.5,
+          "avg_cost": 0.2989098983671983,
+          "avg_recall_retention": 1.0646255349028233,
+          "avg_unnecessary": 16.0,
+          "passed_all_budgets": true
+        },
+        {
+          "alpha": 2.0,
+          "avg_backend_fail": 201.5,
+          "avg_cost": 0.28160053197896273,
+          "avg_recall_retention": 1.076022442733933,
+          "avg_unnecessary": 12.5,
+          "passed_all_budgets": true
+        }
+      ],
+      "failed_native_dev": false,
+      "no_test_selection": true,
+      "normalization": {
+        "fail_mean": 0.08628593628593631,
+        "fail_std": 0.08028539830614541
+      },
+      "selected_alpha": 2.0,
+      "selection_rule": "diagnostic only: recall retention >=0.95 vs alpha0 for all budgets, then lowest backend_fail/cost/unnecessary/alpha",
+      "selection_split": "explicit native case39 val"
+    },
+    "TRFG-source": {
+      "alpha0_exact_reproduces_original_proposed": true,
+      "alpha_grid": [
+        0.0,
+        0.05,
+        0.1,
+        0.25,
+        0.5,
+        1.0,
+        2.0
+      ],
+      "by_alpha": [
+        {
+          "alpha": 0.0,
+          "avg_backend_fail": 6.0,
+          "avg_cost": 12.363464226774138,
+          "avg_recall_retention": 1.0,
+          "avg_unnecessary": 3.5,
+          "passed_all_budgets": true
+        },
+        {
+          "alpha": 0.05,
+          "avg_backend_fail": 6.0,
+          "avg_cost": 12.314432783061743,
+          "avg_recall_retention": 0.9962406015037595,
+          "avg_unnecessary": 3.5,
+          "passed_all_budgets": true
+        },
+        {
+          "alpha": 0.1,
+          "avg_backend_fail": 6.0,
+          "avg_cost": 12.320466746463545,
+          "avg_recall_retention": 0.9962406015037595,
+          "avg_unnecessary": 3.5,
+          "passed_all_budgets": true
+        },
+        {
+          "alpha": 0.25,
+          "avg_backend_fail": 5.5,
+          "avg_cost": 12.230499114873021,
+          "avg_recall_retention": 0.9927683792815372,
+          "avg_unnecessary": 3.0,
+          "passed_all_budgets": true
+        },
+        {
+          "alpha": 0.5,
+          "avg_backend_fail": 5.5,
+          "avg_cost": 11.837702977564016,
+          "avg_recall_retention": 0.9823517126148705,
+          "avg_unnecessary": 2.5,
+          "passed_all_budgets": false
+        },
+        {
+          "alpha": 1.0,
+          "avg_backend_fail": 3.5,
+          "avg_cost": 10.182725186963063,
+          "avg_recall_retention": 0.9290282999164577,
+          "avg_unnecessary": 3.0,
+          "passed_all_budgets": false
+        },
+        {
+          "alpha": 2.0,
+          "avg_backend_fail": 3.5,
+          "avg_cost": 9.971574357068874,
+          "avg_recall_retention": 0.8769580200501252,
+          "avg_unnecessary": 16.0,
+          "passed_all_budgets": false
+        }
+      ],
+      "fail_guard_failed_source_dev": false,
+      "no_test_selection": true,
+      "normalization": {
+        "fail_mean": 0.04128440366972477,
+        "fail_std": 0.06130647397910201
+      },
+      "selected_alpha": 0.25,
+      "selection_rule": "pass all B budgets on recall>=0.98, unnecessary<=+5%, cost<=+5%, then lowest backend_fail/cost/unnecessary/alpha",
+      "selection_split": "case14 source val"
+    },
+    "gate8_confirm_not_used_as_selector": true,
+    "strict_no_test_selection": true
+  }
+}
