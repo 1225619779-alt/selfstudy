@@ -1,0 +1,15 @@
+{
+  "adjacent_overlap_fraction": 0.8888888888888888,
+  "adjacent_shared": 480,
+  "average_multiplicity": 4.5,
+  "disjoint_pairs": 0,
+  "distinct_source_endpoints": 960,
+  "max_source": 1979,
+  "maximum_multiplicity": 8,
+  "min_source": 1020,
+  "note": "Source endpoint is not an independent attack-event ID. Different scenario labels on shared endpoints are retained, not arbitrarily deduplicated. No estimated effective sample size or inferential p-value.",
+  "pair_overlap_max": 480,
+  "pair_overlap_min": 120,
+  "strict_independent_split_from_existing_eight_full_replays": false,
+  "total_occurrences": 4320
+}
