@@ -1,0 +1,96 @@
+{
+  "S0": {
+    "D95": 8.60625,
+    "R_count_nonfail": 0.7196105010052176,
+    "R_weighted_nonfail": 0.7203740336190932,
+    "busy_steps": 194.625,
+    "clean_starts": 3.75,
+    "recorded_cost": 5033.7012630953495,
+    "starts": 142.25
+  },
+  "ATC": {
+    "B": 1,
+    "D95": 10.0,
+    "clean_starts": 9.5,
+    "coverage": 0.7283586003631554,
+    "method": "ATC_START",
+    "n": 8,
+    "occupancy": 215.5
+  },
+  "planner": {
+    "B": 1,
+    "D95": 9.875,
+    "clean_starts": 9.5,
+    "coverage": 0.7594576387875105,
+    "method": "ROLLING_CURRENT_QUEUE_NONDELAY",
+    "n": 8,
+    "occupancy": 215.5
+  },
+  "paired": [
+    {
+      "B": 1,
+      "coverage_delta": 0.014669926650366705,
+      "occupancy_delta": 2,
+      "same_service_set": false,
+      "same_start_times": false,
+      "tag": "cfA_frontloaded_0_seed20260511_off1020"
+    },
+    {
+      "B": 1,
+      "coverage_delta": 0.03479125248508941,
+      "occupancy_delta": -1,
+      "same_service_set": false,
+      "same_start_times": false,
+      "tag": "cfA_frontloaded_1_seed20260512_off1080"
+    },
+    {
+      "B": 1,
+      "coverage_delta": 0.04189944134078216,
+      "occupancy_delta": 0,
+      "same_service_set": false,
+      "same_start_times": false,
+      "tag": "cfB_backloaded_0_seed20260521_off1140"
+    },
+    {
+      "B": 1,
+      "coverage_delta": 0.03496784565916389,
+      "occupancy_delta": 1,
+      "same_service_set": false,
+      "same_start_times": false,
+      "tag": "cfB_backloaded_1_seed20260522_off1200"
+    },
+    {
+      "B": 1,
+      "coverage_delta": -0.011345218800648427,
+      "occupancy_delta": -3,
+      "same_service_set": false,
+      "same_start_times": false,
+      "tag": "cfC_interleaved_0_seed20260611_off1260"
+    },
+    {
+      "B": 1,
+      "coverage_delta": 0.015974440894568676,
+      "occupancy_delta": 0,
+      "same_service_set": false,
+      "same_start_times": false,
+      "tag": "cfC_interleaved_1_seed20260612_off1320"
+    },
+    {
+      "B": 1,
+      "coverage_delta": 0.0657084188911704,
+      "occupancy_delta": -1,
+      "same_service_set": false,
+      "same_start_times": false,
+      "tag": "cfD_tailheavy_0_seed20260621_off1380"
+    },
+    {
+      "B": 1,
+      "coverage_delta": 0.052126200274348555,
+      "occupancy_delta": 2,
+      "same_service_set": false,
+      "same_start_times": false,
+      "tag": "cfD_tailheavy_1_seed20260622_off1440"
+    }
+  ],
+  "note": "Means not exact per-replay resource matching; no CI or significance claim"
+}

@@ -1,0 +1,17 @@
+B,coverage_delta,occupancy_delta,same_service_set,same_start_times,tag
+1,0.014669926650366705,2,False,False,cfA_frontloaded_0_seed20260511_off1020
+2,0.0,0,True,False,cfA_frontloaded_0_seed20260511_off1020
+1,0.03479125248508941,-1,False,False,cfA_frontloaded_1_seed20260512_off1080
+2,0.0,0,True,False,cfA_frontloaded_1_seed20260512_off1080
+1,0.04189944134078216,0,False,False,cfB_backloaded_0_seed20260521_off1140
+2,0.0,0,True,True,cfB_backloaded_0_seed20260521_off1140
+1,0.03496784565916389,1,False,False,cfB_backloaded_1_seed20260522_off1200
+2,0.0,0,True,True,cfB_backloaded_1_seed20260522_off1200
+1,-0.011345218800648427,-3,False,False,cfC_interleaved_0_seed20260611_off1260
+2,0.0,0,True,False,cfC_interleaved_0_seed20260611_off1260
+1,0.015974440894568676,0,False,False,cfC_interleaved_1_seed20260612_off1320
+2,0.0,0,True,True,cfC_interleaved_1_seed20260612_off1320
+1,0.0657084188911704,-1,False,False,cfD_tailheavy_0_seed20260621_off1380
+2,0.0,0,True,True,cfD_tailheavy_0_seed20260621_off1380
+1,0.052126200274348555,2,False,False,cfD_tailheavy_1_seed20260622_off1440
+2,0.0,0,True,True,cfD_tailheavy_1_seed20260622_off1440
